@@ -45,18 +45,25 @@ website:
        contents:
         - section: "Introduction"
           contents: introduction.qmd
+          href: introduction.qmd
         - section: "Getting started with R"
           contents: Rintro.qmd
+          href: Rintro.qmd
         - section: "Exploratory Data Analysis"
           contents: EDA.qmd
+          href: EDA.qmd
         - section: "Regression Analysis"
           contents: regression.qmd
+          href: regression.qmd
         - section: "Mediation Analysis"
           contents: mediation.qmd
+          href: mediation.qmd
         - section: "Moderation Analysis"
           contents: moderation.qmd
+          href: moderation.qmd
         - section: "Conditional Process Analysis"
           contents: conditional.qmd
+          href: conditional.qmd
          
 format:
   html:

@@ -22,7 +22,7 @@ DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = tb]
   
   node [shape = rectangle]     
-  rec0 [label = 'unit 3\b moderation analysis']
+  rec0 [label = 'MODERATION ANALYSIS']
   rec1 [label = 'a) the simple moderation model']
   rec2 [label = 'b) moderation models with continuous and categorical variables and more than one moderator']
   rec3 [label = 'c) multicategorical antecedent and moderator']
@@ -995,9 +995,7 @@ The conditional effect is not expressed by a single number but by **a function**
 
 The **function that describes the conditional effect** can be identified by collecting the terms containing x, which results to be $b_1 + b_3w$, and is represented by the symbol "theta" $\theta$ in hayek's book. Thus, we can see the effect of x on y is not a single number, but the function $(b_1 + b_3w)$. The value of x is not multiplied by a single coefficient which is always the same, as in regression without interaction. Instead, the value of x is multiplied by the result of this function to determine its effect on y, where this effect depends on the value of w (i.e., it is moderated by w).
 
-$$\hat y = b_1x + b_2w + b_3xw$$ 
-$$\hat y = (b_1 + b_3w)x + b_2w$$ 
-$$\theta_{x \to y} = b_1 + b_3w$$
+$$\hat y = b_1x + b_2w + b_3xw$$ $$\hat y = (b_1 + b_3w)x + b_2w$$ $$\theta_{x \to y} = b_1 + b_3w$$
 
 In this case $b_1$ is the coefficient of x (negemot = 0.120) and $b_3$ is the coefficient of the interaction term (int_1 = 0.006). By plugging these values into the function of the conditional effect, we have what follows:
 
@@ -1056,10 +1054,7 @@ Considering the equation of the model $\hat y = b_1x + b_2w + b_3xw$ (ignoring t
 
 Recalling that the product of any number and zero is zero, when $w$ is zero, the terms including the multiplier $w$ such as $b_2w + b_3xw$ become zero, and can be removed from the equation. By this way, we are left with only the variable x and its coefficient: $b_1x$ ("negemot" = 0.120). So we can interpret the $b_1$ coefficient by saying that *when age (w) is equal to zero, a one-unit increase in negative emotion yields to an increase in the estimate of y of 0.120 points*.
 
-$$\hat y = b_1x + b_2*(w=0) + b_3x*(w=0)$$ 
-$$\hat y = b_1x + b_2*0 + b_3x*0$$ 
-$$\hat y = b_1x$$ 
-$$\hat y = 0.120*negemot$$
+$$\hat y = b_1x + b_2*(w=0) + b_3x*(w=0)$$ $$\hat y = b_1x + b_2*0 + b_3x*0$$ $$\hat y = b_1x$$ $$\hat y = 0.120*negemot$$
 
 We already said that this interpretation, although formally correct, does not make sense, because saying that w=0 is meaningless. This would be true also if cases measuring 0 on w would theoretically exist but are not in the range of the variable in the dataset. For instance, on page 240 of the book hayes wrote, in relation to a similar case:
 
@@ -1077,11 +1072,9 @@ summary(glbwarm)
 
 In the same way, we can read the coefficient of the variable age $w$ relative to that of negative emotion set to zero $x$. When $x=0$ the terms including $x$ become zero and can be removed from the equation, and we are left with only one variable age $w$, and its coefficient $b_2$, which can be intepreted as follows: *among cases measuring zero in negative emotions, a one-unit change in age yields to a decrease of 0.024 in the estimate of y*.
 
-$$\hat y = b_1x + b_2w + b_3xw$$ 
+$$\hat y = b_1x + b_2w + b_3xw$$
 
-$$\hat y = b_1*(x=0) + b_2w + b_3*(x=0)*w$$ 
-$$\hat y = b_2w $$
-$$\hat y = -0.024*age$$
+$$\hat y = b_1*(x=0) + b_2w + b_3*(x=0)*w$$ $$\hat y = b_2w $$ $$\hat y = -0.024*age$$
 
 Notice that **the meaning of "0"** changes depending on the nature of the variable. When it is **numeric** (continuous or discrete), zero just means zero (numeric). When the variable is dichotomous, zero indicates the category coded with 0, which is the reference group. For instance, with a continuous w, you can say: *among cases measuring 0 on w, a 1-unit increase in x (...)*. With a dichotomous w, you say, for instance: *among people told the drought was due to natural causes (w=0) a 1-unit increase in x (...)*.
 
@@ -1099,7 +1092,7 @@ When the difference is **negative**, it means that the coefficient or effect of 
 knitr::include_graphics("img/example-moderation-multicategorical-1-annotated.png")
 ```
 
-Let's write the equation of the model: 
+Let's write the equation of the model:
 
 $$y = i_y + b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w + e$$
 
@@ -1115,8 +1108,7 @@ knitr::include_graphics("img/example-moderation-multicategorical-1-annotated.png
 
 When $w = 0$ (ignoring the intercept and the error term, which do not influence the interpretation) the terms including the multiplier $w$ become zero and can be removed from the equation. In this way, we are left with only the two variables $x_1$ and $x_2$.
 
-$$\hat y = b_1x_1 + b_2x_2 + b_3*(w=0) + b_4x_1*(w=0) + b_5x_2*(w=0)$$ 
-$$\hat y = b_1x_1 + b_2x_2$$
+$$\hat y = b_1x_1 + b_2x_2 + b_3*(w=0) + b_4x_1*(w=0) + b_5x_2*(w=0)$$ $$\hat y = b_1x_1 + b_2x_2$$
 
 Now, you could think that you need to set x1 to zero to interpret the coefficient of $x_2$, and viceversa. While this is fundamentally true, there is no need to do so, because this is what was already done by default when fitting a model with a multi categorical variable. The statistical software represents a multicategorical variable with *g* groups (in this case 3) through *g-1* dichotomous variables (in this case $x=1$ and $x=2$).
 
@@ -1144,18 +1136,15 @@ $$\hat y = b_1x_1 + b_2x_2 + b_3*(w=0) + b_4x_1*(w=0) + b_5x_2*(w=0)$$
 
 $$\hat  y = b_1x_1 + b_2x_2$$
 
-Thus we can write this equation either as: 
+Thus we can write this equation either as:
 
-$$\hat y = b_1x_1 + (b_2x_2*0)$$ 
-$$\hat y = b_1x_1$$ 
-$$\hat y = -4.13x_1$$
+$$\hat y = b_1x_1 + (b_2x_2*0)$$ $$\hat y = b_1x_1$$ $$\hat y = -4.13x_1$$
 
 And:
 
-$$\hat y = (b_1x_1*0) + b_2x_2$$ 
+$$\hat y = (b_1x_1*0) + b_2x_2$$
 
-$$\hat  y = b_2x_2$$ 
-$$\hat  y = -3.49x_2$$
+$$\hat  y = b_2x_2$$ $$\hat  y = -3.49x_2$$
 
 The last complication in interpreting the coefficients of multicategorical variables is that they quantify **differences** between them and the reference category. From this perspective, they are like the coefficients of a *dichotomous* variable (indeed, we learned that a multicategorical variable is treated as several dichotomous variables). Keeping in mind that a negative coefficient means that the coefficient of the reference group is higher, and lower otherwise, $\hat y = -4.13x_1$ means that *among cases measuring zero on the moderator w (sexism), the average appreciation of catherine (liking = y) in the individual protest condition (x1) is 4.13 points lower than that in the reference group (no protest)*. $x_2$ can be interpreted similarly. In any case, these coefficients have no substantive meaning, because no cases are zero on the sexism scale.
 
@@ -1165,10 +1154,9 @@ summary(protest$sexism)
 
 The variable "sexism" $w$ is not multicategorical. However it is involved in the interaction with the multicategorical variable $x$. Its coefficient ($b_3w = -0.47$) quantifies the difference in the estimate of $y$ for one-unite change in the "sexism" measure, **when x (both x1 and x2) is equal zero**. As we know from how multicategorical variables are transformed, when both $x_1$ and $x_2$ are zero we are referring to the reference group. Therefore, **this coefficient quantifies the estimate of y for a one-unit change in sexism among people in the reference group**. In other terms, *among people in the reference group (told catherine did not protest), a 1-unit increase in sexism decrease the estimate of y by 0.47 points*.
 
-$$\hat y = b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w$$ 
+$$\hat y = b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w$$
 
-$$\hat y = (b_1x_1*0) + (b_2x_2*0) + b_3w + (b_4x_1w*0) + (b_5x_2w*0) + e$$ 
-$$\hat y = b_3w$$ $$\hat y = -0.47w$$
+$$\hat y = (b_1x_1*0) + (b_2x_2*0) + b_3w + (b_4x_1w*0) + (b_5x_2w*0) + e$$ $$\hat y = b_3w$$ $$\hat y = -0.47w$$
 
 ## Interaction and conditional effect
 
@@ -1188,24 +1176,21 @@ $$\hat y = (b_1x_1*0) + (b_2x_2*0) + b_3w + (b_4x_1w*0) + (b_5x_2w*0)$$
 
 Since we are not interested in the reference group but in the x1 and x2 ones ($b_4x_1w$ and $b_5x_2w$), we can also exlude this term ($b_3w$). We then said that, when interpreting x1 we can ignore x2, and vice versa, due to the way the regression model is built. Therefore, we can split the equation into two parts, one including x1 and the other including x2:
 
-$$y = b_1x_1 + b_4x_1w$$ 
-$$y = b_2x_2 + b_5x_2w$$
+$$y = b_1x_1 + b_4x_1w$$ $$y = b_2x_2 + b_5x_2w$$
 
 By collecting the x terms, we end up with the two **relative conditional effects** $\theta_{x_1 \to y}$ and $\theta_{x_2 \to y}$, composed of $b_1$ and $b_4w$ (where $b_4$ is the "int_1" coefficient), and $b_2$ and $b_5w$ (where $b_4$ is the "int_2" coefficient), respectively. So, we can see that the interaction terms int_1 and int_2 are a foundamental component of the *relative conditional effect*. As stated at the beginning of the discussion, they represent how the relative conditional effect of x on y changes as w changes by one unit. $$y = (b_1 + b_4w)x_1$$ $$\theta_{x_1 \to y} = b_1 + b_4w$$
 
-$$y = (b_2 + b_5w)x_2$$ 
-$$\theta_{x_2 \to y} = b_2 + b_5w$$
+$$y = (b_2 + b_5w)x_2$$ $$\theta_{x_2 \to y} = b_2 + b_5w$$
 
 We can now plug the coefficients into the above functions:
 
-$$\theta_{x_1 \to y} = -4.13 + 0.90w$$ 
-$$\theta_{x_2 \to y} = -3.49 + 0.78w$$
+$$\theta_{x_1 \to y} = -4.13 + 0.90w$$ $$\theta_{x_2 \to y} = -3.49 + 0.78w$$
 
 ## Probing the interaction
 
 The **pick-a-point** procedure plug specific w values into the functions defining the **conditional relative effects** in order to probe the interaction at different levels of the moderator:
 
-$$\theta_{x_1 \to y} = -4.13 + 0.90w$$ 
+$$\theta_{x_1 \to y} = -4.13 + 0.90w$$
 
 $$\theta_{x_2 \to y} = -3.49 + 0.78w$$
 
@@ -1218,3 +1203,268 @@ knitr::include_graphics("img/example-moderation-multicategorical-2.png")
 The interpretation takes into account the comparison with the reference group, but can be supported by reference to the means of y in the different groups, reported in the table **estimated conditional means being compared**. For instance: *among those relatively low in the sexism scale (4.25), catherine is more liked by those told she did not protest (m = 5.70) than she protested using an individual frame (m = 5.40) or a collective frame (5.51). However these differences are not significant (p = 0.67)*.
 
 When working with a multicategorical variable, we have a general ("omnibus") test of significance that says if there is any difference between the averages of y in the three groups, but without saying which groups are different (*"test of equality of conditional means")*. And then we have the usual table *"conditional effects of the focal predictor at values of the moderator(s)"*, where we can see if there is a difference between each of the considered categories (x1 and x2 in this case) and the reference group.
+
+# Appendix: Visualize Moderation with ggplot2
+
+In the previous sections, the plots are created in R following the Hayes's book. In this tutorial, you will learn to create the same plots with ggplot2.
+
+First, load PROCESS and the datasets we are going to use in the examples.
+
+```{r eval=FALSE}
+source("PROCESS_R/process.R")
+
+disaster <-read.csv("data/disaster.csv")
+protest <- read.csv("data/protest.csv")
+glbwarm <- read.csv("data/glbwarm.csv")
+```
+
+Install and load the package "clipr". This package includes a function that allows you to create a data frame with the visualization data provided by the PROCESS output.
+
+```{r eval = FALSE}
+install.packages("clipr")
+library(clipr)
+```
+
+Load the package tidyverse.
+
+```{r eval=FALSE}
+library(tidyverse)
+```
+
+## Visualize the simple mediation model with ggplot2
+
+### Dichotomous X, Continuous Y, and Continuous W
+
+Fit the model.
+
+```{r}
+process(y = "justify", x = "frame", w = "skeptic",
+        model = 1, 
+        jn = 1, 
+        plot = 1,
+        decimals = 10.2,
+        data = disaster)
+```
+
+Select the table "Data for visualizing the conditional effect of the focal predictor" (as when you want to copy and paste something) and copy it (CTRL+C on Windows, COMMAND+C on Mac). Next, run the following code to create a data frame "dataviz" with the data. When you run the command with a different data set, you need to change the names of the variables.
+
+```{r eval=FALSE}
+dataviz <- read_clip_tbl() %>%
+  separate(names(.), 
+           c("Frame", "Skeptic", "Justify"), 
+           sep="     ") %>% # 5 spaces
+  mutate_all(~ as.numeric(.)) %>%
+  # recode the levels of the dichotomous variable using meaningful labels
+  # (this is useful because these labels will be used in the legend of the plot)
+  mutate(Frame = case_when(Frame == 0 ~ "Natural Causes",
+                           Frame == 1 ~ "Climate Change")) %>%
+  # Convert the grouping variable to factor
+  mutate(Frame = as.factor(Frame))
+```
+
+```{r echo=FALSE}
+dataviz <- readRDS("data/dataviz1.rds")
+```
+
+Create the plot with ggplot2.
+
+```{r}
+ggplot(dataviz) +
+  geom_line(aes(x = Skeptic, y = Justify, 
+                group = Frame, linetype = Frame),
+            size = 1) +
+  xlab("Climate Change Skepticism (W)") +
+  ylab("Strength of Justifications for Withholding Aid (Y)") +
+  theme_minimal() +
+  theme(legend.position = "top") # top, bottom, left, right
+```
+
+### Continuous X, Continuous Y, and Dichotomous W
+
+```{r eval=FALSE}
+process(y = "justify", x = "skeptic", w = "frame",
+        model = 1, plot = 1,
+        decimals = 10.2,
+        data = disaster)
+```
+
+```{r}
+# delete the previous dataset to avoid confusion
+rm(dataviz) 
+```
+
+```{r eval=FALSE}
+dataviz <- read_clip_tbl() %>%
+  separate(names(.), 
+           c("Skeptic", "Frame", "Justify"), 
+           sep="     ") %>% # 5 spaces
+  mutate_all(~ as.numeric(.)) %>%
+  # recode the levels of the dichotomous variable using meaningful lables
+  mutate(Frame = case_when(Frame == 0 ~ "Natural Causes",
+                           Frame == 1 ~ "Climate Change")) %>%
+  mutate(Frame = as.factor(Frame))
+```
+
+```{r echo=FALSE}
+dataviz <- readRDS("data/dataviz2.rds")
+```
+
+The plot is the same of before, just change the labels where necessary.
+
+```{r}
+ggplot(dataviz) +
+  geom_line(aes(x = Skeptic, y = Justify, 
+                group = Frame, linetype = Frame),
+            size = 1) +
+  xlab("Climate Change Skepticism (X)") +
+  ylab("Strength of Justifications for Withholding Aid (Y)") +
+  theme_minimal() +
+  theme(legend.position = "top") # top, bottom, left, right
+```
+
+### Continuous X, Continuous Y, and Continuous W
+
+```{r eval=FALSE}
+process(y = "govact", x = "negemot", w = "age",
+        cov = c("posemot", "ideology", "sex"),
+        model = 1, 
+        jn = 1, 
+        plot = 1,
+        decimals = 10.3,
+        data = glbwarm)
+```
+
+```{r}
+# delete the previous dataset to avoid confusion
+rm(dataviz) 
+```
+
+```{r eval=FALSE}
+dataviz <- read_clip_tbl() %>%
+  separate(names(.), 
+           c("Negemot", "Age", "Govact"), 
+           sep="     ") %>% # 5 spaces
+  mutate_all(~ as.numeric(.)) %>%
+  mutate(Age = as.factor(Age))
+```
+
+```{r echo=FALSE}
+dataviz <- readRDS("data/dataviz3.rds")
+```
+
+```{r}
+ggplot(dataviz) +
+  geom_line(aes(x = Negemot, y = Govact, 
+                group = Age, linetype = Age,
+                color = Age), # to use a different color by group
+            size = 1) +
+  # just to choose a specific color:
+  # scale_color_manual(values = c("steelblue", "grey", "skyblue")) +
+  xlab("Negative Emotions (W)") +
+  ylab("Support for Government Action (Y)") +
+  theme_minimal() +
+  theme(legend.position = "top") # top, bottom, left, right
+```
+
+## Visualize Additive Multiple Moderation Models
+
+### Continuous X, Continuous Y, Dichotomous W, and Continuous Z
+
+```{r eval=FALSE}
+process(y = "govact", x = "negemot", w = "sex", z = "age",
+        cov = c("posemot", "ideology"),
+        model = 2, 
+        plot = 1,
+        zmodval = c(30,50,70),
+        decimals = 10.3,
+        data = glbwarm)
+```
+
+```{r}
+# delete the previous dataset to avoid confusion
+rm(dataviz) 
+```
+
+```{r eval=FALSE}
+dataviz <- read_clip_tbl() %>%
+  separate(names(.), 
+           c("Negemot", "sex", "Age", "Govact"), 
+           sep="     ") %>% # 5 spaces
+  mutate_all(~ as.numeric(.)) %>%
+  mutate(sex = case_when(sex == 0 ~ "Female",
+                           sex == 1 ~ "Male")) %>%
+  mutate(Age = as.factor(Age),
+         sex = as.factor(sex))
+```
+
+```{r echo=FALSE}
+dataviz <- readRDS("data/dataviz4.rds")
+```
+
+```{r}
+ggplot(dataviz) +
+  geom_line(aes(x = Negemot, y = Govact, 
+                group = sex, linetype = sex),
+            size = 1) +
+  # facet_wrap slit the plot in several ones based on a grouping variable (i.e., Age)
+  facet_wrap(~Age, nrow = 3,
+            # Change the labels to make them clearer
+            labeller = as_labeller(c("30" = "Age 30", 
+                                     "50" = "Age 50", 
+                                     "70" = "Age 70"))) + 
+  xlab("Negative Emotions (W)") +
+  ylab("Support for Government Action (Y)") +
+  theme_minimal() +
+  theme(legend.position = "top") # top, bottom, left, right
+```
+
+## Visualize Moderated Moderation Models
+
+### Continuous X, Continuous Y, Dichotomous W, and Continuous Z
+
+```{r eval=FALSE}
+process(y = "govact", x = "negemot", w = "sex", z = "age",
+        cov = c("posemot", "ideology"),
+        model = 3, 
+        jn = 1, 
+        plot = 1,
+        zmodval = c(30,50,70),
+        decimals = 10.3,
+        data = glbwarm)
+```
+
+```{r}
+# delete the previous dataset to avoid confusion
+rm(dataviz) 
+```
+
+```{r eval=FALSE}
+dataviz <- read_clip_tbl() %>%
+  separate(names(.), 
+           c("Negemot", "sex", "Age", "Govact"), 
+           sep="     ") %>% # 5 spaces
+  mutate_all(~ as.numeric(.)) %>%
+  mutate(sex = case_when(sex == 0 ~ "Female",
+                           sex == 1 ~ "Male")) %>%
+  mutate(Age = as.factor(Age),
+         sex = as.factor(sex))
+```
+
+```{r echo=FALSE}
+dataviz <- readRDS("data/dataviz5.rds")
+```
+
+```{r}
+ggplot(dataviz) +
+  geom_line(aes(x = Negemot, y = Govact, 
+                group = sex, linetype = sex),
+            size = 1) +
+  facet_wrap(~Age, nrow=3,
+            labeller = as_labeller(c("30" = "Age 30", 
+                                     "50" = "Age 50", 
+                                     "70" = "Age 70"))) + 
+  xlab("Negative Emotions (W)") +
+  ylab("Support for Government Action (Y)") +
+  theme_minimal() +
+  theme(legend.position = "top") # top, bottom, left, right
+```

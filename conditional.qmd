@@ -7,7 +7,7 @@ DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = TB]
   
   node [shape = rectangle]     
-  rec0 [label = 'UNIT 4\b CONDITIONAL PROCESS ANALYSIS']
+  rec0 [label = 'CONDITIONAL PROCESS ANALYSIS']
   rec1 [label = 'A) Conditional Direct and Indirect Effects']
   rec2 [label = 'B) Conditional Indirect Effect Model']
   rec3 [label = 'C) Conditional Direct and Indirect Effect Model']

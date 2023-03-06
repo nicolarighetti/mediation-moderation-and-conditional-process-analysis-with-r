@@ -7,7 +7,7 @@ DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = TB]
   
   node [shape = rectangle]     
-  rec0 [label = 'UNIT 3\b MEDIATION ANALYSIS']
+  rec0 [label = 'MEDIATION ANALYSIS']
   rec1 [label = 'A) The Simple Mediation Model']
   rec2 [label = 'B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys']
   rec3 [label = 'C) More Than One Mediator']
@@ -858,8 +858,5 @@ In this unit we learned:
 -   How to fit models with **multiple X and Y variables**
 -   The difference between **parallel and serial multiple mediation models**
 -   How to use progress to **fit** parallel and serial multiple mediation models and how to **interpret** them
-
-<!-- -->
-
 -   The characteristic of a **multicategorical variable** (and the difference with dichotomous and continuous variables)
 -   How to use R PROGRESS to **fit** a mediation model with multicategorical X variable, and how to **interpret** the output of the model
