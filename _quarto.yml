@@ -19,6 +19,7 @@ website:
    search: true
    left:
      - text: Home
+       file: index.qmd
 
   sidebar:
        style: "docked"
