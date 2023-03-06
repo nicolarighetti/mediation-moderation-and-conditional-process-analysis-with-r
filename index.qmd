@@ -33,8 +33,6 @@ By the end of this course, participants are expected to know how:
 
 -   Use the R language and PROCESS to run, visualize, and understand linear regression, moderation, mediation, and conditional process models.
 
-## Reading list
-
-The official handbook of the course is:
+The handbook of the course and the primary source of most of the material here presented is:
 
 Andrew F. Hayes. [Introduction to Mediation, Moderation, and Conditional Process Analysis. A Regression-Based Approach](https://books.google.at/books?id=6uk7DwAAQBAJ&printsec=frontcover&dq=introduction+to+Mediation,+Moderation,+and+Conditional+Process+Analysis.+A+Regression-Based+Approach.+2018+second+edition&hl=en&sa=X&ved=2ahUKEwjaoLSi6cf9AhV0S_EDHbngDwwQ6AF6BAgHEAI#v=onepage&q=introduction%20to%20Mediation%2C%20Moderation%2C%20and%20Conditional%20Process%20Analysis.%20A%20Regression-Based%20Approach.%202018%20second%20edition&f=false). 2018. SECOND EDITION. THE GUILFORD PRESS, New York, London.
