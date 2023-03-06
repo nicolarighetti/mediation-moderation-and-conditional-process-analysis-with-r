@@ -1,5 +1,6 @@
 ---
-title: "Mediation Moderation and Conditional Process Analysis"
+title: "Mediation, Moderation, and Conditional Process Analysis with R"
+author: Dr. Nicola Righetti, PhD
 ---
 
 ## Information
