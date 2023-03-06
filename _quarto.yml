@@ -1,0 +1,51 @@
+project:
+  type: website
+
+website:
+  title: Mediation Moderation and Conditional Process Analysis with R
+  page-footer: 
+   left: "Copyright 2023, Nicola Righetti"
+   right: 
+     - icon: wordpress
+       href: https://www.nicolarighetti.net
+     - icon: github
+       href: https://github.com/nicolarighetti
+     - icon: mastodon 
+       href: https://mas.to/@nicolarighetti
+     - icon: linkedin
+       href: https://www.linkedin.com/in/nicolarighetti79/
+  navbar:
+   background: primary
+   search: true
+   left:
+     - text: Home
+
+  sidebar:
+       style: "docked"
+       search: true
+       background: light
+       collapse-level: 2
+       contents:
+        - title: "Introduction"
+          contents: introduction.qmd
+        - title: "Getting started with R"
+          contents: Rintro.qmd
+        - title: "Exploratory Data Analysis"
+          contents: EDA.qmd
+        - title: "Regression Analysis"
+          contents: regression.qmd
+        - title: "Mediation Analysis"
+          contents: mediation.qmd
+        - title: "Moderation Analysis"
+          contents: moderation.qmd
+        - title: "Conditional Process Analysis"
+          contents: conditional.qmd
+         
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+

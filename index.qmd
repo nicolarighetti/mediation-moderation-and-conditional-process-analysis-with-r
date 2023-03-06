@@ -1,0 +1,33 @@
+---
+title: "Mediation Moderation and Conditional Process Analysis"
+---
+
+## Information
+
+### Aims, contents and method of the course
+
+This data analysis seminar focuses on linear regression analysis to explore questions about mediated and moderated effects.
+
+Computer applications will focus on R statistical language, the Rstudio environment ([https://www.rstudio.com),](https://www.rstudio.com),/) and the PROCESS software by Andrew F. Hayes ([http://processmacro.org).](http://processmacro.org)./)
+
+The course is subdivided into the following learning units:
+
+• The introductory part of the course will be dedicated to a brief review of the basic principles of linear regression and the setup of R and PROCESS for statistical analysis. We will discuss multiple regression analysis and its principles to understand how to fit, visualize, interpret, and evaluate multiple regression models in R. We will also get a first overview of mediation, moderation, and conditional process models.\
+• We'll next focus on mediation analysis, seeing how to fit, visualize, interpret, and evaluate mediation models using PROCESS in the R environment.\
+• The next learning unit will be dedicated to moderation analysis and explaining how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment.\
+• The final learning unit will be dedicated to an overview of conditional process analysis and explaining how to fit, visualize, interpret, and evaluate conditional process models using PROCESS in the R environment.
+
+The last part of the course will be dedicated to the project work.
+
+By the end of this course, participants will be able to:\
+• Run and interpret the results of linear regression, moderation, mediation, and conditional process models.\
+• Know how to test competing theories of mechanisms statistically through the comparison of indirect effects in models with multiple mediators.\
+• Know how to visualize and probe interactions in regression models to interpret interaction effects appropriately.\
+• Know how to estimate the contingencies of mechanisms through the computation and inference about conditional indirect effects.\
+• Know how to R language and PROCESS to run, visualize, and understand linear regression, moderation, mediation, and conditional process models.
+
+### Reading list
+
+The official handbook of the course is:
+
+Andrew F. Hayes. Introduction to Mediation, Moderation, and Conditional Process Analysis. A Regression-Based Approach. 2018. SECOND EDITION. THE GUILFORD PRESS, New York, London.

@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mediation Moderation and Conditional Process Analysis with R - Getting started with R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Mediation Moderation and Conditional Process Analysis with R</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Getting started with R</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Rintro.html" class="sidebar-item-text sidebar-link active">Getting started with R</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning outcomes</a>
+  <ul class="collapse">
+  <li><a href="#rstudio-environment" id="toc-rstudio-environment" class="nav-link" data-scroll-target="#rstudio-environment">Rstudio environment</a></li>
+  <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects">Rstudio Projects</a></li>
+  <li><a href="#install-and-load-packages" id="toc-install-and-load-packages" class="nav-link" data-scroll-target="#install-and-load-packages">Install and load packages</a></li>
+  <li><a href="#basic-syntactic-rules" id="toc-basic-syntactic-rules" class="nav-link" data-scroll-target="#basic-syntactic-rules">Basic syntactic rules</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#types-of-objects" id="toc-types-of-objects" class="nav-link" data-scroll-target="#types-of-objects">Types of objects</a></li>
+  <li><a href="#readings-and-exercises" id="toc-readings-and-exercises" class="nav-link" data-scroll-target="#readings-and-exercises">Readings and exercises</a></li>
+  <li><a href="#additional-resources-to-learn-r" id="toc-additional-resources-to-learn-r" class="nav-link" data-scroll-target="#additional-resources-to-learn-r">Additional resources to learn R</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Getting started with R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="learning-outcomes" class="level1">
+<h1>Learning outcomes</h1>
+<ul>
+<li><p>Know the meaning of the following terms: script, object and some important R object (matrix, data.frame, and vector), statistical graph/chart, package, function</p></li>
+<li><p>Know the main components of the RStudio interface and their functions</p></li>
+<li><p>Know how to create a new RStudio project, and open an RStudio project you created</p></li>
+<li><p>Know how to create new folders in the RStudio project</p></li>
+<li><p>Know how to create, save, and open a script</p></li>
+<li><p>Know how to execute a line of code</p></li>
+<li><p>Know how to install and load a package</p></li>
+<li><p>Know how to load and view a data set</p></li>
+</ul>
+<section id="rstudio-environment" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-environment">Rstudio environment</h2>
+<p>The RStudio interface is structured into four quadrants. What follows is a general description of a standard RStudio layout, but the actual layout can be customized by the user.</p>
+<p><img src="img/r-environment.png" class="img-fluid"></p>
+<p>Here you can open and work on the scripts. A script is simply a text file containing a set of commands (code) used to perform analyses. Script files are authomatically saved with extension “.r”.</p>
+<p>The top-right quadrant includes the window Environment. The user can find here data sets and other objects created and loaded in a RStudio work session. In R, objects are everything a user can manipulate. For example, a data set, a function to transform data, a more or less complex algorithm to obtain a result, are all “objects”.</p>
+<p>In this quadrant, there are other tabs, such as Files, History, Connections, Packages, etc. The File tab can be particularly useful: here the user can navigate files and folders to find, for example, the scripts and the data sets to upload.</p>
+<p>The bottom-right quadrant is where graphical outputs, mostly plots and other statistical charts, are shown. Statistical graphs or charts are representations of statistical data in graphical form. There are several types of graphs. For example, bar charts, histograms, timeplots, scatter plots, box plots, etc.</p>
+<p>In this quadrant, there is also a tab for R packages. Packages (or libraries) are collections of functions for performing specific operations and analyses. Functions can be conceived as “machines” that generate output from an input. For instance, the “addition” is a function: it receives two or more numbers as input and generates an output that corresponds to their sum.</p>
+<p>Here you can also find the Help section. Help is great for learning more about the functions. There are two ways you can open the Help of a function. You can write in the search box the name of the function you want to learn about, or you can write a question mark in the console followed by the name of a function (for example, “?sum”).</p>
+<p>On the bottom left is the R Console window, where the code gets executed and the output is produced. It is possible to type and run commands directly into the console. Contrary to what occurs when the code is written in a script, in this case the code will not be saved.</p>
+</section>
+<section id="rstudio-projects" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-projects">Rstudio Projects</h2>
+<p>When starting a new data analysis project, we can create a dedicated work space. This dedicated work space is called a project. A project includes all the folders and files (e.g., scripts and data sets) necessary to conduct the analyses for the project’s purposes, as well as the outputs of the analysis (charts, tables, etc.).</p>
+<p>To create a new project with RStudio, follows these steps:</p>
+<ul>
+<li>Click on File (on the top left);</li>
+<li>Click on New Project;</li>
+<li>Select New Directory, and New Project;</li>
+<li>Choose a folder for the project and give it a name. For our course, use ADA_MMCP (Advanced Data Analysis, Mediation Moderation Conditional Process Analysis).</li>
+</ul>
+<p><img src="img/r-studio-project-creation.png" class="img-fluid"></p>
+<p>You have now created a project along with its own folder. The name of the folder is identical to that of the project. Inside the folder, there is a file with extension .Rproj and the same name of the project (e.g., “ADA_MMCP.Rproj”). This is the file you have to open whenever you want to work on the project.</p>
+<p>Projects can be complex, so it is important to keep everything in order. To this aim, it is a good practice to create, in the main <strong>folder</strong> of the project, <strong>sub-folders</strong> dedicated to different types of files used in the project. To create a new folder, go to the Files tab, in the upper-right quadrant of the RStudio interface, click on New Folder, and give a name to your folder.</p>
+<p><img src="img/new-folder.png" class="img-fluid"></p>
+<p>Create a folder for the data sets, called data. You will save here the data sets we are going to use during the course.</p>
+<p>Once the project has been created, we can open a new <strong>script</strong> and save it. We said that a script is a file that contains code. Script files are authomatically saved with extension .r. You can open, update, and save your script whenever you like. Saving code is important to save time! Otherwise, you would have to write the same code whenever you work on the project. Create a script named introduction_to_r. You will use it to write and run the code we are going to use today.</p>
+<p>To execute (or “run”) the code in the script, we can highlight the line of code we want to run, and then click the Run button. This button can be found on the top-right corner of the editor window. Alternatively, you can place the cursor on the row containing the code to be executed, and then clic Run. Instead of the Run botton, the code can be executed by using the Ctrl + Enter key combination (also Command + Enter on a Mac).</p>
+<p>&gt; In your script “introduction_to_r”, write a simple addition and execute it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p>Now, save the script by clicking on the disk symbol you see in the top left corner of the editor. Close the script by clicking on the small “x” (upper right corner of the editor). Finally, in the “Files” window (upper left-hand quadrant), find the “introduction_to_r” script and reopen it in RStudio.</p>
+</section>
+<section id="install-and-load-packages" class="level2">
+<h2 class="anchored" data-anchor-id="install-and-load-packages">Install and load packages</h2>
+<p>Packages (also libraries) are kinds of “toolboxes” containing sets of functions used to perform different types of operations.</p>
+<p>R already includes several default functions and packages, but several additional packages are available. It is possible to install a package by using the menu (Tools/Install Packages…) or by using the function install.packages(“name-of-the-package-here”).</p>
+<p>A very useful package is tidyverse. Tidyverse actually includes several other packages, such as ggplot2 to create charts, and dplyr to manipulate data sets (“data wrangling”).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To use the functions contained in a package, you need to load the package into the work environment first. This can be done with by using the function library(). For instance, we can load tidyverse with the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.0     ✔ purrr   1.0.1
+✔ tibble  3.1.8     ✔ dplyr   1.1.0
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-syntactic-rules" class="level2">
+<h2 class="anchored" data-anchor-id="basic-syntactic-rules">Basic syntactic rules</h2>
+<p>There are a few important syntactic rules to keep in mind when writing code in R.</p>
+<p>R recognizes lower and upper case letters. For example, the lowercase command sum is something completly different from the command Sum or SUM. In this case, while the function sum exists, there is no function called Sum or SUM.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this works</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this function does not exist (notice the error in the console)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Sum</span>(<span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># this function does not exist (notice the error in the console)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">SUM</span>(<span class="dv">4</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Only certain types of quotation marks are recognized by R. If you copy a command from the slides or other online sources, and paste them in R, you may encounter an error because of an incorrect character used for quotes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is wrong (notice the error in the console)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/glbwarm.csv"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this is also wrong (notice the error in the console)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">`</span><span class="at">data/glbwarm.csv</span><span class="st">`</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># this works</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/glbwarm.csv"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># this also works</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/glbwarm.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Load data and create a data set object</p>
+<p>You can load data into R in at least two different ways. First, you can navigate through your files/folders using the File window, and once you have found the data set, you can simply click on it and follow the RStudio semi-automated import process.</p>
+<p><img src="img/load-data.png" class="img-fluid"></p>
+<p><img src="img/import-data-1.png" class="img-fluid"></p>
+<p>Otherwise, you can upload a data set by using a function. Since a data set can be saved in different formats (e.g., “.csv”, “.rds”, “.xlsx”, “.sav”, etc.), there are different functions to upload it. For instance, the function read.csv can be used to import a .csv file (one of the most common extension).</p>
+<p>Download from Moodle the data set “glbwarm.csv”, save it into your folder “data”, and load it in R by using the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/glbwarm.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function creates a object called glbwarm. You can see this object in the Environment window (top-right quadrant). We said that an object is something that can be manipulated in R. In this case, the object is a data set. You can manipulate it, for example, to perform analyses, create new data, etc.</p>
+<p>Also note that, in R, we use an arrow &lt;- to save the data set in an object. The arrow “transfers” the result of a function (its output) into an object. If you run a function without saving the output in an object through the arrow sign, the output is printed on the console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/glbwarm.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    govact posemot negemot ideology age sex partyid
+1      3.6    3.67    4.67        6  61   0       2
+2      5.0    2.00    2.33        2  55   0       1
+3      6.6    2.33    3.67        1  85   1       1
+4      1.0    5.00    5.00        1  59   0       1
+5      4.0    2.33    1.67        4  22   1       1
+6      7.0    1.00    6.00        3  34   0       2
+7      6.8    2.33    4.00        4  47   1       1
+8      5.6    4.00    5.33        5  65   1       1
+9      6.0    5.00    6.00        4  50   1       2
+10     2.6    5.00    2.00        7  60   1       3
+11     1.4    1.00    1.00        6  71   1       2
+12     5.6    4.00    4.00        4  60   0       1
+13     7.0    1.00    5.00        2  71   1       1
+14     3.8    5.67    4.67        4  59   0       1
+15     3.4    3.00    2.00        5  32   1       1
+16     4.2    1.67    1.00        2  36   1       1
+17     1.0    6.00    1.00        6  69   1       2
+18     2.6    4.00    2.33        4  70   0       3
+19     5.2    3.33    4.00        2  41   0       1
+20     5.8    1.33    2.67        4  48   0       3
+21     5.4    3.67    5.67        4  38   0       2
+22     5.4    2.00    5.00        2  63   1       1
+23     6.4    4.33    2.33        6  71   1       3
+24     5.0    3.00    4.67        4  71   1       2
+25     5.4    3.67    4.67        4  60   1       1
+26     5.8    3.67    5.67        3  76   1       1
+27     3.6    4.00    3.33        4  58   1       1
+28     4.6    4.67    3.33        5  71   0       3
+29     5.2    2.33    3.00        4  63   0       1
+30     3.8    4.33    1.33        5  79   1       1
+31     4.2    2.33    4.33        4  68   0       1
+32     3.4    2.33    2.33        2  32   1       1
+33     2.2    2.67    5.00        7  76   1       3
+34     5.2    2.00    6.00        5  50   0       2
+35     5.2    4.00    3.67        4  72   0       2
+36     4.0    3.67    2.33        4  51   1       2
+37     7.0    3.67    5.33        4  60   1       1
+38     1.0    4.00    1.00        7  76   1       3
+39     5.4    1.33    3.33        3  34   0       1
+40     4.8    5.00    5.33        4  51   0       2
+41     6.0    4.00    3.00        3  49   0       1
+42     3.6    1.67    2.00        5  58   0       3
+43     5.2    4.00    5.00        2  45   0       1
+44     3.8    3.67    4.33        4  57   1       3
+45     4.8    3.00    3.00        5  46   0       3
+46     2.4    4.67    1.33        5  69   1       3
+47     6.0    5.00    1.67        5  70   0       3
+48     4.8    2.67    3.00        6  69   0       3
+49     4.6    1.00    3.00        4  58   1       1
+50     4.0    3.00    2.00        5  80   1       3
+51     3.4    1.67    2.67        6  64   1       3
+52     1.0    1.00    1.00        7  42   1       3
+53     3.6    3.33    1.67        6  71   1       3
+54     4.6    3.00    3.67        6  40   1       3
+55     4.0    4.00    3.33        1  43   0       1
+56     4.6    2.00    2.00        2  44   0       1
+57     5.0    4.00    3.00        4  40   0       1
+58     4.6    4.67    3.33        3  77   1       3
+59     3.4    1.00    5.33        5  73   1       2
+60     5.6    1.67    5.33        5  63   1       2
+61     6.4    2.00    4.00        3  47   0       1
+62     3.8    2.00    2.00        4  41   0       3
+63     5.8    3.33    4.00        2  64   1       1
+64     4.6    4.00    3.00        4  57   0       2
+65     4.4    4.00    3.00        4  41   0       3
+66     3.8    2.67    1.33        6  43   0       3
+67     1.0    2.67    1.67        6  52   1       3
+68     5.6    1.00    3.00        4  37   0       2
+69     3.6    1.00    1.00        2  68   0       1
+70     6.8    4.67    4.00        4  60   0       3
+71     7.0    5.00    4.67        1  40   1       1
+72     5.2    3.67    4.33        6  72   1       2
+73     5.8    2.67    4.00        2  57   1       1
+74     6.6    2.00    4.67        2  85   1       1
+75     5.2    2.33    3.33        3  52   0       1
+76     4.0    2.67    3.33        1  55   1       2
+77     5.4    1.00    4.33        4  42   0       3
+78     5.0    3.67    4.67        3  34   1       1
+79     2.2    1.00    1.00        4  40   0       2
+80     4.4    1.33    4.00        6  55   0       3
+81     3.6    3.00    3.00        5  73   1       2
+82     6.0    3.33    5.33        4  67   0       1
+83     2.8    3.67    3.33        3  65   0       1
+84     2.2    1.00    1.00        1  63   1       2
+85     5.8    5.00    3.33        1  50   0       1
+86     3.8    5.00    1.33        4  52   1       3
+87     3.0    2.67    2.00        4  72   1       3
+88     3.8    3.33    4.33        5  75   1       3
+89     2.8    2.33    1.00        4  54   1       2
+90     4.0    2.67    3.67        4  38   0       2
+91     4.2    5.00    2.67        4  61   0       2
+92     4.0    3.33    2.67        6  47   0       3
+93     2.2    2.67    2.00        4  45   1       2
+94     5.2    2.67    4.00        2  55   0       1
+95     4.0    3.67    3.67        6  72   0       3
+96     4.6    2.00    3.33        3  40   0       1
+97     5.6    2.33    4.33        4  52   0       3
+98     4.2    5.00    5.33        2  42   1       1
+99     5.2    4.33    5.33        2  73   0       1
+100    4.8    4.00    4.67        4  32   1       3
+101    5.0    1.33    3.33        4  41   0       2
+102    1.4    4.33    1.33        7  69   1       3
+103    6.2    1.00    5.33        2  44   0       1
+104    2.8    2.33    1.33        5  67   1       3
+105    5.2    2.00    3.00        3  53   0       1
+106    7.0    2.33    5.00        5  67   1       1
+107    3.2    3.33    2.33        6  60   1       2
+108    5.6    2.00    4.33        6  54   1       3
+109    3.0    3.00    1.00        6  61   1       3
+110    5.0    1.33    2.00        4  39   1       2
+111    4.8    1.33    2.00        6  70   1       3
+112    4.4    3.67    2.67        4  63   0       1
+113    4.6    3.00    5.67        2  64   1       1
+114    3.6    6.00    1.67        7  69   1       3
+115    5.0    3.33    4.67        4  84   1       1
+116    4.0    3.00    2.00        2  54   0       1
+117    4.2    4.33    3.67        4  41   0       1
+118    5.0    3.00    4.33        2  68   1       1
+119    6.2    2.00    4.67        3  57   0       1
+120    6.6    2.67    4.00        4  42   0       1
+121    5.0    1.67    5.67        4  41   0       3
+122    1.0    6.00    1.00        7  43   0       3
+123    6.4    1.67    3.67        2  42   0       1
+124    5.6    1.00    5.00        4  33   1       2
+125    4.8    4.33    3.00        4  71   0       2
+126    2.4    2.67    2.33        4  67   1       3
+127    4.2    3.00    3.33        6  69   0       3
+128    4.2    3.67    3.00        3  57   1       1
+129    2.8    4.67    1.00        5  70   1       3
+130    5.4    2.67    2.00        6  60   1       3
+131    3.4    1.00    2.33        6  76   1       3
+132    5.4    4.00    2.67        4  33   0       1
+133    3.6    3.67    2.00        5  78   1       3
+134    1.0    2.00    1.00        6  67   1       3
+135    5.2    4.00    3.00        6  53   0       3
+136    6.0    3.67    4.00        4  51   1       2
+137    4.8    2.67    3.33        4  40   0       1
+138    2.8    1.00    2.67        7  44   1       2
+139    3.8    2.67    1.00        4  52   0       2
+140    3.6    2.00    2.00        6  63   1       3
+141    1.4    1.67    2.67        5  76   1       3
+142    4.6    5.00    5.00        1  28   0       1
+143    5.6    2.33    5.67        6  67   1       3
+144    6.0    4.33    6.00        4  71   1       1
+145    4.0    1.00    1.00        4  41   1       2
+146    4.4    3.33    2.67        4  66   1       1
+147    4.0    4.00    4.00        4  39   0       2
+148    1.4    1.00    1.00        7  73   1       3
+149    4.8    1.00    5.00        5  51   0       1
+150    3.8    3.33    3.33        6  79   0       2
+151    6.0    5.00    2.67        4  67   0       1
+152    4.6    1.00    4.00        1  53   0       1
+153    1.0    1.00    1.00        7  59   1       3
+154    5.8    2.00    4.67        4  66   1       1
+155    4.6    4.33    1.67        3  75   1       1
+156    3.0    1.33    3.33        5  83   1       2
+157    5.0    3.00    4.00        3  74   1       1
+158    5.6    3.33    5.00        5  66   1       1
+159    6.2    1.33    5.67        2  42   0       1
+160    5.0    1.67    1.33        3  37   0       2
+161    6.6    4.67    2.67        5  55   1       1
+162    4.8    1.00    3.67        2  51   0       1
+163    4.8    5.67    4.33        5  69   1       1
+164    5.4    3.67    1.33        7  63   1       3
+165    5.6    4.67    3.33        4  73   1       1
+166    4.4    2.33    2.67        3  61   1       1
+167    4.2    2.33    3.00        6  65   1       3
+168    6.4    2.00    2.00        4  56   1       2
+169    4.6    4.00    5.00        4  49   1       1
+170    5.2    3.67    2.67        3  77   1       1
+171    6.6    1.67    5.33        2  44   0       1
+172    4.4    2.67    2.00        4  63   1       1
+173    1.0    4.00    1.00        7  54   1       3
+174    7.0    3.00    6.00        1  40   0       1
+175    1.6    5.00    1.67        4  72   1       3
+176    4.6    5.00    1.67        3  48   1       3
+177    3.6    2.67    4.00        4  42   1       3
+178    3.4    3.00    3.33        6  67   0       3
+179    3.8    4.33    2.00        4  26   0       1
+180    4.0    2.00    1.00        4  56   0       1
+181    4.8    4.33    4.33        4  54   1       1
+182    5.6    4.00    2.67        3  46   0       1
+183    4.4    4.00    4.00        5  29   0       1
+184    4.8    2.33    1.67        6  68   1       1
+185    4.0    3.00    3.00        4  41   0       1
+186    4.8    1.33    6.00        5  64   0       3
+187    4.0    2.33    1.67        4  50   1       3
+188    5.8    3.33    4.00        1  56   1       1
+189    1.0    1.00    1.00        6  70   1       3
+190    4.4    4.00    4.00        3  33   1       2
+191    4.4    1.00    2.00        5  57   1       3
+192    4.8    1.00    1.00        5  70   0       3
+193    6.2    3.33    3.67        4  83   1       2
+194    5.8    2.00    4.33        4  21   1       1
+195    5.0    1.00    4.00        4  57   0       1
+196    4.4    3.67    3.67        3  59   1       1
+197    5.8    2.33    5.00        6  72   1       3
+198    2.0    2.33    2.00        7  48   1       3
+199    4.0    3.00    3.00        6  29   1       2
+200    4.4    4.67    3.67        2  53   1       3
+201    4.4    3.67    3.33        4  29   1       1
+202    4.6    3.67    1.00        4  33   0       2
+203    5.2    1.00    5.00        2  29   0       1
+204    4.0    4.67    4.67        7  46   0       1
+205    4.8    4.33    4.67        2  57   0       1
+206    5.4    4.67    3.00        2  49   0       2
+207    2.2    1.67    2.00        4  27   1       2
+208    5.2    2.67    4.67        4  29   1       1
+209    1.6    1.00    1.00        7  64   0       3
+210    5.8    4.00    1.67        4  61   0       2
+211    5.6    3.67    3.33        4  25   0       1
+212    5.8    2.67    4.67        4  40   0       1
+213    2.4    3.33    3.00        7  62   1       3
+214    6.6    2.00    6.00        3  70   1       1
+215    4.0    2.67    5.00        7  50   0       2
+216    5.4    2.33    6.00        2  30   0       1
+217    3.6    3.00    3.33        4  27   1       2
+218    3.8    4.33    2.67        4  41   0       1
+219    1.0    2.00    2.00        6  60   1       3
+220    3.4    3.67    1.33        5  69   0       3
+221    5.8    4.00    5.00        2  37   0       1
+222    1.0    1.00    1.00        6  64   1       3
+223    2.6    5.00    2.33        4  66   0       3
+224    4.6    2.00    3.00        5  32   0       3
+225    3.8    2.33    5.00        4  67   0       1
+226    3.2    5.00    2.00        6  62   1       3
+227    3.6    3.33    4.33        6  72   1       3
+228    5.2    2.67    4.33        4  63   1       2
+229    1.0    1.67    1.00        6  68   1       3
+230    4.2    3.00    1.00        7  41   0       3
+231    5.8    2.33    5.00        4  31   0       1
+232    5.2    2.00    4.67        4  51   0       1
+233    6.0    2.67    5.00        4  30   0       3
+234    5.6    4.33    3.00        4  78   1       1
+235    4.0    3.33    2.67        2  62   0       1
+236    4.8    3.00    4.00        5  77   0       3
+237    5.2    2.00    3.33        6  46   0       3
+238    4.4    2.67    4.00        2  36   0       1
+239    4.2    4.00    3.67        4  34   1       1
+240    3.6    5.00    3.00        6  42   0       3
+241    5.4    1.67    5.67        2  25   0       1
+242    4.8    1.33    4.00        7  26   1       3
+243    6.8    4.00    3.33        4  59   1       2
+244    4.4    1.00    1.00        4  30   0       2
+245    4.6    1.00    2.67        4  60   0       1
+246    6.4    1.00    4.67        5  27   1       3
+247    2.6    2.67    5.00        4  51   1       1
+248    5.4    1.67    5.00        3  48   0       1
+249    6.2    5.00    5.33        3  49   1       1
+250    5.6    4.67    3.00        4  75   0       1
+251    4.8    2.67    6.00        4  46   1       2
+252    4.6    4.33    4.67        3  66   1       1
+253    5.0    2.00    5.33        7  64   1       3
+254    5.6    5.00    3.67        2  35   1       1
+255    3.4    1.00    6.00        4  65   0       2
+256    5.8    4.33    4.00        3  77   0       1
+257    5.6    3.00    3.33        7  71   1       3
+258    5.6    4.33    5.00        5  54   0       3
+259    2.0    4.67    2.67        6  29   1       3
+260    5.6    3.67    5.00        2  70   0       3
+261    6.4    4.33    6.00        4  65   0       1
+262    3.4    1.00    3.67        4  27   1       2
+263    5.0    3.67    5.00        4  72   0       2
+264    5.0    3.33    2.33        4  67   1       1
+265    4.0    1.00    1.00        4  67   0       1
+266    5.0    2.00    2.67        3  73   1       1
+267    3.8    3.67    3.00        4  36   0       2
+268    6.6    2.00    5.67        3  58   1       1
+269    4.0    3.00    3.00        4  34   0       1
+270    4.2    1.33    4.33        4  53   0       1
+271    5.2    6.00    4.00        2  25   1       1
+272    5.2    1.67    3.00        2  33   0       1
+273    5.2    5.00    5.00        4  64   0       1
+274    3.2    4.67    2.33        5  80   0       1
+275    4.8    4.00    3.33        4  41   0       1
+276    4.0    4.00    4.00        4  27   1       1
+277    3.4    5.00    1.00        4  52   0       1
+278    3.8    3.00    3.67        4  28   0       2
+279    5.8    3.00    6.00        4  67   1       3
+280    6.0    4.67    4.67        2  25   0       2
+281    5.0    1.33    1.67        4  61   0       1
+282    2.2    1.00    1.00        7  68   1       3
+283    4.2    2.00    1.33        4  25   1       2
+284    5.2    5.00    5.00        2  27   1       2
+285    4.0    4.33    4.00        3  23   1       1
+286    4.8    5.00    3.67        4  65   1       1
+287    4.8    1.00    1.00        5  66   1       1
+288    4.6    1.00    1.00        2  50   1       1
+289    5.0    3.00    1.33        6  64   1       3
+290    4.0    4.67    5.00        4  33   0       1
+291    2.2    6.00    2.67        4  59   1       1
+292    5.2    4.00    4.67        4  79   1       1
+293    4.4    2.67    2.67        5  72   1       3
+294    5.6    5.33    4.67        6  60   0       1
+295    6.0    2.67    6.00        4  62   0       3
+296    5.8    3.33    4.33        2  63   1       1
+297    3.8    3.67    3.00        4  30   1       2
+298    3.6    3.00    2.00        4  67   1       2
+299    4.2    5.33    3.67        4  45   0       1
+300    4.8    2.00    6.00        2  41   0       1
+301    2.2    4.33    2.00        6  61   1       3
+302    1.2    4.00    1.00        7  62   1       3
+303    3.2    2.33    1.67        5  66   0       2
+304    1.0    1.00    1.00        4  46   1       2
+305    1.0    1.00    1.00        6  73   1       3
+306    5.6    3.67    4.33        4  60   1       2
+307    6.8    5.00    5.67        2  60   0       1
+308    4.2    4.00    1.33        4  65   1       2
+309    5.6    1.67    5.00        7  63   1       3
+310    5.4    3.67    4.00        5  59   0       3
+311    7.0    2.00    5.67        1  82   1       1
+312    4.4    2.00    6.00        4  55   1       3
+313    7.0    5.33    6.00        4  55   1       3
+314    5.6    4.00    2.33        5  67   1       3
+315    4.0    4.00    4.00        4  29   1       2
+316    5.0    3.00    4.00        2  68   1       1
+317    7.0    5.33    5.33        1  57   0       1
+318    5.6    2.67    5.67        2  72   1       1
+319    3.6    3.00    5.00        4  29   0       1
+320    6.6    2.00    5.00        1  26   0       1
+321    5.6    2.00    5.33        1  50   1       1
+322    1.0    1.00    1.00        6  58   1       3
+323    6.4    4.00    6.00        4  64   1       2
+324    2.2    4.67    1.67        4  60   1       2
+325    5.8    3.67    5.00        2  67   0       1
+326    5.0    1.00    1.00        1  34   0       1
+327    4.4    2.33    3.67        3  59   0       1
+328    4.6    1.67    1.67        5  23   1       3
+329    5.4    3.33    4.67        3  21   0       1
+330    4.0    2.67    1.33        4  27   1       2
+331    2.2    6.00    1.00        7  65   1       3
+332    3.6    2.33    4.33        4  30   0       2
+333    5.0    6.00    1.00        7  42   0       3
+334    3.4    1.67    3.67        5  53   0       3
+335    1.4    4.67    1.33        7  40   1       3
+336    3.8    2.00    1.67        6  44   0       3
+337    5.4    3.67    5.33        4  27   1       3
+338    5.2    1.67    2.33        3  22   0       3
+339    5.2    5.00    3.67        5  55   0       3
+340    4.4    2.67    3.67        4  72   0       1
+341    4.6    4.33    3.67        2  24   0       1
+342    4.2    5.33    4.00        5  63   0       3
+343    4.8    4.00    3.00        5  63   0       1
+344    6.0    4.00    2.67        2  68   0       1
+345    6.0    5.00    6.00        4  35   0       2
+346    6.2    4.33    4.33        4  47   0       2
+347    4.6    2.67    1.33        4  41   0       1
+348    1.2    2.00    2.67        5  68   1       2
+349    5.0    5.00    2.33        4  68   1       3
+350    2.4    4.00    1.00        6  42   0       3
+351    4.0    2.67    1.33        5  73   1       3
+352    5.8    2.00    4.00        4  25   1       1
+353    3.6    3.33    2.00        5  61   1       3
+354    5.2    1.00    3.67        5  55   0       3
+355    3.6    2.67    1.00        4  34   1       2
+356    4.4    1.00    5.67        5  66   0       1
+357    4.8    2.00    5.00        2  65   0       2
+358    7.0    1.33    6.00        5  40   0       1
+359    5.2    2.33    4.67        3  30   1       1
+360    3.4    1.00    4.33        4  42   0       1
+361    4.2    4.33    2.00        7  53   1       3
+362    4.0    4.00    4.00        2  60   1       1
+363    4.8    1.00    1.33        4  20   0       2
+364    3.0    3.00    1.00        6  67   0       3
+365    5.8    5.00    4.67        3  68   0       1
+366    2.8    4.33    2.67        4  26   1       2
+367    6.2    2.33    5.33        1  48   1       1
+368    3.6    3.33    3.00        6  64   1       3
+369    2.8    4.00    1.33        4  62   1       1
+370    4.0    4.00    3.33        2  21   0       1
+371    4.8    5.00    5.33        4  73   1       1
+372    4.2    5.00    3.67        4  57   0       1
+373    5.8    4.33    4.00        3  71   1       1
+374    4.0    4.00    4.33        4  55   0       2
+375    5.8    3.00    3.67        1  26   0       1
+376    3.4    1.67    3.33        5  83   0       2
+377    4.0    5.33    2.00        2  47   0       1
+378    5.0    2.00    2.67        6  57   1       3
+379    4.6    2.00    3.33        4  35   0       1
+380    1.0    6.00    1.00        4  71   1       3
+381    5.2    2.67    1.33        6  29   0       3
+382    4.2    4.00    3.00        6  76   1       3
+383    5.6    2.67    4.00        2  55   0       2
+384    3.6    3.33    4.67        4  28   1       2
+385    5.2    3.33    5.33        4  58   0       2
+386    5.2    2.00    2.00        4  47   0       1
+387    4.6    3.67    3.33        2  30   1       1
+388    2.2    5.33    1.00        6  52   1       3
+389    7.0    1.00    3.67        3  31   1       1
+390    3.6    2.33    4.67        6  62   1       3
+391    6.4    3.33    6.00        7  72   1       3
+392    5.8    3.67    5.00        6  50   0       3
+393    4.4    2.33    2.67        4  29   0       1
+394    6.4    4.00    3.33        1  45   0       1
+395    4.6    4.33    4.00        4  65   0       2
+396    5.2    2.67    4.00        4  37   0       3
+397    5.6    4.00    3.67        5  30   0       3
+398    6.0    2.33    3.67        7  44   0       3
+399    4.8    4.67    3.33        4  65   1       3
+400    5.6    3.33    3.00        4  41   1       2
+401    4.0    4.00    4.00        4  38   1       1
+402    5.2    2.33    3.67        3  59   0       3
+403    5.2    3.00    3.33        3  19   1       1
+404    4.8    4.67    3.00        4  32   1       1
+405    4.2    2.00    2.67        4  55   0       1
+406    6.0    4.00    5.00        4  53   0       3
+407    2.0    1.00    1.00        4  35   0       3
+408    4.2    2.33    3.33        5  40   0       1
+409    6.2    2.00    4.67        3  65   1       1
+410    1.2    3.00    1.33        6  71   1       3
+411    6.0    4.67    5.33        5  69   1       3
+412    4.6    4.00    1.00        4  51   1       1
+413    5.6    3.00    4.67        5  39   0       3
+414    5.6    5.33    6.00        7  72   1       2
+415    5.0    4.00    3.33        7  26   1       1
+416    4.6    1.00    5.00        1  32   1       1
+417    4.0    1.00    2.00        4  25   0       2
+418    6.2    2.67    5.00        4  32   1       2
+419    4.0    3.00    3.33        1  23   1       1
+420    4.6    5.67    2.67        4  19   1       1
+421    3.4    1.00    4.33        4  22   0       1
+422    4.0    2.00    3.67        4  29   0       3
+423    4.6    3.67    4.00        3  62   0       3
+424    6.4    4.00    4.00        4  39   0       2
+425    5.8    4.67    4.67        7  49   0       2
+426    6.4    3.67    6.00        2  37   0       1
+427    4.2    1.00    2.67        2  43   1       1
+428    5.4    2.00    5.00        5  59   1       3
+429    5.0    5.67    5.67        2  32   1       1
+430    6.4    6.00    5.00        5  57   1       3
+431    1.0    1.00    1.00        7  39   0       1
+432    3.4    2.00    2.00        4  33   0       1
+433    6.2    5.33    5.00        4  51   1       1
+434    3.2    2.67    1.67        4  25   0       3
+435    4.4    3.33    3.33        4  26   0       1
+436    4.8    4.33    5.00        2  48   1       1
+437    5.2    3.67    4.67        4  27   1       2
+438    4.8    2.00    4.67        3  54   1       2
+439    4.0    4.67    3.67        4  30   0       2
+440    5.4    2.33    3.67        5  53   1       1
+441    4.4    5.00    3.67        2  36   0       1
+442    4.6    3.33    3.33        5  60   0       1
+443    3.0    4.00    5.00        3  50   0       1
+444    7.0    4.00    5.00        4  27   1       2
+445    4.6    1.33    1.33        3  22   0       2
+446    4.6    4.67    5.33        4  68   1       1
+447    4.2    6.00    4.00        4  52   0       2
+448    2.8    5.00    1.00        7  61   1       3
+449    4.0    3.00    4.00        3  38   0       1
+450    5.0    5.33    1.00        2  21   1       2
+451    4.0    5.00    5.00        3  36   0       3
+452    5.2    4.67    4.00        4  22   0       1
+453    1.2    1.00    1.00        6  66   0       3
+454    5.6    3.33    5.67        4  64   0       1
+455    2.0    4.00    1.00        5  68   1       3
+456    3.6    3.33    3.67        4  51   1       1
+457    2.8    2.00    3.00        4  31   0       2
+458    4.8    2.67    5.00        1  18   1       1
+459    4.6    5.00    5.00        4  34   0       1
+460    6.0    2.33    4.33        5  55   1       1
+461    4.6    2.67    5.33        6  43   0       1
+462    5.8    5.00    6.00        6  50   0       1
+463    7.0    2.67    6.00        1  64   1       1
+464    5.4    3.00    3.67        2  33   1       1
+465    4.8    3.33    2.00        5  38   0       2
+466    4.8    2.00    5.67        2  55   0       1
+467    2.8    1.00    1.00        4  30   0       1
+468    5.4    4.67    1.67        4  26   1       2
+469    4.6    3.33    3.67        3  26   0       1
+470    5.4    2.67    4.67        4  61   1       1
+471    4.0    1.00    1.00        7  30   0       3
+472    5.4    4.67    6.00        2  68   0       1
+473    5.4    5.00    3.33        4  87   1       1
+474    4.0    3.67    3.33        4  43   0       2
+475    5.0    5.33    3.67        4  32   0       1
+476    6.0    4.00    5.00        5  63   1       2
+477    3.2    1.00    1.00        7  57   0       3
+478    5.8    3.67    4.33        2  55   0       1
+479    4.4    2.00    4.67        4  69   0       1
+480    4.0    4.67    3.00        4  75   0       1
+481    5.4    5.00    3.33        3  54   1       1
+482    4.0    3.33    4.00        4  43   0       2
+483    5.2    3.00    2.33        3  26   1       1
+484    1.4    6.00    1.33        6  62   0       3
+485    5.8    4.00    4.00        2  33   1       1
+486    4.0    4.00    5.33        4  36   1       1
+487    6.8    3.67    6.00        7  52   1       3
+488    6.2    4.67    6.00        4  83   1       1
+489    3.6    2.00    2.67        2  55   0       1
+490    4.6    2.67    3.33        4  18   0       2
+491    5.8    4.00    4.00        2  30   1       2
+492    5.8    4.00    4.00        3  59   0       1
+493    7.0    2.33    3.00        1  51   1       1
+494    5.4    1.67    3.00        4  41   0       3
+495    1.2    1.67    1.00        6  60   1       2
+496    3.4    5.00    3.33        4  39   0       3
+497    4.4    2.00    2.33        4  64   1       2
+498    2.2    3.67    2.00        6  52   1       3
+499    3.0    5.00    1.00        5  55   1       3
+500    5.0    3.33    1.67        4  45   1       3
+501    5.4    4.00    3.33        3  45   0       1
+502    4.0    3.67    1.67        6  66   1       3
+503    7.0    4.00    6.00        2  73   1       1
+504    4.4    1.00    4.00        4  40   0       2
+505    4.2    4.33    2.00        2  29   0       1
+506    2.8    4.00    2.67        6  73   1       3
+507    4.2    2.33    3.67        5  54   0       3
+508    4.6    3.33    2.67        6  49   1       3
+509    3.8    4.00    4.00        5  54   1       3
+510    5.2    3.00    4.00        4  48   1       2
+511    6.2    4.33    5.33        4  63   0       2
+512    4.6    3.33    5.00        4  36   0       1
+513    4.0    3.00    3.00        4  25   0       1
+514    5.8    2.67    6.00        4  62   0       3
+515    5.0    3.67    3.33        4  65   1       3
+516    4.0    3.33    4.00        4  65   0       1
+517    4.2    2.67    3.33        4  42   0       3
+518    6.0    1.00    1.67        3  32   1       1
+519    4.4    1.00    2.67        4  58   0       1
+520    5.2    2.33    4.00        3  40   0       1
+521    3.6    4.00    3.67        4  71   0       3
+522    6.0    3.33    5.00        2  60   1       1
+523    5.6    5.67    4.00        4  28   1       1
+524    3.8    3.33    4.33        5  64   0       3
+525    4.0    6.00    6.00        3  19   0       1
+526    4.4    2.00    4.33        1  44   1       1
+527    4.0    2.00    3.67        4  18   1       1
+528    5.4    2.33    4.00        2  29   1       1
+529    5.6    4.33    5.33        4  59   0       2
+530    4.0    2.67    4.00        5  80   1       2
+531    5.0    4.00    4.00        3  27   0       1
+532    4.0    1.33    1.67        7  62   1       3
+533    5.4    3.00    5.00        2  19   1       1
+534    4.0    4.00    2.00        2  26   1       2
+535    2.2    4.67    1.00        7  50   1       3
+536    4.4    4.33    4.67        4  59   0       1
+537    4.2    3.00    3.00        3  47   1       1
+538    3.2    5.33    2.00        6  63   1       3
+539    2.2    4.00    1.67        5  67   1       3
+540    5.8    1.67    1.00        4  42   0       3
+541    5.2    2.33    3.33        6  71   0       3
+542    7.0    3.67    4.00        4  49   1       1
+543    5.2    3.00    3.33        2  55   1       1
+544    6.0    3.67    6.00        4  44   0       2
+545    4.4    4.67    4.33        4  20   0       1
+546    5.8    4.33    4.00        2  31   1       2
+547    6.2    3.33    5.67        4  44   1       1
+548    4.8    3.67    3.67        5  56   1       3
+549    5.2    3.67    4.33        3  24   1       1
+550    6.8    4.33    6.00        6  40   1       1
+551    4.8    2.33    4.00        3  35   0       1
+552    5.8    3.00    4.33        3  54   1       1
+553    2.8    3.67    3.67        5  38   0       2
+554    4.4    3.33    1.67        5  40   1       3
+555    5.6    1.00    1.00        7  53   1       3
+556    5.0    2.67    3.67        3  53   1       1
+557    4.8    4.00    5.33        6  64   0       1
+558    5.6    4.33    4.67        2  68   0       1
+559    1.2    6.00    1.00        6  34   1       3
+560    4.4    2.67    2.67        3  36   1       3
+561    1.8    1.67    1.00        7  62   1       3
+562    5.2    5.00    5.00        6  60   1       3
+563    3.6    3.00    2.67        7  79   0       3
+564    4.0    4.00    2.33        4  29   1       2
+565    5.6    3.67    1.67        2  32   0       1
+566    5.0    4.00    4.00        5  23   1       1
+567    4.0    3.00    3.00        3  53   1       3
+568    1.0    3.67    1.00        7  63   1       3
+569    5.2    1.00    5.67        4  40   0       3
+570    3.8    2.00    1.00        6  29   1       3
+571    6.2    2.00    5.33        3  61   0       1
+572    1.2    1.33    1.00        7  31   0       3
+573    4.8    1.33    4.67        6  43   0       3
+574    6.6    1.00    6.00        4  59   1       1
+575    6.8    2.67    2.67        1  74   1       1
+576    4.0    1.00    1.00        4  24   1       2
+577    3.6    5.67    3.00        4  54   0       1
+578    3.4    1.67    4.00        4  38   0       2
+579    3.4    3.00    3.00        4  27   0       2
+580    3.0    2.67    1.00        4  53   1       3
+581    4.0    2.67    2.00        6  39   0       1
+582    4.8    2.67    4.33        3  23   1       1
+583    3.4    2.00    1.00        4  41   1       1
+584    3.6    1.00    1.00        5  70   1       3
+585    4.6    3.67    4.00        4  74   0       2
+586    4.6    4.00    4.33        3  62   1       1
+587    4.8    3.33    5.00        5  33   1       3
+588    6.8    3.00    2.67        4  39   1       2
+589    4.6    1.00    1.67        4  20   1       2
+590    7.0    2.33    5.67        5  21   0       3
+591    6.4    3.67    5.33        2  23   0       1
+592    4.8    2.33    1.67        4  50   1       2
+593    5.0    4.00    4.00        2  27   1       2
+594    4.8    1.33    5.00        4  54   1       1
+595    6.0    4.33    4.00        4  31   1       2
+596    5.8    5.33    5.33        3  67   0       1
+597    2.8    6.00    5.67        2  62   0       3
+598    6.0    2.33    5.67        3  56   0       1
+599    2.2    4.67    2.00        6  53   1       3
+600    6.2    6.00    6.00        3  30   1       1
+601    6.0    2.00    5.00        2  60   1       1
+602    3.2    2.33    2.00        6  66   1       3
+603    1.8    3.33    6.00        4  55   0       3
+604    5.4    1.67    4.67        4  43   0       3
+605    6.4    4.67    5.33        2  45   0       1
+606    5.6    2.67    6.00        7  64   0       3
+607    2.6    1.00    6.00        4  32   0       3
+608    5.4    1.00    6.00        6  54   1       3
+609    1.2    5.00    1.00        6  49   0       3
+610    6.6    5.00    5.00        4  57   1       2
+611    5.0    1.00    1.33        2  44   0       1
+612    5.0    1.67    4.67        4  39   0       2
+613    6.4    2.67    5.33        5  41   0       3
+614    1.8    1.33    1.00        6  55   1       2
+615    4.0    5.00    1.33        6  62   1       3
+616    5.2    3.00    3.67        4  62   1       2
+617    2.4    4.00    2.00        6  66   1       3
+618    4.0    3.33    2.00        6  52   0       3
+619    4.4    4.00    2.33        5  63   1       3
+620    5.2    1.00    3.33        4  24   0       1
+621    2.8    4.33    2.33        7  69   1       3
+622    5.4    1.00    2.00        4  55   0       3
+623    5.0    3.00    4.00        3  35   0       1
+624    2.2    3.33    1.33        7  49   1       3
+625    4.0    4.67    4.67        2  42   0       1
+626    6.2    1.00    6.00        1  67   0       1
+627    5.2    2.33    5.33        4  55   0       1
+628    4.4    1.67    3.67        1  35   0       1
+629    4.8    4.00    5.67        2  63   1       1
+630    5.4    1.00    6.00        4  64   0       3
+631    5.2    4.00    4.67        6  61   1       1
+632    4.8    3.67    3.67        4  49   1       2
+633    7.0    6.00    5.67        2  32   1       1
+634    3.8    2.67    4.00        5  68   0       1
+635    4.8    4.67    5.67        4  50   1       2
+636    5.0    3.33    2.00        4  35   0       1
+637    4.2    2.00    1.67        6  73   0       3
+638    6.4    2.33    5.00        4  34   1       2
+639    4.8    3.33    4.00        7  47   1       3
+640    2.6    1.00    1.00        6  75   0       3
+641    4.8    4.00    4.00        6  69   0       3
+642    4.2    3.00    5.67        5  73   1       3
+643    7.0    6.00    5.33        6  33   0       3
+644    6.6    5.67    4.67        4  27   1       2
+645    4.8    1.00    6.00        1  40   0       1
+646    4.6    1.67    2.00        6  30   1       3
+647    5.0    2.33    4.33        3  27   0       2
+648    4.8    1.00    2.33        4  31   1       2
+649    4.6    1.67    1.67        4  23   1       2
+650    3.8    2.67    3.67        4  43   0       2
+651    5.6    1.00    5.00        2  21   0       1
+652    2.6    4.00    3.33        3  53   0       1
+653    3.0    4.00    2.00        4  29   0       3
+654    5.4    1.33    6.00        4  67   0       2
+655    4.2    1.33    2.00        4  30   1       1
+656    6.8    1.67    6.00        5  47   0       1
+657    5.4    3.33    2.33        4  31   1       2
+658    5.2    1.00    2.67        4  64   0       2
+659    4.0    2.33    3.00        5  65   1       3
+660    4.6    5.00    3.00        6  65   0       3
+661    4.4    4.33    6.00        4  47   1       2
+662    4.2    3.67    3.67        3  22   1       1
+663    5.2    4.67    4.33        6  64   0       3
+664    4.2    3.00    3.00        4  59   0       2
+665    4.0    3.33    4.00        4  18   0       2
+666    3.4    2.33    4.67        4  19   1       1
+667    3.4    4.00    5.67        5  44   0       3
+668    5.6    4.00    4.33        2  41   0       2
+669    5.2    3.67    2.33        4  28   0       2
+670    3.4    3.67    3.67        2  22   1       1
+671    4.4    2.33    5.00        5  62   1       3
+672    5.0    4.67    3.33        2  29   0       1
+673    4.0    2.33    5.00        4  52   0       2
+674    6.4    2.00    5.67        3  65   0       1
+675    6.6    1.00    4.00        6  54   0       2
+676    6.6    1.67    4.67        4  51   0       1
+677    5.2    3.67    3.67        4  19   0       2
+678    5.8    2.33    4.33        2  27   1       1
+679    2.4    2.00    6.00        4  42   0       1
+680    6.8    3.00    3.33        2  70   0       1
+681    5.0    5.33    4.00        4  73   1       2
+682    4.0    4.67    4.67        4  42   0       2
+683    3.8    1.67    2.67        7  42   0       3
+684    4.6    4.33    3.33        5  23   0       3
+685    3.6    5.67    1.67        4  19   0       1
+686    5.0    2.67    5.33        4  22   1       2
+687    5.0    6.00    6.00        3  30   0       2
+688    6.8    6.00    6.00        4  51   1       2
+689    1.6    1.00    1.00        7  34   1       3
+690    5.0    4.00    4.00        3  63   0       2
+691    4.0    2.00    4.00        4  29   1       2
+692    6.4    2.00    4.67        4  46   0       3
+693    5.0    2.00    4.33        4  43   0       2
+694    3.6    3.00    1.33        4  56   0       2
+695    2.4    5.00    2.00        7  48   1       3
+696    4.0    3.00    3.00        4  64   0       1
+697    7.0    6.00    6.00        1  22   0       1
+698    4.4    3.33    4.33        5  44   1       3
+699    4.6    3.33    3.33        5  25   0       3
+700    3.4    2.00    2.00        4  24   1       2
+701    4.2    3.00    6.00        2  55   0       2
+702    4.6    3.00    3.33        2  41   0       1
+703    5.8    2.33    3.67        2  65   0       1
+704    6.2    4.67    4.33        5  36   0       3
+705    5.4    3.00    6.00        2  56   1       1
+706    5.4    5.67    4.00        6  36   0       3
+707    4.8    1.33    5.67        4  36   0       2
+708    3.4    5.67    5.00        4  29   0       2
+709    5.2    3.67    1.67        5  44   0       1
+710    3.4    2.00    3.33        3  40   0       1
+711    4.2    3.33    2.67        4  51   0       1
+712    2.2    3.33    3.67        4  30   1       2
+713    6.2    1.33    2.00        4  43   0       3
+714    4.6    4.67    4.00        4  50   1       1
+715    5.6    4.33    3.00        3  40   0       1
+716    6.6    4.00    5.33        3  56   1       1
+717    6.4    1.67    1.67        5  65   0       3
+718    5.6    2.33    5.33        5  62   1       3
+719    7.0    3.00    5.00        1  22   0       1
+720    3.6    6.00    6.00        4  43   1       2
+721    6.2    4.67    6.00        3  34   1       2
+722    4.0    3.00    3.67        4  29   1       2
+723    5.2    2.67    4.00        4  44   0       3
+724    4.0    4.00    2.33        4  32   0       3
+725    2.2    3.00    1.00        6  59   1       3
+726    6.4    3.67    5.67        1  66   1       1
+727    4.2    4.00    5.00        4  66   0       1
+728    2.6    1.00    2.00        5  44   0       3
+729    2.0    4.33    2.00        6  72   1       3
+730    5.0    4.00    4.00        4  68   1       2
+731    6.0    3.33    4.00        4  33   1       1
+732    6.0    4.33    4.67        4  17   1       2
+733    5.2    3.33    5.67        2  32   0       1
+734    6.6    4.00    4.33        3  63   1       2
+735    5.0    1.00    2.00        4  54   0       3
+736    5.8    3.33    5.33        3  59   1       1
+737    5.6    3.33    5.33        6  65   1       2
+738    5.6    2.00    3.67        5  59   1       2
+739    6.0    5.33    5.67        4  42   0       1
+740    4.4    3.33    3.67        3  48   1       1
+741    5.6    2.33    6.00        4  45   1       1
+742    5.2    5.67    4.67        5  43   0       3
+743    5.0    1.33    4.67        4  60   0       1
+744    4.2    3.00    3.00        2  71   0       1
+745    4.4    5.00    5.33        5  41   1       1
+746    5.2    1.00    5.00        2  38   0       1
+747    5.2    3.00    6.00        3  29   1       1
+748    5.2    5.00    3.00        4  36   0       3
+749    4.6    1.00    2.67        1  63   0       1
+750    6.4    3.67    3.00        4  55   1       1
+751    5.4    3.00    3.00        4  41   0       1
+752    2.6    1.00    1.00        6  67   0       3
+753    4.2    4.00    4.00        4  49   0       2
+754    3.6    2.00    5.33        6  42   0       1
+755    4.4    2.33    2.67        4  40   0       2
+756    6.2    2.00    5.33        4  31   0       1
+757    5.8    2.67    5.00        3  44   0       2
+758    5.6    3.67    3.67        3  55   1       2
+759    1.8    1.00    1.00        7  63   1       3
+760    5.8    3.33    6.00        4  34   0       2
+761    4.0    1.67    1.33        5  46   1       3
+762    5.0    4.33    3.67        4  19   1       3
+763    5.4    2.00    4.67        4  57   0       2
+764    5.4    3.67    4.00        2  49   0       1
+765    4.0    3.67    4.33        3  26   0       1
+766    5.4    4.00    5.00        5  62   1       3
+767    4.0    5.33    4.33        1  43   0       2
+768    4.0    2.33    2.67        4  42   0       2
+769    5.0    2.33    5.00        2  21   0       1
+770    2.2    5.00    1.00        4  54   0       2
+771    3.4    3.67    2.00        5  19   0       3
+772    6.0    1.33    2.33        2  35   0       1
+773    5.8    1.00    5.00        4  54   1       1
+774    7.0    1.00    2.00        6  27   0       2
+775    2.4    3.67    1.67        6  38   0       3
+776    4.6    3.67    3.67        4  51   1       3
+777    5.4    2.00    5.33        4  28   0       1
+778    5.2    4.00    3.33        4  41   0       1
+779    4.6    3.33    5.33        2  27   0       2
+780    4.0    4.00    4.00        4  33   1       2
+781    4.6    5.00    5.67        6  33   0       1
+782    3.2    2.67    4.00        5  29   0       3
+783    5.0    5.00    4.00        1  79   0       1
+784    6.8    3.33    4.67        2  67   0       1
+785    4.2    4.00    4.00        4  49   0       2
+786    5.6    5.00    2.33        5  31   1       3
+787    5.0    3.00    2.33        4  39   0       1
+788    5.0    1.33    6.00        4  31   0       2
+789    2.0    1.00    1.00        7  42   0       3
+790    1.8    2.67    1.67        6  40   0       3
+791    5.8    1.67    6.00        3  44   0       1
+792    4.4    3.33    1.00        5  18   1       2
+793    5.8    2.33    5.00        4  40   0       1
+794    5.4    5.00    5.67        4  38   0       2
+795    4.8    2.00    5.33        6  31   0       3
+796    5.8    2.00    4.67        3  36   0       1
+797    4.0    1.00    1.00        6  52   0       3
+798    7.0    1.67    5.33        3  50   0       1
+799    4.2    2.00    4.00        1  36   0       3
+800    5.2    3.33    5.00        3  27   1       2
+801    4.8    1.00    4.00        2  29   0       1
+802    5.2    4.67    4.67        2  42   0       1
+803    5.2    2.67    1.67        4  58   1       3
+804    6.8    3.33    4.67        4  30   1       2
+805    7.0    3.00    6.00        4  48   0       2
+806    5.8    3.67    3.67        2  40   1       1
+807    5.6    3.67    5.33        3  43   0       1
+808    4.6    3.00    2.00        6  52   1       3
+809    5.8    1.67    6.00        5  18   0       3
+810    5.8    1.33    5.33        3  58   1       2
+811    3.2    4.00    5.00        4  52   1       2
+812    3.4    1.00    1.00        7  67   0       3
+813    1.6    3.67    1.67        7  72   1       3
+814    5.4    2.67    3.33        6  36   0       2
+815    5.4    5.33    6.00        4  82   1       1</code></pre>
+</div>
+</div>
+<p>This way you may take a look at the output (but this is not the right way to do that), but you cannot manipulate it. It is only when you create an object containing the output information of the function (using the arrow sign and a name for the object), that you can continue working on it.</p>
+<p>To take a look at the data set, you can use the function head() to print the first few rows in the console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  govact posemot negemot ideology age sex partyid
+1    3.6    3.67    4.67        6  61   0       2
+2    5.0    2.00    2.33        2  55   0       1
+3    6.6    2.33    3.67        1  85   1       1
+4    1.0    5.00    5.00        1  59   0       1
+5    4.0    2.33    1.67        4  22   1       1
+6    7.0    1.00    6.00        3  34   0       2</code></pre>
+</div>
+</div>
+<p>You can also view the data set in a separate window by using the function View().</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Another way to explore a data set is through the function str(). This function allows the user to see the type of variables in the data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   815 obs. of  7 variables:
+ $ govact  : num  3.6 5 6.6 1 4 7 6.8 5.6 6 2.6 ...
+ $ posemot : num  3.67 2 2.33 5 2.33 1 2.33 4 5 5 ...
+ $ negemot : num  4.67 2.33 3.67 5 1.67 6 4 5.33 6 2 ...
+ $ ideology: int  6 2 1 1 4 3 4 5 4 7 ...
+ $ age     : int  61 55 85 59 22 34 47 65 50 60 ...
+ $ sex     : int  0 0 1 0 1 0 1 1 1 1 ...
+ $ partyid : int  2 1 1 1 1 2 1 1 2 3 ...</code></pre>
+</div>
+</div>
+<p>A similar function, included in the tidyverse package, is glimpse()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package (load it just once in each R session) </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 815
+Columns: 7
+$ govact   &lt;dbl&gt; 3.6, 5.0, 6.6, 1.0, 4.0, 7.0, 6.8, 5.6, 6.0, 2.6, 1.4, 5.6, 7…
+$ posemot  &lt;dbl&gt; 3.67, 2.00, 2.33, 5.00, 2.33, 1.00, 2.33, 4.00, 5.00, 5.00, 1…
+$ negemot  &lt;dbl&gt; 4.67, 2.33, 3.67, 5.00, 1.67, 6.00, 4.00, 5.33, 6.00, 2.00, 1…
+$ ideology &lt;int&gt; 6, 2, 1, 1, 4, 3, 4, 5, 4, 7, 6, 4, 2, 4, 5, 2, 6, 4, 2, 4, 4…
+$ age      &lt;int&gt; 61, 55, 85, 59, 22, 34, 47, 65, 50, 60, 71, 60, 71, 59, 32, 3…
+$ sex      &lt;int&gt; 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0…
+$ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 3, 2…</code></pre>
+</div>
+</div>
+<p>In this case, we can see that the first three variables are numerical (num), and the second three integers (int). Numeric (also double) is a data type that contains <a href="https://en.wikipedia.org/wiki/Real_number">real numbers</a> (). Integers is a data type that contains <a href="https://en.wikipedia.org/wiki/Integer">integer numbers</a>.</p>
+<p>There are also other types of data, such as character (char) for character values, logical for logical values (TRUE and FALSE), and factors to describe items that can have a finite number of values (gender: male, female, other; education, etc.).</p>
+<p>Sometimes, variables represets dates and times. Just to make an example of data set inclusing several type of data, we create a data set named data_set_example by running the following code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data_set_example <span class="ot">&lt;-</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">as.character</span>(<span class="fu">c</span>(<span class="st">"Karl"</span>, <span class="st">"Emma"</span>, <span class="st">"Sebastian"</span>, <span class="st">"Sarah"</span>)),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"Other"</span>, <span class="st">"M"</span>)),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">as.integer</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">23</span>, <span class="dv">12</span>, <span class="dv">45</span>)),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">austrian =</span> <span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary =</span> <span class="fu">factor</span>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">"high"</span>, <span class="st">"medium"</span>, <span class="st">"low"</span>, <span class="st">"medium"</span>),</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">partisanship =</span> <span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.33</span>, <span class="fl">4.56</span>, <span class="sc">-</span><span class="fl">3.12</span>, <span class="fl">2.54</span>)),</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"2020-01-01"</span>, <span class="st">"2020-03-01"</span>, <span class="st">"2020-01-02"</span>, <span class="st">"2020-01-03"</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 4
+Columns: 7
+$ name         &lt;chr&gt; "Karl", "Emma", "Sebastian", "Sarah"
+$ gender       &lt;fct&gt; M, F, Other, M
+$ age          &lt;int&gt; 30, 23, 12, 45
+$ austrian     &lt;lgl&gt; TRUE, FALSE, FALSE, TRUE
+$ salary       &lt;fct&gt; high, medium, low, medium
+$ partisanship &lt;dbl&gt; -1.33, 4.56, -3.12, 2.54
+$ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code></pre>
+</div>
+</div>
+<p>Data analysis operations basically consist of manipulations of objects through functions. An object is an entity composed of a name and a value (such as a number) or more complex information (such as a data set). The arrow &lt;- sign is used to create objects, or to assign/update a value, if the object already exists.</p>
+<p>Let’s make an example. Let’s create an object with name object_2 and value equal to 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>object_2 <span class="ot">&lt;-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, let’s write the name of the object in the script and run the command (put the cursor on the line of the name, and click run in the top right corner of the editor window, or Control + Enter). The value assigned to the object will be printed on the console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>object_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>Object names can be freely chosen. However, avoid using names that are already used for other objects and functions. For example, avoid giving the name “read.csv” to a data set, as this would overwrite the “read.csv” function. Similarly, if you use “object_2” to save the output of another function, or to represent another value, you will delete the previous value (2):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>object_2 <span class="ot">&lt;-</span> <span class="dv">44</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>object_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 44</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>object_2 <span class="ot">&lt;-</span> <span class="dv">23</span> <span class="sc">*</span> <span class="dv">34</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>object_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 782</code></pre>
+</div>
+</div>
+<p>Sometimes you may want to delete an object from the environment. You can do that with the function rm() (notice the object disappearing from the environment, in the Environment window).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(object_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since the object is equivalent to its value, an object with a numerical value can be used, for example, to perform arithmetical operations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>object_2 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>object_2 <span class="sc">*</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+</section>
+<section id="types-of-objects" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-objects">Types of objects</h2>
+<p>There are different types of object. We take into consideration some of the most important ones: Vectors, Matrices, Data Frames, Lists, Functions.</p>
+<p>Vectors are sequences of values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>vector_of_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>vector_of_numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<p>A numeric vector can be used as a term for mathematical operations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>vector_of_numbers <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>vector_of_numbers <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  4  5  6  7  8  9 10 11 12 13</code></pre>
+</div>
+</div>
+<p>Vectors may consist of digits but also other symbols. For instance, a vector of letters is a character vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>character_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>character_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a" "b" "c"</code></pre>
+</div>
+</div>
+<p>Another type of R object is the matrix (or array). A matrix is an object made up of a series of numeric vectors. In other words, it is a table where rows and columns contain numeric values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">nrow =</span> <span class="dv">10</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>a_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1] [,2] [,3] [,4] [,5]
+ [1,]    1   11   21   31   41
+ [2,]    2   12   22   32   42
+ [3,]    3   13   23   33   43
+ [4,]    4   14   24   34   44
+ [5,]    5   15   25   35   45
+ [6,]    6   16   26   36   46
+ [7,]    7   17   27   37   47
+ [8,]    8   18   28   38   48
+ [9,]    9   19   29   39   49
+[10,]   10   20   30   40   50</code></pre>
+</div>
+</div>
+<p>As matrixes are mathematical objects, they can contain only numbers.</p>
+<p>A data.frame is a very important object for data analysis and in this course we will work almost exclusively with data.frames.</p>
+<p>Data frames are similar to matrices, but they can contain several types of data: numbers, characters (for instance, the texts of an answer), factors (such as gender, or ordered categories, such as “low”, “medium”, “high”), and dates. We have already encountered a couple of examples of data frames:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  govact posemot negemot ideology age sex partyid
+1    3.6    3.67    4.67        6  61   0       2
+2    5.0    2.00    2.33        2  55   0       1
+3    6.6    2.33    3.67        1  85   1       1
+4    1.0    5.00    5.00        1  59   0       1
+5    4.0    2.33    1.67        4  22   1       1
+6    7.0    1.00    6.00        3  34   0       2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       name gender age austrian salary partisanship       date
+1      Karl      M  30     TRUE   high        -1.33 2020-01-01
+2      Emma      F  23    FALSE medium         4.56 2020-03-01
+3 Sebastian  Other  12    FALSE    low        -3.12 2020-01-02
+4     Sarah      M  45     TRUE medium         2.54 2020-01-03</code></pre>
+</div>
+</div>
+<p>Data frames are important because they represent data sets in R. For instance, if you import a csv or an Excel file in R, the corresponding R object is a data.frame. You can see the type of data by using the function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(object_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+</div>
+<p>The columns of a data set/data frame represent variables, and rows represent cases. For example, the global warming data set (glbwarm) comprises 815 rows/cases and 7 columns/variables. This data set results from measuring 815 persons on 7 dimensions (e.g., support for government, ideology, age, etc.).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  govact posemot negemot ideology age sex partyid
+1    3.6    3.67    4.67        6  61   0       2
+2    5.0    2.00    2.33        2  55   0       1
+3    6.6    2.33    3.67        1  85   1       1
+4    1.0    5.00    5.00        1  59   0       1
+5    4.0    2.33    1.67        4  22   1       1
+6    7.0    1.00    6.00        3  34   0       2</code></pre>
+</div>
+</div>
+<p>The function dim() can be used to find the number of rows and columns of a data set. The first and second figure in the output is the number of rows and column, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 815   7</code></pre>
+</div>
+</div>
+<p>The functions str() or glimpse() permits to see the names of the columns/variables. Another way to see them is using the function names().</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "govact"   "posemot"  "negemot"  "ideology" "age"      "sex"      "partyid" </code></pre>
+</div>
+</div>
+<p>We can access the columns of a data.frame by using the following sintax: name of the data frame, dollar sign, name of the column. For isntance, to access the column “age” of the data.frame “glbwarm”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>glbwarm<span class="sc">$</span>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 61 55 85 59 22 34 47 65 50 60 71 60 71 59 32 36 69 70 41 48 38 63 71 71 60
+ [26] 76 58 71 63 79 68 32 76 50 72 51 60 76 34 51 49 58 45 57 46 69 70 69 58 80
+ [51] 64 42 71 40 43 44 40 77 73 63 47 41 64 57 41 43 52 37 68 60 40 72 57 85 52
+ [76] 55 42 34 40 55 73 67 65 63 50 52 72 75 54 38 61 47 45 55 72 40 52 42 73 32
+[101] 41 69 44 67 53 67 60 54 61 39 70 63 64 69 84 54 41 68 57 42 41 43 42 33 71
+[126] 67 69 57 70 60 76 33 78 67 53 51 40 44 52 63 76 28 67 71 41 66 39 73 51 79
+[151] 67 53 59 66 75 83 74 66 42 37 55 51 69 63 73 61 65 56 49 77 44 63 54 40 72
+[176] 48 42 67 26 56 54 46 29 68 41 64 50 56 70 33 57 70 83 21 57 59 72 48 29 53
+[201] 29 33 29 46 57 49 27 29 64 61 25 40 62 70 50 30 27 41 60 69 37 64 66 32 67
+[226] 62 72 63 68 41 31 51 30 78 62 77 46 36 34 42 25 26 59 30 60 27 51 48 49 75
+[251] 46 66 64 35 65 77 71 54 29 70 65 27 72 67 67 73 36 58 34 53 25 33 64 80 41
+[276] 27 52 28 67 25 61 68 25 27 23 65 66 50 64 33 59 79 72 60 62 63 30 67 45 41
+[301] 61 62 66 46 73 60 60 65 63 59 82 55 55 67 29 68 57 72 29 26 50 58 64 60 67
+[326] 34 59 23 21 27 65 30 42 53 40 44 27 22 55 72 24 63 63 68 35 47 41 68 68 42
+[351] 73 25 61 55 34 66 65 40 30 42 53 60 20 67 68 26 48 64 62 21 73 57 71 55 26
+[376] 83 47 57 35 71 29 76 55 28 58 47 30 52 31 62 72 50 29 45 65 37 30 44 65 41
+[401] 38 59 19 32 55 53 35 40 65 71 69 51 39 72 26 32 25 32 23 19 22 29 62 39 49
+[426] 37 43 59 32 57 39 33 51 25 26 48 27 54 30 53 36 60 50 27 22 68 52 61 38 21
+[451] 36 22 66 64 68 51 31 18 34 55 43 50 64 33 38 55 30 26 26 61 30 68 87 43 32
+[476] 63 57 55 69 75 54 43 26 62 33 36 52 83 55 18 30 59 51 41 60 39 64 52 55 45
+[501] 45 66 73 40 29 73 54 49 54 48 63 36 25 62 65 65 42 32 58 40 71 60 28 64 19
+[526] 44 18 29 59 80 27 62 19 26 50 59 47 63 67 42 71 49 55 44 20 31 44 56 24 40
+[551] 35 54 38 40 53 53 64 68 34 36 62 60 79 29 32 23 53 63 40 29 61 31 43 59 74
+[576] 24 54 38 27 53 39 23 41 70 74 62 33 39 20 21 23 50 27 54 31 67 62 56 53 30
+[601] 60 66 55 43 45 64 32 54 49 57 44 39 41 55 62 62 66 52 63 24 69 55 35 49 42
+[626] 67 55 35 63 64 61 49 32 68 50 35 73 34 47 75 69 73 33 27 40 30 27 31 23 43
+[651] 21 53 29 67 30 47 31 64 65 65 47 22 64 59 18 19 44 41 28 22 62 29 52 65 54
+[676] 51 19 27 42 70 73 42 42 23 19 22 30 51 34 63 29 46 43 56 48 64 22 44 25 24
+[701] 55 41 65 36 56 36 36 29 44 40 51 30 43 50 40 56 65 62 22 43 34 29 44 32 59
+[726] 66 66 44 72 68 33 17 32 63 54 59 65 59 42 48 45 43 60 71 41 38 29 36 63 55
+[751] 41 67 49 42 40 31 44 55 63 34 46 19 57 49 26 62 43 42 21 54 19 35 54 27 38
+[776] 51 28 41 27 33 33 29 79 67 49 31 39 31 42 40 44 18 40 38 31 36 52 50 36 27
+[801] 29 42 58 30 48 40 43 52 18 58 52 67 72 36 82</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm<span class="sc">$</span>age, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 61 55 85 59 22 34 47 65 50 60</code></pre>
+</div>
+</div>
+<p>You may have noticed that this is just a vector. Indeed, data.frames are object composed by a series of vectors.</p>
+<p>Lists are another common type of object. Lists can be used to contain different types of objects. For example, a list may include a matrix, a number, and a data.frame. We will not work with this type of object in this course.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(a_matrix, object_2, data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+      [,1] [,2] [,3] [,4] [,5]
+ [1,]    1   11   21   31   41
+ [2,]    2   12   22   32   42
+ [3,]    3   13   23   33   43
+ [4,]    4   14   24   34   44
+ [5,]    5   15   25   35   45
+ [6,]    6   16   26   36   46
+ [7,]    7   17   27   37   47
+ [8,]    8   18   28   38   48
+ [9,]    9   19   29   39   49
+[10,]   10   20   30   40   50
+
+[[2]]
+[1] 2
+
+[[3]]
+       name gender age austrian salary partisanship       date
+1      Karl      M  30     TRUE   high        -1.33 2020-01-01
+2      Emma      F  23    FALSE medium         4.56 2020-03-01
+3 Sebastian  Other  12    FALSE    low        -3.12 2020-01-02
+4     Sarah      M  45     TRUE medium         2.54 2020-01-03</code></pre>
+</div>
+</div>
+<p>An object can also represent a function. We said that functions can be conceived as “mechanisms” that generate output from an input. Functions can transform other objects based on specific rules. For instance, addition is a function that receives two or more numbers as input and generates an output that corresponds to the sum of these numbers.</p>
+<p>`</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>A function has a name (the name of the function, like the name of any other object, e.g., the function sum) and one or more arguments. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the arguments there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.</p>
+<p>In this course we’ll use statistical functions to perform data analysis like linear regression, moderation, mediation, and conditional process analysis. For example, the name of the linear regression function in R is lm.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(glbwarm<span class="sc">$</span>govact <span class="sc">~</span> glbwarm<span class="sc">$</span>ideology)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = glbwarm$govact ~ glbwarm$ideology)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.7477 -0.7595  0.0287  0.8051  3.3109 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       6.12419    0.12481   49.07   &lt;2e-16 ***
+glbwarm$ideology -0.37645    0.02867  -13.13   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.236 on 813 degrees of freedom
+Multiple R-squared:  0.175, Adjusted R-squared:  0.174 
+F-statistic: 172.4 on 1 and 813 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="readings-and-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="readings-and-exercises">Readings and exercises</h2>
+<p>Review the content of this lecture</p>
+<p>Familiarize with R and RStudio</p>
+</section>
+<section id="additional-resources-to-learn-r" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources-to-learn-r">Additional resources to learn R</h2>
+<p>Detailed information on the R language (e.g., data structures, types of objects, etc.) can be found in the <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#SEC_Contents">R Manual</a>). A detailed overview of R programming language is beyond the objectives of this course, and not necessary to perform the analyses we’ll discuss. However, you can use this manual as a reference if you have doubts or would like to learn more.</p>
+<p>Several resources about R are freely available online. YouTube features several good introductory videos to R. An important resource for programmers (both professionals and beginners) is <a href="https://stackoverflow.com" class="uri">https://stackoverflow.com</a>.</p>
+</section>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<ul>
+<li><p>Open the RStudio project you created today</p></li>
+<li><p>Open the script you created today</p></li>
+<li><p>Write and run a few mathematical operations in the script file (e.g., 3+2, 5/3, etc.)</p></li>
+<li><p>Create a new object containing the output of the function sum (e.g., my_sum &lt;- sum(4, 8)) and use this object to perform another mathematical operation of your choice</p></li>
+<li><p>Save the updated script and close it</p></li>
+<li><p>Create and save a new script</p></li>
+<li><p>Copy all the data sets you find on Moodle in your “data” folder</p></li>
+<li><p>Load one of the data set</p></li>
+<li><p>Take a look at the data set using the functions View, str, and glimpse (remember to load the package tidyverse before using the glimpse function)</p></li>
+<li><p>Access one of the column of the data set (name_of_dataframe + dollar sign “$” + name of the column) using the dollar sign</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Nicola Righetti</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.nicolarighetti.net">
+      <i class="bi bi-wordpress" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/nicolarighetti">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://mas.to/@nicolarighetti">
+      <i class="bi bi-mastodon" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/nicolarighetti79/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
