@@ -2,23 +2,6 @@
 title: "Regression analysis"
 ---
 
-```{r echo=FALSE}
-DiagrammeR::grViz("digraph {
-  graph [layout = dot, rankdir = TB]
-  
-  node [shape = rectangle]     
-  rec0 [label = 'EXPLORATORY DATA ANALYSIS']
-  rec1 [label = 'A) Descriptive Statistics]
-  rec2 [label = 'B) Correlation and Prediction']
-  rec3 [label = 'REGRESSION ANALYSIS']
-  rec4 [label = 'C) Simple and Multiple Linear Regression Model']
-  rec5 [label = 'D) Statistical Inference']
-
-  # edge definitions with the node IDs
-  rec0 -> rec1 -> rec2 -> rec3 -> rec4 -> rec5;
-  }")
-```
-
 # The simple and multiple regression model
 
 ## Learning objectives

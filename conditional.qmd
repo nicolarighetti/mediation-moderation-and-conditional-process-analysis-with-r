@@ -552,7 +552,7 @@ The indirect effect is the product *ab* of the two paths linking the antecedent 
 
 In this case the *relative conditional effects* are $\theta{X_1 \to M}$ and $\theta{X_2 \to M}$. Therefore, the **relative conditional indirect effects** can be computed as $a * \theta{X_1 \to M}$ and $a * \theta{X_2 \to M}$. Various values of the moderator M are then plugged into these functions to test the effect in the pick-a-point approach. The same is for the **relative conditional direct effect**. The **pick-a-point** tables are shown in the last part of the output. They can be interpreted as usual, but keeping in mind that each variables (for instance X1 and X2) represent the **the difference between a category and the reference one (in this case between X1 and X0, or between X2 and X0) in their effect on Y through the mediator M at different levels of the moderator**.
 
-# Final tips: Assumptions and robust methods
+# Appendix: Assumptions and robust methods
 
 During the first part of the course, we learned about regression models. We said that they have **assumptions** and that their results are reliable only when those assumptions are respected.
 
@@ -595,10 +595,6 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
 #### STEP 2: Check the regression tables and fit the models in R
 
 The results consists of two regression tables, one for each dependent variable. The former is the model of "negtone" and the latter of "perform". So we're talking about two regression models.
-
-```{r}
-knitr::include_graphics("img/check_assumptions_1.png")
-```
 
 We fit exactly the same models using R, plugging the variables shown in each table in the *lm* function. Note that the second model is moderated, thus includes a **interaction** term: *Int_1*. From the "Product term key" table you can see that the interaction is between the variables "negtone" and "negexp": "negtone x negexp". To create this interaction term into *lm*, you just put the variables into the function using the multiplication symbol $*$: $negtone * negexp$.
 
@@ -701,6 +697,7 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
         hc = 4, # heteroskedasticity-consistent standard errors hc4
         modelbt = 1, # bootstrap CI for regression coefficients 
         boot = 5000, 
+        progress = 0,
         data = teams)
 ```
 
