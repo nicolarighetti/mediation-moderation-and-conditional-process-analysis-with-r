@@ -26,19 +26,19 @@ website:
        background: light
        collapse-level: 2
        contents:
-        - title: "Introduction"
+        - section: "Introduction"
           contents: introduction.qmd
-        - title: "Getting started with R"
+        - section: "Getting started with R"
           contents: Rintro.qmd
-        - title: "Exploratory Data Analysis"
+        - section: "Exploratory Data Analysis"
           contents: EDA.qmd
-        - title: "Regression Analysis"
+        - section: "Regression Analysis"
           contents: regression.qmd
-        - title: "Mediation Analysis"
+        - section: "Mediation Analysis"
           contents: mediation.qmd
-        - title: "Moderation Analysis"
+        - section: "Moderation Analysis"
           contents: moderation.qmd
-        - title: "Conditional Process Analysis"
+        - section: "Conditional Process Analysis"
           contents: conditional.qmd
          
 format:
