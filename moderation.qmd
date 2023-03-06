@@ -1,7 +1,20 @@
 ---
 title: "Moderation"
+format: html
 ---
 
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+    cancel: ["Extension","cancel"],
+    bcancel: ["Extension","cancel"],
+    xcancel: ["Extension","cancel"],
+    cancelto: ["Extension","cancel"]
+  });
+});
+</script>
+```
 # Moderation Analysis
 
 ```{r echo=FALSE}
@@ -112,8 +125,6 @@ process(y = "justify", x = "frame", w = "skeptic",
         decimals = 10.2,
         data = disaster)
 ```
-
---
 
 ## Output
 
@@ -966,11 +977,7 @@ In this case, $i_y$ is the intercept or "constant", x the independent variable n
 
 $$\scriptsize y = i_y + b_1x + b_2w + b_3xw + b_4c1 + b_5c2 + b_6c3 + e$$
 
-The value of the **intercept** never changes, it is a **constant**. The **covariates** are also constants because they are held constant at their average value. So in the end, the covariates just add or subtract their value to the intercept, and the resulting value of this operation is fixed. What changes in the equation are the value of variables x, y, and w. This means we can ignore the covariates and the intercept and focus our attention on the other variables. For our purpose we can also ignore the **error** term, which is the "residual" (unexplained) part of y variability, but does not alter the interpretation of the main variables.
-
-$$\scriptsize y = \cancel{\text{i_y}} + b_1x + b_2w + b_3xw + \cancel{\text{+ b_4c1}} + \cancel{\text{b_5c2}} + \cancel{\text{b_6c3}} + \cancel{\text{e}}$$
-
-Thus, we just need to consider the following simplier equation:
+The value of the **intercept** $i_y$ never changes, it is a **constant**. The **covariates** $b_4c1 + b_5c2 + b_6c3$ are also constants because they are held constant at their average value. So in the end, the covariates just add or subtract their value to the intercept, and the resulting value of this operation is fixed. What changes in the equation are the value of variables x, y, and w. This means we can ignore the covariates and the intercept and focus our attention on the other variables. For our purpose we can also ignore the **error** term $e$, which is the "residual" (unexplained) part of y variability, but does not alter the interpretation of the main variables. Thus, we just need to consider the following simplier equation:
 
 $$\hat y = b_1x + b_2w + b_3xw$$
 
@@ -988,11 +995,13 @@ The conditional effect is not expressed by a single number but by **a function**
 
 The **function that describes the conditional effect** can be identified by collecting the terms containing x, which results to be $b_1 + b_3w$, and is represented by the symbol "theta" $\theta$ in hayek's book. Thus, we can see the effect of x on y is not a single number, but the function $(b_1 + b_3w)$. The value of x is not multiplied by a single coefficient which is always the same, as in regression without interaction. Instead, the value of x is multiplied by the result of this function to determine its effect on y, where this effect depends on the value of w (i.e., it is moderated by w).
 
-$$\hat y = b_1x + b_2w + b_3xw$$ $$\hat y = (b_1 + b_3w)x + b_2w$$ $$\theta_{x \to y} = b_1 + b_3w$$
+$$\hat y = b_1x + b_2w + b_3xw$$ 
+$$\hat y = (b_1 + b_3w)x + b_2w$$ 
+$$\theta_{x \to y} = b_1 + b_3w$$
 
 In this case $b_1$ is the coefficient of x (negemot = 0.120) and $b_3$ is the coefficient of the interaction term (int_1 = 0.006). By plugging these values into the function of the conditional effect, we have what follows:
 
-$$\theta_{x \to y} = 0.120 + 0.006w $$
+$$\theta_{x \to y} = 0.120 + 0.006w$$
 
 ## Interaction and conditional effect
 
@@ -1019,21 +1028,21 @@ data.frame("age" = w, "effect" = theta(w))
 knitr::include_graphics("img/ex_moderation_probing.png")
 ```
 
-When **the moderator (w) is dichotomous**, the **pick-a-point technique** shows the conditional effect of x on y in the two groups defined by the categories of the variable (e.g., males and females, or those assigned to the experimental condition and the control group, etc.). In the example, the effect of skepticism (x) on the justification for not providing help (y) is higher in the frame=1 group (0.31) and lower in the frame=0 group (0.11).
+When **the moderator (w) is dichotomous**, the **pick-a-point technique** shows the conditional effect of $x$ on $y$ in the two groups defined by the categories of the variable (e.g., males and females, or those assigned to the experimental condition and the control group, etc.). In the example, the effect of skepticism ($x$) on the justification for not providing help ($y$) is higher in the frame=1 group (0.31) and lower in the frame=0 group (0.11).
 
 ```{r echo=FALSE, fig.cap = "probing the interaction with a dichotomous moderator"}
 knitr::include_graphics("img/ex_moderation_probing_dichotomous.png")
 ```
 
-Instead, **when the antecedent variable x is dichotomous**, the table shows **differences** in the estimate of y between the two conditions of the antecendent variable (x=0 and x=1) for a 1-unit change in w.
+Instead, **when the antecedent variable x is dichotomous**, the table shows **differences** in the estimate of y between the two conditions of the antecendent variable ($x=0$ and $x=1$) for a 1-unit change in w.
 
-Recalling basic arithmetic terminology, a "difference" is the outcome of subtraction, and in subtraction, the first term is called *"minuend"*, and the second one (the number that is subtracted) is the *"subtrahend"* (i.e, minued - subtrahend = difference). In this table involving a dichotomous antecendent variable (x), the minuend is the group coded as 1 (frame(x) = 1), and the subtrahend is the reference group that is coded as 0 (frame(x) = 0). Thus, a **negative effect** means that the effect is higher in the reference group, and a **positive effect** means that the effect is higher in the other group.
+Recalling basic arithmetic terminology, a "difference" is the outcome of subtraction, and in subtraction, the first term is called *"minuend"*, and the second one (the number that is subtracted) is the *"subtrahend"* (i.e, minued - subtrahend = difference). In this table involving a dichotomous antecendent variable ($x$), the minuend is the group coded as 1 (frame(x) = 1), and the subtrahend is the reference group that is coded as 0 (frame(x) = 0). Thus, a **negative effect** means that the effect is higher in the reference group, and a **positive effect** means that the effect is higher in the other group.
 
 ```{r echo=FALSE, fig.cap = "probing the interaction with a dichotomous moderator"}
 knitr::include_graphics("img/ex_probing_dichotomous_x.png")
 ```
 
-For instance, at relatively low levels of skepticism (skepticism = 1.592), the difference in justification for not providing help (y) is higher in the reference group frame = 0 (which is the group told the drought was due to natural causes) than in the other group frame = 1 (which is the group told the drought was due to climate change). However, the difference is not statistically significant. Instead, for higher values of skepticism, a one-point increase in skepticism yields to a higher level of justification for not providing aid to the afflicted populace.
+For instance, at relatively low levels of skepticism (skepticism = 1.592), the difference in justification for not providing help ($y$) is higher in the reference group frame = 0 (which is the group told the drought was due to natural causes) than in the other group frame = 1 (which is the group told the drought was due to climate change). However, the difference is not statistically significant. Instead, for higher values of skepticism, a one-point increase in skepticism yields to a higher level of justification for not providing aid to the afflicted populace.
 
 ## Coefficients of x and w
 
@@ -1043,11 +1052,14 @@ Concerning the coefficients of variables involved in interactions (listed in the
 knitr::include_graphics("img/ex_moderation_table_annotated.png")
 ```
 
-Considering the equation of the model $\hat y = b_1x + b_2w + b_3xw$ (ignoring the constants like the intercept and covariates), we can see what happens when we set w to 0, and x to 0.
+Considering the equation of the model $\hat y = b_1x + b_2w + b_3xw$ (ignoring the constants like the intercept and covariates), we can see what happens when we set $w$ to 0, and $x$ to 0.
 
-Recalling that the product of any number and zero is zero, when w is zero, the terms including the multiplier w become zero, and can be removed from the equation. By this way, we are left with only the variable x and its coefficient: $b_1x$ ("negemot" = 0.120). So we can interpret the $b_1$ coefficient by saying that *when age (w) is equal to zero, a one-unit increase in negative emotion yields to an increase in the estimate of y of 0.120 points*.
+Recalling that the product of any number and zero is zero, when $w$ is zero, the terms including the multiplier $w$ such as $b_2w + b_3xw$ become zero, and can be removed from the equation. By this way, we are left with only the variable x and its coefficient: $b_1x$ ("negemot" = 0.120). So we can interpret the $b_1$ coefficient by saying that *when age (w) is equal to zero, a one-unit increase in negative emotion yields to an increase in the estimate of y of 0.120 points*.
 
-$$\hat y = b_1x + b_2w + b_3xw$$ $$\hat y = b_1x + b_2*0 + b_3x*0$$ $$\hat y = b_1x + \cancel{\text{b_2*0}} + \cancel{\text{b_3x*0}}$$ $$\hat y = b_1x$$ $$\hat y = 0.120*negemot$$
+$$\hat y = b_1x + b_2*(w=0) + b_3x*(w=0)$$ 
+$$\hat y = b_1x + b_2*0 + b_3x*0$$ 
+$$\hat y = b_1x$$ 
+$$\hat y = 0.120*negemot$$
 
 We already said that this interpretation, although formally correct, does not make sense, because saying that w=0 is meaningless. This would be true also if cases measuring 0 on w would theoretically exist but are not in the range of the variable in the dataset. For instance, on page 240 of the book hayes wrote, in relation to a similar case:
 
@@ -1063,9 +1075,13 @@ summary(glbwarm$age)
 summary(glbwarm)
 ```
 
-In the same way, we can read the coefficient of the variable age (w) relative to that of negative emotion set to zero (x). When x is zero, the terms including x become zero and can be removed from the equation, and we are left with only one variable age (w), and its coefficient $b_2$, which can be intepreted as follows: "among cases measuring zero in negative emotions, a one-unit change in age yields to a decrease of 0.024 in the estimate of y".
+In the same way, we can read the coefficient of the variable age $w$ relative to that of negative emotion set to zero $x$. When $x=0$ the terms including $x$ become zero and can be removed from the equation, and we are left with only one variable age $w$, and its coefficient $b_2$, which can be intepreted as follows: *among cases measuring zero in negative emotions, a one-unit change in age yields to a decrease of 0.024 in the estimate of y*.
 
-$$\hat y = b_1x + b_2w + b_3xw$$ $$\hat y = b_1*0 + b_2w + b_3*0*w$$ $$\hat y = \cancel{\text{b_1*0}} + b_2w + \cancel{\text{b_3*0*w}}$$ $$\hat y = b_2w$$ $$\hat y = -0.024*age$$
+$$\hat y = b_1x + b_2w + b_3xw$$ 
+
+$$\hat y = b_1*(x=0) + b_2w + b_3*(x=0)*w$$ 
+$$\hat y = b_2w $$
+$$\hat y = -0.024*age$$
 
 Notice that **the meaning of "0"** changes depending on the nature of the variable. When it is **numeric** (continuous or discrete), zero just means zero (numeric). When the variable is dichotomous, zero indicates the category coded with 0, which is the reference group. For instance, with a continuous w, you can say: *among cases measuring 0 on w, a 1-unit increase in x (...)*. With a dichotomous w, you say, for instance: *among people told the drought was due to natural causes (w=0) a 1-unit increase in x (...)*.
 
@@ -1075,7 +1091,7 @@ Up to this point, we gained a deeper understanding of moderation models consider
 
 Similar to what happens with a dichotomous variable, the "coefficients" and "effects" in the process output quantify **differences** between the reference category and every other category of the same multicategorical variable.
 
-Let's consider, for example, a multicategorical variable with three modalities x=0, x=1, and x=2, like the protest variable in the homonymous dataset. The reference category is the one with the lowest number, i.e., x=0. In the output of the model we'll find only coefficients and effects of x1 and x2. They have to be interpreted as differences between their coefficients or effects and those of the reference category.
+Let's consider, for example, a multicategorical variable with three modalities $x=0$, $x=1$, and $x=2$, like the protest variable in the homonymous dataset. The reference category is the one with the lowest number, i.e., $x=0$. In the output of the model we'll find only coefficients and effects of $x_1$ and $x_2$. They have to be interpreted as differences between their coefficients or effects and those of the reference category.
 
 When the difference is **negative**, it means that the coefficient or effect of the reference category is higher. When it is **positive**, it means the opposite (the coefficient or effect of the reference category is lower).
 
@@ -1083,29 +1099,32 @@ When the difference is **negative**, it means that the coefficient or effect of 
 knitr::include_graphics("img/example-moderation-multicategorical-1-annotated.png")
 ```
 
-Let's write the equation of the model: $$\scriptsize y = i_y + b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w + e$$
+Let's write the equation of the model: 
+
+$$y = i_y + b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w + e$$
 
 Similar to what we have already seen, the regression table includes coefficients of variables involved in the interaction, coefficient of the moderator, and coefficients of the interaction term.
 
 ## Coefficients of variables involved in the interaction
 
-Let's start by the coefficients not directly expressing interactions, but qualifying variables involved in the interaction. We know we can find them in the "product term key" table. They are x1 (x1 = -4.13), x2 (x2 = -3.49) and sexism (w = -0.47).
+Let's start by the coefficients not directly expressing interactions, but qualifying variables involved in the interaction. We know we can find them in the "product term key" table. They are $x_1$ ($x_1 = -4.13$), $x_2$ ($x_2 = -3.49$) and sexism ($w = -0.47$).
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/example-moderation-multicategorical-1-annotated.png")
 ```
 
-When w = 0 (ignoring the intercept and the error term, which do not influence the interpretation) the terms including the multiplier w become zero and can be removed from the equation. In this way, we are left with only the two variables x1 and x2.
+When $w = 0$ (ignoring the intercept and the error term, which do not influence the interpretation) the terms including the multiplier $w$ become zero and can be removed from the equation. In this way, we are left with only the two variables $x_1$ and $x_2$.
 
-$$\scriptsize \hat y = b_1x_1 + b_2x_2 + \cancel{\text{b_3w}} + \cancel{\text{b_4x_1w}} + \cancel{\text{b_5x_2w}}$$ $$\scriptsize \hat  y = b_1x_1 + b_2x_2$$
+$$\hat y = b_1x_1 + b_2x_2 + b_3*(w=0) + b_4x_1*(w=0) + b_5x_2*(w=0)$$ 
+$$\hat y = b_1x_1 + b_2x_2$$
 
-Now, you could think that you need to set x1 to zero to interpret the coefficient of x2, and vice versa. While this is fundamentally true, there is no need to do so, because this is what was already done by default when fitting a model with a multi categorical variable. The statistical software represents a multicategorical variable with *g* groups (in this case 3) through *g-1* dichotomous variables (in this case x=1 and x=2).
+Now, you could think that you need to set x1 to zero to interpret the coefficient of $x_2$, and viceversa. While this is fundamentally true, there is no need to do so, because this is what was already done by default when fitting a model with a multi categorical variable. The statistical software represents a multicategorical variable with *g* groups (in this case 3) through *g-1* dichotomous variables (in this case $x=1$ and $x=2$).
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/indicator_coding.png")
 ```
 
-The following table shows what happens: the cases assigned to the reference group x=0 (no protest) are the ones marked with a zero on both x1 and x2. The cases assigned to the x=1 group (individual protest frame) are the ones marked with a 1 on x1 and 0 on x2. Finally, the cases assigned to the x=2 group (collective protest frame), are those marked with a 1 on x2 and 0 on x1. This is to say that when we are interpreting the coefficients or effects of x1 or x2, respectively, we do not have to care about x2 or x1, respectively, since they already are set to zero by default.
+The following table shows what happens: the cases assigned to the reference group $x=0$ (no protest) are the ones marked with a zero on both $x_1$ and $x_2$. The cases assigned to the $x=1$ group (individual protest frame) are the ones marked with a 1 on $x_1$ and 0 on $x_2$. Finally, the cases assigned to the $x=2$ group (collective protest frame), are those marked with a 1 on $x_2$ and 0 on $x_1$. This is to say that when we are interpreting the coefficients or effects of $x_1$ or $x_2$, respectively, we do not have to care about $x_2$ or $x_1$, respectively, since they already are set to zero by default.
 
 ```{r}
 library(tidyverse)
@@ -1119,25 +1138,37 @@ protest %>%
   select(protest, x1, x2)
 ```
 
-Thus, going back to our interpretation problem: when w = 0 (ignoring the intercept and the error term, which do not influence the interpretation) the terms including the multiplier w become zero and can be removed from the equation. In this way, we are left with only the two variables x1 and x2. We can interpret now the coefficient of each one without caring about the other, because it is set to zero by default.
+Thus, going back to our interpretation problem: when $w = 0$ (ignoring the intercept and the error term, which do not influence the interpretation) the terms including the multiplier $w$ become zero and can be removed from the equation. In this way, we are left with only the two variables $x_1$ and $x_2$. We can interpret now the coefficient of each one without caring about the other, because it is set to zero by default.
 
-$$\scriptsize \hat y = b_1x_1 + b_2x_2 + \cancel{\text{b_3w}} + \cancel{\text{b_4x_1w}} + \cancel{\text{b_5x_2w}}$$ $$\scriptsize \hat  y = b_1x_1 + b_2x_2$$
+$$\hat y = b_1x_1 + b_2x_2 + b_3*(w=0) + b_4x_1*(w=0) + b_5x_2*(w=0)$$
 
-Thus we can write this equation either as: $$\scriptsize \hat  y = b_1x_1 \cancel{\text{+ b_2x_2}}$$ $$\scriptsize \hat  y = b_1x_1$$ $$\scriptsize \hat  y = -4.13x_1$$
+$$\hat  y = b_1x_1 + b_2x_2$$
+
+Thus we can write this equation either as: 
+
+$$\hat y = b_1x_1 + (b_2x_2*0)$$ 
+$$\hat y = b_1x_1$$ 
+$$\hat y = -4.13x_1$$
 
 And:
 
-$$\scriptsize \hat  y = \cancel{\text{b_1x_1 +}} b_2x_2$$ $$\scriptsize \hat  y = b_2x_2$$ $$\scriptsize \hat  y = -3.49x_2$$
+$$\hat y = (b_1x_1*0) + b_2x_2$$ 
 
-The last complication in interpreting the coefficients of multicategorical variables is that they quantify **differences** between them and the reference category. From this perspective, they are like the coefficients of a *dichotomous* variable (indeed, we learned that a multicategorical variable is treated as several dichotomous variables). Keeping in mind that a negative coefficient means that the coefficient of the reference group is higher, and lower otherwise, $\hat y = -4.13x_1$ means that *among cases measuring zero on the moderator w (sexism), the average appreciation of catherine (liking = y) in the individual protest condition (x1) is 4.13 points lower than that in the reference group (no protest)*. X2 can be interpreted similarly. In any case, these coefficients have no substantive meaning, because no cases are zero on the sexism scale.
+$$\hat  y = b_2x_2$$ 
+$$\hat  y = -3.49x_2$$
+
+The last complication in interpreting the coefficients of multicategorical variables is that they quantify **differences** between them and the reference category. From this perspective, they are like the coefficients of a *dichotomous* variable (indeed, we learned that a multicategorical variable is treated as several dichotomous variables). Keeping in mind that a negative coefficient means that the coefficient of the reference group is higher, and lower otherwise, $\hat y = -4.13x_1$ means that *among cases measuring zero on the moderator w (sexism), the average appreciation of catherine (liking = y) in the individual protest condition (x1) is 4.13 points lower than that in the reference group (no protest)*. $x_2$ can be interpreted similarly. In any case, these coefficients have no substantive meaning, because no cases are zero on the sexism scale.
 
 ```{r}
 summary(protest$sexism)
 ```
 
-The variable "sexism" (w) is not multicategorical. However it is involved in the interaction with the multicategorical variable x. Its coefficient ($b_3w = -0.47$) quantifies the difference in the estimate of y for one-unite change in the "sexism" measure, **when x (both x1 and x2) is equal zero**. As we know from how multicategorical variables are transformed, when both x1 and x2 are zero we are referring to the reference group. Therefore, **this coefficient quantifies the estimate of y for a one-unit change in sexism among people in the reference group**. In other terms, *among people in the reference group (told catherine did not protest), a 1-unit increase in sexism decrease the estimate of y by 0.47 points*.
+The variable "sexism" $w$ is not multicategorical. However it is involved in the interaction with the multicategorical variable $x$. Its coefficient ($b_3w = -0.47$) quantifies the difference in the estimate of $y$ for one-unite change in the "sexism" measure, **when x (both x1 and x2) is equal zero**. As we know from how multicategorical variables are transformed, when both $x_1$ and $x_2$ are zero we are referring to the reference group. Therefore, **this coefficient quantifies the estimate of y for a one-unit change in sexism among people in the reference group**. In other terms, *among people in the reference group (told catherine did not protest), a 1-unit increase in sexism decrease the estimate of y by 0.47 points*.
 
-$$\scriptsize \hat y = b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w$$ $$\scriptsize \hat y = \cancel{\text{b_1x_1}} + \cancel{\text{b_2x_2}} + b_3w + \cancel{\text{b_4x_1w}} + \cancel{\text{b_5x_2w}} + e$$ $$\hat y = b_3w$$ $$\hat y = -0.47w$$
+$$\hat y = b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w$$ 
+
+$$\hat y = (b_1x_1*0) + (b_2x_2*0) + b_3w + (b_4x_1w*0) + (b_5x_2w*0) + e$$ 
+$$\hat y = b_3w$$ $$\hat y = -0.47w$$
 
 ## Interaction and conditional effect
 
@@ -1153,25 +1184,30 @@ $$y = i_y + b_1x_1 + b_2x_2 + b_3w + b_4x_1w + b_5x_2w + e$$
 
 As already said, we can ignore the intercept and the error term, and we already know that $b_3w$ quantifies the changes in the average of y as w increases of one-unit, when both x1 and x2 are equal to zero, which means in the reference category.
 
-$$\hat y = \cancel{\text{b_1x_1}} + \cancel{\text{b_2x_2}} + b_3w + \cancel{\text{b_4x_1w}} + \cancel{\text{b_5x_2w}}$$
+$$\hat y = (b_1x_1*0) + (b_2x_2*0) + b_3w + (b_4x_1w*0) + (b_5x_2w*0)$$
 
 Since we are not interested in the reference group but in the x1 and x2 ones ($b_4x_1w$ and $b_5x_2w$), we can also exlude this term ($b_3w$). We then said that, when interpreting x1 we can ignore x2, and vice versa, due to the way the regression model is built. Therefore, we can split the equation into two parts, one including x1 and the other including x2:
 
-$$y = b_1x_1 + b_4x_1w$$ $$y = b_2x_2 + b_5x_2w$$
+$$y = b_1x_1 + b_4x_1w$$ 
+$$y = b_2x_2 + b_5x_2w$$
 
 By collecting the x terms, we end up with the two **relative conditional effects** $\theta_{x_1 \to y}$ and $\theta_{x_2 \to y}$, composed of $b_1$ and $b_4w$ (where $b_4$ is the "int_1" coefficient), and $b_2$ and $b_5w$ (where $b_4$ is the "int_2" coefficient), respectively. So, we can see that the interaction terms int_1 and int_2 are a foundamental component of the *relative conditional effect*. As stated at the beginning of the discussion, they represent how the relative conditional effect of x on y changes as w changes by one unit. $$y = (b_1 + b_4w)x_1$$ $$\theta_{x_1 \to y} = b_1 + b_4w$$
 
-$$y = (b_2 + b_5w)x_2$$ $$\theta_{x_2 \to y} = b_2 + b_5w$$
+$$y = (b_2 + b_5w)x_2$$ 
+$$\theta_{x_2 \to y} = b_2 + b_5w$$
 
 We can now plug the coefficients into the above functions:
 
-$$\theta_{x_1 \to y} = -4.13 + 0.90w$$ $$\theta_{x_2 \to y} = -3.49 + 0.78w$$
+$$\theta_{x_1 \to y} = -4.13 + 0.90w$$ 
+$$\theta_{x_2 \to y} = -3.49 + 0.78w$$
 
 ## Probing the interaction
 
 The **pick-a-point** procedure plug specific w values into the functions defining the **conditional relative effects** in order to probe the interaction at different levels of the moderator:
 
-$$\theta_{x_1 \to y} = -4.13 + 0.90w$$ $$\theta_{x_2 \to y} = -3.49 + 0.78w$$
+$$\theta_{x_1 \to y} = -4.13 + 0.90w$$ 
+
+$$\theta_{x_2 \to y} = -3.49 + 0.78w$$
 
 For instance, for "relatively low" values of the moderator (w=4.25), the conditional relative effect equal $-4.13 + 0.90*4.25$ (small differences from the table are due to the fact we are using rounded vales, otherwise it would be something like $-4.128758332 + 0.901226964*4.25$ which rounded to the second decimal is exactly 0.30).
 

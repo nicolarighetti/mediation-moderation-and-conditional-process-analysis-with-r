@@ -116,34 +116,20 @@ The function requires you to specificy:
 -   the independent variable $x$
 -   and the mediator variable $m$
 
-```{r, eval=FALSE}
-process(pmi_data, y = "reaction", x = "cond", m = "pmi", 
-        total = 1, normal = 1, model = 4,
-        seed=31216)
-```
-
 Moreover, we specify:
 
 -   the **total** parameter, which we set to 1 (**total = 1**). It is used to tell the software to generate the *total effect* of X on Y (which we called *c* in the previous slides).
 -   **model=4**, a parameter setting used for mediation models
 -   We also use a **seed** with an abribrary number. This is used to ensure replicability of the results, since the model estimation involves a procedure using random number generation (the seed ensures that the random generated sequences are the same if you repeat the estimation).
 
-```{r, eval=FALSE}
-process(pmi_data, y = "reaction", x = "cond", m = "pmi", 
-        total = 1, normal = 1, model = 4,
-        seed=31216)
-```
-
 ```{r echo=FALSE}
 knitr::include_graphics("img/mediation_1_diagram_2.png")
 ```
 
-```{r echo=FALSE}
-knitr::include_graphics("img/simple_mediation_output_a.png")
-```
-
-```{r echo=FALSE}
-knitr::include_graphics("img/simple_mediation_output_b.png")
+```{r echo=TRUE}
+process(pmi_data, y = "reaction", x = "cond", m = "pmi", 
+        total = 1, normal = 1, model = 4, progress=0,
+        seed=31216)
 ```
 
 ```{r echo=FALSE}
@@ -221,9 +207,9 @@ So depressed affect was hypothesized as a mediator of the effect of economic str
 knitr::include_graphics("img/mediation_2_diagram_1.png")
 ```
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 process(estress, y = "withdraw", x = "estress", m = "affect", 
-        total = 1, normal = 1, model = 4,
+        total = 1, normal = 1, model = 4, progress=0,
         seed=100770)
 ```
 
@@ -292,7 +278,7 @@ So spurious or epiphenomenal association are plausible alternative explanations 
 
 To illustrate that more than a single variable can be used as a statistical control, we also include other statistical controls, namely sex of the participant (**"sex"** in the data, 0 = female, 1 = male) and length of time in the business, in years (**"tenure"** in the data) as predictors.
 
-```{r echo=FALSE, out.width="60%"}
+```{r echo=FALSE}
 knitr::include_graphics("img/control_1_diagram_2.png")
 ```
 
@@ -300,15 +286,15 @@ The only difference between the code to fit a mediation model with covariates an
 
 By default, any variable in the covariate list will be included as additional antecedent variables in the model of each of the consequents.
 
-```{r eval=FALSE}
-process(estress, y = "withdraw", x = "estress", m = "affect", 
-        cov = c("ese", "sex", "tenure"),
-        total = 1, model = 4,
-        seed=100770)
-```
-
 ```{r echo=FALSE}
 knitr::include_graphics("img/control_1_diagram_3.png")
+```
+
+```{r}
+process(estress, y = "withdraw", x = "estress", m = "affect", 
+        cov = c("ese", "sex", "tenure"),
+        total = 1, model = 4, progress=0,
+        seed=100770)
 ```
 
 ```{r echo=FALSE}
@@ -390,16 +376,12 @@ In the estress study, one standard deviation change in economic stress leads to 
 
 To calculate the partial and complete standardized effect size, just add **effsize=1**. PROCESS also generates confidence intervals for the partially and completely standardized indirect effects using bootstrapping (or the Monte Carlo method, another way to calculate CIs).
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 process(estress, y = "withdraw", x = "estress", m = "affect", 
         cov = c("ese", "sex", "tenure"),
-        total = 1, model = 4,
+        total = 1, model = 4, progress = 0,
         effsize = 1,
         seed=100770)
-```
-
-```{r echo=FALSE}
-knitr::include_graphics("img/mediation_effectsize.png")
 ```
 
 # Multiple X variables
@@ -503,7 +485,7 @@ The indirect effect could also be due to an **epiphenomenal** association betwee
 
 For instance, in the Presumed Media Influence Study ("pmi" dataset) **any variable correlated with the mediator** presumed media influence (M) and also **affected by the experimental manipulation** of article location (X) **could be the actual mediator** transmitting the effect of location on intentions to buy sugar.
 
-```{r echo=FALSE, out.width="50%"}
+```{r echo=FALSE}
 knitr::include_graphics("img/parallel_multiple_mediator_2a.png")
 ```
 
@@ -521,15 +503,9 @@ Another difference is that we add the parameter **contrast = 1** to conduct a *t
 
 Also, the results include the **total indirect effect** (the indirect effect summed across all mediators), and the **indirect effect of each mediator**.
 
-```{r eval=FALSE}
+```{r echo=TRUE}
 process(pmi_data, y = "reaction", x = "cond", m = c("import", "pmi"), 
-        model = 4, total = 1, contrast = 1,
-        seed = 10)
-```
-
-```{r echo=FALSE}
-process(pmi_data, y = "reaction", x = "cond", m = c("import", "pmi"), 
-        model = 4, total = 1, contrast = 1, effsize = 1,
+        model = 4, total = 1, contrast = 1, effsize = 1, progress = 0,
         seed = 10)
 ```
 
@@ -573,7 +549,7 @@ To fit a serial multiple mediator model:
 
 ```{r eval=FALSE}
 process(pmi_data, y = "reaction", x = "cond", m = c("import", "pmi"), 
-        model = 6, total = 1, contrast = 1, boot = 10000,
+        model = 6, total = 1, contrast = 1, boot = 10000, progress = 0,
         seed = 031216)
 ```
 
@@ -597,31 +573,13 @@ In this case: **Ind1** is the indirect effect of article location ($X$) on react
 
 It means that those told the article would appear on the front page (*cond*) perceived the sugar shortage as more important (*more*, because the coefficients of **cond** is positive (0.6268) in the regression table **Outcome Variable: import**).
 
-```{r echo=FALSE}
-process(pmi_data, y = "reaction", x = "cond", m = c("import", "pmi"), 
-        model = 6, total = 1, contrast = 1, boot = 10000,
-        seed = 031216)
-```
-
 Also, this increased importance was associated with an increased intention to buy sugar (because the coefficient is positive (0.3244) in the regression table with **Outcome Variable: reaction**).
 
 This indirect effect is specific to **import** and **independent from the other mediators** (in this case pmi (presumed media influence).
 
-```{r echo=FALSE}
-process(pmi_data, y = "reaction", x = "cond", m = c("import", "pmi"), 
-        model = 6, total = 1, contrast = 1, boot = 10000,
-        seed = 031216)
-```
-
 The second specific indirect effect (**Ind2**) is the indirect effect of article location on reactions through only presumed media influence, and is not statistically significant.
 
 The third indirect effect (**Ind3**) is the specific indirect effect of article location on reactions through perceived importance (*import*) and presumed media influence (*pmi*) **in serial** and is not statistically significant.
-
-```{r echo=FALSE}
-process(pmi_data, y = "reaction", x = "cond", m = c("import", "pmi"), 
-        model = 6, total = 1, contrast = 1, boot = 10000,
-        seed = 031216)
-```
 
 The table also include the statistical significance of the differences between the indirect effects (**C1, C2, and C3**) since we have used **contrast = 1** in the code.
 
@@ -681,7 +639,7 @@ The group coded with 0 is the **reference group** and the coefficients in the mo
 
 We said: **Relative to those assigned to the interior page condition** (*COND=0*), those who read an article they were told was to be published in the front page of the newspaper (*COND=1*) were, on average, **0.241 units higher** in their likelihood of buying sugar.
 
-That is to say: $Y_{COND_1} = Y_{COND_0} + 0.241)$
+That is to say: $Y_{COND_1} = Y_{COND_0} + 0.241$
 
 Let's make another example, with a dichotomous variable where MALE=0 and FEMALE=1, and a simple regression model as follows:
 
@@ -733,10 +691,10 @@ protest <- read.csv("data/protest.csv")
 
 To tell PROCESS X is multicategorical (the $X$ variable can contain up to nine modalities), use the **mcx** option (for multicategorical X), with an argument following an equals sign telling PROCESS how to code the groups. To perform our analysis with a standard coding procedure, we use **mcx=1** ("indicator coding").
 
-```{r eval=FALSE}
-process(protest, y="liking", x="protest", m="respappr",
-        mcx=1, total=1, model=4,
-        seed=30217)
+```{r}
+process(protest, y = "liking", x = "protest", m = "respappr",
+        mcx = 1, total = 1, model = 4, progress = 0,
+        seed = 30217)
 ```
 
 The group coded with **PROTEST=0** (no protest group), is specified as the **reference group**. With indicator coding (**mcx=1**), PROCESS uses the **group with the numerically smallest code** in the variable specified as X **as the reference group**.
@@ -757,7 +715,7 @@ knitr::include_graphics("img/mediation_multicat_example.png")
 
 ```{r}
 process(protest, y = "liking", x = "protest", m = "respappr",
-        mcx = 1, total = 1, model = 4,
+        mcx = 1, total = 1, model = 4, progress = 0,
         seed = 30217)
 ```
 

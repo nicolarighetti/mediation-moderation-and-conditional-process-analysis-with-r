@@ -265,7 +265,8 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
         plot = 1,
         decimals = 10.2,
         seed=42517,
-        boot = 5000, # number of bootstraps 
+        boot = 5000, # number of bootstraps
+        progress = 0,
         data = teams)
 ```
 
@@ -467,6 +468,7 @@ process(y = "donate", x = "frame", w = "skeptic", m = "justify",
         plot = 1,
         decimals = 10.2,
         seed = 280417,
+        progress = 0,
         data = disaster)
 ```
 
@@ -498,6 +500,7 @@ process(y = "liking", x = "protest",  m = "respappr", w = "sexism",
         model = 8, 
         plot = 1,
         decimals = 10.2,
+        progress = 0,
         data = protest)
 ```
 
@@ -584,6 +587,7 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
         decimals = 10.5,
         seed=42517,
         boot = 5000, # number of bootstraps 
+        progress = 0,
         data = teams)
 
 ```
