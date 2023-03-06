@@ -152,34 +152,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="./index.html">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./introduction.html" aria-current="page">
- <span class="menu-text">Introduction</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Rintro.html">
- <span class="menu-text">Getting started with R</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./EDA.html">
- <span class="menu-text">Exploratory Data Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./regression.html">
- <span class="menu-text">Regression Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./mediation.html">
- <span class="menu-text">Mediation Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./moderation.html">
- <span class="menu-text">Moderation Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./conditional.html">
- <span class="menu-text">Conditional Process Analysis</span></a>
-  </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -285,7 +257,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
-  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
   <li><a href="#handbook" id="toc-handbook" class="nav-link" data-scroll-target="#handbook">Handbook</a></li>
   </ul>
 </nav>
@@ -318,176 +289,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>This is a data analysis seminar focused on the application of linear regression analysis to explore questions about mediated and moderated effects.</p>
 <p>Computer applications will focus on R statistical language and the Rstudio environment (https://www.rstudio.com) and the PROCESS software by Andrew F. Hayes (http://processmacro.org).</p>
-<p>The course is subdivided in 5 learning units.</p>
-<p>The introductory part of the course will be dedicated to installing the data science tools R and Rstudio (https://www.rstudio.com) and to learning the basic principles necessary to work on statistical analysis with this software. Students will be required to acquire a basic familiarity with the Rstudio interface and R programming in a short period of time, in order to be able to use it for performing statistical analysis. At home study and exercise will be fundamental to reaching the objective.</p>
-<p>The second part of the course will be dedicated to presenting the principles of linear regression analysis, and explaining how to fit, visualize, interpret, and evaluate regression models in R.</p>
+<p>The introductory part of the course will be dedicated to installing the <strong>data science tools R and Rstudio</strong> (https://www.rstudio.com) and to learning the basic principles necessary to work on statistical analysis with this software. Students will be required to acquire a basic familiarity with the Rstudio interface and R programming in a short period of time, in order to be able to use it for performing statistical analysis. At home study and exercise will be fundamental to reaching the objective.</p>
+<p>The second part of the course will be dedicated to a short recap of the principles of <strong>linear regression</strong> analysis and explaining how to fit, visualize, interpret, and evaluate regression models in R.</p>
 <p>We’ll use linear regression models to answer questions of the WHETHER or IF variety. These are questions about association between variables. For example, is there a relationship between a variable Y, and another variable X, and possibly other ones? For example, we can use this kind of analysis to study whether polarization increases as the exposure to partisan news media increases.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: tidyverse</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.4.0     ✔ purrr   1.0.1
-✔ tibble  3.1.8     ✔ dplyr   1.1.0
-✔ tidyr   1.3.0     ✔ stringr 1.5.0
-✔ readr   2.1.3     ✔ forcats 1.0.0
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="sc">*</span> <span class="dv">5</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(x,y)) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(x,y)) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>, <span class="at">formula=</span> y<span class="sc">~</span>x) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"polarization"</span>, <span class="at">x =</span> <span class="st">"exposure to partisan news"</span>) <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="sc">*</span> <span class="dv">5</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd=</span><span class="dv">3</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(x,y)) <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(x,y)) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>, <span class="at">formula=</span> y<span class="sc">~</span>x) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"polarization"</span>, <span class="at">x =</span> <span class="st">"exposure to partisan news"</span>) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Introduction_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<p><img src="introduction_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>The third unit will be dedicated to **mediation analysis**, and explaining how to fit, visualize, interpret, and evaluate mediation models using PROCESS in the R environment.</p>
-<p>Mediation analysis answers questions of the **HOW** variety, and it is used to study the mechanism(s) by which one variable impacts another one.</p>
+<p>The third unit will be dedicated to <strong>mediation analysis</strong>, and explaining how to fit, visualize, interpret, and evaluate mediation models using PROCESS in the R environment.</p>
+<p>Mediation analysis answers questions of the <strong>HOW</strong> variety, and it is used to study the mechanism(s) by which one variable impacts another one.</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: DiagrammeR</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8259a28a5c0e2c0f8d7b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8259a28a5c0e2c0f8d7b">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Mediation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n\n  # edge definitions with the node IDs\n  x -> y x -> m m -> y;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e4529dcb580850265aa2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-e4529dcb580850265aa2">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Mediation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n\n  # edge definitions with the node IDs\n  x -> y x -> m m -> y;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>For example, let’s say that we have established a relationship between the use of violent video games and the frequency of off-line assaults. The next step may be to use mediation analysis to analyze the potential mechanism by which violent video games impact offline aggressive behavior.</p>
-<p>**UNIT 4**: The fourth learning unit will be dedicated to **moderation analysis**, and explaining how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment.</p>
-<p>Moderation analysis is used to answer questions of the **WHEN** variety, that is to say, to study the conditions or contingencies of an association.</p>
+<p>Next, will focus on <strong>moderation analysis</strong> and explaining how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment.</p>
+<p>Moderation analysis is used to answer questions of the <strong>WHEN</strong> variety, that is to say, to study the conditions or contingencies of an association.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grViz</span>(<span class="st">"digraph {</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">width = 500</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">height = 500</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">  graph [layout = dot, rankdir = LR, label = Moderation]</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape = rectangle]     </span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">  x [label = 'X']</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">  y [label = 'Y']</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">  w [label = 'W']</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape=none, width=0, height=0, label='']</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">  p1 -&gt; y;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">  {rank=same; w -&gt; p1}</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="st">  edge [dir=none]</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="st">  x -&gt; p1 </span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="st">  }"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-51a9e025bd08eb69768d" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-51a9e025bd08eb69768d">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Moderation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5bc5585771deaa96d388" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-5bc5585771deaa96d388">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Moderation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>For example, there is no reason to think that the association between violent video games and offline aggression is universal. Maybe, it is stronger for males than females, or the strength of the association is a function of personality traits. We use moderation analysis to answer these questions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grViz</span>(<span class="st">"digraph {</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">width = 500</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">height = 500</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">  graph [layout = dot, rankdir = LR]</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape = rectangle]     </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">  x [label = 'Violent video games']</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">  y [label = 'Offline aggressions']</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">  w [label = 'Sex?</span><span class="sc">\n</span><span class="st">Age?</span><span class="sc">\n</span><span class="st">Personality?']</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape=none, width=0, height=0, label='']</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">  p1 -&gt; y;</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">  {rank=same; w -&gt; p1}</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">  edge [dir=none]</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">  x -&gt; p1 </span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">  }"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-62bf359000849ba01d96" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-62bf359000849ba01d96">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"Violent video games\"]\n  y [label = \"Offline aggressions\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d7c195d0cc632b683261" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d7c195d0cc632b683261">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"Violent video games\"]\n  y [label = \"Offline aggressions\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>**UNIT 5**: The fifth learning unit will be dedicated to **conditional process analysis**, and explaining how to fit, visualize, interpret, and evaluate conditional process models using PROCESS in the R environment.</p>
+<p>We finally focus on <strong>conditional process analysis</strong> and explain how to fit, visualize, interpret, and evaluate conditional process models using PROCESS in the R environment.</p>
 <p>Conditional process represents the conditions of mechanisms by which a variable impact on another one. It includes both mediation and moderation analysis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grViz</span>(<span class="st">"digraph {</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">width = 500</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">height = 500</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">  graph [layout = dot, rankdir = LR, label = 'Conditional process']</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape = rectangle]     </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">  x [label = 'X']</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">  y [label = 'Y']</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">  m [label = 'M']</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">  w [label = 'W']</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape=none, width=0, height=0, label='']</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">  p1 -&gt; m p2 -&gt; y;</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">  {rank=same; w -&gt; p1 w -&gt; p2}</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="st">  # edge definitions with the node IDs</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="st">  x -&gt; y m -&gt; y;</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="st">  edge [dir=none]</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="st">  x -&gt; p1 x -&gt; p2</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="st">  }"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-466aa76f2b2870afecde" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-466aa76f2b2870afecde">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = \"Conditional process\"]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-62078fa81e58b7cf6203" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-62078fa81e58b7cf6203">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = \"Conditional process\"]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Conditional process models allow to address the complexity of social science phenomena.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grViz</span>(<span class="st">"digraph {</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">width = 500</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">height = 500</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">  graph [layout = dot, rankdir = LR]</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape = rectangle]     </span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">  x [label = 'X']</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">  y [label = 'Y']</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">  m [label = 'Desensitize to pain?</span><span class="sc">\n</span><span class="st">Normalize violence?</span><span class="sc">\n</span><span class="st">...']</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">  w [label = 'Sex?</span><span class="sc">\n</span><span class="st">Age?</span><span class="sc">\n</span><span class="st">Personality?']</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">  node [shape=none, width=0, height=0, label='']</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="st">  p1 -&gt; m p2 -&gt; y;</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="st">  {rank=same; w -&gt; p1 w -&gt; p2}</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="st">  # edge definitions with the node IDs</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="st">  x -&gt; y m -&gt; y;</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="st">  edge [dir=none]</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="st">  x -&gt; p1 x -&gt; p2</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="st">  }"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f165152141148bda644b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f165152141148bda644b">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"Desensitize to pain?\nNormalize violence?\n...\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8d3adfa5bb028ba1f8cc" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8d3adfa5bb028ba1f8cc">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"Desensitize to pain?\nNormalize violence?\n...\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this course, participants will be able to:</p>
 <ul>
-<li><p>By the end of this course, participants will be able to:</p>
-<p>Run and interpret the results of linear regression, moderation, mediation, and conditional process models.</p></li>
+<li><p>Run and interpret the results of linear regression, moderation, mediation, and conditional process models.</p></li>
 <li><p>Know how to test competing theories of mechanisms statistically through the comparison of indirect effects in models with multiple mediators.</p></li>
 <li><p>Know how to visualize and probe interactions in regression models in order to interpret interaction effects in the appropriate ways.</p></li>
 <li><p>Know how to estimate the contingencies of mechanisms through the computation and inference about conditional indirect effects.</p></li>
 <li><p>Know how to R language and PROCESS to run, visualize, and understand linear regression, moderation, mediation, and conditional process models.</p></li>
 </ul>
 </section>
-<section id="assessment" class="level2">
-<h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
-<p>The assessment includes two online quizzes to assess the understanding of key concepts. The results of each questionnaire will constitute 50% of the final grade.</p>
-<p>The evaluation also includes a final data analysis project to be conducted in small groups during the course. This constitutes a total of 50% of the final grade.</p>
-<p>Attendance is mandatory and participation positively evaluated.</p>
-</section>
 <section id="handbook" class="level2">
 <h2 class="anchored" data-anchor-id="handbook">Handbook</h2>
-<p>The official handbook of the course is:</p>
+<p>The handbook of the course is:</p>
 <p>Andrew F. Hayes. <em>Introduction to Mediation, Moderation, and Conditional Process Analysis. A Regression-Based Approach.</em> 2018. SECOND EDITION. THE GUILFORD PRESS, New York, London</p>
 
 
