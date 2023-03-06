@@ -3,9 +3,7 @@ title: "Mediation, Moderation, and Conditional Process Analysis with R"
 author: Dr. Nicola Righetti, PhD
 ---
 
-## Information
-
-### Aims, contents and method of the course
+## Aims, contents and method of the course
 
 This data analysis seminar focuses on linear regression analysis to explore questions about mediated and moderated effects.
 
@@ -35,7 +33,7 @@ By the end of this course, participants are expected to know how:
 
 -   Use the R language and PROCESS to run, visualize, and understand linear regression, moderation, mediation, and conditional process models.
 
-### Reading list
+## Reading list
 
 The official handbook of the course is:
 
