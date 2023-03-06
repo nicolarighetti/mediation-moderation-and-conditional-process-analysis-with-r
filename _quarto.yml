@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: Mediation Moderation and Conditional Process Analysis with R
+  title: Mediation, Moderation, and Conditional Process Analysis with R
   page-navigation: true
   page-footer: 
    left: "Copyright 2023, Nicola Righetti"
