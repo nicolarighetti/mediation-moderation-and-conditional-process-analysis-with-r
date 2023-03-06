@@ -7,7 +7,7 @@ author: Dr. Nicola Righetti, PhD
 
 This data analysis seminar focuses on linear regression analysis to explore questions about mediated and moderated effects.
 
-Computer applications will focus on R statistical language, the Rstudio environment ([https://www.rstudio.com),](https://www.rstudio.com/),/) and the PROCESS software by Andrew F. Hayes ([http://processmacro.org).](http://processmacro.org/)./)
+Computer applications will focus on R statistical language, the Rstudio environment ([https://www.rstudio.com](https://www.rstudio.com/)) and the PROCESS software by Andrew F. Hayes ([http://processmacro.org](http://processmacro.org/)).
 
 The course is subdivided into the following learning units:
 
