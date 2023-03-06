@@ -315,11 +315,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#check-the-assumptions" id="toc-check-the-assumptions" class="nav-link" data-scroll-target="#check-the-assumptions">Check the assumptions</a></li>
   </ul></li>
-  <li><a href="#reading-resources-excercises" id="toc-reading-resources-excercises" class="nav-link" data-scroll-target="#reading-resources-excercises">Reading, resources, excercises</a>
+  <li><a href="#reading-resources-exercises" id="toc-reading-resources-exercises" class="nav-link" data-scroll-target="#reading-resources-exercises">Reading, resources, exercises</a>
   <ul class="collapse">
   <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
-  <li><a href="#excercises" id="toc-excercises" class="nav-link" data-scroll-target="#excercises">Excercises</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -367,10 +367,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <section id="example-the-mean-as-a-simple-data-model" class="level3">
 <h3 class="anchored" data-anchor-id="example-the-mean-as-a-simple-data-model">Example: the mean as a simple data model</h3>
-<blockquote class="blockquote">
-<p>For example, we said the <strong>mean</strong> can be considered as a simple data model. Indeed, it is conceivable as a synthetic, simplified and approximate representation of the distribution of a variable. It is a mathematical model, as it is a number, and a statistical model, as it is informed by data and implies a certain level of uncertainty. Actually, the mean is just a rough representation of a variable. In fact, single values can be more or less in line with the mean. The mean is only the value that represents, <em>on average</em>, the different values of a variable. We can also quantify the uncertainty in this type of simple model thanks to the <strong>standard deviation</strong>. Standard deviation can be intended as an approximate measure of the average distance between the data points and the mean. A low standard deviation indicates that values are clustered close to the mean. In that case, the mean can be an excellent model. A high standard deviation means that the values are generally distant from the mean (in this case, the mean can be a relatively poor model of the variable).</p>
-</blockquote>
-<p>Example: Take a group of four friends whose monthly income is 1,000 euros, 1,500 euros, 4,000 euros and 7,000 euros respectively. Let’s use the mean to build a simple model of their income. We can see that the mean income is EUR 3,375. It is not a very good approximation of the income of these people, if you want to use it to predict the income of each member of the group. The standard deviation is in fact high (SD = 2,750 euro), meaning that there is therefore a great deal of variability and uncertainty: on average, the members’ income is 2,750 euros far from the mean.</p>
+<p>For example, we can consider the mean as a simple data model. Indeed, it can be conceived as a synthetic, simplified, and approximate representation of the distribution of a variable. It is a mathematical model since it is a number, and a statistical model since it is informed by data and implies a certain level of uncertainty. Actually, the mean is only a rough representation of a variable. In fact, single values can be more or less in line with the mean. The mean represents, on average, the different values of a variable. We can also quantify the uncertainty in this type of simple model thanks to the standard deviation. The standard deviation can be intended as an approximate measure of the average distance between the data points and the mean. A low standard deviation indicates that the values are clustered close to the mean, making the mean an excellent model. However, a high standard deviation means that the values are generally distant from the mean, making the mean a relatively poor model of the variable.</p>
+<p>For example, let’s take a group of four friends whose monthly income is 1,000 euros, 1,500 euros, 4,000 euros, and 7,000 euros respectively. Using the mean to build a simple model of their income, we can see that the mean income is EUR 3,375. However, this is not a very good approximation of the income of these people if we want to use it to predict the income of each member of the group. The standard deviation is high (SD = 2,750 euros), indicating a great deal of variability and uncertainty. On average, the members’ income is 2,750 euros far from the mean.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">4000</span>, <span class="dv">7000</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -382,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1] 2750</code></pre>
 </div>
 </div>
-<p>Now consider a group of four friends having a monthly income of EUR 1,000, EUR 1,500, EUR 1,300 and EUR 900 respectively. Let’s use the mean to build a simple model of their income. We can see that the mean income is EUR 1,175, with a low standard deviation (SD = 275). This group is more homogeneous as far as income is concerned, and the mean is a pretty good model of the income of each member.</p>
+<p>Let’s now consider a group of four friends who have monthly incomes of EUR 1,000, EUR 1,500, EUR 1,300, and EUR 900 respectively. Using the mean to create a simple model of their income, we can see that the mean income is EUR 1,175 with a low standard deviation (SD = 275). This group is relatively homogeneous regarding their income, and therefore, the mean serves as a reliable model for predicting the income of each member.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">1300</span>, <span class="dv">900</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -406,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="linear-models" class="level1">
 <h1>Linear models</h1>
-<p>A linear model is a special kind of statistical model based on linear relationships (see the Pearsons’ correlation coefficient) between two or more variables.</p>
+<p>A linear model is a special kind of statistical model based on linear relationships (see the Pearson’s correlation coefficient) between two or more variables.</p>
 <p>It is represented as a <strong>mathematical equation</strong> that links one (in case of a <em>simple linear regression model</em>) or more input variables (in case of a <em>multiple linear regression model</em>) to an output variable Y, by exploiting information contained in the <strong>association</strong> between the <strong>inputs</strong> and the <strong>output</strong>.</p>
 <ul>
 <li>The input variables are also called <strong>“predictors”, or “independent”, “explanatory”, or “antecedent” variables</strong>.</li>
@@ -437,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In practice, the single linear regression model is never used. If you are only interested in the relationship between two variables, you can calculate a correlation coefficient.</p>
 <p>However, the problem with the correlation coefficient is that the relationships between two variables is always ambiguous, and <strong>alternative explanations abound</strong>. For example, the correlation between income and education can simply reflect a difference in the status of the family of origin. Wealthier families have more resources and connections, send their sons and daughters to a better school and help them find better jobs, resulting in higher incomes.</p>
 <p>In general terms, what makes the association between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> ambiguous, leading to alternative explanations, is that <strong>people who differ on X and Y also likely differ on many other things, and it may be those things that are responsible for the association</strong>.</p>
-<p>Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counterfactual reasoning by <strong>estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables</strong> in the regression model. It does this by <em>“mathematically equating”</em> people (or whatever the unit of analysis is) on those variables. This equating process is also refferred to as <strong>partialing out</strong> those other variables from the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, or <strong>statistically control</strong> of those variables.</p>
+<p>Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counterfactual reasoning by <strong>estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables</strong> in the regression model. It does this by <em>“mathematically equating”</em> people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as <strong>partialling out</strong> those other variables from the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, or <strong>statistically control</strong> of those variables.</p>
 <blockquote class="blockquote">
 <p>Partial out: “to give (a variable) a fixed value while considering the relationship between two related variables” (Merriam-Webster)</p>
 </blockquote>
@@ -491,7 +489,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The R function to fit a linear regression model is <strong>lm()</strong>.</p>
 <p>The function takes at least two arguments separated by a <em>tilde</em> (~ check how to write that with your specific keyword. You can also copy it from the help by typing ?tilde):</p>
 <ul>
-<li>To the left of the tilde is the dependant variable (<span class="math inline">\(Y\)</span>)</li>
+<li>To the left of the tilde is the dependent variable (<span class="math inline">\(Y\)</span>)</li>
 <li>To the right of the tilde is the independent variables (<span class="math inline">\(X\)</span>) separated with the plus (+) symbol.</li>
 </ul>
 <p>We also use the argument <em>data</em> for the name of the dataset.</p>
@@ -609,13 +607,13 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="r-squared" class="level4">
 <h4 class="anchored" data-anchor-id="r-squared">R-squared</h4>
-<p>At the bottom of the table, there is general information on the model. Of particual interest is the <strong>R-squared</strong> and the <strong>p-value</strong>:</p>
+<p>At the bottom of the table, there is general information on the model. Of particular interest is the <strong>R-squared</strong> and the <strong>p-value</strong>:</p>
 <ul>
-<li>After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The <strong>R-squared is a goodness-of-fit measure</strong> which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the <strong>proportion of variance (of the dependent variable) explained by the model</strong> (i.e., how well can we predict the value of Y based on the values of Xs?). <strong>Adjusted R-squared</strong> add a penality based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.</li>
-<li>The last row of the output reports a <strong>p-value</strong> and the results from the <em>F-statistic</em>. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The <em>F-statistic</em> compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model using only the mean.</li>
+<li>After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The <strong>R-squared is a goodness-of-fit measure</strong> which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the <strong>proportion of variance (of the dependent variable) explained by the model</strong> (i.e., how well can we predict the value of Y based on the values of Xs?). <strong>Adjusted R-squared</strong> adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.</li>
+<li>The last row of the output reports a <strong>p-value</strong> and the results from the <em>F-statistic</em>. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The <em>F-statistic</em> compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.</li>
 </ul>
 <blockquote class="blockquote">
-<p>The p-value is expressed in scientific notation (2.2e-16). To convert to a common number, use the function <strong>format</strong>, adding the number you want to convert, and the option <strong>scientific=FALSE</strong>. For example:</p>
+<p>The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function <strong>format</strong>, adding the number you want to convert, and the option <strong>scientific=FALSE</strong>. For example:</p>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(<span class="fl">2.2e-16</span>, <span class="at">scientific=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -842,12 +840,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </section>
 </section>
-<section id="reading-resources-excercises" class="level1">
-<h1>Reading, resources, excercises</h1>
+<section id="reading-resources-exercises" class="level1">
+<h1>Reading, resources, exercises</h1>
 <section id="readings" class="level3">
 <h3 class="anchored" data-anchor-id="readings">Readings</h3>
 <ul>
-<li><strong>Chapter 2 - Regression fundermentals</strong> (Moodle)</li>
+<li><strong>Chapter 2 - Regression fundamentals</strong></li>
 </ul>
 </section>
 <section id="resources" class="level3">
@@ -858,8 +856,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Also <a href="https://www.youtube.com/watch?v=eTZ4VUZHzxw&amp;list=PLqzoL9-eJTNACQzVDW7ZhoKrveh4-mXv7&amp;index=3">this youtube video</a> provides a simple explanation of regression diagnostic plots.</li>
 </ul>
 </section>
-<section id="excercises" class="level3">
-<h3 class="anchored" data-anchor-id="excercises">Excercises</h3>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <p>Use the <strong>estress</strong> dataset (estress.csv) to perform a multiple linear regression model.</p>
 <section id="description-of-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="description-of-the-dataset">Description of the dataset</h4>
@@ -870,8 +868,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>There is also a measure of “entrepreneurial self-efficacy” which indexes a person’s confidence in his or her ability to successfully engage in various entrepreneurship-related tasks such as setting and meeting goals, creating new products, managing risk, and making decisions (<strong>ESE</strong> in the data file).</p>
 <p>The dataset also includes the length of time in the business, in years (<strong>TENURE</strong> in the data), and the age of these entrepreneurs (<strong>AGE</strong>).</p>
 </section>
-<section id="excercise" class="level4">
-<h4 class="anchored" data-anchor-id="excercise">Excercise</h4>
+<section id="exercise" class="level4">
+<h4 class="anchored" data-anchor-id="exercise">Exercise</h4>
 <p>Explore the variables (five number summary, standard deviation) and the dataset (sample size).</p>
 <p>Fit a linear regression model to predict/explain <strong>withdraw</strong> intention based on the following independent variables: <strong>affect, sex, estress, age, tenure, ese</strong>.</p>
 <p>Interpret the model.</p>

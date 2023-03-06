@@ -23,9 +23,9 @@ title: "Regression analysis"
 
 ### Example: the mean as a simple data model
 
-> For example, we said the **mean** can be considered as a simple data model. Indeed, it is conceivable as a synthetic, simplified and approximate representation of the distribution of a variable. It is a mathematical model, as it is a number, and a statistical model, as it is informed by data and implies a certain level of uncertainty. Actually, the mean is just a rough representation of a variable. In fact, single values can be more or less in line with the mean. The mean is only the value that represents, *on average*, the different values of a variable. We can also quantify the uncertainty in this type of simple model thanks to the **standard deviation**. Standard deviation can be intended as an approximate measure of the average distance between the data points and the mean. A low standard deviation indicates that values are clustered close to the mean. In that case, the mean can be an excellent model. A high standard deviation means that the values are generally distant from the mean (in this case, the mean can be a relatively poor model of the variable).
+For example, we can consider the mean as a simple data model. Indeed, it can be conceived as a synthetic, simplified, and approximate representation of the distribution of a variable. It is a mathematical model since it is a number, and a statistical model since it is informed by data and implies a certain level of uncertainty. Actually, the mean is only a rough representation of a variable. In fact, single values can be more or less in line with the mean. The mean represents, on average, the different values of a variable. We can also quantify the uncertainty in this type of simple model thanks to the standard deviation. The standard deviation can be intended as an approximate measure of the average distance between the data points and the mean. A low standard deviation indicates that the values are clustered close to the mean, making the mean an excellent model. However, a high standard deviation means that the values are generally distant from the mean, making the mean a relatively poor model of the variable.
 
-Example: Take a group of four friends whose monthly income is 1,000 euros, 1,500 euros, 4,000 euros and 7,000 euros respectively. Let's use the mean to build a simple model of their income. We can see that the mean income is EUR 3,375. It is not a very good approximation of the income of these people, if you want to use it to predict the income of each member of the group. The standard deviation is in fact high (SD = 2,750 euro), meaning that there is therefore a great deal of variability and uncertainty: on average, the members' income is 2,750 euros far from the mean.
+For example, let's take a group of four friends whose monthly income is 1,000 euros, 1,500 euros, 4,000 euros, and 7,000 euros respectively. Using the mean to build a simple model of their income, we can see that the mean income is EUR 3,375. However, this is not a very good approximation of the income of these people if we want to use it to predict the income of each member of the group. The standard deviation is high (SD = 2,750 euros), indicating a great deal of variability and uncertainty. On average, the members' income is 2,750 euros far from the mean.
 
 ```{r}
 income <- c(1000, 1500, 4000, 7000)
@@ -33,7 +33,7 @@ mean(income)
 sd(income)
 ```
 
-Now consider a group of four friends having a monthly income of EUR 1,000, EUR 1,500, EUR 1,300 and EUR 900 respectively. Let's use the mean to build a simple model of their income. We can see that the mean income is EUR 1,175, with a low standard deviation (SD = 275). This group is more homogeneous as far as income is concerned, and the mean is a pretty good model of the income of each member.
+Let's now consider a group of four friends who have monthly incomes of EUR 1,000, EUR 1,500, EUR 1,300, and EUR 900 respectively. Using the mean to create a simple model of their income, we can see that the mean income is EUR 1,175 with a low standard deviation (SD = 275). This group is relatively homogeneous regarding their income, and therefore, the mean serves as a reliable model for predicting the income of each member.
 
 ```{r}
 income <- c(1000, 1500, 1300, 900)
@@ -50,7 +50,7 @@ In linear regression, the mean is particularly important:
 
 # Linear models
 
-A linear model is a special kind of statistical model based on linear relationships (see the Pearsons' correlation coefficient) between two or more variables.
+A linear model is a special kind of statistical model based on linear relationships (see the Pearson's correlation coefficient) between two or more variables.
 
 It is represented as a **mathematical equation** that links one (in case of a *simple linear regression model*) or more input variables (in case of a *multiple linear regression model*) to an output variable Y, by exploiting information contained in the **association** between the **inputs** and the **output**.
 
@@ -89,7 +89,7 @@ However, the problem with the correlation coefficient is that the relationships 
 
 In general terms, what makes the association between two variables $X$ and $Y$ ambiguous, leading to alternative explanations, is that **people who differ on X and Y also likely differ on many other things, and it may be those things that are responsible for the association**.
 
-Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counterfactual reasoning by **estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables** in the regression model. It does this by *"mathematically equating"* people (or whatever the unit of analysis is) on those variables. This equating process is also refferred to as **partialing out** those other variables from the association between $X$ and $Y$, or **statistically control** of those variables.
+Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counterfactual reasoning by **estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables** in the regression model. It does this by *"mathematically equating"* people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as **partialling out** those other variables from the association between $X$ and $Y$, or **statistically control** of those variables.
 
 > Partial out: "to give (a variable) a fixed value while considering the relationship between two related variables" (Merriam-Webster)
 
@@ -142,7 +142,7 @@ The R function to fit a linear regression model is **lm()**.
 
 The function takes at least two arguments separated by a *tilde* (\~ check how to write that with your specific keyword. You can also copy it from the help by typing ?tilde):
 
--   To the left of the tilde is the dependant variable ($Y$)
+-   To the left of the tilde is the dependent variable ($Y$)
 -   To the right of the tilde is the independent variables ($X$) separated with the plus (+) symbol.
 
 We also use the argument *data* for the name of the dataset.
@@ -201,12 +201,12 @@ At the top of the output, there is the five-number summary of **Residuals** (the
 
 #### R-squared
 
-At the bottom of the table, there is general information on the model. Of particual interest is the **R-squared** and the **p-value**:
+At the bottom of the table, there is general information on the model. Of particular interest is the **R-squared** and the **p-value**:
 
--   After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The **R-squared is a goodness-of-fit measure** which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the **proportion of variance (of the dependent variable) explained by the model** (i.e., how well can we predict the value of Y based on the values of Xs?). **Adjusted R-squared** add a penality based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.
--   The last row of the output reports a **p-value** and the results from the *F-statistic*. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The *F-statistic* compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model using only the mean.
+-   After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The **R-squared is a goodness-of-fit measure** which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the **proportion of variance (of the dependent variable) explained by the model** (i.e., how well can we predict the value of Y based on the values of Xs?). **Adjusted R-squared** adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.
+-   The last row of the output reports a **p-value** and the results from the *F-statistic*. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The *F-statistic* compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.
 
-> The p-value is expressed in scientific notation (2.2e-16). To convert to a common number, use the function **format**, adding the number you want to convert, and the option **scientific=FALSE**. For example:
+> The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function **format**, adding the number you want to convert, and the option **scientific=FALSE**. For example:
 
 ```{r}
 format(2.2e-16, scientific=FALSE)
@@ -341,11 +341,11 @@ library(car)
 car::vif(lm2)
 ```
 
-# Reading, resources, excercises
+# Reading, resources, exercises
 
 ### Readings
 
--   **Chapter 2 - Regression fundermentals** (Moodle)
+-   **Chapter 2 - Regression fundamentals**
 
 ### Resources
 
@@ -354,7 +354,7 @@ There are plenty of resources online about linear regression and R. For example:
 -   [This website](http://www.sthda.com/english/articles/39-regression-model-diagnostics/161-linear-regression-assumptions-and-diagnostics-in-r-essentials/) provides a clear explanation of regression diagnostic plots
 -   Also [this youtube video](https://www.youtube.com/watch?v=eTZ4VUZHzxw&list=PLqzoL9-eJTNACQzVDW7ZhoKrveh4-mXv7&index=3) provides a simple explanation of regression diagnostic plots.
 
-### Excercises
+### Exercises
 
 Use the **estress** dataset (estress.csv) to perform a multiple linear regression model.
 
@@ -372,7 +372,7 @@ There is also a measure of "entrepreneurial self-efficacy" which indexes a perso
 
 The dataset also includes the length of time in the business, in years (**TENURE** in the data), and the age of these entrepreneurs (**AGE**).
 
-#### Excercise
+#### Exercise
 
 Explore the variables (five number summary, standard deviation) and the dataset (sample size).
 
