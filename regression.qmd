@@ -44,8 +44,8 @@ sd(income)
 
 In linear regression, the mean is particularly important:
 
--   It is used as a **baseline** against which to compare the utility of the model. Linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average. The model using the mean that is used as a baseline is also called the **null model**.
--   The linear regression model attempts to predict the mean value of a variable, given one or more other variables.
+-   It is used as a **baseline** against which to compare the utility of the model. Linear regression modeling attempts to identify variables that help explain/predict another variable better than the outcome variable's average. The model using the mean that is used as a baseline is also called the **null model**.
+-   The linear regression model attempts to predict the mean value of a variable, given one or more other variables and assumes a linear relationship between the predictors and the outcome.
 
 # Linear models
 
@@ -56,7 +56,7 @@ It is represented as a **mathematical equation** that links one (in case of a *s
 -   The input variables are also called **"predictors", or "independent", "explanatory", or "antecedent" variables**.
 -   The output variable is also called **"outcome", "dependent", or "consequent" variable**.
 
-Linear regression models, in their simplest form, can be used for answering **questions of the "whether" or "if" variety**. These questions ask whether two variables are correlated, causally or otherwise (*explanation*), or if something is more or less likely to happen in one set of circumstances or conditions than another (*prediction*).
+Linear regression models, as a basic application, can be used for answering **questions of the "whether" or "if" variety**. These questions ask whether two variables are correlated, causally or otherwise (*explanation*), or if something is more or less likely to happen in one set of circumstances or conditions than another (*prediction*).
 
 -   **Prediction**: predict values taken by the dependent variable when we only know the values taken on by the independent variable(s) (e.g., predict income based on sex and level of education);
 -   **Explanation**: explaining the structure of a phenomenon by testing hypotheses about the relationships between dependent and independent variables (i.e., is there a relationships between two variables? How strong is it?)
@@ -64,7 +64,7 @@ Linear regression models, in their simplest form, can be used for answering **qu
 To do that, regression analysis computes an **equation** such that, given the input variables, the result of the equation yields:
 
 -   An estimate of the dependent variable (*prediction*).
--   A measure of the importance and *statistical significance* of the independent variables (*explanation*).
+-   A measure of the importance and *statistical significance* of the relationships between the independent variables and the dependent variable (*explanation*).
 
 # The equation form
 
@@ -88,11 +88,11 @@ However, the problem with the correlation coefficient is that the relationships 
 
 In general terms, what makes the association between two variables $X$ and $Y$ ambiguous, leading to alternative explanations, is that **people who differ on X and Y also likely differ on many other things, and it may be those things that are responsible for the association**.
 
-Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counterfactual reasoning by **estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables** in the regression model. It does this by *"mathematically equating"* people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as **partialling out** those other variables from the association between $X$ and $Y$, or **statistically control** of those variables.
+Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counter-factual reasoning by **estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables** in the regression model. It does this by *"mathematically equating"* people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as **partialling out** those other variables from the association between $X$ and $Y$, or **statistically control** of those variables.
 
 > Partial out: "to give (a variable) a fixed value while considering the relationship between two related variables" (Merriam-Webster)
 
-For example, to estimate the effect of level of education on income, we could fit a multiple linear regression model. This model would include variables that we think are associated with income. For example, level of education, wealth of the family of origin, and a measure of social connection. This model can estimate the effect of education on income, **holding constant all other independent variables** (i.e., net of the effect of other variables). In practical terms, this means that the regression model shows an estimate of the effect of education on income among individuals with families of the same status and with the same type of social connections, so this variables should no longer have a confounding effect on our estimate of the effect of education.
+For example, to estimate the effect of level of education on income, we could fit a multiple linear regression model. This model would include variables that we think are associated with income. For example, level of education, wealth of the family of origin, and a measure of social connection. This model can estimate the effect of education on income, **holding constant all other independent variables** (i.e., net of the effect of other variables). In practical terms, this means that the regression model shows an estimate of the effect of education on income among individuals with families of the same status and with the same type of social connections, so this variable should no longer have a confounding effect on our estimate of the effect of education.
 
 # Elements of the linear model equation
 
@@ -202,7 +202,7 @@ At the top of the output, there is the five-number summary of **Residuals** (the
 
 At the bottom of the table, there is general information on the model. Of particular interest is the **R-squared** and the **p-value**:
 
--   After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The **R-squared is a goodness-of-fit measure** which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the **proportion of variance (of the dependent variable) explained by the model** (i.e., how well can we predict the value of Y based on the values of Xs?). **Adjusted R-squared** adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.
+-   After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The **R-squared is a goodness-of-fit measure** which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the **proportion of variance (of the dependent variable) explained by the model** (i.e., how well can we predict the value of $Y$ based on the values of $Xs$?). **Adjusted R-squared** adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.
 -   The last row of the output reports a **p-value** and the results from the *F-statistic*. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The *F-statistic* compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.
 
 > The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function **format**, adding the number you want to convert, and the option **scientific=FALSE**. For example:
@@ -278,7 +278,7 @@ But we said that the difference is not statistically significant. Therefore, we 
 
 # Residuals and assumptions
 
-The intepretation of residulas requires to discuss the assumptions of linear models.
+The interpretation of residuals requires to discuss the assumptions of linear models.
 
 Linear regression is founded on some assumptions. The **violation of these assumptions** can have **adverse effects on the interpretation** of the model and on inference, therefore we should be mindful of the assumptions the regression model makes. The main assumptions of the linear regression model are the following:
 

@@ -176,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./conditional.html">
- <span class="menu-text">Conditional Process</span></a>
+ <span class="menu-text">Conditional</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -398,8 +398,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="the-mean-in-regression-analysis">The mean in regression analysis</h3>
 <p>In linear regression, the mean is particularly important:</p>
 <ul>
-<li>It is used as a <strong>baseline</strong> against which to compare the utility of the model. Linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average. The model using the mean that is used as a baseline is also called the <strong>null model</strong>.</li>
-<li>The linear regression model attempts to predict the mean value of a variable, given one or more other variables.</li>
+<li>It is used as a <strong>baseline</strong> against which to compare the utility of the model. Linear regression modeling attempts to identify variables that help explain/predict another variable better than the outcome variable’s average. The model using the mean that is used as a baseline is also called the <strong>null model</strong>.</li>
+<li>The linear regression model attempts to predict the mean value of a variable, given one or more other variables and assumes a linear relationship between the predictors and the outcome.</li>
 </ul>
 </section>
 </section>
@@ -411,7 +411,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The input variables are also called <strong>“predictors”, or “independent”, “explanatory”, or “antecedent” variables</strong>.</li>
 <li>The output variable is also called <strong>“outcome”, “dependent”, or “consequent” variable</strong>.</li>
 </ul>
-<p>Linear regression models, in their simplest form, can be used for answering <strong>questions of the “whether” or “if” variety</strong>. These questions ask whether two variables are correlated, causally or otherwise (<em>explanation</em>), or if something is more or less likely to happen in one set of circumstances or conditions than another (<em>prediction</em>).</p>
+<p>Linear regression models, as a basic application, can be used for answering <strong>questions of the “whether” or “if” variety</strong>. These questions ask whether two variables are correlated, causally or otherwise (<em>explanation</em>), or if something is more or less likely to happen in one set of circumstances or conditions than another (<em>prediction</em>).</p>
 <ul>
 <li><strong>Prediction</strong>: predict values taken by the dependent variable when we only know the values taken on by the independent variable(s) (e.g., predict income based on sex and level of education);</li>
 <li><strong>Explanation</strong>: explaining the structure of a phenomenon by testing hypotheses about the relationships between dependent and independent variables (i.e., is there a relationships between two variables? How strong is it?)</li>
@@ -419,7 +419,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To do that, regression analysis computes an <strong>equation</strong> such that, given the input variables, the result of the equation yields:</p>
 <ul>
 <li>An estimate of the dependent variable (<em>prediction</em>).</li>
-<li>A measure of the importance and <em>statistical significance</em> of the independent variables (<em>explanation</em>).</li>
+<li>A measure of the importance and <em>statistical significance</em> of the relationships between the independent variables and the dependent variable (<em>explanation</em>).</li>
 </ul>
 </section>
 <section id="the-equation-form" class="level1">
@@ -436,11 +436,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In practice, the single linear regression model is never used. If you are only interested in the relationship between two variables, you can calculate a correlation coefficient.</p>
 <p>However, the problem with the correlation coefficient is that the relationships between two variables is always ambiguous, and <strong>alternative explanations abound</strong>. For example, the correlation between income and education can simply reflect a difference in the status of the family of origin. Wealthier families have more resources and connections, send their sons and daughters to a better school and help them find better jobs, resulting in higher incomes.</p>
 <p>In general terms, what makes the association between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> ambiguous, leading to alternative explanations, is that <strong>people who differ on X and Y also likely differ on many other things, and it may be those things that are responsible for the association</strong>.</p>
-<p>Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counterfactual reasoning by <strong>estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables</strong> in the regression model. It does this by <em>“mathematically equating”</em> people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as <strong>partialling out</strong> those other variables from the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, or <strong>statistically control</strong> of those variables.</p>
+<p>Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counter-factual reasoning by <strong>estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables</strong> in the regression model. It does this by <em>“mathematically equating”</em> people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as <strong>partialling out</strong> those other variables from the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, or <strong>statistically control</strong> of those variables.</p>
 <blockquote class="blockquote">
 <p>Partial out: “to give (a variable) a fixed value while considering the relationship between two related variables” (Merriam-Webster)</p>
 </blockquote>
-<p>For example, to estimate the effect of level of education on income, we could fit a multiple linear regression model. This model would include variables that we think are associated with income. For example, level of education, wealth of the family of origin, and a measure of social connection. This model can estimate the effect of education on income, <strong>holding constant all other independent variables</strong> (i.e., net of the effect of other variables). In practical terms, this means that the regression model shows an estimate of the effect of education on income among individuals with families of the same status and with the same type of social connections, so this variables should no longer have a confounding effect on our estimate of the effect of education.</p>
+<p>For example, to estimate the effect of level of education on income, we could fit a multiple linear regression model. This model would include variables that we think are associated with income. For example, level of education, wealth of the family of origin, and a measure of social connection. This model can estimate the effect of education on income, <strong>holding constant all other independent variables</strong> (i.e., net of the effect of other variables). In practical terms, this means that the regression model shows an estimate of the effect of education on income among individuals with families of the same status and with the same type of social connections, so this variable should no longer have a confounding effect on our estimate of the effect of education.</p>
 </section>
 <section id="elements-of-the-linear-model-equation" class="level1">
 <h1>Elements of the linear model equation</h1>
@@ -610,7 +610,7 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h4 class="anchored" data-anchor-id="r-squared">R-squared</h4>
 <p>At the bottom of the table, there is general information on the model. Of particular interest is the <strong>R-squared</strong> and the <strong>p-value</strong>:</p>
 <ul>
-<li>After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The <strong>R-squared is a goodness-of-fit measure</strong> which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the <strong>proportion of variance (of the dependent variable) explained by the model</strong> (i.e., how well can we predict the value of Y based on the values of Xs?). <strong>Adjusted R-squared</strong> adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.</li>
+<li>After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The <strong>R-squared is a goodness-of-fit measure</strong> which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the <strong>proportion of variance (of the dependent variable) explained by the model</strong> (i.e., how well can we predict the value of <span class="math inline">\(Y\)</span> based on the values of <span class="math inline">\(Xs\)</span>?). <strong>Adjusted R-squared</strong> adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.</li>
 <li>The last row of the output reports a <strong>p-value</strong> and the results from the <em>F-statistic</em>. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The <em>F-statistic</em> compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.</li>
 </ul>
 <blockquote class="blockquote">
@@ -749,7 +749,7 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="residuals-and-assumptions" class="level1">
 <h1>Residuals and assumptions</h1>
-<p>The intepretation of residulas requires to discuss the assumptions of linear models.</p>
+<p>The interpretation of residuals requires to discuss the assumptions of linear models.</p>
 <p>Linear regression is founded on some assumptions. The <strong>violation of these assumptions</strong> can have <strong>adverse effects on the interpretation</strong> of the model and on inference, therefore we should be mindful of the assumptions the regression model makes. The main assumptions of the linear regression model are the following:</p>
 <ul>
 <li><strong>Linearity</strong>: Linearity states that <strong>the relationships between the variables in the model are linear</strong> in nature, or at least approximately linear. For obvious reasons, it’s wrong to use a linear model to understand non-linear relations. Linearity is violated, for instance, when for low values of <span class="math inline">\(X\)</span>, a <em>one</em> unit increase in <span class="math inline">\(X\)</span> corresponds to an increase of <em>one</em> unit in <span class="math inline">\(Y\)</span>, but for high values of <span class="math inline">\(X\)</span>, <em>one</em> unit increase in <span class="math inline">\(X\)</span> corresponds to an increase of <em>three</em> units in <span class="math inline">\(Y\)</span>.</li>
