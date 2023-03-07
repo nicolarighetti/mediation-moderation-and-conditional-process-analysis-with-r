@@ -3,9 +3,7 @@ title: "Regression analysis"
 author: Dr. Nicola Righetti, PhD
 ---
 
-# The simple and multiple regression model
-
-## Learning objectives
+# Learning Goals
 
 -   Understand the concept of statistical model
 -   Understand the concept of linear regression model

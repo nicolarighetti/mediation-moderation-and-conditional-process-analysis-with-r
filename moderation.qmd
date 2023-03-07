@@ -33,7 +33,7 @@ DiagrammeR::grViz("digraph {
   }")
 ```
 
-# Learning objectives
+# Learning goals
 
 -   learning the **concept of moderation**
 -   learn to **fit a simple moderation model** using process

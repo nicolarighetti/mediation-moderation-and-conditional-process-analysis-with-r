@@ -282,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning Goals</a></li>
   <li><a href="#sample-size-and-data-preview" id="toc-sample-size-and-data-preview" class="nav-link" data-scroll-target="#sample-size-and-data-preview">Sample size and data preview</a></li>
   <li><a href="#measure-of-central-tendency" id="toc-measure-of-central-tendency" class="nav-link" data-scroll-target="#measure-of-central-tendency">Measure of central tendency</a>
   <ul class="collapse">
@@ -348,8 +348,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<section id="learning-goals" class="level1">
+<h1>Learning Goals</h1>
 <p>At the end of this section you will understand the following concepts, know the R functions to calculate/create the following statistical measures/plots, and be able to interpret them:</p>
 <ul>
 <li>Sample size and data set preview</li>
@@ -359,8 +359,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Standardization and z-scores</li>
 </ul>
 </section>
-<section id="sample-size-and-data-preview" class="level2">
-<h2 class="anchored" data-anchor-id="sample-size-and-data-preview">Sample size and data preview</h2>
+<section id="sample-size-and-data-preview" class="level1">
+<h1>Sample size and data preview</h1>
 <p>When starting to work with a new data set, the first step is to describe its general characteristics and those of its variables. This includes:</p>
 <ul>
 <li>describing the number of cases in the data set (the <strong>sample size</strong>)</li>
@@ -428,14 +428,14 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 </section>
-<section id="measure-of-central-tendency" class="level2">
-<h2 class="anchored" data-anchor-id="measure-of-central-tendency">Measure of central tendency</h2>
+<section id="measure-of-central-tendency" class="level1">
+<h1>Measure of central tendency</h1>
 <p><a href="https://en.wikipedia.org/wiki/Descriptive_statistics">Descriptive statistics</a> are used to describe and summarize variables of a data set.</p>
 <p>Typically, there are two general types of statistics that are used to describe data: <strong>Measures of central tendency</strong> and <strong>Measures of spread</strong>.</p>
 <p><strong>Measures of central tendency</strong> include: - <strong>Mode</strong>: the most frequent score in our data set - <strong>Median</strong>: the middle score for a set of data that has been arranged in order of magnitude - <strong>Mean</strong>: the sum of all the values in the data set divided by the number of values in the data set.</p>
 <p>A clear description of the different measures can be found <a href="https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php">here</a>.</p>
-<section id="the-mean" class="level3">
-<h3 class="anchored" data-anchor-id="the-mean">The Mean</h3>
+<section id="the-mean" class="level2">
+<h2 class="anchored" data-anchor-id="the-mean">The Mean</h2>
 <p>In this course we’ll focus on the mean (or average). This is the most popular and well known measure of central tendency, and it is used in linear regression modeling.</p>
 <p>The mean itself is essentially a model of a data set. One of its important properties is that it minimises error in the prediction of any one value in the data set. In other terms, lacking better predictors, the mean is the best predictor of a value in the data set.</p>
 <p>In R, you can calculate the mean of a variable by the function <strong>mean()</strong> (reminder: to access a variable in the data set, that is to say, a column of a data.frame, use the dollar sign):</p>
@@ -461,8 +461,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 </section>
-<section id="frequency-distributions" class="level3">
-<h3 class="anchored" data-anchor-id="frequency-distributions">Frequency distributions</h3>
+<section id="frequency-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="frequency-distributions">Frequency distributions</h2>
 <p>The frequency distribution of a variable is an overview of its values and the number of times they occur (i.e., their frequency).</p>
 <p>The distributions can be continuous or discrete, depending on the type of variable. The distribution of a variable is summarized by the <a href="https://en.wikipedia.org/wiki/Five-number_summary">five-number summary</a>, and graphically, by histograms and box plots (for continuous or discrete variables) and bar charts (for categorical variables).</p>
 <ul>
@@ -471,8 +471,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <li><p><strong>Continuous variables</strong> have <strong>continuous distributions</strong>. This kind of variable can assume one of an infinite (uncountable) number of different values. Continuous variables are represented by real numbers. Temperature or velocity are an example. In the data set <em>glbwarm</em>, the variable “govact” is represented as a continuous variable.</p></li>
 </ul>
 </section>
-<section id="five-number-summary" class="level3">
-<h3 class="anchored" data-anchor-id="five-number-summary">Five-Number Summary</h3>
+<section id="five-number-summary" class="level2">
+<h2 class="anchored" data-anchor-id="five-number-summary">Five-Number Summary</h2>
 <p>data set</p>
 <p>A numerical description of the distribution is provided by the function <strong>summary()</strong>, which gives the <strong>five-number summary</strong>.</p>
 <div class="cell">
@@ -484,8 +484,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 <p>The five-number summary includes the mean, the median, minimum and maximum values, the first and third quartiles. <a href="https://en.wikipedia.org/wiki/Quartile">Quartiles</a> are cut points dividing the range of values of the variable into four parts, or quarters, of more-or-less equal size (25%, 25%, 25%, 25%). The <a href="https://en.wikipedia.org/wiki/Median">median</a> is the value separating the lower 50% from the upper 50% of the distribution.</p>
 </section>
-<section id="boxplot" class="level3">
-<h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
+<section id="boxplot" class="level2">
+<h2 class="anchored" data-anchor-id="boxplot">Boxplot</h2>
 <p>The same information of a five-number summary is graphically displayed by the <a href="https://en.wikipedia.org/wiki/Box_plot">boxplot</a>, also called <em>box-and-whisker plot</em>. The “box” represent the 1st and 3rd quartile, the central line is the median, the “whiskers” represent the maximumn and minimum.</p>
 <p>The points above and below the whiskers are <a href="https://en.wikipedia.org/wiki/Outlier">outliers</a>, data points that differ significantly from other observations. Since they are so different they are difficult to predict. Moreover, they can bias the estimates of a linear regression models.</p>
 <div class="cell">
@@ -496,8 +496,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 </section>
-<section id="histogram" class="level3">
-<h3 class="anchored" data-anchor-id="histogram">Histogram</h3>
+<section id="histogram" class="level2">
+<h2 class="anchored" data-anchor-id="histogram">Histogram</h2>
 <p>Another way to show the distribution of a variable is by means of an <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a>, using the function <strong>hist()</strong>.</p>
 <p>The function can be used to show the frequency distribution of values:</p>
 <div class="cell">
@@ -543,8 +543,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 </section>
-<section id="bar-plot" class="level3">
-<h3 class="anchored" data-anchor-id="bar-plot">Bar plot</h3>
+<section id="bar-plot" class="level2">
+<h2 class="anchored" data-anchor-id="bar-plot">Bar plot</h2>
 <p>Histograms and box plot are used to represent the distribution of numerical variables, such as continuous and discrete variables. For categorical variables, a bar graph is used in place.</p>
 <p>For instance, the histogram of the dichotomous categorical variable “sex”, is not appropriate. It only takes on the values 0 and 1, but they are not numbers (0 = male, 1 = female) and there is nothing in between them (e.g., 0, 0.1, 0.2, …, 1).</p>
 <div class="cell">
@@ -574,8 +574,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </section>
 </section>
-<section id="measures-of-spread" class="level2">
-<h2 class="anchored" data-anchor-id="measures-of-spread">Measures of Spread</h2>
+<section id="measures-of-spread" class="level1">
+<h1>Measures of Spread</h1>
 <p><strong>Measures of spread</strong> describe how similar or varied the set of observed values are for a particular variable. Measures of spread include the range, quartiles and the interquartile range, variance and standard deviation.</p>
 <p>For example, the interquartile range is the difference between the third and first quartile and is represented by the size of the “box” in a boxplot.</p>
 <div class="cell">
@@ -585,8 +585,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 <p>Even more relevant are variance and standard deviation.</p>
-<section id="variance" class="level3">
-<h3 class="anchored" data-anchor-id="variance">Variance</h3>
+<section id="variance" class="level2">
+<h2 class="anchored" data-anchor-id="variance">Variance</h2>
 <p><strong>Variance</strong> (represented as <span class="math inline">\(s^2\)</span> when computed on a sample, as in this case), is a measure of dispersion that quantifies how spread the values of a variable are from the mean (the average value of the variable), or in other terms, of how much they vary (“variance”).</p>
 <p>The formula for variance is:</p>
 <p><span class="math display">\[s^2 =  \frac{\sum_{i=1}^{n} (x_i-\bar x)^2}{n-1}\]</span></p>
@@ -598,8 +598,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 </section>
-<section id="standard-deviation" class="level3">
-<h3 class="anchored" data-anchor-id="standard-deviation">Standard Deviation</h3>
+<section id="standard-deviation" class="level2">
+<h2 class="anchored" data-anchor-id="standard-deviation">Standard Deviation</h2>
 <p><strong>Standard deviation</strong> (represented as <span class="math inline">\(s\)</span> when computed on a sample, as in this case) is a related, and more commonly used, measure of dispersion. A low standard deviation indicates that the values of a variable tend to be close to its average, while a high standard deviation indicates that the values are spread out over a wider range. It is the square root of the variance:</p>
 <p><span class="math display">\[s = \sqrt \frac{\sum (x_i-\bar x)^2}{n-1}\]</span></p>
 <p>In R:</p>

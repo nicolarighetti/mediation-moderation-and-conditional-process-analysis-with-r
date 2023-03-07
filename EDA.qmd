@@ -3,7 +3,7 @@ title: "Exploratory Data Analysis"
 author: Dr. Nicola Righetti, PhD
 ---
 
-## Learning Outcomes
+# Learning Goals
 
 At the end of this section you will understand the following concepts, know the R functions to calculate/create the following statistical measures/plots, and be able to interpret them:
 
@@ -13,7 +13,7 @@ At the end of this section you will understand the following concepts, know the 
 -   Measures of central tendency and measures of spread
 -   Standardization and z-scores
 
-## Sample size and data preview
+# Sample size and data preview
 
 When starting to work with a new data set, the first step is to describe its general characteristics and those of its variables. This includes:
 
@@ -58,7 +58,7 @@ The glimpse function also includes a preview of the data set, but a clearer prev
 head(glbwarm)
 ```
 
-## Measure of central tendency
+# Measure of central tendency
 
 [Descriptive statistics](https://en.wikipedia.org/wiki/Descriptive_statistics) are used to describe and summarize variables of a data set.
 
@@ -68,7 +68,7 @@ Typically, there are two general types of statistics that are used to describe d
 
 A clear description of the different measures can be found [here](https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php).
 
-### The Mean
+## The Mean
 
 In this course we'll focus on the mean (or average). This is the most popular and well known measure of central tendency, and it is used in linear regression modeling.
 
@@ -93,7 +93,7 @@ mean_age <- mean(glbwarm$age)
 round(mean_age, 2)
 ```
 
-### Frequency distributions
+## Frequency distributions
 
 The frequency distribution of a variable is an overview of its values and the number of times they occur (i.e., their frequency).
 
@@ -105,7 +105,7 @@ The distributions can be continuous or discrete, depending on the type of variab
 
 -   **Continuous variables** have **continuous distributions**. This kind of variable can assume one of an infinite (uncountable) number of different values. Continuous variables are represented by real numbers. Temperature or velocity are an example. In the data set *glbwarm*, the variable "govact" is represented as a continuous variable.
 
-### Five-Number Summary
+## Five-Number Summary
 
 data set
 
@@ -117,7 +117,7 @@ summary(glbwarm$ideology)
 
 The five-number summary includes the mean, the median, minimum and maximum values, the first and third quartiles. [Quartiles](https://en.wikipedia.org/wiki/Quartile) are cut points dividing the range of values of the variable into four parts, or quarters, of more-or-less equal size (25%, 25%, 25%, 25%). The [median](https://en.wikipedia.org/wiki/Median) is the value separating the lower 50% from the upper 50% of the distribution.
 
-### Boxplot
+## Boxplot
 
 The same information of a five-number summary is graphically displayed by the [boxplot](https://en.wikipedia.org/wiki/Box_plot), also called *box-and-whisker plot*. The "box" represent the 1st and 3rd quartile, the central line is the median, the "whiskers" represent the maximumn and minimum.
 
@@ -128,7 +128,7 @@ The points above and below the whiskers are [outliers](https://en.wikipedia.org/
 boxplot(glbwarm$govact, main = "Ideology")
 ```
 
-### Histogram
+## Histogram
 
 Another way to show the distribution of a variable is by means of an [histogram](https://en.wikipedia.org/wiki/Histogram), using the function **hist()**.
 
@@ -172,7 +172,7 @@ lines(density(glbwarm$govact, adjust = 2),
       lty = "dotted")
 ```
 
-### Bar plot
+## Bar plot
 
 Histograms and box plot are used to represent the distribution of numerical variables, such as continuous and discrete variables. For categorical variables, a bar graph is used in place.
 
@@ -198,7 +198,7 @@ barplot(table(glbwarm$sex),
         xlab = "0 = Male 1 = Female")
 ```
 
-## Measures of Spread
+# Measures of Spread
 
 **Measures of spread** describe how similar or varied the set of observed values are for a particular variable. Measures of spread include the range, quartiles and the interquartile range, variance and standard deviation.
 
@@ -210,7 +210,7 @@ boxplot(glbwarm$age)
 
 Even more relevant are variance and standard deviation.
 
-### Variance
+## Variance
 
 **Variance** (represented as $s^2$ when computed on a sample, as in this case), is a measure of dispersion that quantifies how spread the values of a variable are from the mean (the average value of the variable), or in other terms, of how much they vary ("variance").
 
@@ -224,7 +224,7 @@ Capital sigma $\sum$ is the summation symbol, $(x_i-\bar x)$ is the deviation (i
 var(glbwarm$age)
 ```
 
-### Standard Deviation
+## Standard Deviation
 
 **Standard deviation** (represented as $s$ when computed on a sample, as in this case) is a related, and more commonly used, measure of dispersion. A low standard deviation indicates that the values of a variable tend to be close to its average, while a high standard deviation indicates that the values are spread out over a wider range. It is the square root of the variance:
 

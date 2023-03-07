@@ -20,7 +20,7 @@ DiagrammeR::grViz("digraph {
   }")
 ```
 
-## Learning objectives
+# Learning goals
 
 -   Learning the **concept of conditional process** with particular attention to **conditional direct and indirect effects**, and **relative conditional direct and indirect effects**.
 -   Learn to **fit conditional process models** using PROCESS

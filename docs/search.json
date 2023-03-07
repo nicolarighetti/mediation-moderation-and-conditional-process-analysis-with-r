@@ -11,7 +11,7 @@
     "href": "mediation.html#learning-outcomes",
     "title": "Mediation",
     "section": "Learning outcomes",
-    "text": "Learning outcomes\nAt the end of UNIT 3A you should know:\n\nWhat is the Simple Mediation Model\nHow to estimate a Simple Mediation Model using the PROGRESS software (in R)\nHow to interpret the output of the estimation of the Simple Mediation Model using the PROGRESS software\n\nIn this part of the course, also due to time costrains, we are going to follow a practical/applied approach. We’ll start from concrete research problems and questions, and we’ll learn to use mediation models to answer them. However, we’ll also touch upon the theoretical concepts needed to an appropriate interpretation of the models."
+    "text": "Learning outcomes\n\nLearn to rule out alternative explanation in mediation models with reference to\n\nconfunding variables and\nalternative casual explanations\n\nLearn the meaning of “effect size” and learn how to measure it\nLearn how to work with multiple \\(X\\) and \\(Y\\) variables, and the potential pitfalls thereof"
   },
   {
     "objectID": "mediation.html#download-and-load-the-process-software",
@@ -67,7 +67,7 @@
     "href": "mediation.html#learning-outcomes-1",
     "title": "Mediation",
     "section": "Learning outcomes",
-    "text": "Learning outcomes\n\nLearn to rule out alternative explanation in mediation models with reference to\n\nconfunding variables and\nalternative casual explanations\n\nLearn the meaning of “effect size” and learn how to measure it\nLearn how to work with multiple \\(X\\) and \\(Y\\) variables, and the potential pitfalls thereof"
+    "text": "Learning outcomes\n\nUnderstand the difference between parallel and serial multiple mediation models\nLearn to use progress to fit parallel and serial multiple mediation models\nLearn to read the output of the model"
   },
   {
     "objectID": "mediation.html#confounding-variables",
@@ -115,8 +115,8 @@
     "objectID": "mediation.html#learning-outcomes-2",
     "href": "mediation.html#learning-outcomes-2",
     "title": "Mediation",
-    "section": "Learning outcomes",
-    "text": "Learning outcomes\n\nUnderstand the difference between parallel and serial multiple mediation models\nLearn to use progress to fit parallel and serial multiple mediation models\nLearn to read the output of the model"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nUnderstand the characteristic of a multicategorical variable (and the difference with dichotomous and continuous variables)\nLearn to use progress to fit a mediation model with multicategorical X variable\nLearn to interpret the output of the model"
   },
   {
     "objectID": "mediation.html#comparing-theories",
@@ -214,7 +214,7 @@
     "href": "moderation.html#learning-objectives-1",
     "title": "Moderation",
     "section": "Learning objectives",
-    "text": "Learning objectives\nLearning objectives of unit 3b consist in learning to fit and interpret:\n\nmodels with a dichotomous moderator\nmodels with a continuous moderator and independent variable\nmodels with more than one moderator: additive multiple moderation and moderated moreation."
+    "text": "Learning objectives\nLearning objectives of unit 3b consist in learning to fit and interpret:\n\nmodels with multicategorical antecedent variable.\nmodels with multicategorical moderator variable."
   },
   {
     "objectID": "moderation.html#dichotomous-moderator-and-continuous-x",
@@ -586,5 +586,68 @@
     "title": "Mediation, Moderation, and Conditional Process Analysis with R",
     "section": "Handbook",
     "text": "Handbook\nThe handbook of the course and the primary source of most of the material here presented is:\nAndrew F. Hayes. Introduction to Mediation, Moderation, and Conditional Process Analysis. A Regression-Based Approach. 2018. SECOND EDITION. THE GUILFORD PRESS, New York, London."
+  },
+  {
+    "objectID": "EDA.html#the-mean",
+    "href": "EDA.html#the-mean",
+    "title": "Exploratory Data Analysis",
+    "section": "The Mean",
+    "text": "The Mean\nIn this course we’ll focus on the mean (or average). This is the most popular and well known measure of central tendency, and it is used in linear regression modeling.\nThe mean itself is essentially a model of a data set. One of its important properties is that it minimises error in the prediction of any one value in the data set. In other terms, lacking better predictors, the mean is the best predictor of a value in the data set.\nIn R, you can calculate the mean of a variable by the function mean() (reminder: to access a variable in the data set, that is to say, a column of a data.frame, use the dollar sign):\n\nmean(glbwarm$age)\n\n[1] 49.5362\n\n\nThe mean age of people in the sample is 49.5362. To round off decimals, you can add the function round(). It takes two main arguments: a number (or a function that returns a number) to be rounded off, and an integer that tells R how many decimals you want to include.\n\nround(mean(glbwarm$age), 2)\n\n[1] 49.54\n\n\nThis is equivalent to creating an object mean_age representing the output of the function mean (i.e., the mean age), and then rounding it off.\n\nmean_age <- mean(glbwarm$age)\nround(mean_age, 2)\n\n[1] 49.54"
+  },
+  {
+    "objectID": "EDA.html#frequency-distributions",
+    "href": "EDA.html#frequency-distributions",
+    "title": "Exploratory Data Analysis",
+    "section": "Frequency distributions",
+    "text": "Frequency distributions\nThe frequency distribution of a variable is an overview of its values and the number of times they occur (i.e., their frequency).\nThe distributions can be continuous or discrete, depending on the type of variable. The distribution of a variable is summarized by the five-number summary, and graphically, by histograms and box plots (for continuous or discrete variables) and bar charts (for categorical variables).\n\nDiscrete variables have discrete distributions. Such a variable can only take specific values. Count data (non-negative integers), are an example: for instance, the number of friends on Facebook. In the glbwarm data set, the variable ideology is measured on a discrete scale ranging from 1 to 7.\nDiscrete variables can also represent categorical data. Categorical data expresses qualitative dimensions of a phenomenon. For instance, city names (Vienna, London, Verona), or ordered categorical values (low, medium, high). Categorical data can be represented by numbers, but they should not be conceived as mathematical objects, but as “names” or ordered categories. Categorical variables that can take on only two values are called dichotomous variables (e.g., sex, if you only differentiate between males and females). In the data set glbwarm, the variable “sex” is represented as a dichotomous variable.\nContinuous variables have continuous distributions. This kind of variable can assume one of an infinite (uncountable) number of different values. Continuous variables are represented by real numbers. Temperature or velocity are an example. In the data set glbwarm, the variable “govact” is represented as a continuous variable."
+  },
+  {
+    "objectID": "EDA.html#five-number-summary",
+    "href": "EDA.html#five-number-summary",
+    "title": "Exploratory Data Analysis",
+    "section": "Five-Number Summary",
+    "text": "Five-Number Summary\ndata set\nA numerical description of the distribution is provided by the function summary(), which gives the five-number summary.\n\nsummary(glbwarm$ideology)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  1.000   3.000   4.000   4.083   5.000   7.000 \n\n\nThe five-number summary includes the mean, the median, minimum and maximum values, the first and third quartiles. Quartiles are cut points dividing the range of values of the variable into four parts, or quarters, of more-or-less equal size (25%, 25%, 25%, 25%). The median is the value separating the lower 50% from the upper 50% of the distribution."
+  },
+  {
+    "objectID": "EDA.html#boxplot",
+    "href": "EDA.html#boxplot",
+    "title": "Exploratory Data Analysis",
+    "section": "Boxplot",
+    "text": "Boxplot\nThe same information of a five-number summary is graphically displayed by the boxplot, also called box-and-whisker plot. The “box” represent the 1st and 3rd quartile, the central line is the median, the “whiskers” represent the maximumn and minimum.\nThe points above and below the whiskers are outliers, data points that differ significantly from other observations. Since they are so different they are difficult to predict. Moreover, they can bias the estimates of a linear regression models.\n\n# use the argument \"main\" to add a title\nboxplot(glbwarm$govact, main = \"Ideology\")"
+  },
+  {
+    "objectID": "EDA.html#histogram",
+    "href": "EDA.html#histogram",
+    "title": "Exploratory Data Analysis",
+    "section": "Histogram",
+    "text": "Histogram\nAnother way to show the distribution of a variable is by means of an histogram, using the function hist().\nThe function can be used to show the frequency distribution of values:\n\n# use \"main\" tp change the title, and \"xlab\" to change the name of the x axis\nhist(glbwarm$govact, \n     main = \"GOVACT (GLBWARM data set)\", xlab = \"govact\")\n\n\n\n\nAs well as the probability distribution:\n\n# you can use the argument \"col\" to change the color\n# to see the available colors, run the following command in the console: colors() \nhist(glbwarm$govact, probability = TRUE,\n     main = \"GOVACT (GLBWARM data set)\", xlab = \"govact\",\n     col = \"slategrey\")\nlines(density(glbwarm$govact, adjust = 2))\n\n\n\n\nWhen dealing with continuous variables, may want to add a line to overlay a density curve on the histogram, to aproximate the shape of the distribution.\n\nhist(glbwarm$govact, probability = TRUE,\n     main = \"GOVACT (GLBWARM data set)\", xlab = \"govact\",\n     col = \"slategrey\")\n\n# this is to add a line of the \"density\"\n# the argument \"lwd\" sets the width of the line\nlines(density(glbwarm$govact), \n      col = \"steelblue1\", \n      lwd = 2)\n\n# this is to add a more smoothed (simpler and more aproximated) density curve \n# the argument \"lty\" sets the type of line\nlines(density(glbwarm$govact, adjust = 2), \n      col = \"lightblue\", \n      lwd = 3, \n      lty = \"dotted\")"
+  },
+  {
+    "objectID": "EDA.html#bar-plot",
+    "href": "EDA.html#bar-plot",
+    "title": "Exploratory Data Analysis",
+    "section": "Bar plot",
+    "text": "Bar plot\nHistograms and box plot are used to represent the distribution of numerical variables, such as continuous and discrete variables. For categorical variables, a bar graph is used in place.\nFor instance, the histogram of the dichotomous categorical variable “sex”, is not appropriate. It only takes on the values 0 and 1, but they are not numbers (0 = male, 1 = female) and there is nothing in between them (e.g., 0, 0.1, 0.2, …, 1).\n\nhist(glbwarm$sex, main = \"SEX (categorical dichotomous variable)\", xlab = \"sex\")\n\n\n\n\nThe appropriate way to represent the frequency distribution of categorical variables is the bar chart (or bar plot). The corresponding R function is barplot().\nIt takes as argument a table with the frequency for each of the modalities of the category (i.e., a table with the number of males and females in the sample). The function table() returns the frequency of the variable.\n\ntable(glbwarm$sex)\n\n\n  0   1 \n417 398 \n\n\nThis function can be used as the main argument of the function barplot():\n\nbarplot(table(glbwarm$sex),\n        main = \"Observations by SEX\",\n        xlab = \"0 = Male 1 = Female\")"
+  },
+  {
+    "objectID": "EDA.html#variance",
+    "href": "EDA.html#variance",
+    "title": "Exploratory Data Analysis",
+    "section": "Variance",
+    "text": "Variance\nVariance (represented as \\(s^2\\) when computed on a sample, as in this case), is a measure of dispersion that quantifies how spread the values of a variable are from the mean (the average value of the variable), or in other terms, of how much they vary (“variance”).\nThe formula for variance is:\n\\[s^2 =  \\frac{\\sum_{i=1}^{n} (x_i-\\bar x)^2}{n-1}\\]\nCapital sigma \\(\\sum\\) is the summation symbol, \\((x_i-\\bar x)\\) is the deviation (i.e., the difference) of each value \\(i\\) of \\(X\\) from the mean of \\(X\\) (\\(\\bar x\\), the mean or average of the variables), and \\(n\\) is the sample size. In R:\n\nvar(glbwarm$age)\n\n[1] 266.6937"
+  },
+  {
+    "objectID": "EDA.html#standard-deviation",
+    "href": "EDA.html#standard-deviation",
+    "title": "Exploratory Data Analysis",
+    "section": "Standard Deviation",
+    "text": "Standard Deviation\nStandard deviation (represented as \\(s\\) when computed on a sample, as in this case) is a related, and more commonly used, measure of dispersion. A low standard deviation indicates that the values of a variable tend to be close to its average, while a high standard deviation indicates that the values are spread out over a wider range. It is the square root of the variance:\n\\[s = \\sqrt \\frac{\\sum (x_i-\\bar x)^2}{n-1}\\]\nIn R:\n\nsd(glbwarm$age)\n\n[1] 16.33076"
+  },
+  {
+    "objectID": "moderation.html#learning-objectives",
+    "href": "moderation.html#learning-objectives",
+    "title": "Moderation",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nLearning objectives of unit 3b consist in learning to fit and interpret:\n\nmodels with a dichotomous moderator\nmodels with a continuous moderator and independent variable\nmodels with more than one moderator: additive multiple moderation and moderated moreation."
   }
 ]

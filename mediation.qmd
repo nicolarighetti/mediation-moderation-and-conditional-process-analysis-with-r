@@ -21,23 +21,17 @@ DiagrammeR::grViz("digraph {
   }")
 ```
 
-# The simple mediation model
-
-In this unit we'll learn the **elements of mediation analysis**, with a focus on the most basic (but also popular) mediation model possible consisting of a causal antecedent variable linked to a single consequent variable through a single intermediary variable or mediator. This is a popular simple mediation model.
-
-```{r echo=FALSE, out.width="50%"}
-knitr::include_graphics("img/simple_mediation_model_diagram.png")
-```
-
-## Learning outcomes
-
-At the end of UNIT 3A you should know:
+# Learning goals
 
 -   What is the Simple Mediation Model
 -   How to estimate a Simple Mediation Model using the PROGRESS software (in R)
 -   How to interpret the output of the estimation of the Simple Mediation Model using the PROGRESS software
 
-In this part of the course, also due to time costrains, we are going to follow a practical/applied approach. We'll start from concrete research problems and questions, and we'll learn to use mediation models to answer them. However, we'll also touch upon the theoretical concepts needed to an appropriate interpretation of the models.
+In this unit we'll learn the **elements of mediation analysis**, with a focus on the most basic (but also popular) mediation model possible consisting of a causal antecedent variable linked to a single consequent variable through a single intermediary variable or mediator. This is a popular simple mediation model.
+
+```{r echo=FALSE}
+knitr::include_graphics("img/simple_mediation_model_diagram.png")
+```
 
 ## Download and load the PROCESS software
 
@@ -566,7 +560,7 @@ Instead, the table on **Indirect effect(s) of X on Y** is a bit different.
 
 For this model with two mediators in serial, there are three **indirect effects** (**Ind1, Ind2, Ind3**). Their meaning is explained by the table **Indirect effect key**: each one represents a specific path through the variables. The different indirect effect can be interpreted with reference to this legend.
 
-```{r echo=FALSE, out.width="60%"}
+```{r echo=FALSE}
 knitr::include_graphics("img/serial_multiple_mediator_1.png")
 ```
 
