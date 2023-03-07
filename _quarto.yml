@@ -34,7 +34,7 @@ website:
        file: mediation.qmd
      - text: "Moderation"
        file: moderation.qmd
-     - text: "Conditional Process"
+     - text: "Conditional"
        file: conditional.qmd
 
   sidebar:
