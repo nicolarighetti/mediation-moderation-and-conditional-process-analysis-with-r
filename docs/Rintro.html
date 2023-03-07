@@ -281,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning outcomes</a>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a>
   <ul class="collapse">
   <li><a href="#rstudio-environment" id="toc-rstudio-environment" class="nav-link" data-scroll-target="#rstudio-environment">Rstudio environment</a></li>
   <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects">Rstudio Projects</a></li>
@@ -289,9 +289,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#basic-syntactic-rules" id="toc-basic-syntactic-rules" class="nav-link" data-scroll-target="#basic-syntactic-rules">Basic syntactic rules</a></li>
   <li><a href="#load-data-and-create-a-data-set-object" id="toc-load-data-and-create-a-data-set-object" class="nav-link" data-scroll-target="#load-data-and-create-a-data-set-object">Load data and create a data set object</a></li>
   <li><a href="#types-of-objects" id="toc-types-of-objects" class="nav-link" data-scroll-target="#types-of-objects">Types of objects</a></li>
-  <li><a href="#readings-and-exercises" id="toc-readings-and-exercises" class="nav-link" data-scroll-target="#readings-and-exercises">Readings and exercises</a></li>
+  <li><a href="#readings-exercises-resources" id="toc-readings-exercises-resources" class="nav-link" data-scroll-target="#readings-exercises-resources">Readings, exercises, resources</a>
+  <ul class="collapse">
   <li><a href="#additional-resources-to-learn-r" id="toc-additional-resources-to-learn-r" class="nav-link" data-scroll-target="#additional-resources-to-learn-r">Additional resources to learn R</a></li>
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -322,8 +324,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="learning-outcomes" class="level1">
-<h1>Learning outcomes</h1>
+<section id="learning-goals" class="level1">
+<h1>Learning goals</h1>
 <ul>
 <li><p>Know the meaning of the following terms: script, object and some important R object (matrix, data.frame, and vector), statistical graph/chart, package, function</p></li>
 <li><p>Know the main components of the RStudio interface and their functions</p></li>
@@ -503,24 +505,10 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p>There are also other types of data, such as character (char) for character values, logical for logical values (TRUE and FALSE), and factors to describe items that can have a finite number of values (gender: male, female, other; education, etc.).</p>
 <p>Sometimes, variables represets dates and times. Just to make an example of data set inclusing several type of data, we create a data set named data_set_example by running the following code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data_set_example <span class="ot">&lt;-</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">as.character</span>(<span class="fu">c</span>(<span class="st">"Karl"</span>, <span class="st">"Emma"</span>, <span class="st">"Sebastian"</span>, <span class="st">"Sarah"</span>)),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"Other"</span>, <span class="st">"M"</span>)),</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">as.integer</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">23</span>, <span class="dv">12</span>, <span class="dv">45</span>)),</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">austrian =</span> <span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)),</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary =</span> <span class="fu">factor</span>(</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="st">"high"</span>, <span class="st">"medium"</span>, <span class="st">"low"</span>, <span class="st">"medium"</span>),</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">partisanship =</span> <span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.33</span>, <span class="fl">4.56</span>, <span class="sc">-</span><span class="fl">3.12</span>, <span class="fl">2.54</span>)),</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"2020-01-01"</span>, <span class="st">"2020-03-01"</span>, <span class="st">"2020-01-02"</span>, <span class="st">"2020-01-03"</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 4
 Columns: 7
@@ -692,42 +680,8 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <p>We can access the columns of a data.frame by using the following sintax: name of the data frame, dollar sign, name of the column. For isntance, to access the column “age” of the data.frame “glbwarm”:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>glbwarm<span class="sc">$</span>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] 61 55 85 59 22 34 47 65 50 60 71 60 71 59 32 36 69 70 41 48 38 63 71 71 60
- [26] 76 58 71 63 79 68 32 76 50 72 51 60 76 34 51 49 58 45 57 46 69 70 69 58 80
- [51] 64 42 71 40 43 44 40 77 73 63 47 41 64 57 41 43 52 37 68 60 40 72 57 85 52
- [76] 55 42 34 40 55 73 67 65 63 50 52 72 75 54 38 61 47 45 55 72 40 52 42 73 32
-[101] 41 69 44 67 53 67 60 54 61 39 70 63 64 69 84 54 41 68 57 42 41 43 42 33 71
-[126] 67 69 57 70 60 76 33 78 67 53 51 40 44 52 63 76 28 67 71 41 66 39 73 51 79
-[151] 67 53 59 66 75 83 74 66 42 37 55 51 69 63 73 61 65 56 49 77 44 63 54 40 72
-[176] 48 42 67 26 56 54 46 29 68 41 64 50 56 70 33 57 70 83 21 57 59 72 48 29 53
-[201] 29 33 29 46 57 49 27 29 64 61 25 40 62 70 50 30 27 41 60 69 37 64 66 32 67
-[226] 62 72 63 68 41 31 51 30 78 62 77 46 36 34 42 25 26 59 30 60 27 51 48 49 75
-[251] 46 66 64 35 65 77 71 54 29 70 65 27 72 67 67 73 36 58 34 53 25 33 64 80 41
-[276] 27 52 28 67 25 61 68 25 27 23 65 66 50 64 33 59 79 72 60 62 63 30 67 45 41
-[301] 61 62 66 46 73 60 60 65 63 59 82 55 55 67 29 68 57 72 29 26 50 58 64 60 67
-[326] 34 59 23 21 27 65 30 42 53 40 44 27 22 55 72 24 63 63 68 35 47 41 68 68 42
-[351] 73 25 61 55 34 66 65 40 30 42 53 60 20 67 68 26 48 64 62 21 73 57 71 55 26
-[376] 83 47 57 35 71 29 76 55 28 58 47 30 52 31 62 72 50 29 45 65 37 30 44 65 41
-[401] 38 59 19 32 55 53 35 40 65 71 69 51 39 72 26 32 25 32 23 19 22 29 62 39 49
-[426] 37 43 59 32 57 39 33 51 25 26 48 27 54 30 53 36 60 50 27 22 68 52 61 38 21
-[451] 36 22 66 64 68 51 31 18 34 55 43 50 64 33 38 55 30 26 26 61 30 68 87 43 32
-[476] 63 57 55 69 75 54 43 26 62 33 36 52 83 55 18 30 59 51 41 60 39 64 52 55 45
-[501] 45 66 73 40 29 73 54 49 54 48 63 36 25 62 65 65 42 32 58 40 71 60 28 64 19
-[526] 44 18 29 59 80 27 62 19 26 50 59 47 63 67 42 71 49 55 44 20 31 44 56 24 40
-[551] 35 54 38 40 53 53 64 68 34 36 62 60 79 29 32 23 53 63 40 29 61 31 43 59 74
-[576] 24 54 38 27 53 39 23 41 70 74 62 33 39 20 21 23 50 27 54 31 67 62 56 53 30
-[601] 60 66 55 43 45 64 32 54 49 57 44 39 41 55 62 62 66 52 63 24 69 55 35 49 42
-[626] 67 55 35 63 64 61 49 32 68 50 35 73 34 47 75 69 73 33 27 40 30 27 31 23 43
-[651] 21 53 29 67 30 47 31 64 65 65 47 22 64 59 18 19 44 41 28 22 62 29 52 65 54
-[676] 51 19 27 42 70 73 42 42 23 19 22 30 51 34 63 29 46 43 56 48 64 22 44 25 24
-[701] 55 41 65 36 56 36 36 29 44 40 51 30 43 50 40 56 65 62 22 43 34 29 44 32 59
-[726] 66 66 44 72 68 33 17 32 63 54 59 65 59 42 48 45 43 60 71 41 38 29 36 63 55
-[751] 41 67 49 42 40 31 44 55 63 34 46 19 57 49 26 62 43 42 21 54 19 35 54 27 38
-[776] 51 28 41 27 33 33 29 79 67 49 31 39 31 42 40 44 18 40 38 31 36 52 50 36 27
-[801] 29 42 58 30 48 40 43 52 18 58 52 67 72 36 82</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm<span class="sc">$</span>age, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 61 55 85 59 22 34 47 65 50 60</code></pre>
 </div>
@@ -735,7 +689,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <p>You may have noticed that this is just a vector. Indeed, data.frames are object composed by a series of vectors.</p>
 <p>Lists are another common type of object. Lists can be used to contain different types of objects. For example, a list may include a matrix, a number, and a data.frame. We will not work with this type of object in this course.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(a_matrix, object_2, data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(a_matrix, object_2, data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
       [,1] [,2] [,3] [,4] [,5]
@@ -764,7 +718,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <p>An object can also represent a function. We said that functions can be conceived as “mechanisms” that generate output from an input. Functions can transform other objects based on specific rules. For instance, addition is a function that receives two or more numbers as input and generates an output that corresponds to the sum of these numbers.</p>
 <p>`</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
@@ -772,8 +726,8 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <p>A function has a name (the name of the function, like the name of any other object, e.g., the function sum) and one or more arguments. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the arguments there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.</p>
 <p>In this course we’ll use statistical functions to perform data analysis like linear regression, moderation, mediation, and conditional process analysis. For example, the name of the linear regression function in R is lm.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(glbwarm<span class="sc">$</span>govact <span class="sc">~</span> glbwarm<span class="sc">$</span>ideology)</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(glbwarm<span class="sc">$</span>govact <span class="sc">~</span> glbwarm<span class="sc">$</span>ideology)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -796,18 +750,17 @@ F-statistic: 172.4 on 1 and 813 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="readings-and-exercises" class="level2">
-<h2 class="anchored" data-anchor-id="readings-and-exercises">Readings and exercises</h2>
+<section id="readings-exercises-resources" class="level2">
+<h2 class="anchored" data-anchor-id="readings-exercises-resources">Readings, exercises, resources</h2>
 <p>Review the content of this lecture</p>
 <p>Familiarize with R and RStudio</p>
-</section>
-<section id="additional-resources-to-learn-r" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources-to-learn-r">Additional resources to learn R</h2>
+<section id="additional-resources-to-learn-r" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources-to-learn-r">Additional resources to learn R</h3>
 <p>Detailed information on the R language (e.g., data structures, types of objects, etc.) can be found in the <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#SEC_Contents">R Manual</a>). A detailed overview of R programming language is beyond the objectives of this course, and not necessary to perform the analyses we’ll discuss. However, you can use this manual as a reference if you have doubts or would like to learn more.</p>
 <p>Several resources about R are freely available online. YouTube features several good introductory videos to R. An important resource for programmers (both professionals and beginners) is <a href="https://stackoverflow.com" class="uri">https://stackoverflow.com</a>.</p>
 </section>
-<section id="exercise" class="level2">
-<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
 <ul>
 <li><p>Open the RStudio project you created today</p></li>
 <li><p>Open the script you created today</p></li>
@@ -822,6 +775,7 @@ F-statistic: 172.4 on 1 and 813 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul>
 
 
+</section>
 </section>
 </section>
 

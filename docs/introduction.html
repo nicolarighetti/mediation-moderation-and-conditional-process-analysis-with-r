@@ -267,37 +267,37 @@ ul.task-list li input[type="checkbox"] {
 <p>We then focus on <strong>mediation analysis</strong>, seeing how to fit, visualize, interpret, and evaluate mediation models using <strong>PROCESS</strong> in the R environment. Mediation analysis answers questions of the <strong>HOW</strong> variety, and it is used to study the mechanism(s) by which one variable impacts another one.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0fc180700b0fe2d9ba63" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0fc180700b0fe2d9ba63">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Mediation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n\n  # edge definitions with the node IDs\n  x -> y x -> m m -> y;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-304f9617e271965c960c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-304f9617e271965c960c">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Mediation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n\n  # edge definitions with the node IDs\n  x -> y x -> m m -> y;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>For example, let’s say that we have established a relationship between the use of violent video games and the frequency of off-line assaults. The next step may be to ask <em>how does this happen</em>, and use mediation analysis to analyze the potential mechanism by which violent video games impact offline aggressive behavior.</p>
 <p>Next, we focus on <strong>moderation analysis</strong> and we learn how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment. Moderation analysis is used to answer questions of the <strong>WHEN</strong> variety, that is to say, to study the conditions or contingencies of an association.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8db53555a6d24c1867a5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8db53555a6d24c1867a5">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Moderation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-03200d214a8ddde7cabf" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-03200d214a8ddde7cabf">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = Moderation]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>For example, there is no reason to think that the association between violent video games and offline aggression is universal. Maybe, it is stronger for males than females, or the strength of the association is a function of personality traits. We use moderation analysis to answer these questions.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-3a62acc0997327c99736" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-3a62acc0997327c99736">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"Violent video games\"]\n  y [label = \"Offline aggressions\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-59e69545638b9f3bcdf1" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-59e69545638b9f3bcdf1">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"Violent video games\"]\n  y [label = \"Offline aggressions\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> y;\n  {rank=same; w -> p1}\n  \n  edge [dir=none]\n  x -> p1 \n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We finally focus on <strong>conditional process analysis</strong> and explain how to fit, visualize, interpret, and evaluate conditional process models using PROCESS in the R environment. Conditional process represents <strong>the conditions of mechanisms</strong> by which a variable impact on another one. It includes both mediation and moderation analysis.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5304bdf3d0bf680f6b8a" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5304bdf3d0bf680f6b8a">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = \"Conditional process\"]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-012116f06675fe523a71" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-012116f06675fe523a71">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR, label = \"Conditional process\"]\n  node [shape = rectangle]     \n  x [label = \"X\"]\n  y [label = \"Y\"]\n  m [label = \"M\"]\n  w [label = \"W\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Conditional process models allow to address the complexity of social science phenomena.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ea26c814c2bb3d9bbfd9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-ea26c814c2bb3d9bbfd9">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"X (Violent video games)\"]\n  y [label = \"Y (Offline aggressions)\"]\n  m [label = \"Desensitize to pain?\nNormalize violence?\n...\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a53d4bef2db445f4bfb0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a53d4bef2db445f4bfb0">{"x":{"diagram":"digraph {\nwidth = 500\nheight = 500\n  graph [layout = dot, rankdir = LR]\n  node [shape = rectangle]     \n  x [label = \"X (Violent video games)\"]\n  y [label = \"Y (Offline aggressions)\"]\n  m [label = \"Desensitize to pain?\nNormalize violence?\n...\"]\n  w [label = \"Sex?\nAge?\nPersonality?\"]\n\n  node [shape=none, width=0, height=0, label=\"\"]\n  p1 -> m p2 -> y;\n  {rank=same; w -> p1 w -> p2}\n  \n  # edge definitions with the node IDs\n  x -> y m -> y;\n  \n  edge [dir=none]\n  x -> p1 x -> p2\n    \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The last part of the course is dedicated to the project work.</p>

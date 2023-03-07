@@ -3,7 +3,7 @@ title: "Getting started with R"
 author: Dr. Nicola Righetti, PhD
 ---
 
-# Learning outcomes
+# Learning goals
 
 -   Know the meaning of the following terms: script, object and some important R object (matrix, data.frame, and vector), statistical graph/chart, package, function
 
@@ -187,7 +187,7 @@ There are also other types of data, such as character (char) for character value
 
 Sometimes, variables represets dates and times. Just to make an example of data set inclusing several type of data, we create a data set named data_set_example by running the following code.
 
-```{r}
+```{r echo=FALSE}
 data_set_example <-
   data.frame(
     name = as.character(c("Karl", "Emma", "Sebastian", "Sarah")),
@@ -203,8 +203,9 @@ data_set_example <-
       "2020-01-01", "2020-03-01", "2020-01-02", "2020-01-03"
     ))
   ) 
+```
 
-
+```{r}
 glimpse(data_set_example)
 ```
 
@@ -320,9 +321,11 @@ names(glbwarm)
 
 We can access the columns of a data.frame by using the following sintax: name of the data frame, dollar sign, name of the column. For isntance, to access the column "age" of the data.frame "glbwarm":
 
-```{r}
+```{r eval=FALSE}
 glbwarm$age
+```
 
+```{r echo=FALSE}
 head(glbwarm$age, 10)
 ```
 
@@ -353,19 +356,19 @@ summary(linear_model)
 
 ```
 
-## Readings and exercises
+## Readings, exercises, resources
 
 Review the content of this lecture
 
 Familiarize with R and RStudio
 
-## Additional resources to learn R
+### Additional resources to learn R
 
 Detailed information on the R language (e.g., data structures, types of objects, etc.) can be found in the [R Manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#SEC_Contents)). A detailed overview of R programming language is beyond the objectives of this course, and not necessary to perform the analyses we'll discuss. However, you can use this manual as a reference if you have doubts or would like to learn more.
 
 Several resources about R are freely available online. YouTube features several good introductory videos to R. An important resource for programmers (both professionals and beginners) is <https://stackoverflow.com>.
 
-## Exercise
+### Exercise
 
 -   Open the RStudio project you created today
 
