@@ -17,7 +17,7 @@ The introductory part of the course is dedicated to a brief review of the basic 
 
 We'll use linear regression models to answer questions of the **WHETHER** or **IF** variety. These are questions about association between variables. For example, is there a relationship between a variable Y, and another variable X, and possibly other ones? For example, we can use this kind of analysis to study whether polarization increases as the exposure to partisan news media increases.
 
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE}
 require(tidyverse)
 
 y <- rnorm(100)
@@ -29,7 +29,8 @@ ggplot(data=df, aes(x,y)) +
   geom_smooth(method='lm', formula= y~x) +
   labs(y = "polarization", x = "exposure to partisan news") +
   theme_classic() +
-  ggtitle("Example of linear regression")
+  ggtitle("Example of linear regression",
+          subtitle = "Toy data")
 ```
 
 We then focus on **mediation analysis**, seeing how to fit, visualize, interpret, and evaluate mediation models using **PROCESS** in the R environment. Mediation analysis answers questions of the **HOW** variety, and it is used to study the mechanism(s) by which one variable impacts another one.
