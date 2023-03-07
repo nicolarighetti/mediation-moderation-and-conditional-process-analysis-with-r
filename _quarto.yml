@@ -24,17 +24,17 @@ website:
        file: index.qmd
      - text: "Introduction"
        file: introduction.qmd
-     - text: "Getting started with R"
+     - text: "R"
        file: Rintro.qmd
-     - text: "Exploratory Data Analysis"
+     - text: "EDA"
        file: EDA.qmd
-     - text: "Regression Analysis"
+     - text: "Regression"
        file: regression.qmd
-     - text: "Mediation Analysis"
+     - text: "Mediation"
        file: mediation.qmd
-     - text: "Moderation Analysis"
+     - text: "Moderation"
        file: moderation.qmd
-     - text: "Conditional Process Analysis"
+     - text: "Conditional Process"
        file: conditional.qmd
 
   sidebar:
