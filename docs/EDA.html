@@ -406,7 +406,7 @@ $ sex      &lt;int&gt; 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 
 $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 3, 2…</code></pre>
 </div>
 </div>
-<p>While the glimpse function provides a preview of the dataset, a clearer preview is displayed using the head() function.</p>
+<p>While the <code>glimpse</code> function provides a preview of the dataset, a clearer preview is displayed using the <code>head</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -429,21 +429,21 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p><a href="https://en.wikipedia.org/wiki/Descriptive_statistics">Descriptive statistics</a> are used to summarize and describe the variables of a dataset. There are two main types of statistics used for this purpose: <strong>measures of central tendency and measures of spread</strong>. Measures of central tendency include the mode, median, and mean, which is the most commonly used measure and is particularly useful in linear regression modeling. The <strong>mean</strong> is essentially a model of the dataset and has the property of minimizing error in the prediction of any value in the dataset. In other words, the mean is the best predictor in the absence of better predictors. The <strong>mode</strong> is the most frequent score in our data set and the <strong>median</strong> is the middle score for a set of data that has been arranged in order of magnitude.</p>
 <section id="the-mean" class="level2">
 <h2 class="anchored" data-anchor-id="the-mean">The Mean</h2>
-<p>In R, the mean of a variable can be calculated using the function <strong><code>mean</code></strong>, and to access a variable in the dataset, which is a column of a data.frame, the dollar sign is used. For instance, the mean age of people in the sample can be calculated using <code>mean(glbwarm$age)</code>, which returns 49.5362.</p>
+<p>In R, the mean of a variable can be calculated using the function <code>mean</code>, and to access a variable in the dataset, which is a column of a data.frame, the dollar sign is used. For instance, the mean age of people in the sample can be calculated using <code>mean(glbwarm$age)</code>, which returns 49.5362.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(glbwarm<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 49.5362</code></pre>
 </div>
 </div>
-<p>If you wish to round off the number of decimals, the <strong><code>round</code></strong> function can be used, which takes two arguments - the number or function to be rounded off and the integer specifying the number of decimals. For example, <strong><code>round(mean(glbwarm$age)</code></strong>, 2) returns 49.54, which can also be represented by creating an object (e.g., mean_age) to store the output of the function mean() and then rounding it off.</p>
+<p>If you wish to round off the number of decimals, the <code>round</code> function can be used, which takes two arguments - the number or function to be rounded off and the integer specifying the number of decimals. For example, <code>round(mean(glbwarm$age), 2)</code> returns 49.54, which can also be represented by creating an object (e.g., mean_age) to store the output of the function <code>mean</code> and then rounding it off.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(glbwarm<span class="sc">$</span>age), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 49.54</code></pre>
 </div>
 </div>
-<p>This is equivalent to creating an object <em>mean_age</em> representing the output of the function mean (i.e., the mean age), and then rounding it off.</p>
+<p>This is equivalent to creating an object <em>mean_age</em> representing the output of the function <code>mean</code> (i.e., the mean age), and then rounding it off.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mean_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(glbwarm<span class="sc">$</span>age)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(mean_age, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -464,7 +464,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </section>
 <section id="five-number-summary" class="level2">
 <h2 class="anchored" data-anchor-id="five-number-summary">Five-Number Summary</h2>
-<p>A numerical description of the distribution is provided by the function <strong>summary()</strong>, which gives the <strong>five-number summary</strong>.</p>
+<p>A numerical description of the distribution is provided by the function <code>summary</code>, which gives the <strong>five-number summary</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glbwarm<span class="sc">$</span>ideology)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -488,7 +488,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </section>
 <section id="histogram" class="level2">
 <h2 class="anchored" data-anchor-id="histogram">Histogram</h2>
-<p>Another way to display the distribution of a variable is by using a <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a>, which can be created using the <strong><code>hist</code></strong> function.</p>
+<p>Another way to display the distribution of a variable is by using a <a href="https://en.wikipedia.org/wiki/Histogram">histogram</a>, which can be created using the <code>hist</code> function.</p>
 <p>The function can be used to show the frequency distribution of values and their probability distributions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use "main" tp change the title, and "xlab" to change the name of the x axis</span></span>
@@ -542,8 +542,8 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p><img src="EDA_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>The appropriate way to represent the frequency distribution of categorical variables is with a bar chart (or bar plot). The corresponding R function is <strong><code>barplot</code></strong>.</p>
-<p>It takes as an argument a table with the frequency for each modality of the category (i.e., a table with the number of males and females in the sample). The function <strong><code>table</code></strong> returns the frequency of the variable.</p>
+<p>The appropriate way to represent the frequency distribution of categorical variables is with a bar chart (or bar plot). The corresponding R function is <code>barplot</code>.</p>
+<p>It takes as an argument a table with the frequency for each modality of the category (i.e., a table with the number of males and females in the sample). The function <code>table</code> returns the frequency of the variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(glbwarm<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -552,7 +552,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 417 398 </code></pre>
 </div>
 </div>
-<p>This function can be used as the main argument of the function <strong>barplot()</strong>:</p>
+<p>This function can be used as the main argument of the function <code>barplot</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(glbwarm<span class="sc">$</span>sex),</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Observations by SEX"</span>,</span>
@@ -607,7 +607,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p><span class="math display">\[Z = \frac{x_i - \bar x}{s}\]</span></p>
 <p>A way to think about standardization, is considering it as the interpretation of values relatively to their own distribution.</p>
 <p>The average of a standardized variable is always zero, below-average values are negative and above-average values are positive.</p>
-<p>In R, standarization is provided by the function <strong>scale()</strong>.</p>
+<p>In R, standardization is provided by the function <code>scale</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>zscores_age <span class="ot">&lt;-</span> <span class="fu">scale</span>(glbwarm<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -628,12 +628,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <section id="correlation-and-prediction" class="level1">
 <h1>Correlation and prediction</h1>
 <p>In the first section we used statistical measures and charts to describe variables. In this section we’ll learn to assess the relationships between two variables.</p>
-<p>At the end of this unit you will understand the following concepts, be able to interpret them, and know the R functions to calculate and create the related statistical measures and plots:</p>
-<ul>
-<li>Pearson’s correlation</li>
-<li>Scatterplot</li>
-<li>Prediction</li>
-</ul>
+<p>At the end of this unit you will understand the Pearson’s correlation coefficient and know the R functions to calculate and create the related statistical plots (scatter plot).</p>
 <section id="correlation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
 <p>Correlation is a <strong>statistical relationship</strong>, whether causal or not, between two variables.</p>
@@ -664,7 +659,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p>Standardization of covariance is obtained by dividing the covariance <span class="math inline">\(cov\)</span> by the <strong>product of the standard deviations</strong> of the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. This product represents the <strong>total amount of variation possible</strong>.</p>
 <p>Thanks to the denominator, which represents the total amount of variation possible for the specific couple of variables, <span class="math inline">\(r\)</span> <strong>is always constrained between 1 and -1</strong> for <em>any</em> variable expressed in any unit of measure. The extent to which the covariation <span class="math inline">\(cov_{XY}\)</span> accounts for all of the possible variation (<span class="math inline">\(SD_XSD_Y\)</span>) is the extent to which <span class="math inline">\(r\)</span> approximates <span class="math inline">\(|1|\)</span> (negative -1, or positive +1).</p>
 <p><span class="math display">\[ r = \frac{cov_{XY}}{SD_XSD_Y}\]</span></p>
-<p>In R, the correlation coefficient is computed with the function <strong>cor</strong>. For example:</p>
+<p>In R, the correlation coefficient is computed with the function <code>cor</code>. For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(glbwarm<span class="sc">$</span>govact, glbwarm<span class="sc">$</span>negemot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -697,7 +692,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <h3 class="anchored" data-anchor-id="scatter-plots">Scatter plots</h3>
 <p>A scatter plot is a common method for visually exploring and representing the correlation between two variables.</p>
 <p>“<a href="https://en.wikipedia.org/wiki/Scatter_plot">A scatter plot</a> is a type of plot or mathematical diagram that uses Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), an additional variable can be displayed. The data are displayed as a collection of points, with the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis”.</p>
-<p>To create a scatter plot in R, you can use the function <strong><code>plot</code></strong>. It takes two arguments: x (the first variable) and y (the second variable). The argument <strong><code>pch</code></strong> changes the shape of the points; see more details <a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/points.html">here</a>.</p>
+<p>To create a scatter plot in R, you can use the function <code>plot</code>. It takes two arguments: x (the first variable) and y (the second variable). The argument <code>pch</code> changes the shape of the points; see more details <a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/points.html">here</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(glbwarm<span class="sc">$</span>govact, glbwarm<span class="sc">$</span>posemot,</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>,</span>
@@ -773,12 +768,12 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </section>
 <section id="exercise-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>Use the function <em>cor()</em> to calculate the correlation between the variables <em>negemot</em> and <em>govact</em> in the glbwarm data set.</p>
+<p>Use the function <code>cor</code> to calculate the correlation between the variables <em>negemot</em> and <em>govact</em> in the <code>glbwarm</code> data set.</p>
 <p>Based on the Pearson’s r coefficient, is there a strong correlation between these variables?</p>
 </section>
 <section id="exercise-3" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>Consider the variables <em>tnews</em> and <em>age</em> in the <strong>glbwarm</strong> data set:</p>
+<p>Consider the variables <em>tnews</em> and <em>age</em> in the <code>glbwarm</code> data set:</p>
 <ul>
 <li>Visualize the association using a scatterplot</li>
 <li>Calculate the Pearson’s r correlation</li>

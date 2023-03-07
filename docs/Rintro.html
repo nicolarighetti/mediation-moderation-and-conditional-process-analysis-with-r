@@ -382,11 +382,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="install-and-load-packages">Install and load packages</h2>
 <p>Packages (also libraries) are kinds of “toolboxes” containing sets of functions used to perform different types of operations.</p>
 <p>R already includes several default functions and packages, but several additional packages are available. It is possible to install a package by using the menu (Tools/Install Packages…) or by using the function install.packages(“name-of-the-package-here”).</p>
-<p>A very useful package is tidyverse. Tidyverse actually includes several other packages, such as ggplot2 to create charts, and dplyr to manipulate data sets (“data wrangling”).</p>
+<p>A very useful package is tidyverse. Tidyverse actually includes several other packages, such as <code>ggplot2</code> to create charts, and dplyr to manipulate data sets (“data wrangling”).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To use the functions contained in a package, you need to load the package into the work environment first. This can be done with by using the function library(). For instance, we can load tidyverse with the following code:</p>
+<p>To use the functions contained in a package, you need to load the package into the work environment first. This can be done with by using the function <code>library</code>. For instance, we can load tidyverse with the following code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -457,7 +457,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>This way you may take a look at the output (but this is not the right way to do that), but you cannot manipulate it. It is only when you create an object containing the output information of the function (using the arrow sign and a name for the object), that you can continue working on it.</p>
-<p>To take a look at the data set, you can use the function head() to print the first few rows in the console.</p>
+<p>To take a look at the data set, you can use the function <code>head</code> to print the first few rows in the console.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -470,11 +470,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6    7.0    1.00    6.00        3  34   0       2</code></pre>
 </div>
 </div>
-<p>You can also view the data set in a separate window by using the function View().</p>
+<p>You can also view the data set in a separate window by using the function <code>View</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Another way to explore a data set is through the function str(). This function allows the user to see the type of variables in the data set.</p>
+<p>Another way to explore a data set is through the function <code>str</code>. This function allows the user to see the type of variables in the data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -488,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  $ partyid : int  2 1 1 1 1 2 1 1 2 3 ...</code></pre>
 </div>
 </div>
-<p>A similar function, included in the tidyverse package, is glimpse()</p>
+<p>A similar function, included in the tidyverse package, is <code>glimpse</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package (load it just once in each R session) </span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -505,7 +505,7 @@ $ sex      &lt;int&gt; 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 
 $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 3, 2…</code></pre>
 </div>
 </div>
-<p>In this case, we can see that the first three variables are numerical (num), and the second three integers (int). Numeric (also double) is a data type that contains <a href="https://en.wikipedia.org/wiki/Real_number">real numbers</a> (). Integers is a data type that contains <a href="https://en.wikipedia.org/wiki/Integer">integer numbers</a>.</p>
+<p>In this case, we can see that the first three variables are numerical (num), and the second three integers (int). Numeric (also double) is a data type that contains <a href="https://en.wikipedia.org/wiki/Real_number">real numbers</a>. Integers is a data type that contains <a href="https://en.wikipedia.org/wiki/Integer">integer numbers</a>.</p>
 <p>There are also other types of data, such as character (char) for character values, logical for logical values (TRUE and FALSE), and factors to describe items that can have a finite number of values (gender: male, female, other; education, etc.).</p>
 <p>Sometimes, variables represets dates and times. Just to make an example of data set inclusing several type of data, we create a data set named data_set_example by running the following code.</p>
 <div class="cell">
@@ -550,7 +550,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <pre><code>[1] 782</code></pre>
 </div>
 </div>
-<p>Sometimes you may want to delete an object from the environment. You can do that with the function rm() (notice the object disappearing from the environment, in the Environment window).</p>
+<p>Sometimes you may want to delete an object from the environment. You can do that with the function <code>rm</code> (notice the object disappearing from the environment, in the Environment window).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(object_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -667,14 +667,14 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 6    7.0    1.00    6.00        3  34   0       2</code></pre>
 </div>
 </div>
-<p>The function dim() can be used to find the number of rows and columns of a data set. The first and second figure in the output is the number of rows and column, respectively.</p>
+<p>The function <code>dim</code> can be used to find the number of rows and columns of a data set. The first and second figure in the output is the number of rows and column, respectively.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 815   7</code></pre>
 </div>
 </div>
-<p>The functions str() or glimpse() permits to see the names of the columns/variables. Another way to see them is using the function names().</p>
+<p>The functions <code>str</code> or <code>glimpse</code> permits to see the names of the columns/variables. Another way to see them is using the function <code>names</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -727,7 +727,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <pre><code>[1] 5</code></pre>
 </div>
 </div>
-<p>A function has a name (the name of the function, like the name of any other object, e.g., the function sum) and one or more parameters. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the parameters there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.</p>
+<p>A function has a name (the name of the function, like the name of any other object, e.g., the function <code>sum</code>) and one or more parameters. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the parameters there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.</p>
 <p>In this course we’ll use statistical function for performing linear regression in R, moderation, mediation, and conditional process analysis. For example, the name of the linear regression function in R is <em>lm</em>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(glbwarm<span class="sc">$</span>govact <span class="sc">~</span> glbwarm<span class="sc">$</span>ideology)</span>
@@ -769,13 +769,13 @@ F-statistic: 172.4 on 1 and 813 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>Open the RStudio project you created today</p></li>
 <li><p>Open the script you created today</p></li>
 <li><p>Write and run a few mathematical operations in the script file (e.g., 3+2, 5/3, etc.)</p></li>
-<li><p>Create a new object containing the output of the function sum (e.g., my_sum &lt;- sum(4, 8)) and use this object to perform another mathematical operation of your choice</p></li>
+<li><p>Create a new object containing the output of the function <code>sum</code> (e.g., <code>my_sum &lt;- sum(4, 8)</code>) and use this object to perform another mathematical operation of your choice</p></li>
 <li><p>Save the updated script and close it</p></li>
 <li><p>Create and save a new script</p></li>
 <li><p>Copy all the data sets you find on Moodle in your “data” folder</p></li>
 <li><p>Load one of the data set</p></li>
-<li><p>Take a look at the data set using the functions View, str, and glimpse (remember to load the package tidyverse before using the glimpse function)</p></li>
-<li><p>Access one of the column of the data set (name_of_dataframe + dollar sign “$” + name of the column) using the dollar sign</p></li>
+<li><p>Take a look at the data set using the functions <code>View</code>, <code>str</code>, and <code>glimpse</code> (remember to load the package <code>tidyverse</code> before using the glimpse function)</p></li>
+<li><p>Access one of the column of the data set (name_of_dataframe + dollar sign <code>$</code> + name of the column) using the dollar sign</p></li>
 </ul>
 
 

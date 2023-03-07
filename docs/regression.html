@@ -487,14 +487,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="fit-a-linear-regression-model-with-r" class="level1">
 <h1>Fit a linear regression model with R</h1>
-<p>The R function to fit a linear regression model is <strong>lm()</strong>.</p>
-<p>The function takes at least two arguments separated by a <em>tilde</em> (~ check how to write that with your specific keyword. You can also copy it from the help by typing ?tilde):</p>
+<p>The R function to fit a linear regression model is <code>lm</code>.</p>
+<p>The function takes at least two arguments separated by a <em>tilde</em> (~ check how to write that with your specific keyword. You can also copy it from the help by typing <code>?tilde</code>):</p>
 <ul>
 <li>To the left of the tilde is the dependent variable (<span class="math inline">\(Y\)</span>)</li>
 <li>To the right of the tilde is the independent variables (<span class="math inline">\(X\)</span>) separated with the plus (+) symbol.</li>
 </ul>
 <p>We also use the argument <em>data</em> for the name of the dataset.</p>
-<p>The function <strong>summary</strong> is used to see the results of the model fitting functions.</p>
+<p>The function <code>summary</code> is used to see the results of the model fitting functions.</p>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p>Load the dataset “glbwarm”.</p>
@@ -508,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(govact <span class="sc">~</span> negemot, <span class="at">data =</span> glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The function <strong>summary</strong> produce the output.</p>
+<p>The function <code>summary</code> produce the output.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -614,7 +614,7 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>The last row of the output reports a <strong>p-value</strong> and the results from the <em>F-statistic</em>. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The <em>F-statistic</em> compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.</li>
 </ul>
 <blockquote class="blockquote">
-<p>The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function <strong>format</strong>, adding the number you want to convert, and the option <strong>scientific=FALSE</strong>. For example:</p>
+<p>The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function <code>format</code>, adding the number you want to convert, and the option <code>scientific=FALSE</code>. For example:</p>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(<span class="fl">2.2e-16</span>, <span class="at">scientific=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -760,7 +760,7 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="check-the-assumptions" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assumptions">Check the assumptions</h3>
 <p>In R there are four “diagnostic” plots you can use to assess the assumptions of the model.</p>
-<p>You can visualize the plots by using the function <strong>plot</strong> applied to the “object” corresponding to your <strong>fitted model</strong>. You can visualize the plots together by using <strong>par(mfrow=c(2,2))</strong> before calling the <em>plot</em> function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the <em>plot</em> function (e.g.: <strong>plot(lm_object, 1))</strong>).</p>
+<p>You can visualize the plots by using the function <code>plot</code> applied to the “object” corresponding to your <strong>fitted model</strong>. You can visualize the plots together by using <code>par(mfrow=c(2,2))</code> before calling the <code>plot</code> function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the <em>plot</em> function (e.g.: <code>plot(lm_object, 1)</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -821,7 +821,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>You can also see that certain dots are marked by a number. These are points with unexpectedly high residuals (error) and you could inspect them to find out why (e.g., to exclude there are errors in the dataset). Also check if any point in the <strong>Residuals vs Leverage</strong> plot falls outside of Cook’s distance (a red dashed lines). These points are considered to be influential observations. Influential points have a large influence on the model and should be carefully inspected. In this case there are no influential points, and the red dashed line is not even displayed.</p>
-<p>To verify <strong>multicollinearity</strong> you can also calculate the <strong>VIF</strong> (“Variance Inflation Factor”). The function to calculate it is <em>vif</em>, and is included in the package <em>car</em>. The smallest possible value of VIF is one (absence of multicollinearity), and as a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity.</p>
+<p>To verify <strong>multicollinearity</strong> you can also calculate the <strong>VIF</strong> (“Variance Inflation Factor”). The function to calculate it is <code>vif</code>, and is included in the package <code>car</code>. The smallest possible value of VIF is one (absence of multicollinearity), and as a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the package</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"car"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -857,7 +857,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 <section id="exercises" class="level3">
 <h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<p>Use the <strong>estress</strong> dataset (estress.csv) to perform a multiple linear regression model.</p>
+<p>The following exercise is based on the <code>estress</code> dataset (estress.csv).</p>
 <section id="description-of-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="description-of-the-dataset">Description of the dataset</h4>
 <p>The participants in the “estress” study (162 male, 100 female, <strong>SEX</strong> in the data, 0 = female, 1 = male) were asked a series of questions about how they felt their business was doing.</p>
@@ -869,11 +869,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 <section id="exercise" class="level4">
 <h4 class="anchored" data-anchor-id="exercise">Exercise</h4>
-<p>Explore the variables (five number summary, standard deviation) and the dataset (sample size).</p>
-<p>Fit a linear regression model to predict/explain <strong>withdraw</strong> intention based on the following independent variables: <strong>affect, sex, estress, age, tenure, ese</strong>.</p>
-<p>Interpret the model.</p>
-<p>Check out the diagnostic plots (do you see any evident pattern in the points? Are the dots grouped along a diagonal line in the normal Q-Q plot?. Also calculate the Variance Inflation Factor (VIF) using the function <em>vif</em> in the <em>car</em> package.</p>
-<p>Test your understanding of the concepts and your interpretation of the linear model and assumptions by answering the questions in the quiz available on Moodle (by Tuesday). The quiz is just for your self-evaluation (i.e., <em>it is not graded</em>).</p>
+<p>Using the <code>estress</code> dataset, write a short data analysis report including:</p>
+<ul>
+<li><p>Summary statistics: five number summary, standard deviation, and the sample size of the dataset.</p></li>
+<li><p>A multiple linear regression model to predict/explain <code>withdraw</code> intention based on the following independent variables: <code>affect</code>, <code>sex</code>, <code>estress</code>, <code>age</code>, <code>tenure</code>, <code>ese</code>. Report the regression table and provide the appropriate interpretation.</p></li>
+<li><p>Check out the diagnostic plots and provide an interpretation: do you see any evident pattern in the points? Are the dots grouped along a diagonal line in the normal Q-Q plot? Also calculate the Variance Inflation Factor (VIF) using the function <code>vif</code> function in the <code>car</code> package.</p></li>
+</ul>
 
 
 </section>

@@ -84,13 +84,13 @@ Packages (also libraries) are kinds of "toolboxes" containing sets of functions 
 
 R already includes several default functions and packages, but several additional packages are available. It is possible to install a package by using the menu (Tools/Install Packages...) or by using the function install.packages("name-of-the-package-here").
 
-A very useful package is tidyverse. Tidyverse actually includes several other packages, such as ggplot2 to create charts, and dplyr to manipulate data sets ("data wrangling").
+A very useful package is tidyverse. Tidyverse actually includes several other packages, such as `ggplot2` to create charts, and dplyr to manipulate data sets ("data wrangling").
 
 ```{r eval=FALSE}
 install.packages("tidyverse")
 ```
 
-To use the functions contained in a package, you need to load the package into the work environment first. This can be done with by using the function library(). For instance, we can load tidyverse with the following code:
+To use the functions contained in a package, you need to load the package into the work environment first. This can be done with by using the function `library`. For instance, we can load tidyverse with the following code:
 
 ```{r}
 library(tidyverse)
@@ -159,25 +159,25 @@ head(read.csv(file = "data/glbwarm.csv"))
 
 This way you may take a look at the output (but this is not the right way to do that), but you cannot manipulate it. It is only when you create an object containing the output information of the function (using the arrow sign and a name for the object), that you can continue working on it.
 
-To take a look at the data set, you can use the function head() to print the first few rows in the console.
+To take a look at the data set, you can use the function `head` to print the first few rows in the console.
 
 ```{r}
 head(glbwarm)
 ```
 
-You can also view the data set in a separate window by using the function View().
+You can also view the data set in a separate window by using the function `View`.
 
 ```{r}
 View(glbwarm)
 ```
 
-Another way to explore a data set is through the function str(). This function allows the user to see the type of variables in the data set.
+Another way to explore a data set is through the function `str`. This function allows the user to see the type of variables in the data set.
 
 ```{r}
 str(glbwarm)
 ```
 
-A similar function, included in the tidyverse package, is glimpse()
+A similar function, included in the tidyverse package, is `glimpse`.
 
 ```{r}
 # load the package (load it just once in each R session) 
@@ -185,7 +185,7 @@ library(tidyverse)
 glimpse(glbwarm)
 ```
 
-In this case, we can see that the first three variables are numerical (num), and the second three integers (int). Numeric (also double) is a data type that contains [real numbers](https://en.wikipedia.org/wiki/Real_number) (). Integers is a data type that contains [integer numbers](https://en.wikipedia.org/wiki/Integer).
+In this case, we can see that the first three variables are numerical (num), and the second three integers (int). Numeric (also double) is a data type that contains [real numbers](https://en.wikipedia.org/wiki/Real_number). Integers is a data type that contains [integer numbers](https://en.wikipedia.org/wiki/Integer).
 
 There are also other types of data, such as character (char) for character values, logical for logical values (TRUE and FALSE), and factors to describe items that can have a finite number of values (gender: male, female, other; education, etc.).
 
@@ -237,7 +237,7 @@ object_2 <- 23 * 34
 object_2
 ```
 
-Sometimes you may want to delete an object from the environment. You can do that with the function rm() (notice the object disappearing from the environment, in the Environment window).
+Sometimes you may want to delete an object from the environment. You can do that with the function `rm` (notice the object disappearing from the environment, in the Environment window).
 
 ```{r}
 rm(object_2)
@@ -311,13 +311,13 @@ The columns of a data set/data frame represent variables, and rows represent cas
 head(glbwarm)
 ```
 
-The function dim() can be used to find the number of rows and columns of a data set. The first and second figure in the output is the number of rows and column, respectively.
+The function `dim` can be used to find the number of rows and columns of a data set. The first and second figure in the output is the number of rows and column, respectively.
 
 ```{r}
 dim(glbwarm)
 ```
 
-The functions str() or glimpse() permits to see the names of the columns/variables. Another way to see them is using the function names().
+The functions `str` or `glimpse` permits to see the names of the columns/variables. Another way to see them is using the function `names`.
 
 ```{r}
 names(glbwarm)
@@ -350,7 +350,7 @@ sum(1, 4)
 
 ```
 
-A function has a name (the name of the function, like the name of any other object, e.g., the function sum) and one or more parameters. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the parameters there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.
+A function has a name (the name of the function, like the name of any other object, e.g., the function `sum`) and one or more parameters. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the parameters there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.
 
 In this course we'll use statistical function for performing linear regression in R, moderation, mediation, and conditional process analysis. For example, the name of the linear regression function in R is *lm*.
 
@@ -380,7 +380,7 @@ Several resources about R are freely available online. YouTube features several 
 
 -   Write and run a few mathematical operations in the script file (e.g., 3+2, 5/3, etc.)
 
--   Create a new object containing the output of the function sum (e.g., my_sum \<- sum(4, 8)) and use this object to perform another mathematical operation of your choice
+-   Create a new object containing the output of the function `sum` (e.g., `my_sum <- sum(4, 8)`) and use this object to perform another mathematical operation of your choice
 
 -   Save the updated script and close it
 
@@ -390,6 +390,6 @@ Several resources about R are freely available online. YouTube features several 
 
 -   Load one of the data set
 
--   Take a look at the data set using the functions View, str, and glimpse (remember to load the package tidyverse before using the glimpse function)
+-   Take a look at the data set using the functions `View`, `str`, and `glimpse` (remember to load the package `tidyverse` before using the glimpse function)
 
--   Access one of the column of the data set (name_of_dataframe + dollar sign "\$" + name of the column) using the dollar sign
+-   Access one of the column of the data set (name_of_dataframe + dollar sign `$` + name of the column) using the dollar sign

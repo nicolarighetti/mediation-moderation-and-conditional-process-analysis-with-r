@@ -14,8 +14,10 @@ Additionally, the introductory part of the course provides a concise overview of
 We'll use linear regression models to answer questions of the **WHETHER** or **IF** variety. These questions revolve around the relationship between variables. For instance, does a variable Y have a correlation with another variable X, or perhaps with multiple other variables? For example, we can utilize this type of analysis to investigate if there's a connection between an increase in exposure to partisan news media and polarization.
 
 ```{r echo=FALSE, message=FALSE}
-require(tidyverse)
+library(tidyverse)
+```
 
+```{r echo=FALSE}
 y <- rnorm(100)
 x <- y * 5 + rnorm(100, sd=3)
 df <- data.frame(x=x, y=y)

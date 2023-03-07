@@ -355,6 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -386,8 +387,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b06b676607fa16cf5717" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b06b676607fa16cf5717">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  rec5 [label = \"Test\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4 -> rec5;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-76ee621da60fb723af5e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-76ee621da60fb723af5e">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  rec5 [label = \"Test\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4 -> rec5;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="learning-goals" class="level1">
@@ -408,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Download from Moodle (folder “Scripts”) the <strong>PROCESS software</strong> for R. The software is written by the author of the book we are using during this course, Andrew F. Hayes. The software is also available on <a href="https://www.PROCESSmacro.org/download.html" class="uri">https://www.PROCESSmacro.org/download.html</a>, where you can find the version for R and other statistical software. In this course we’ll use the R version (several examples in the book are from the SPSS version).</li>
 <li>Create a folder “PROCESS_R” in your R project directory, and save the “PROCESS.R” there</li>
-<li>Run the code below to load the PROCESS functions</li>
+<li>Run the code below to load the <code>process</code> functions</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"PROCESS_R/PROCESS.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -430,8 +431,8 @@ Copyright 2021 by Andrew F. Hayes ALL RIGHTS RESERVED
 <section id="download-and-load-the-data-set" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-load-the-data-set">Download and load the data set</h2>
 <ul>
-<li>Download the <strong>pmi</strong> dataset and save it in your “data” folder, in the R project directory.</li>
-<li>Load the data by using the <strong>read.csv</strong> function.</li>
+<li>Download the <code>pmi</code> dataset and save it in your “data” folder, in the R project directory.</li>
+<li>Load the data by using the <code>read.csv</code> function.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pmi_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/pmi.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -481,7 +482,7 @@ Copyright 2021 by Andrew F. Hayes ALL RIGHTS RESERVED
 <p><span class="math display">\[0) \hat Y = i_1 + c_X\]</span> <span class="math display">\[1) \hat M = i_2 + a_X\]</span> <span class="math display">\[2) \hat Y = i_3 + c'_X + bM\]</span></p>
 <section id="estimation-with-process" class="level2">
 <h2 class="anchored" data-anchor-id="estimation-with-process">Estimation with PROCESS</h2>
-<p>Using OLS regression, we use the <strong>PROCESS</strong> function to estimate equations 1 and 2 (in the previous slide) and thereby to get <em>a</em>, <em>b</em>, and <em>c′</em> along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of <span class="math inline">\(X\)</span>.</p>
+<p>Using OLS regression, we use the <code>process</code> function to estimate equations 1 and 2 (in the previous slide) and thereby to get <em>a</em>, <em>b</em>, and <em>c′</em> along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of <span class="math inline">\(X\)</span>.</p>
 <p>The function requires you to specify:</p>
 <ul>
 <li>the dataset</li>
@@ -613,7 +614,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </ul>
 <p>In the bottom part of the output of <em>PROCESS</em>, are both the <strong>“indirect effect(s) of X on Y”</strong>, in the <strong>confidence interval</strong> form, and the <strong>“normal theory test for indirect effect(s)”</strong>, in the <strong>p-value</strong> form.</p>
 <p>Based on statistical research, the recommendation of the PROCESS software is, in general, to avoid the <strong>“normal theory test for indirect effect(s)”</strong> approach, and to interpret the <strong>confidence interval</strong>. This approach would be better in several empirical circumstances, and more powerful in detecting statistical significance.</p>
-<p>We can avoid calculating the normal theory test by removing <strong>normal = 1</strong> from the function <strong>progress</strong>.</p>
+<p>We can avoid calculating the normal theory test by removing <code>normal = 1</code> from the function <code>process</code>.</p>
 <p>For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, &gt; 0.05), while the bootstrapping confidence interval is statistically significant (it does not include zero: 95% CI [0.0143, 0.5254]).</p>
 <p>We already saw that confidence intervals can be calculated through standard errors based on the Central Limit Theorem, and thus based on theoretical assumptions regarding the sampling distribution.</p>
 <p>In this case, instead, they are calculated through <strong>bootstrapping</strong>. It is a procedure based on <strong>resampling with replacement</strong>. Also in this case, it is of fundamental importance that the sample is a miniature representation of the original population.</p>
@@ -789,7 +790,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p><img src="img/control_1_diagram_2.png" class="img-fluid" width="480"></p>
 </div>
 </div>
-<p>The only difference between the code to fit a mediation model with covariates and the code we already saw, is the addition of the covariates listed in a vector (using the <em>c</em> function) after the parameter <strong>cov</strong>.</p>
+<p>The only difference between the code to fit a mediation model with covariates and the code we already saw, is the addition of the covariates listed in a vector (using the <code>c</code> function) after the parameter <code>cov</code>.</p>
 <p>By default, any variable in the covariate list will be included as additional antecedent variables in the model of each of the consequent.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1772,6 +1773,11 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <li>The characteristic of a <strong>multicategorical variable</strong> (and the difference between dichotomous and continuous variables)</li>
 <li>How to use R PROGRESS to <strong>fit</strong> a mediation model with multicategorical X variable, and how to <strong>interpret</strong> the output of the model</li>
 </ul>
+</section>
+<section id="exercise" class="level1">
+<h1>Exercise</h1>
+<p>Read the following paper, up to the end of study 1, and replicate the analysis using the provided data. Write a short report with diagrams, tables, and the interpretation of results.</p>
+<p>Thomas, M. F., Binder, A., &amp; Matthes, J. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S0747563221003009">The agony of partner choice: The effect of excessive partner availability on fear of being single, self-esteem, and partner choice overload.</a>&nbsp;<em>Computers in Human Behavior</em>,&nbsp;<em>126</em>, 106977.</p>
 
 
 </section>

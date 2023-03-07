@@ -137,16 +137,16 @@ $e$ is the *error* or **residual**, and represents the imprecision and uncertain
 
 # Fit a linear regression model with R
 
-The R function to fit a linear regression model is **lm()**.
+The R function to fit a linear regression model is `lm`.
 
-The function takes at least two arguments separated by a *tilde* (\~ check how to write that with your specific keyword. You can also copy it from the help by typing ?tilde):
+The function takes at least two arguments separated by a *tilde* (\~ check how to write that with your specific keyword. You can also copy it from the help by typing `?tilde`):
 
 -   To the left of the tilde is the dependent variable ($Y$)
 -   To the right of the tilde is the independent variables ($X$) separated with the plus (+) symbol.
 
 We also use the argument *data* for the name of the dataset.
 
-The function **summary** is used to see the results of the model fitting functions.
+The function `summary` is used to see the results of the model fitting functions.
 
 ### Example
 
@@ -165,7 +165,7 @@ Let's fit a **simple linear regression model** that predicts support for governm
 lm1 <- lm(govact ~ negemot, data = glbwarm)
 ```
 
-The function **summary** produce the output.
+The function `summary` produce the output.
 
 ```{r}
 summary(lm1)
@@ -205,7 +205,7 @@ At the bottom of the table, there is general information on the model. Of partic
 -   After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The **R-squared is a goodness-of-fit measure** which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the **proportion of variance (of the dependent variable) explained by the model** (i.e., how well can we predict the value of $Y$ based on the values of $Xs$?). **Adjusted R-squared** adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.
 -   The last row of the output reports a **p-value** and the results from the *F-statistic*. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The *F-statistic* compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.
 
-> The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function **format**, adding the number you want to convert, and the option **scientific=FALSE**. For example:
+> The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function `format`, adding the number you want to convert, and the option `scientific=FALSE`. For example:
 
 ```{r}
 format(2.2e-16, scientific=FALSE)
@@ -295,7 +295,7 @@ Linear regression is founded on some assumptions. The **violation of these assum
 
 In R there are four "diagnostic" plots you can use to assess the assumptions of the model.
 
-You can visualize the plots by using the function **plot** applied to the "object" corresponding to your **fitted model**. You can visualize the plots together by using **par(mfrow=c(2,2))** before calling the *plot* function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the *plot* function (e.g.: **plot(lm_object, 1))**).
+You can visualize the plots by using the function `plot` applied to the "object" corresponding to your **fitted model**. You can visualize the plots together by using `par(mfrow=c(2,2))` before calling the `plot` function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the *plot* function (e.g.: `plot(lm_object, 1)`).
 
 ```{r}
 par(mfrow=c(2,2))
@@ -330,7 +330,7 @@ coeftest(lm2, vcov = vcovHC(lm2, type = "HC3"))
 
 You can also see that certain dots are marked by a number. These are points with unexpectedly high residuals (error) and you could inspect them to find out why (e.g., to exclude there are errors in the dataset). Also check if any point in the **Residuals vs Leverage** plot falls outside of Cook's distance (a red dashed lines). These points are considered to be influential observations. Influential points have a large influence on the model and should be carefully inspected. In this case there are no influential points, and the red dashed line is not even displayed.
 
-To verify **multicollinearity** you can also calculate the **VIF** ("Variance Inflation Factor"). The function to calculate it is *vif*, and is included in the package *car*. The smallest possible value of VIF is one (absence of multicollinearity), and as a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity.
+To verify **multicollinearity** you can also calculate the **VIF** ("Variance Inflation Factor"). The function to calculate it is `vif`, and is included in the package `car`. The smallest possible value of VIF is one (absence of multicollinearity), and as a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity.
 
 ```{r eval = FALSE}
 # install the package
@@ -357,7 +357,7 @@ There are plenty of resources online about linear regression and R. For example:
 
 ### Exercises
 
-Use the **estress** dataset (estress.csv) to perform a multiple linear regression model.
+The following exercise is based on the `estress` dataset (estress.csv).
 
 #### Description of the dataset
 
@@ -375,12 +375,10 @@ The dataset also includes the length of time in the business, in years (**TENURE
 
 #### Exercise
 
-Explore the variables (five number summary, standard deviation) and the dataset (sample size).
+Using the `estress` dataset, write a short data analysis report including:
 
-Fit a linear regression model to predict/explain **withdraw** intention based on the following independent variables: **affect, sex, estress, age, tenure, ese**.
+-   Summary statistics: five number summary, standard deviation, and the sample size of the dataset.
 
-Interpret the model.
+-   A multiple linear regression model to predict/explain `withdraw` intention based on the following independent variables: `affect`, `sex`, `estress`, `age`, `tenure`, `ese`. Report the regression table and provide the appropriate interpretation.
 
-Check out the diagnostic plots (do you see any evident pattern in the points? Are the dots grouped along a diagonal line in the normal Q-Q plot?. Also calculate the Variance Inflation Factor (VIF) using the function *vif* in the *car* package.
-
-Test your understanding of the concepts and your interpretation of the linear model and assumptions by answering the questions in the quiz available on Moodle (by Tuesday). The quiz is just for your self-evaluation (i.e., *it is not graded*).
+-   Check out the diagnostic plots and provide an interpretation: do you see any evident pattern in the points? Are the dots grouped along a diagonal line in the normal Q-Q plot? Also calculate the Variance Inflation Factor (VIF) using the function `vif` function in the `car` package.

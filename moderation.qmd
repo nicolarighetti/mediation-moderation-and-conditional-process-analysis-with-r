@@ -280,9 +280,9 @@ The table of conditional effects of the focal predictor at values of the moderat
 
 -   As a default, the PROCESS chooses the 16th, 50th, and 84th percentiles of the variable distribution (because they correspond to a standard deviation below the mean, the mean, and a standard deviation above the mean if w is exactly normally distributed). This allows you to roughly ascertain whether x is related to y among those who are "relatively low," "moderate," and "relatively high" on the moderator.
 
--   Another option, whose interpretation is similar, is to use the parameter moments = 1 to choose values equal to a standard deviation below the sample mean, the mean, and a standard deviation above the mean.
+-   Another option, whose interpretation is similar, is to use the parameter `moments = 1` to choose values equal to a standard deviation below the sample mean, the mean, and a standard deviation above the mean.
 
--   The last option is to manually specify the desired values to operationalize what you consider to be "relatively low," "moderate," and "relatively high" values on the moderator. You can do so by adding the wmodval option (for instance, wmodval = c(10, 30, 50)), with attention not to use values of the moderator that are outside the bounds of measurement or observation.
+-   The last option is to manually specify the desired values to operationalize what you consider to be "relatively low," "moderate," and "relatively high" values on the moderator. You can do so by adding the `wmodval` option (for instance, `wmodval = c(10, 30, 50)`), with attention not to use values of the moderator that are outside the bounds of measurement or observation.
 
 From this table, we can see that x (framing of the disaster) has a significant effect on y (justifications for withholding assistance) only in people higher in skepticism (w), while no significant effect can be found among people with low to moderate levels of climate change skepticism.
 
@@ -379,9 +379,9 @@ lines(x[w==1], y[w==1], lwd = 2, lty = 1, col = "black")
 
 ## Continuous moderator and continuous X
 
-We can illustrate the concept of a continuous moderator and independent variable using the dataset 'glbwarm', with age as the moderator and negemot as the independent variable. We will also include covariates
+We can illustrate the concept of a continuous moderator and independent variable using the dataset `glbwarm`, with age as the moderator and `negemot` as the independent variable. We will also include covariates
 
-To examine the interaction, we will use values at the 16th, 5 We use 30, 50, 70 with the **wmodval** option. We also use **jn = 1** since the moderator is continuous.
+To examine the interaction, we will use values at the 16th, 5 We use 30, 50, 70 with the `wmodval` option. We also use `jn = 1` since the moderator is continuous.
 
 ```{r}
 glbwarm <- haven::read_sav("data/glbwarm.sav")
@@ -684,7 +684,7 @@ Learning objectives of this unit consist of learning to fit and interpret models
 
 ## Moderation with multicategorical antecedent (X) variable
 
-To fit a moderation model with a multicategorical antecedent variable (x), we use a PROCESS function including the options model = 1 and mcx = 1, where mcx means multicategorical x. This option is necessary to analyze x as a multicategorical variable.
+To fit a moderation model with a multicategorical antecedent variable (x), we use a PROCESS function including the options `model = 1` and `mcx = 1`, where `mcx` means multicategorical x. This option is necessary to analyze x as a multicategorical variable.
 
 As in other models previously considered, a multicategorical antecedent variable with g number of groups is automatically split into g-1 x variables, each indicating a specific modality of the variable, and one reference group. For instance, in the case of the "protest" dataset (which we will use to exemplify this model), there are three conditions: no protest, individual protest, and collective protest, respectively coded in the "protest" variable as protest=0, protest=1, and protest=2. The software automatically subdivides this multicategorical variable (g=3) into 2 (g-1 = 3-1 = 2) groups. The missing group is used as the reference group. The reference is the group with the lowest value: protest=0.
 
@@ -758,9 +758,9 @@ Finally, there is the coefficient for "sexism" (-0.47, p = 0.02), which is our m
 
 Using the data in the last table, it is possible to **visualize the model**, which makes it immediatly clear the relation of moderation. What is interesting with respect to the interpretation of the plot is **the gap between the lines and how it varies as a function of the moderator**. The gap **represents the difference between the conditions (x) in how much Catherine is liked by people who are the same in their beliefs about sex discrimination (w)**.
 
-In this example, the values used by PROCESS are the 16th, 50th, and 84th percentiles (i.e., the default approach) of the distribution of sexism in the sample, but these can be changed using the **moments=1** or **wmodval** options (already discussed).
+In this example, the values used by PROCESS are the 16th, 50th, and 84th percentiles (i.e., the default approach) of the distribution of sexism in the sample, but these can be changed using the `moments=1` or `wmodval` options (already discussed).
 
-(tip: to learn more about the plot codes, the functions and parameters, search the functions in the "help" and read the documentation, and/or google them. Also, you can experiment with the code, by changing the parameter, seeing what changes. Also, check the tutorial on ggplot2 visualization of moderation effects to learn an alternative way to create these plots).
+(tip: to learn more about the plot codes, the functions and parameters, search the functions in the "help" and read the documentation, and/or google them. Also, you can experiment with the code, by changing the parameter, seeing what changes. Also, check the tutorial on `ggplot2` visualization of moderation effects to learn an alternative way to create these plots).
 
 ```{r}
 x <- c(0,1,2,0,1,2,0,1,2)
@@ -792,7 +792,7 @@ text(5.896+0.03, 5, "w=5.896", cex = 0.8, srt = 90)
 
 ```
 
-When it comes to **probe the interaction** (i.e., testing the level and statistical significance of the interaction at different values of the moderator), although the the application of Johnson--Neyman technique would be possible, PROCESS implements it only when x is dichotomous or continuous, but not when it is multicategorical. What PROCESS implements is the **pick-a-point approach**, based on specific values of the moderators. By default, PROCESS uses the *16th, 50th, and 84th percentiles* of the distribution of w in the data available to operationalize **relatively low**, **moderate**, and **relatively high** values of the moderator (but it is possible to change the chosen values of w using the **moments=1** or **wmodval** options).
+When it comes to **probe the interaction** (i.e., testing the level and statistical significance of the interaction at different values of the moderator), although the the application of Johnson--Neyman technique would be possible, PROCESS implements it only when x is dichotomous or continuous, but not when it is multicategorical. What PROCESS implements is the **pick-a-point approach**, based on specific values of the moderators. By default, PROCESS uses the *16th, 50th, and 84th percentiles* of the distribution of w in the data available to operationalize **relatively low**, **moderate**, and **relatively high** values of the moderator (but it is possible to change the chosen values of w using the `moments=1` or `wmodval` options).
 
 The results from these technique is in the second part of the output. It can be seen that, in this case, the **relatively low (16th percentile)** value of the moderator w (sexism) is 4.25, the **moderate (50th percentile** value is 5.12, and **relatively high (84th percentile)** is 5.90. Each of these values has its own tests. In particular we have two kinds of test:
 
@@ -850,7 +850,7 @@ The interpretation of the significance of the difference depends on the referenc
 
 To conclude, the table **conditional effects of the focal predictor at values of the moderator(s)** is dedicated to **probe the interaction**, because it is about the relation between x and y at different levels of the moderator. Since we have a multicategorical moderator, this means that **the relation between x and y is tested in each group of the groups that constitute the categorical moderator** (in this case, protest = 0, 1 and 2). Since we have a categorical moderator, the Johnson-Neyman technique to calculate the significance region(s) is off the table, as it applies only to continuous moderators.
 
-Also the chart is about the same of the previous model, with just a few changes. First, the data should be replaced with the new values. Next, the labels have to be changed, since "perceived pervasiveness of gender discrimination" is now the *x*. Also, we can remove the dots we used to visualize the values chosen for probing the interaction (the parameter *pch* in the functions), as well as the dotted lines (functions *abline*) and the labels put in the plot (function *text*) we used for the same reason. By comparing the code with the previous one you can check all the differences.
+Also the chart is about the same of the previous model, with just a few changes. First, the data should be replaced with the new values. Next, the labels have to be changed, since "perceived pervasiveness of gender discrimination" is now the *x*. Also, we can remove the dots we used to visualize the values chosen for probing the interaction (the parameter `pch` in the functions), as well as the dotted lines (functions `abline`) and the labels put in the plot (function *text*) we used for the same reason. By comparing the code with the previous one you can check all the differences.
 
 However, the interpretation is a bit different. In the previous case (multicategorical antecedent and continuous moderator), we used a pick-a-point approach to probe the interaction at different levels of the moderator (which was plotted on the x axis). Coherently, we looked at the *gaps* between lines at those levels of the moderator. Instead, in this case we cannot do that, also because on the x axis we have the x variable and not the moderator. The moderator is moreover categorical, so each line in the chart show a different category of the moderator. What we want to consider now is not the gap between the lines at different levels of the moderator, but the inclination (the "slope") of the three lines that indicate different category of the moderator. So we can see that as the perceived pervasiveness of gender discrimination (x) increases, Catherine is liked less and less when people are told she did not protest, while she is liked more and more when people are told she protested using an individual and a collective frame.
 
@@ -930,7 +930,6 @@ Since we are interested in how the relationship changes with the moderator, what
 
 The interpretation of regression coefficients is also conditioned to the values assumed by other variables. This is especially true for the interaction coefficients indicated as "int_1", "int_2" etc. (depending on the number of interactions), and differently for the single coefficients of the variables involved in the interactions. Let's start with the latter.
 
-
 The variables involved in the interactions are listed in the "product key term" table (in this example, they are negemot and age). Let's call the variables involved in the interaction "interaction variables" (this is not a technical term, but just something we use here to facilitate the discussion).
 
 ```{r echo=FALSE}
@@ -955,7 +954,6 @@ Importantly, these coefficients (and their statistical significance tests) are n
 
 By doing so, zero becomes the average of the variable, and the interpretation becomes, for instance: "among people who are average in negative emotions, one unit increase in age yields to an increase (or decrease) in estimated support for the government of xxx points".
 
-
 The coefficients don't need to be meaningful. Even if they are not interpretable, the model works perfectly fine to estimate and test the interaction, which we are usually interested in.
 
 ## Interaction coefficients
@@ -971,7 +969,6 @@ knitr::include_graphics("img/ex_moderation_table.png")
 ```
 
 The interaction coefficients (int_1 etc.) Do not quantify changes in the estimate of y (as the other coefficients) but in the conditional effects. They quantify how much the conditional effect of the independent (x) on the dependent variable (y) changes as the moderator w changes by one unit. To express how w interacts with x to mediate its effect on y, the conditional effect is a complex term composed of both w and x. This will become clearer when we learn to read the model equation.
-
 
 However, it should be underlined that interpreting these coefficients is not strictly necessary. Usually, what matters, in the end, is the statistical significance of the interaction. If the interaction is significant, you can interpret it with other more appropriate statistical instruments, like the r2-change, the pick-a-point table, and the Johnson-Neymann table.
 
@@ -1499,3 +1496,5 @@ ggplot(dataviz) +
   theme_minimal() +
   theme(legend.position = "top") # top, bottom, left, right
 ```
+
+# 

@@ -49,7 +49,7 @@ library(tidyverse)
 glimpse(glbwarm)
 ```
 
-While the glimpse function provides a preview of the dataset, a clearer preview is displayed using the head() function.
+While the `glimpse` function provides a preview of the dataset, a clearer preview is displayed using the `head` function.
 
 ```{r}
 head(glbwarm)
@@ -69,19 +69,19 @@ A clear description of the different measures can be found [here](https://statis
 
 ## The Mean
 
-In R, the mean of a variable can be calculated using the function **`mean`**, and to access a variable in the dataset, which is a column of a data.frame, the dollar sign is used. For instance, the mean age of people in the sample can be calculated using `mean(glbwarm$age)`, which returns 49.5362.
+In R, the mean of a variable can be calculated using the function `mean`, and to access a variable in the dataset, which is a column of a data.frame, the dollar sign is used. For instance, the mean age of people in the sample can be calculated using `mean(glbwarm$age)`, which returns 49.5362.
 
 ```{r}
 mean(glbwarm$age)
 ```
 
-If you wish to round off the number of decimals, the **`round`** function can be used, which takes two arguments - the number or function to be rounded off and the integer specifying the number of decimals. For example, **`round(mean(glbwarm$age)`**, 2) returns 49.54, which can also be represented by creating an object (e.g., mean_age) to store the output of the function mean() and then rounding it off.
+If you wish to round off the number of decimals, the `round` function can be used, which takes two arguments - the number or function to be rounded off and the integer specifying the number of decimals. For example, `round(mean(glbwarm$age), 2)` returns 49.54, which can also be represented by creating an object (e.g., mean_age) to store the output of the function `mean` and then rounding it off.
 
 ```{r}
 round(mean(glbwarm$age), 2)
 ```
 
-This is equivalent to creating an object *mean_age* representing the output of the function mean (i.e., the mean age), and then rounding it off.
+This is equivalent to creating an object *mean_age* representing the output of the function `mean` (i.e., the mean age), and then rounding it off.
 
 ```{r}
 mean_age <- mean(glbwarm$age)
@@ -102,7 +102,7 @@ Variables can have either continuous or discrete distributions, depending on the
 
 ## Five-Number Summary
 
-A numerical description of the distribution is provided by the function **summary()**, which gives the **five-number summary**.
+A numerical description of the distribution is provided by the function `summary`, which gives the **five-number summary**.
 
 ```{r}
 summary(glbwarm$ideology)
@@ -123,7 +123,7 @@ boxplot(glbwarm$govact, main = "Ideology")
 
 ## Histogram
 
-Another way to display the distribution of a variable is by using a [histogram](https://en.wikipedia.org/wiki/Histogram), which can be created using the **`hist`** function.
+Another way to display the distribution of a variable is by using a [histogram](https://en.wikipedia.org/wiki/Histogram), which can be created using the `hist` function.
 
 The function can be used to show the frequency distribution of values and their probability distributions.
 
@@ -173,15 +173,15 @@ For instance, a histogram of the dichotomous categorical variable "sex" is not a
 hist(glbwarm$sex, main = "SEX (categorical dichotomous variable)", xlab = "sex")
 ```
 
-The appropriate way to represent the frequency distribution of categorical variables is with a bar chart (or bar plot). The corresponding R function is **`barplot`**.
+The appropriate way to represent the frequency distribution of categorical variables is with a bar chart (or bar plot). The corresponding R function is `barplot`.
 
-It takes as an argument a table with the frequency for each modality of the category (i.e., a table with the number of males and females in the sample). The function **`table`** returns the frequency of the variable.
+It takes as an argument a table with the frequency for each modality of the category (i.e., a table with the number of males and females in the sample). The function `table` returns the frequency of the variable.
 
 ```{r}
 table(glbwarm$sex)
 ```
 
-This function can be used as the main argument of the function **barplot()**:
+This function can be used as the main argument of the function `barplot`:
 
 ```{r}
 barplot(table(glbwarm$sex),
@@ -239,7 +239,7 @@ A way to think about standardization, is considering it as the interpretation of
 
 The average of a standardized variable is always zero, below-average values are negative and above-average values are positive.
 
-In R, standarization is provided by the function **scale()**.
+In R, standardization is provided by the function `scale`.
 
 ```{r}
 zscores_age <- scale(glbwarm$age)
@@ -267,11 +267,7 @@ Z-scores are often used with reference to the **standard normal distribution**. 
 
 In the first section we used statistical measures and charts to describe variables. In this section we'll learn to assess the relationships between two variables.
 
-At the end of this unit you will understand the following concepts, be able to interpret them, and know the R functions to calculate and create the related statistical measures and plots:
-
--   Pearson's correlation
--   Scatterplot
--   Prediction
+At the end of this unit you will understand the Pearson's correlation coefficient and know the R functions to calculate and create the related statistical plots (scatter plot).
 
 ## Correlation
 
@@ -319,7 +315,7 @@ Thanks to the denominator, which represents the total amount of variation possib
 
 $$ r = \frac{cov_{XY}}{SD_XSD_Y}$$
 
-In R, the correlation coefficient is computed with the function **cor**. For example:
+In R, the correlation coefficient is computed with the function `cor`. For example:
 
 ```{r}
 cor(glbwarm$govact, glbwarm$negemot)
@@ -352,7 +348,7 @@ A scatter plot is a common method for visually exploring and representing the co
 
 "[A scatter plot](https://en.wikipedia.org/wiki/Scatter_plot) is a type of plot or mathematical diagram that uses Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), an additional variable can be displayed. The data are displayed as a collection of points, with the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis".
 
-To create a scatter plot in R, you can use the function **`plot`**. It takes two arguments: x (the first variable) and y (the second variable). The argument **`pch`** changes the shape of the points; see more details [here](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/points.html).
+To create a scatter plot in R, you can use the function `plot`. It takes two arguments: x (the first variable) and y (the second variable). The argument `pch` changes the shape of the points; see more details [here](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/points.html).
 
 ```{r echo=TRUE}
 plot(glbwarm$govact, glbwarm$posemot,
@@ -439,13 +435,13 @@ In your opinion, is there a strong correlation between these variables?
 
 ### Exercise 2
 
-Use the function *cor()* to calculate the correlation between the variables *negemot* and *govact* in the glbwarm data set.
+Use the function `cor` to calculate the correlation between the variables *negemot* and *govact* in the `glbwarm` data set.
 
 Based on the Pearson's r coefficient, is there a strong correlation between these variables?
 
 ### Exercise 3
 
-Consider the variables *tnews* and *age* in the **glbwarm** data set:
+Consider the variables *tnews* and *age* in the `glbwarm` data set:
 
 -   Visualize the association using a scatterplot
 -   Calculate the Pearson's r correlation

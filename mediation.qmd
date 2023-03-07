@@ -37,7 +37,7 @@ knitr::include_graphics("img/simple_mediation_model_diagram.png")
 
 -   Download from Moodle (folder "Scripts") the **PROCESS software** for R. The software is written by the author of the book we are using during this course, Andrew F. Hayes. The software is also available on <https://www.PROCESSmacro.org/download.html>, where you can find the version for R and other statistical software. In this course we'll use the R version (several examples in the book are from the SPSS version).
 -   Create a folder "PROCESS_R" in your R project directory, and save the "PROCESS.R" there
--   Run the code below to load the PROCESS functions
+-   Run the code below to load the `process` functions
 
 ```{r message=FALSE, warning=FALSE}
 source("PROCESS_R/PROCESS.R")
@@ -45,8 +45,8 @@ source("PROCESS_R/PROCESS.R")
 
 ## Download and load the data set
 
--   Download the **pmi** dataset and save it in your "data" folder, in the R project directory.
--   Load the data by using the **read.csv** function.
+-   Download the `pmi` dataset and save it in your "data" folder, in the R project directory.
+-   Load the data by using the `read.csv` function.
 
 ```{r}
 pmi_data <- read.csv("data/pmi.csv")
@@ -102,7 +102,7 @@ $$0) \hat Y = i_1 + c_X$$ $$1) \hat M = i_2 + a_X$$ $$2) \hat Y = i_3 + c'_X + b
 
 ## Estimation with PROCESS
 
-Using OLS regression, we use the **PROCESS** function to estimate equations 1 and 2 (in the previous slide) and thereby to get *a*, *b*, and *c′* along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of $X$.
+Using OLS regression, we use the `process` function to estimate equations 1 and 2 (in the previous slide) and thereby to get *a*, *b*, and *c′* along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of $X$.
 
 The function requires you to specify:
 
@@ -158,7 +158,7 @@ In the bottom part of the output of *PROCESS*, are both the **"indirect effect(s
 
 Based on statistical research, the recommendation of the PROCESS software is, in general, to avoid the **"normal theory test for indirect effect(s)"** approach, and to interpret the **confidence interval**. This approach would be better in several empirical circumstances, and more powerful in detecting statistical significance.
 
-We can avoid calculating the normal theory test by removing **normal = 1** from the function **progress**.
+We can avoid calculating the normal theory test by removing `normal = 1` from the function `process`.
 
 For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, \> 0.05), while the bootstrapping confidence interval is statistically significant (it does not include zero: 95% CI \[0.0143, 0.5254\]).
 
@@ -277,7 +277,7 @@ To illustrate that more than a single variable can be used as a statistical cont
 knitr::include_graphics("img/control_1_diagram_2.png")
 ```
 
-The only difference between the code to fit a mediation model with covariates and the code we already saw, is the addition of the covariates listed in a vector (using the *c* function) after the parameter **cov**.
+The only difference between the code to fit a mediation model with covariates and the code we already saw, is the addition of the covariates listed in a vector (using the `c` function) after the parameter `cov`.
 
 By default, any variable in the covariate list will be included as additional antecedent variables in the model of each of the consequent.
 
@@ -855,3 +855,9 @@ In this unit we learned:
 -   How to use progress to **fit** parallel and serial multiple mediation models and how to **interpret** them
 -   The characteristic of a **multicategorical variable** (and the difference between dichotomous and continuous variables)
 -   How to use R PROGRESS to **fit** a mediation model with multicategorical X variable, and how to **interpret** the output of the model
+
+# Exercise
+
+Read the following paper, up to the end of study 1, and replicate the analysis using the provided data. Write a short report with diagrams, tables, and the interpretation of results.
+
+Thomas, M. F., Binder, A., & Matthes, J. (2022). [The agony of partner choice: The effect of excessive partner availability on fear of being single, self-esteem, and partner choice overload.](https://www.sciencedirect.com/science/article/pii/S0747563221003009) *Computers in Human Behavior*, *126*, 106977.
