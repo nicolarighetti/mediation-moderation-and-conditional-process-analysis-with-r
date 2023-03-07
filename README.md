@@ -16,17 +16,17 @@ The course is subdivided into the following learning units:
 
 The last part of the course is dedicated to the project work.
 
-By the end of this course, participants are expected to know how:
+By the conclusion of this course, students should be proficient in:
 
--   Run and interpret the results of linear regression, moderation, mediation, and conditional process models.
+-   Executing and comprehending the outcomes of linear regression, moderation, mediation, and conditional process models.
 
--   Test competing theories of mechanisms statistically through the comparison of indirect effects in models with multiple mediators.
+-   Statistically testing competing theories of mechanisms through the evaluation of indirect effects in models that encompass multiple mediators.
 
--   Visualize and probe interactions in regression models to interpret interaction effects appropriately.
+-   Representing and investigating interactions in regression models to accurately interpret interaction effects.
 
--   Estimate the contingencies of mechanisms through the computation and inference about conditional indirect effects.
+-   Calculating and inferring about conditional indirect effects to estimate the contingencies of mechanisms.
 
--   Use the R language and PROCESS to run, visualize, and understand linear regression, moderation, mediation, and conditional process models.
+-   Utilizing the R language and PROCESS to conduct, depict, and comprehend linear regression, moderation, mediation, and conditional process models.
 
 ### Reading list
 
