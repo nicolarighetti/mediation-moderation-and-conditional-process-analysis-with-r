@@ -219,11 +219,13 @@ In the middle of the output, there is the **Coefficients** table:
 summary(lm2)
 ```
 
--   **Estimate** reports the **regression coefficients** of the model (i.e., the $b$ (beta) "weight" of independent variables).
--   **Std. Error** is the standard error of the coefficients (estimates), i.e., their standard deviations. We know that standard deviations is a measure of spread, and a measure of the precision with which the regression coefficient is measured.
--   **t value** is the "t statistic" and is the coefficient divided by its standard error. It's used to calculate the **"Pr (\>\|t\|)"** which is a way to say **p-value**, and is the number that you really need to look at. A p-value below 0.05 is marked with **at least an asterisk** and is said to be **statistically significant**. It indicates that the independent variable has a statistically significant impact on the dependent variable. In other words, we can conclude that **there is a true association between the variables**, since it would be unlikely to observe similar values if such an association did not exist.
+-   The Estimate report shows the regression coefficients of the model (i.e., the $b$ (beta) "weight" of the independent variables).
 
-> Notice that analysis is carried out on a **"sample"** in order to draw conclusions on a **"population"**. A sample is a subset of cases (e.g. the 815 Americans in the GLBWARM dataset) collected from a larger population (e.g. the entire American population). The sample represents the population on a small scale. A "statistically significant" relationship indicates that the observed relationship is a true relationship and not an artifact in the data sample we analysed. It suggests that the relationship exists both in the observed data (a sample) and in the population from which the data originate.
+-   Std. Error is the standard error of the coefficients (estimates), i.e., their standard deviations. We know that standard deviation is a measure of spread and precision with which the regression coefficient is measured.
+
+-   t value is the "t statistic" and is the coefficient divided by its standard error. It's used to calculate the "Pr (\>\|t\|)" which is a way of reporting the p-value, and is the number that you really need to look at. A p-value below 0.05 is marked with at least an asterisk and is said to be statistically significant. It indicates that the independent variable has a statistically significant impact on the dependent variable. In other words, we can conclude that there is a true association between the variables, since it would be unlikely to observe similar values if such an association did not exist.
+
+Notice that the analysis is carried out on a "sample" to draw conclusions on a "population". A sample is a subset of cases (e.g., the 815 Americans in the GLBWARM dataset) collected from a larger population (e.g., the entire American population). The sample represents the population on a small scale. A "statistically significant" relationship indicates that, under the statistical model, the observed relationship is likely true and not an artifact in the data sample we analyzed. It suggests that the relationship exists both in the observed data (a sample) and in the population from which the data originated.
 
 # Interpretation
 
@@ -287,13 +289,13 @@ Linear regression is founded on some assumptions. The **violation of these assum
 -   **Homoscedasticity**: Homoscedasticity (or homoskedasticity) states that **errors in estimation are almost equal across the range of the estimated values of the outcome** $\hat Y$. When this condition is not met, the errors in estimation are said to be *heteroscedastic*.
 -   **Independence**: the errors in estimation should be statistically independent. In the most basic terms, two things are independent if **information about one gives no information about the other**. A typical violation of independence is the autocorrelation in *time series data*, which has to be handled with specific time series techniques.
 -   **Outliers**: Observations particularly different from the average are called **outliers**. They may have excessive influence over the coefficient estimates (*"influential observations"*). If so, they must be thoroughly inspected.
--   **No multicollinearity**: Multicollinearity is the occurrence of high intercorrelations among two or more independent variables in a multiple regression model. It makes it difficult to distinguish the effect of the variables.
+-   **No multicollinearity**: Multicollinearity is the occurrence of high correlation among two or more independent variables in a multiple regression model. It makes it difficult to distinguish the effect of the variables.
 
 ### Check the assumptions
 
 In R there are four "diagnostic" plots you can use to assess the assumptions of the model.
 
-You can visualize the plots by using the funtion **plot** applied to the "object" corresponding to your **fitted model**. You can visualize the plots together by using **par(mfrow=c(2,2))** before calling the *plot* function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the *plot* function (e.g.: **plot(lm_object, 1))**).
+You can visualize the plots by using the function **plot** applied to the "object" corresponding to your **fitted model**. You can visualize the plots together by using **par(mfrow=c(2,2))** before calling the *plot* function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the *plot* function (e.g.: **plot(lm_object, 1))**).
 
 ```{r}
 par(mfrow=c(2,2))

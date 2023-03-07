@@ -35,17 +35,17 @@ knitr::include_graphics("img/simple_mediation_model_diagram.png")
 
 ## Download and load the PROCESS software
 
--   Download from Moodle (folder "Scripts") the **PROCESS software** for R. It is a software written by the author of the book we are using during this course, Andrew F. Hayes. The software is also available on https://www.processmacro.org/download.html, where you can find the version for R and other statistical software. In this course we'll use the R version (several examples in the book are from the SPSS version).
--   Create a folder "PROCESS_R" in your R project directory, and save the "process.R" there
+-   Download from Moodle (folder "Scripts") the **PROCESS software** for R. The software is written by the author of the book we are using during this course, Andrew F. Hayes. The software is also available on <https://www.PROCESSmacro.org/download.html>, where you can find the version for R and other statistical software. In this course we'll use the R version (several examples in the book are from the SPSS version).
+-   Create a folder "PROCESS_R" in your R project directory, and save the "PROCESS.R" there
 -   Run the code below to load the PROCESS functions
 
 ```{r message=FALSE, warning=FALSE}
-source("PROCESS_R/process.R")
+source("PROCESS_R/PROCESS.R")
 ```
 
 ## Download and load the data set
 
--   Download the **pmi** dataset from Moodle, and save it in your "data" folder, in the R project directory.
+-   Download the **pmi** dataset and save it in your "data" folder, in the R project directory.
 -   Load the data by using the **read.csv** function.
 
 ```{r}
@@ -54,23 +54,23 @@ pmi_data <- read.csv("data/pmi.csv")
 
 ## Case study description
 
-Participants read a news story describing global economic conditions leading to a possible sugar shortage and increase in price.
+Participants read a news story describing global economic conditions leading to a possible sugar shortage and an increase in price.
 
 Researchers told them that the story is about to be published:
 
--   on the *front page* of a newspaper (**= front page condition (cond = 0)**)
+-   on the *front page* of a newspaper (**= front-page condition (cond = 0)**)
 -   or in the *inside* of an economic supplement (**= back page condition (cond = 1)**).
 
-This is the independent variable ($X$), and is a **dichotomous** variable (in this case it expresses a experimentally manipulated condition, but a variable can be used in a mediation model even when in nonexperimenal studies).
+This is the independent variable ($X$), and is a **dichotomous** variable (in this case it expresses an experimentally manipulated condition, but a variable can be used in a mediation model even when in non-experimental studies).
 
 Participants then answered a series of questions:
 
 -   about their *intention to buy sugar* (**DV = reported reaction (reaction)**)
--   and aimed to assess (1) their perception of media's influence on general public's intention to buy sugar (**= presumed media influence (pmi)**), and (2) how important the topic was to the global economic crisis (**=perceived importance of the topic (import)**).
+-   and aimed to assess (1) their perception of media's influence on the general public's intention to buy sugar (**= presumed media influence (pmi)**), and (2) how important the topic was to the global economic crisis (**=perceived importance of the topic (import)**).
 
 **Research question**: does the location of the article affect behavioral intentions **indirectly through presumed media influence?**
 
-The question is about a **mechanism** at work that leads to different behavioral intentions after being told about the different location of the article. The appropriate statistical model is a mediated model. This is the kind of model we use to answer questions about *mechanisms*.
+The question is about a **mechanism** at work that leads to different behavioral intentions after being told about the different locations of the article. The appropriate statistical model is a mediated model. This is the kind of model we use to answer questions about *mechanisms*.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/mediation_1_diagram_2.png")
@@ -90,7 +90,7 @@ knitr::include_graphics("img/mediation_1_diagram_1.png")
 
 In practice, a simple mediation model decompose the total effect of X on Y, in a direct and indirect effect
 
-When Y and M are estimated using OLS regression, meaning analyzed as continuous variables using the OLS criterion for maximizing fit of the model (or when using a maximum-likelihood-based model of continuous outcomes, abother method in place of the OLS):
+When Y and M are estimated using OLS regression, meaning analyzed as continuous variables using the OLS criterion for maximizing fit of the model (or when using a maximum-likelihood-based model of continuous outcomes, another method in place of the OLS):
 
 TOTAL EFFECT = DIRECT EFFECT + INDIRECT EFFECT $$c = ab + c'$$
 
@@ -102,9 +102,9 @@ $$0) \hat Y = i_1 + c_X$$ $$1) \hat M = i_2 + a_X$$ $$2) \hat Y = i_3 + c'_X + b
 
 ## Estimation with PROCESS
 
-Using OLS regression, we use the **process** function to estimate equations 1 and 2 (in the previous slide) and thereby to get *a*, *b*, and *c′* along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of $X$.
+Using OLS regression, we use the **PROCESS** function to estimate equations 1 and 2 (in the previous slide) and thereby to get *a*, *b*, and *c′* along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of $X$.
 
-The function requires you to specificy:
+The function requires you to specify:
 
 -   the dataset
 -   the dependent variable $y$
@@ -114,8 +114,8 @@ The function requires you to specificy:
 Moreover, we specify:
 
 -   the **total** parameter, which we set to 1 (**total = 1**). It is used to tell the software to generate the *total effect* of X on Y (which we called *c* in the previous slides).
--   **model=4**, a parameter setting used for mediation models
--   We also use a **seed** with an abribrary number. This is used to ensure replicability of the results, since the model estimation involves a procedure using random number generation (the seed ensures that the random generated sequences are the same if you repeat the estimation).
+-   **model=4**, a parameter used for mediation models
+-   We also use a **seed** with an aribitrary number. This is used to ensure replicability of the results, since the model estimation involves a procedure using random number generation (the seed ensures that the randomly generated sequences are the same if you repeat the estimation).
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/mediation_1_diagram_2.png")
@@ -133,9 +133,9 @@ knitr::include_graphics("img/mediation_1_diagram_3.png")
 
 ## Interpretation of coefficients
 
-Two people who differ by one unit in X (front page condition vs. back-page condition) are estimated to be differ by 0.4957 units (95% CI \[0.0538, 1.0452\]) on average in their intention to buy sugar (**total effect**).
+Two people who differ by one unit in X (front-page condition vs. back-page condition) are estimated to be differ by 0.4957 units (95% CI \[0.0538, 1.0452\]) on average in their intention to buy sugar (**total effect**).
 
-They differ by 0.2413 units (95% CI \[0.0143, 0.5254\]) on average as a results of the **indirect effect** of page manipulation on buying intention through presumed media influence. The rest of the difference, 0.2544 units (95% CI \[-0.2522, 0.7609\]), is the **direct effect** of page manipulation on reported reactions, which is independent of the effects of page manipulation on reaction through PMI.
+They differ by 0.2413 units (95% CI \[0.0143, 0.5254\]) on average as a result of the **indirect effect** of page manipulation on buying intention through presumed media influence. The rest of the difference, 0.2544 units (95% CI \[-0.2522, 0.7609\]), is the **direct effect** of page manipulation on reported reactions, which is independent of the effects of page manipulation on reaction through PMI.
 
 ## Inference
 
@@ -145,30 +145,30 @@ Inferential methods have different characteristics for the **direct effect** and
 
 Regarding the **direct effect**, the inference can be framed in terms of a **p-value** (through *hypothesis testing*) or **confidence interval**.
 
-In the example above, the direct effect of the experiental condition, independent from the mediator, amount to 0.2544 units (95% CI \[-0.2522, 0.7609\], p-value: 0.3221).
+In the example above, the direct effect of the experimental condition, independent from the mediator, amounts to 0.2544 units (95% CI \[-0.2522, 0.7609\], p-value: 0.3221).
 
-The p-value and the confidence interval show that the effect is not statistically significant: the p-value is above the standard threshold of 0.05, while the confidence interval includes zero (when it does so, it means that it is possible that it is equal zero).
+The p-value and the confidence interval show that the effect is not statistically significant: the p-value is above the standard threshold of 0.05, while the confidence interval includes zero (when it does so, it means that it is possible that it is equal to zero).
 
-Regarding the inderect effect, there are two possibilities:
+Regarding the indirect effect, there are two possibilities:
 
--   calculating the p-value through an **hypothesis test**, relying the *assumption of normality* of the sampling distribution
--   Using a particular tecniques called **bootstrapping**
+-   calculating the p-value through a hypothesis **test**, relying the *assumption of normality* of the sampling distribution
+-   Using a particular technique called **bootstrapping**
 
-In the bottom part of the output of *process*, are both the **"indirect effect(s) of X on Y"**, in the **confidence interval** form, and the **"normal theory test for indirect effect(s)"**, in the **p-value** form.
+In the bottom part of the output of *PROCESS*, are both the **"indirect effect(s) of X on Y"**, in the **confidence interval** form, and the **"normal theory test for indirect effect(s)"**, in the **p-value** form.
 
-Based on stastical research, the recommendation of the PROCESS software is, in general, to avoid the **"normal theory test for indirect effect(s)"** approach, and to interpret the **confidence interval**. This approach would be better in several empirical circumtances, and more powerful in detecting stastical significance.
+Based on statistical research, the recommendation of the PROCESS software is, in general, to avoid the **"normal theory test for indirect effect(s)"** approach, and to interpret the **confidence interval**. This approach would be better in several empirical circumstances, and more powerful in detecting statistical significance.
 
 We can avoid calculating the normal theory test by removing **normal = 1** from the function **progress**.
 
-For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, \> 0.05), while the bootstrapping confindence interval is statistically significant (it does not include zero: 95% CI \[0.0143, 0.5254\]).
+For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, \> 0.05), while the bootstrapping confidence interval is statistically significant (it does not include zero: 95% CI \[0.0143, 0.5254\]).
 
 We already saw that confidence intervals can be calculated through standard errors based on the Central Limit Theorem, and thus based on theoretical assumptions regarding the sampling distribution.
 
 In this case, instead, they are calculated through **bootstrapping**. It is a procedure based on **resampling with replacement**. Also in this case, it is of fundamental importance that the sample is a miniature representation of the original population.
 
-**Resampling with replacement** is a resample method that create new samples by choosing, in a random way, the cases that compose an initial sample. The particularity is that **the same case can be choosen more than once**: *"Suppose case 1 in the original sample is"Joe." Joe happened to be contacted for participation in the study and provided data to the effort. In the resampling process, Joe functions as a stand-in for himself and anyone else like him in the pool of potential research participants, as defined by Joe's measurements on the variables in the model. The original sampling could have sampled several Joes or none, depending in part on the luck of the draw".*
+**Resampling with replacement** is a resampling method that create new samples by choosing, in a random way, the cases that compose an initial sample. The particularity is that **the same case can be chosen more than once**: *"Suppose case 1 in the original sample is"Joe." Joe happened to be contacted for participation in the study and provided data to the effort. In the resampling PROCESS, Joe functions as a stand-in for himself and anyone else like him in the pool of potential research participants, as defined by Joe's measurements on the variables in the model. The original sampling could have sampled several Joes or none, depending in part on the luck of the draw".*
 
-In bootstrapping, a large number of samples are drawn from the sample (e.g. 5,000 is the default in PROCESS. Also 10,000 is commonly used), using the just descripted random sampling with replacement.
+In bootstrapping, a large number of samples are drawn from the sample (e.g. 5,000 is the default in PROCESS. Also 10,000 is commonly used), using the just mentioned random sampling with replacement.
 
 Next, the indirect effect (the statistic of interest in this case) is calculated based on each sample.
 
@@ -176,11 +176,11 @@ Finally, the confidence intervals are found by dividing the distribution in 100 
 
 A difference between confidence intervals calculated using standard errors (relying on the "theoretical" sampling distribution), and those calculated through bootstrapping, is that the former is always symmetrical (the upper and lower bound of the confidence interval are equidistant from the point estimate), while the latter can be **asymmetrical**, depending on the shape of the distribution.
 
-Bootstrapping is particularly useful relative to the normal theory approach in smaller samples, because it is in smaller samples that the non-normality of the sampling distribution of ab is likely to be most severe, the large sample asymptotics of the normal theory approach are harder to trust, and the power advantages of bootstrapping are more pronounced.
+Bootstrapping is particularly useful relative to the normal theory approach in smaller samples, because it is in smaller samples that the non-normality of the sampling distribution of ab is likely to be most severe, the large sample asymptotic of the normal theory approach are harder to trust, and the power advantages of bootstrapping are more pronounced.
 
 ## Example with continuous X
 
-In the previous example the independent variable ($X$), was a **dichotomous** variable. In this case it expressed a experimentally manipulated condition, but a variable can be used in a mediation model even when in nonexperimenal studies.
+In the previous example the independent variable ($X$), was a **dichotomous** variable. In this case it expressed an experimentally manipulated condition, but a variable can be used in a mediation model even when in non-experimental studies.
 
 In other case, the independent variable can be continuous. No modifications are necessary to the mathematics or procedures described to estimate these effects, and the interpretation of these effects otherwise remains unchanged.
 
@@ -192,7 +192,7 @@ estress <- read.csv("data/estress.csv")
 
 The dataset includes information on 262 entrepreneurs who responded to an online survey about recent performance of their business as well as their emotional and cognitive reactions to the economic climate.
 
-Researchers proposed that economic stress ($X$, variable **estress**) leads to a desire to disen gage from entrepreneurial activities ($Y$, variable **withdraw**) as a result of the depressed affect ($M$, variable **affect**) such stress produces, which in turns leads to a desire to disengage from entrepreneurship.
+Researchers proposed that economic stress ($X$, variable **estress**) leads to a desire to disengage from entrepreneurial activities ($Y$, variable **withdraw**) as a result of the depressed affect ($M$, variable **affect**) such stress produces, which in turns leads to a desire to disengage from entrepreneurship.
 
 More specifically, the experience of stress results in feelings of despondency and hopelessness, and the more such feelings of depressed affect result, the greater the desire to withdraw from one's role as a small-business owner to pursue other vocational activities.
 
@@ -218,12 +218,12 @@ Two entrepreneurs who differ by one unit in their economic stress are estimated 
 
 This indirect effect is statistically different from zero, as revealed by a 95% bootstrap confidence interval that is entirely above zero (95% CI \[0.0713, 0.2033\])
 
-# Confounding variables, causal order, effect sizes, and multiple xs and ys
+# Confounding variables, causal order, effect sizes, and multiple Xs and Ys
 
 ## Learning outcomes
 
 -   Learn to rule out alternative explanation in mediation models with reference to
-    1)  confunding variables and
+    1)  confounding variables and
     2)  alternative casual explanations
 -   Learn the meaning of "effect size" and learn how to measure it
 -   Learn how to work with multiple $X$ and $Y$ variables, and the potential pitfalls thereof
@@ -248,7 +248,7 @@ For example, the fact that children who watch relatively **more television** are
 
 **Epiphenomenal association and confounding** as threats to the validity of a causal claim can be managed at least in part through **statistical control**.
 
-If two variables $M$ (e.g. how much children watch television) and $Y$ (e.g. being outweighted) are epiphemenonally associated or confounded due to their association with some variable $C$ (e.g. how much parents encourage a healthy lifestyle in their children), then the association between $M$ and $Y$ should not exist among people who are equal on $C$ (e.g. have parents equally encouraging a healthy lifestyle in their children), no matter what they are different on $M$ (e.g. how much they watch television).
+If two variables $M$ (e.g. how much children watch television) and $Y$ (e.g. being outweighed) are epiphenomenally associated or confounded due to their association with some variable $C$ (e.g. how much parents encourage a healthy lifestyle in their children), then the association between $M$ and $Y$ should not exist among people who are equal on $C$ (e.g. have parents equally encouraging a healthy lifestyle in their children), no matter what they are different on $M$ (e.g. how much they watch television).
 
 In regression, if we add a variable $C$, we can get the **partial coefficient** of $M$, we interpret as the weight of the $M$ variable, **holding all the other variables in the model constant** (including $C$):
 
@@ -263,7 +263,7 @@ For example, the indirect effect may be a manifestation of nothing other than in
 
 **If so, then statistically controlling for such an individual difference when assessing the indirect effect of economic stress should weaken or eliminate it.**
 
-That is, among people equal in their confidence, there should be no evidence of an indirect effect of economic stress on withdrawal intentions through depressed affect, because this variable has been taken out of the process that, by this reasoning, induces spurious association between $X$ and $M$ and between $M$ and $Y$. But if the indirect effect persists even when holding confidence constant, a causal claim remains viable.
+That is, among people equal in their confidence, there should be no evidence of an indirect effect of economic stress on withdrawal intentions through depressed affect, because this variable has been taken out of the PROCESS that, by this reasoning, induces spurious association between $X$ and $M$ and between $M$ and $Y$. But if the indirect effect persists even when holding confidence constant, a causal claim remains viable.
 
 In the dataset is included a measure of **entrepreneurial self-efficacy ("ese")**
 
@@ -279,7 +279,7 @@ knitr::include_graphics("img/control_1_diagram_2.png")
 
 The only difference between the code to fit a mediation model with covariates and the code we already saw, is the addition of the covariates listed in a vector (using the *c* function) after the parameter **cov**.
 
-By default, any variable in the covariate list will be included as additional antecedent variables in the model of each of the consequents.
+By default, any variable in the covariate list will be included as additional antecedent variables in the model of each of the consequent.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/control_1_diagram_3.png")
@@ -298,13 +298,13 @@ knitr::include_graphics("img/control_1_diagram_4.png")
 
 Comparing the output for the model controlling for sex, tenure, and entrepreneurial self-efficacy to the output excluding these controls, it can be seen that substantively, nothing has really changed.
 
-However, this kind of analysis may be done in order to see how sensitive or susceptible the results from a comparable analysis without such controls is to alternative explanations involving those variables being controlled, or it may be done because it is known a priori or based on preliminary analyses that certain variables may be producing spurious association between key variables in the causal system.
+However, this kind of analysis may be done in order to see how sensitive or susceptible the results from a comparable analysis without such controls is to alternative explanations involving those variables being controlled, or it may be done because it is known a-priori or based on preliminary analyses that certain variables may be producing spurious association between key variables in the causal system.
 
 **Ruling out epiphenomenality or spurious association as alternative explanations is an important part of any causal argument that includes associations that are only correlational in nature.**
 
 # Causal order
 
-Mediation is a causal process, and among the criteria for claiming that an association is cause--effect is establishing that the cause precedes the effect in time. **Even experimental manipulation and random assignment to X all but guarantees that X precedes M and Y in a mediation model.**
+Mediation is a causal PROCESS, and among the criteria for claiming that an association is cause--effect is establishing that the cause precedes the effect in time. **Even experimental manipulation and random assignment to X all but guarantees that X precedes M and Y in a mediation model.**
 
 Experimental manipulation and random assignment to $X$ all but guarantees that $X$ precedes $M$ and $Y$ in a mediation model. This is because random assignment largely ensures that the groups that define $X$ are equal on $M$ and $Y$ on average at the beginning of the study. Any differences observed between $M$ and $Y$ following random assignment must have occurred after the assignment of cases to groups.
 
@@ -314,7 +314,7 @@ For example, in the presumed media influence study, it could be argued that if p
 
 In the *estress* study, where depressed affect ($M$) was construed as a mediator of the effect of economic stress ($X$) on withdrawal intentions ($Y$) ($X->M->Y$), an alternative proposal is that people who begin to ponder giving up on a business ($Y$) start putting less time into the enterprise, which in time hurts the profit margin so that economic stresses mount ($X$), and the owner begins to start getting depressed about having to abandon his or her business ($M$) ($Y->X->M$).
 
-**In nonexperimantal studies, any sequence of causal ordering of X, M, and Y must be entertained as a potential candidate for the direction of causal flow.**
+**In non-experimental studies, any sequence of causal ordering of X, M, and Y must be entertained as a potential candidate for the direction of causal flow.**
 
 Hopefully, **strong theory or logical impossibility or implausibility** precludes some of these.
 
@@ -324,7 +324,7 @@ Sometimes certain alternative directions of causal flow are so implausible that 
 
 In an attempt to entertain alternative direction of causal flow, one procedure some investigators employ is to **estimate a mediation model corresponding to the alternative explanation** to see whether the **direct and indirect effects** are **consistent with what that alternative order predicts**.
 
-For instance, when economic stress was specified as the mediator of the effect of withdrawal intentions on depressed affect, there was no evidence of such a process at work, as a bootstrap confidence interval for the indirect effect contained zero.
+For instance, when economic stress was specified as the mediator of the effect of withdrawal intentions on depressed affect, there was no evidence of such a PROCESS at work, as a bootstrap confidence interval for the indirect effect contained zero.
 
 Similarly, when this procedure was applied to the presumed media influence study by treating presumed media influence as the final outcome and intentions to buy sugar as the mediator, the results were not consistent with this alternative direction of causal flow.
 
@@ -365,7 +365,7 @@ These two measures are identical to the direct and indirect effects when those e
 
 In the estress study, one standard deviation change in economic stress leads to a 0.152 standard deviations change in withdrawal intentions, as a result of the effect of stress on affect which in turn influences withdrawal intentions.
 
-*The completely standardized effect is generally not meaningful if X is a dichotomous variable*, thus, in this case, it is not reccommended.
+*The completely standardized effect is generally not meaningful if X is a dichotomous variable*, thus, in this case, it is not recommended.
 
 ## Effect size in PROCESS
 
@@ -420,7 +420,7 @@ knitr::include_graphics("img/diagram_multiple_y.png")
 
 A close examination of this model shows that it is really just $k$ simple mediation models with a common $X$ and $M$.
 
-PROCESS can be used to estimate the paths in a model such as in Figure 4.6 by running $k$ "process" commands, substituting one $Y$ variable for another at each run and seeding the random number generator with a common seed for bootstrapping.
+PROCESS can be used to estimate the paths in a model such as in Figure 4.6 by running $k$ "PROCESS" commands, substituting one $Y$ variable for another at each run and seeding the random number generator with a common seed for bootstrapping.
 
 # More than one mediator
 
@@ -510,7 +510,7 @@ The interpretation of the total and direct effect do not change, while **indirec
 
 Also, if we use **contrast = 1**, there is a test of statistically significance of the difference between the indirect effects. In this case the output includes also the description of variables tested.
 
-In this case, the tested difference is *import - pmi*. The difference is positive (0.0144) meaning that, with reference to the internal page condition, those assigned to the front page condition have stronger intentions to buy sugar (by 0.0144 units) as result of the mediation of "import" compared to the effect of the mediation of "pmi". The difference is not statistically significant, though.
+In this case, the tested difference is *import - pmi*. The difference is positive (0.0144) meaning that, with reference to the internal page condition, those assigned to the front-page condition have stronger intentions to buy sugar (by 0.0144 units) as result of the mediation of "import" compared to the effect of the mediation of "pmi". The difference is not statistically significant, though.
 
 In the output you can also read the standardized effects, if you require it. Notice that in this case **only the partial standardized effect** is calculated for the indirect effect.
 
@@ -524,11 +524,11 @@ knitr::include_graphics("img/parallel_multiple_mediator_2b.png")
 
 A distinguishing feature of the **parallel mediator model** is the assumption that **no mediator causally influences another**. In practice, mediators will be correlated, but this model specifies that they are not causally so.
 
-The **serial multiple mediator model** investigates a process in which $X$ causes $M_1$, which in turn causes $M_2$, and so forth, concluding with $Y$ as the final consequent.
+The **serial multiple mediator model** investigates a PROCESS in which $X$ causes $M_1$, which in turn causes $M_2$, and so forth, concluding with $Y$ as the final consequent.
 
 ## Example
 
-Some researchers compared the anxiety of residents living in a low-income housing development located in a middleclass neighborhood to a matched group who applied to live in the housing development but remained on the waiting list.
+Some researchers compared the anxiety of residents living in a low-income housing development located in a middle-class neighborhood to a matched group who applied to live in the housing development but remained on the waiting list.
 
 They argued that **life in a middle-class housing development** ($X$) would **reduce** ($M_1$) **exposure to neighborhood disorder** (e.g., crime, homeless people, drugs and drug use, violence) relative to those living elsewhere, which would **in turn reduce** ($M_2$) **the number of stressful life experiences**, which **in turn would translate into** ($Y$) **fewer anxiety symptoms**.
 
@@ -580,15 +580,15 @@ The table also include the statistical significance of the differences between t
 
 To interpret these differences read the legend **Specific indirect effect contrast definition(s)**.
 
-With more than three mediators, a model can be a blend of parallel and serial mediation processes.
+With more than three mediators, a model can be a blend of parallel and serial mediation PROCESSes.
 
-With *PROCESS* you can fit also this kind of models: see APPENDIX A (in Moodle), pagg. 584-612 for a visual presentation of the preprogrammed models. Model 80, 81, and 82 are blend of parallel and serial mediation processes.
+With *PROCESS* you can fit also this kind of models: see APPENDIX A of the book, pagg. 584-612 for a visual presentation of the pre-programmed models. Model 80, 81, and 82 are blend of parallel and serial mediation processes.
 
 # Mediation with a multicategorical antecedent
 
 ## Learning Outcomes
 
--   Understand the characteristic of a **multicategorical variable** (and the difference with dichotomous and continuous variables)
+-   Understand the characteristic of a **multicategorical variable** (and the difference between dichotomous and continuous variables)
 -   Learn to use *progress* to fit a mediation model with **multicategorical X variable**
 -   Learn to interpret the output of the model
 
@@ -598,7 +598,7 @@ As far as now we have discussed models with a dichotomous or continuous $X$. The
 
 However, there are also cases where $X$ is a **multicategorical variable**. Multicategorical variables are variables that can take on three or more categorical values (the values of a categorical variable are also called **modalities, or categories**).
 
-For instance, we may have a multicategorical $X$ variable with *three modalities* corresponging to three experimental conditions: information in mainstream newspaper (**COND=0**), information in alternative newspaper (**COND=1**), and information on social media (**COND=2**).
+For instance, we may have a multicategorical $X$ variable with *three modalities* corresponding to three experimental conditions: information in mainstream newspaper (**COND=0**), information in alternative newspaper (**COND=1**), and information on social media (**COND=2**).
 
 The interpretation, in this case, is a bit different from that of dichotomous or continuous variables.
 
@@ -608,7 +608,7 @@ Before considering multicategorical variables, let's recap the interpretation of
 
 ### Interpreting models with a continuous X
 
-**Continuous variables are quantitative variables**, resulting from a process of measurement, and can take on several values.
+**Continuous variables are quantitative variables**, resulting from a PROCESS of measurement, and can take on several values.
 
 Considering, for example, the *estress* dataset, we found that the indirect effect of the *economic stress condition* ($X$) on the intention to withdraw ($Y$) through the mediator of depressed affect ($M$), was 0.1330.
 
@@ -622,7 +622,7 @@ Or similarly: 1-unit increase in economic stress is associated with an increase 
 
 A **dichotomous** $X$ variable can take on just **two values**, which are usually coded as 0 and 1.
 
-For instance, in the PMI dataset, there are only **two (experimental) condition** (*"COND"*): people were said the article was going to be published in the middle of an economic supplement of the newspaper (**COND = 0**), or on the frontpage (**COND = 1**).
+For instance, in the PMI dataset, there are only **two (experimental) condition** (*"COND"*): people were said the article was going to be published in the middle of an economic supplement of the newspaper (**COND = 0**), or on the front-page (**COND = 1**).
 
 Using the variable *"perceived media influence" (pmi)* as a mediator, we found that the **indirect effect of X on Y** was equal to *0.2413* (the indirect effect quantifies the effect of $X$ on $Y$ through a mediator $M$). How do you interpret this coefficient?
 
@@ -630,7 +630,7 @@ Using the variable *"perceived media influence" (pmi)* as a mediator, we found t
 
 Notice that with dichotomous variables, we don't interpret the results with reference to 1-unit increase in $X$, but **relative to those assigned to the condition COND=0**.
 
-The group coded with 0 is the **reference group** and the coefficients in the model are intepreted with reference to this group. The coefficients express **differences** with the reference group.
+The group coded with 0 is the **reference group** and the coefficients in the model are interpreted with reference to this group. The coefficients express **differences** with the reference group.
 
 We said: **Relative to those assigned to the interior page condition** (*COND=0*), those who read an article they were told was to be published in the front page of the newspaper (*COND=1*) were, on average, **0.241 units higher** in their likelihood of buying sugar.
 
@@ -696,7 +696,7 @@ The group coded with **PROTEST=0** (no protest group), is specified as the **ref
 
 If you would rather have a different group as the reference group, *you have to recode X* so that the desired reference group is coded with the numerically smallest value.
 
-Process authomatically transforms the multicategorical variable with three modalities, in two variables X1 (**PROTEST = 1**, *individual protest*) and X2 (**PROTEST = 2**, *collective protest*), which coefficients can be interpreted with reference to the reference group (**PROTEST = 0**, *no protest*).
+Process automatically transforms the multicategorical variable with three modalities, in two variables X1 (**PROTEST = 1**, *individual protest*) and X2 (**PROTEST = 2**, *collective protest*), which coefficients can be interpreted with reference to the reference group (**PROTEST = 0**, *no protest*).
 
 The output reports a **legend** with the coding of the multicategorical X variable used for the analysis.
 
@@ -714,19 +714,19 @@ process(protest, y = "liking", x = "protest", m = "respappr",
         seed = 30217)
 ```
 
-### Intepretation of the Total Effect
+### Interpretation of the Total Effect
 
 Let's start focusing on the **TOTAL EFFECT MODEL**, and let's write the equation based on the coefficients.
 
 $$Y_{liking} = 5.3102 + 0.5158(X_1) + 0.4431(X_2)$$
 
-The **TOTAL EFFECT MODEL** is the total effect of $X$ on $Y$ **without taking into account any other varaible**. With a multicategorical $X$ it results in the average value of $Y$ for each modality of the multicategorical $X$.
+The **TOTAL EFFECT MODEL** is the total effect of $X$ on $Y$ **without taking into account any other variable**. With a multicategorical $X$ it results in the average value of $Y$ for each modality of the multicategorical $X$.
 
 ```{r}
 tapply(protest$liking, protest$protest, mean)
 ```
 
-In particular, the **intercept** (5.3102) is the average value fo $Y$ when all the $Xs$ are equal zero. But when all the $Xs$ are equal zero we have the **average Y of the reference group** (check the legend with the coding).
+In particular, the **intercept** (5.3102) is the average value fo $Y$ when all the $Xs$ are equal to zero. But when all the $Xs$ are equal to zero we have the **average Y of the reference group** (check the legend with the coding).
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/multicategorical_legend.png")
@@ -756,13 +756,13 @@ The resulting estimates of $Y$ are also called **adjusted means**, that is estim
 
 The equation coefficients for the direct effect model can be found the model for the $Y$ outcome variable, in this case **liking**: $$3.7103 − 0.0047(X_1) − 0.2202(X_2) + 0.4119(M)$$
 
-Pluggin the average value of $M$ in the equation: $$3.7103 − 0.0047(X_1) − 0.2202(X_2) + 0.4119(4.866279)$$
+Plugging the average value of $M$ in the equation: $$3.7103 − 0.0047(X_1) − 0.2202(X_2) + 0.4119(4.866279)$$
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/multicategorical_example_linking.png")
 ```
 
-To derive the direct effect of each modality of the $X$ variable, we proceed in the same way as before, sobsituting the variables with 0 and 1 (NP = no protest, X=0; IP = individual protest, X=1, CP = collective protest, X=2):
+To derive the direct effect of each modality of the $X$ variable, we proceed in the same way as before, substituting the variables with 0 and 1 (NP = no protest, X=0; IP = individual protest, X=1, CP = collective protest, X=2):
 
 $$Y_{NP} = 3.71 − 0.005(0) - 0.22(0) + 0.412(4.866) = 5.715$$ $$Y_{IP} = 3.71 − 0.005(1) − 0.22(0) + 0.412(4.866) = 5.710$$ $$Y_{CP} = 3.71 − 0.005(0) − 0.22(1) + 0.412(4.866) = 5.495$$
 
@@ -792,9 +792,9 @@ The coefficient of $X1$ (individual protest) and $X2$ (collective protest) can b
 
 $$X1 = X0 + 0.5195$$ $$X1 = X0 + 0.6633$$
 
-It means that **relative to not protesting at all**, protesting with an individualistic focus enhanced the likeability of Catherine by 0.520 units, because individually protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation.
+It means that **relative to not protesting at all**, protesting with an individualistic focus enhanced the likability of Catherine by 0.520 units, because individually protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation.
 
-Likewise, collectively protesting enhanced the likeability of Catherine by 0.663 units **relative to not protesting**, as collectively protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation of her.
+Likewise, collectively protesting enhanced the likability of Catherine by 0.663 units **relative to not protesting**, as collectively protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation of her.
 
 ### Reporting results
 
@@ -806,11 +806,11 @@ knitr::include_graphics("img/multicat_table.png")
 
 ### Alternative coding method
 
-Process implement an alterantive coding method to those just seen.
+Process implement an alternative coding method to those just seen.
 
 Using the same example, it may be worthwhile to examine the effect of protesting, **whether collectively or individually**, relative to not protesting at all, **as well the effect of protesting individually relative to collectively**.
 
-There is a way of representing the three groups with a coding system that provides precisely this information, it also goes by the name **Helmert coding**. In the Hayes book, chapter 2 on Multicategorical Antecendents, you can find more information about that.
+There is a way of representing the three groups with a coding system that provides precisely this information, it also goes by the name **Helmert coding**. In the Hayes book, chapter 2 on Multicategorical Antecedents, you can find more information about that.
 
 ### Final observations
 
@@ -818,17 +818,17 @@ There is a way of representing the three groups with a coding system that provid
 
 In a multiple mediator model, a specific indirect effect quantifies the influence of X on Y through a particular mediator while **holding constant other mediators**.
 
-This is useful **when the mediators are somewhat correlated**. But when the intercorrelation between mediators becomes **too large**, the usual **problems with collinearity** in regression models begin to take hold and muddle the results.
+This is useful **when the mediators are somewhat correlated**. But when the correlation between mediators becomes **too large**, the usual **problems with collinearity** in regression models begin to take hold and muddle the results.
 
 Collinearity between predictors **increases sampling variance** in estimates of their partial relationships with an outcome, and such sampling variance will propagate throughout the estimates of indirect effects **and increase the width of confidence intervals (or the p-values)**.
 
-Including correlated mediators in the model **allows you to disentangle spurious and epiphenomenal association** from potential causal association, but this comes at the cost of greater sampling variance and **reduced power for tests of indirect effects** especially when the sample size is small
+Including correlated mediators in the model **allows you to disentangle spurious and epiphenomenal association** from potential causal associations, but this comes at the cost of greater sampling variance and **reduced power for tests of indirect effects** especially when the sample size is small
 
-(Reduced power = harder to detect significant effects, i.e. results can wrongly show nonsignificant effects).
+(Reduced power = harder to detect significant effects, i.e. results can wrongly show non-significant effects).
 
 #### Total indirect effect
 
-In a parallel multiple mediator model with several mediators, it is possible that the **total indirect effect** is nonsignificant, even if one or more of the **partial indirect effects are significant**, for instance:
+In a parallel multiple mediator model with several mediators, it is possible that the **total indirect effect** is non-significant, even if one or more of the **partial indirect effects are significant**, for instance:
 
 -   In a model with several mediators, **only one** is actually transmitting X's effect on Y. The inclusion of a bunch of potential mediators in the model **reduces power** for tests of indirect effects (see previous slides)
 
@@ -847,11 +847,11 @@ In this unit we learned:
 -   How to estimate a Simple Mediation Model **using R PROCESS**
 -   How to **interpret** the output of the estimation of the Simple Mediation Model using the PROGRESS software, using **dichotomous and continuous X** variables
 -   How to **rule out alternative explanations** with reference to:
-    1)  **Confunding variables** and
+    1)  **Confounding variables** and
     2)  **Alternative casual explanations**
 -   The meaning of effect size and how to measure it through **partial and complete standardized effects**
 -   How to fit models with **multiple X and Y variables**
 -   The difference between **parallel and serial multiple mediation models**
 -   How to use progress to **fit** parallel and serial multiple mediation models and how to **interpret** them
--   The characteristic of a **multicategorical variable** (and the difference with dichotomous and continuous variables)
+-   The characteristic of a **multicategorical variable** (and the difference between dichotomous and continuous variables)
 -   How to use R PROGRESS to **fit** a mediation model with multicategorical X variable, and how to **interpret** the output of the model

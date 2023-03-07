@@ -180,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./conditional.html">
- <span class="menu-text">Conditional Process</span></a>
+ <span class="menu-text">Conditional</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -315,9 +315,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#conditional-effect-1" id="toc-conditional-effect-1" class="nav-link" data-scroll-target="#conditional-effect-1">Conditional effect</a></li>
   <li><a href="#other-regression-coefficients" id="toc-other-regression-coefficients" class="nav-link" data-scroll-target="#other-regression-coefficients">Other regression coefficients</a></li>
   <li><a href="#conditional-direct-and-indirect-effect-model-with-process" id="toc-conditional-direct-and-indirect-effect-model-with-process" class="nav-link" data-scroll-target="#conditional-direct-and-indirect-effect-model-with-process">Conditional direct and indirect effect model with process</a></li>
-  <li><a href="#conditional-process-analysis-with-multicategorical-antecendent" id="toc-conditional-process-analysis-with-multicategorical-antecendent" class="nav-link" data-scroll-target="#conditional-process-analysis-with-multicategorical-antecendent">Conditional process analysis with multicategorical antecendent</a>
+  <li><a href="#conditional-process-analysis-with-multicategorical-antecedent" id="toc-conditional-process-analysis-with-multicategorical-antecedent" class="nav-link" data-scroll-target="#conditional-process-analysis-with-multicategorical-antecedent">Conditional process analysis with multicategorical antecedent</a>
   <ul class="collapse">
-  <li><a href="#brief-recap-on-the-intepretation-of-multicategorical-variables" id="toc-brief-recap-on-the-intepretation-of-multicategorical-variables" class="nav-link" data-scroll-target="#brief-recap-on-the-intepretation-of-multicategorical-variables">Brief recap on the intepretation of multicategorical variables</a></li>
+  <li><a href="#brief-recap-on-the-interpretation-of-multicategorical-variables" id="toc-brief-recap-on-the-interpretation-of-multicategorical-variables" class="nav-link" data-scroll-target="#brief-recap-on-the-interpretation-of-multicategorical-variables">Brief recap on the interpretation of multicategorical variables</a></li>
   </ul></li>
   <li><a href="#relative-conditional-effect" id="toc-relative-conditional-effect" class="nav-link" data-scroll-target="#relative-conditional-effect">Relative conditional effect</a></li>
   <li><a href="#conditional-direct-and-indirect-relative-effects" id="toc-conditional-direct-and-indirect-relative-effects" class="nav-link" data-scroll-target="#conditional-direct-and-indirect-relative-effects">Conditional direct and indirect relative effects</a></li>
@@ -358,8 +358,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-17a4b356b4b189462c2b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-17a4b356b4b189462c2b">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"CONDITIONAL PROCESS ANALYSIS\"]\n  rec1 [label = \"A) Conditional Direct and Indirect Effects\"]\n  rec2 [label = \"B) Conditional Indirect Effect Model\"]\n  rec3 [label = \"C) Conditional Direct and Indirect Effect Model\"]\n  rec4 [label = \"D) Conditional Model with Multicategorical Antecedent\"]\n  rec5 [label = \"E) Check the Assumptions\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4 -> rec5;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1ad6d0a94835c8abf6b0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1ad6d0a94835c8abf6b0">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"CONDITIONAL PROCESS ANALYSIS\"]\n  rec1 [label = \"A) Conditional Direct and Indirect Effects\"]\n  rec2 [label = \"B) Conditional Indirect Effect Model\"]\n  rec3 [label = \"C) Conditional Direct and Indirect Effect Model\"]\n  rec4 [label = \"D) Conditional Model with Multicategorical Antecedent\"]\n  rec5 [label = \"E) Check the Assumptions\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4 -> rec5;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="learning-goals" class="level1">
@@ -407,7 +407,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="recap-of-direct-and-indirect-effects" class="level2">
 <h2 class="anchored" data-anchor-id="recap-of-direct-and-indirect-effects">Recap of direct and indirect effects</h2>
-<p>A mediation model divides the <strong>total effect ( c )</strong> of X on Y into a <strong>direct effect ( c’ )</strong> and **indirect effect ( a*b )**, such that <span class="math inline">\(c = c' + a*b\)</span>.</p>
+<p>A mediation model divides the <strong>total effect ( c )</strong> of X on Y into a <strong>direct effect ( c’ )</strong> and indirect effect ( a*b ), such that <span class="math inline">\(c = c' + a*b\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/mediation_1_diagram_1.png" class="img-fluid" width="480"></p>
@@ -415,7 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>In greater detail:</p>
 <ul>
-<li>The <strong>direct effect (c’)</strong> quantifies the change in the estimate of Y for a one-unit change in X, partialling out the effect of other variables in the model (i.e., the mediator M, and other possible covariates).</li>
+<li>The <strong>direct effect (c’)</strong> quantifies the change in the estimate of Y for a one-unit change in X, partialing out the effect of other variables in the model (i.e., the mediator M, and other possible covariates).</li>
 <li>The <strong>indirect effect</strong> quantifies the effect of X on Y through M, independent of the direct effect of X on Y and possible covariates. It is denoted as <em>ab</em> and results from the product of the coefficients <em>a</em> and <em>b</em> (indirect effect = <span class="math inline">\(a * b\)</span>).</li>
 <li>The <strong>total effect</strong> is the effect of X on Y in a model that does not include M. It is denoted as <em>c</em>. It is the sum of the direct and indirect effect: <span class="math inline">\(c = c' + ab\)</span>.</li>
 </ul>
@@ -718,7 +718,14 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000
 W values in conditional tables are the 16th, 50th, and 84th percentiles.</code></pre>
 </div>
 </div>
-<p>The output includes: - summary statistics of the model (<strong>model summary</strong>); - two <strong>regression tables</strong> with the coefficients for the first model (outcome: NEGTONE) and the second (outcome: PERFORM); - tables resulting from the <strong>pick-a-point</strong> and the <strong>Johnson-Neyman</strong> tecnique; - data to visualize the moderation effect; - tables on the <strong>direct and indirect effect</strong>.</p>
+<p>The output includes:</p>
+<ul>
+<li><p>Summary statistics of the model (<strong>model summary</strong>);</p></li>
+<li><p>Two <strong>regression tables</strong> with the coefficients for the first model (outcome: NEGTONE) and the second (outcome: PERFORM);</p></li>
+<li><p>Tables resulting from the <strong>pick-a-point</strong> and the <strong>Johnson-Neyman</strong> technique;</p></li>
+<li><p>Data to visualize the moderation effect;</p></li>
+<li><p>Tables on the <strong>direct and indirect effect</strong>.</p></li>
+</ul>
 <section id="conditional-indirect-effect-1" class="level2">
 <h2 class="anchored" data-anchor-id="conditional-indirect-effect-1">Conditional indirect effect</h2>
 <p>Looking at the two regression tables, the model can be written as:</p>
@@ -767,7 +774,7 @@ W values in conditional tables are the 16th, 50th, and 84th percentiles.</code><
 </div>
 <p>In practice, the table can be read as follows: <em>“at relatively low levels of emotional expressiveness (the moderator) there is no evidence of an effect of dysfunctional behavior on performance through negative emotional tone (-0.53, 95% CI [-0.37, 0.24]). Instead, at moderate (-0.06, 95% CI [-0.49, 0.04]) to relatively high (0.60, 95% CI [-0.81, -0.15]) levels of emotional expressivity, the effect is statistically significant, with higher levels of emotional expressiveness leading to worse team performance</em>.</p>
 <p>The <strong>Index of moderated mediation</strong> is displayed right below the pick-a-point table. It provides the results of a more general significance test of the relationship between the moderator and the indirect effect. When zero is not within the range of the confidence interval, it can be concluded that the indirect effect is associated with the moderator. Had the confidence interval included zero, we could not definitively claim that the indirect effect was related to the moderator.</p>
-<p>In this case the “index” is negative, which leads to the conclusion that the indirect effect is <em>negatively</em> related to the moderator. That is, the mediation of the effect of dysfunctional team behavior on performance through negative affective tone of the work climate is moderated by the expressivity of the team.</p>
+<p>In this case the “index” is negative, which leads to the conclusion that the indirect effect is <em>negatively</em> related to the moderator. That is, the mediation of the effect of dysfunctional team behavior on performance through negative affective tone of the work climate is moderated by the expressiveness of the team.</p>
 <p>The <strong>Index of moderated mediation</strong> is displayed if W is specified as a moderator of only one of the paths that define the indirect effect. Otherwise, the indirect effect will be a nonlinear function of W. In that case, PROCESS will not produce this index.</p>
 <p>In the section of the output there is also the direct effect of X on Y. In this case it is not affected by the moderator and can be interpreted as in a simple mediation model.</p>
 </section>
@@ -844,8 +851,8 @@ W values in conditional tables are the 16th, 50th, and 84th percentiles.</code><
 <p><img src="img/conditional-process-fit1c.png" class="img-fluid" width="508"></p>
 </div>
 </div>
-<p>The <em>conditional effect</em> function is used for <strong>probing the interaction</strong> at different levels of W. We observe that the interaction is not significant for low levels of the moderator (that is, when people show weak levels of emotional expression). As the moderator is continuous, it is also possible to see the <strong>Johnson-Neymann</strong> table defining the significant regions. It shows that the moderator begins to exert a significant effect at values greater than -0.23.</p>
-<p>Data to visualize the moderation effect is provided. The interaction graph clearly indicates what is already indicated in the table <strong>Conditional effects of the focal predictor at values of the moderator(s)</strong>. The higher the expressiveness, the greater the negative impact the negative tone has on the team’s performance. Or vice versa, the lower the expressiveness, the lower the impact of negative emotions on team performance.</p>
+<p>The <em>conditional effect</em> function is used for <strong>probing the interaction</strong> at different levels of W. We observe that the interaction is not significant for low levels of the moderator (that is, when people show weak levels of emotional expression). As the moderator is continuous, it is also possible to see the <strong>Johnson-Neyman</strong> table defining the significant regions. It shows that the moderator begins to exert a significant effect at values greater than -0.23.</p>
+<p>Data to visualize the moderation effect is provided. The interaction graph clearly indicates what is already indicated in the table <strong>Conditional effects of the focal predictor at values of the moderator(s)</strong>. The higher the expressiveness, the greater the negative impact the negative tone has on the team’s performance. Or vice-versa, the lower the expressiveness, the lower the impact of negative emotions on team performance.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.45</span>,   <span class="sc">-</span><span class="fl">0.04</span>,  <span class="fl">0.52</span>,   <span class="sc">-</span><span class="fl">0.45</span>,  <span class="sc">-</span><span class="fl">0.04</span>,  <span class="fl">0.52</span>,   <span class="sc">-</span><span class="fl">0.45</span>,  <span class="sc">-</span><span class="fl">0.04</span>,  <span class="fl">0.52</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.53</span>, <span class="sc">-</span><span class="fl">0.53</span>, <span class="sc">-</span><span class="fl">0.53</span>, <span class="sc">-</span><span class="fl">0.06</span>, <span class="sc">-</span><span class="fl">0.06</span>, <span class="sc">-</span><span class="fl">0.06</span>, <span class="fl">0.60</span>, <span class="fl">0.60</span>, <span class="fl">0.60</span>)</span>
@@ -1068,12 +1075,12 @@ W values in conditional tables are the 16th, 50th, and 84th percentiles.</code><
 </div>
 <p>We have two regression tables, each in its own panel, the first one with outcome JUSTIFY and the second one with outcome DONATE.</p>
 <p>The outcome is essentially the same as the previous one. What is different is that both regression tables include an interaction. Data to visualize the two moderator effects is also provided. The pick-a-point and the Johnson-Neyman tables are only provided for the first regression. The second is relative to the direct effect, which implies that moderation translates into a conditional direct effect, which is analyzed in the last part of the output. We can see here the pick-a-point table of both the direct and indirect effect. The index of moderated mediation is provided for the indirect effect.</p>
-<p>The intepretation is the same as before, this time applied to both the direct and indirect effect.</p>
+<p>The interpretation is the same as before, this time applied to both the direct and indirect effect.</p>
 <p>In this analysis, we notice that the conditional indirect effect is significant, while the conditional direct effect is not. Therefore, you can opt to simplify the model by removing the moderation of the direct effect. In this specific case, this can be done by switching from model = 8 to model = 7.</p>
 </section>
-<section id="conditional-process-analysis-with-multicategorical-antecendent" class="level1">
-<h1>Conditional process analysis with multicategorical antecendent</h1>
-<p>When a model includes a multicategorical antecedent, the conditional indirect effect and the conditional direct effect are interpreted relatively to the <em>refence category</em>. In that case we talk of <strong>relative conditional indirect effect</strong> and <strong>relative conditional direct effect</strong>.</p>
+<section id="conditional-process-analysis-with-multicategorical-antecedent" class="level1">
+<h1>Conditional process analysis with multicategorical antecedent</h1>
+<p>When a model includes a multicategorical antecedent, the conditional indirect effect and the conditional direct effect are interpreted relatively to the <em>reference category</em>. In that case we talk of <strong>relative conditional indirect effect</strong> and <strong>relative conditional direct effect</strong>.</p>
 <p>The model shown below can be fitted using <strong>model 8</strong>. The <strong>mcx=1</strong> option tells PROCESS that the X variable is multicategorical. Hayes uses <em>“mcx=3”</em>, which handles multicategorical variables in a different way. Refer to the book for more information on how PROCESS can handle multicategorical variables and the related options (<strong>mcx=1</strong>, <strong>mcx=2</strong>, and <strong>mcx=3</strong>).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1361,8 +1368,8 @@ W values in conditional tables are the 16th, 50th, and 84th percentiles.</code><
 </div>
 </div>
 <p>The output can be interpreted on the basis of the same principles discussed for multicategorical moderation models, and conditional direct and indirect effect models. The output is a mix of outputs from these models.</p>
-<section id="brief-recap-on-the-intepretation-of-multicategorical-variables" class="level2">
-<h2 class="anchored" data-anchor-id="brief-recap-on-the-intepretation-of-multicategorical-variables">Brief recap on the intepretation of multicategorical variables</h2>
+<section id="brief-recap-on-the-interpretation-of-multicategorical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="brief-recap-on-the-interpretation-of-multicategorical-variables">Brief recap on the interpretation of multicategorical variables</h2>
 <p>There is only one fundamental principle to be taken into account in the interpretation of multicategorical models. The <strong>g categories</strong> of a multicategorical variable are divided into <strong>g-1 dichotomous variables</strong> and <strong>a reference category</strong>. The newly created dichotomous variables represent <strong>differences</strong> between a category and the reference category.</p>
 <p>In this case, the multicategorical variable PROTEST includes <em>g=3</em> categories (X=0, X=1, X=2), which are divided into <strong>g-1 = 2 dichotomous variables</strong> (X1: X=1, and X2: X=2) and <strong>a reference category</strong> (X0: X=0). The newly created dichotomous variables X1 and X2 represent <strong>differences</strong> (in some estimates) between a category and the reference category (X1 = X1 - X0; X2 = X2 - X0).</p>
 <div class="cell">
@@ -1402,7 +1409,15 @@ W values in conditional tables are the 16th, 50th, and 84th percentiles.</code><
 <h1>Appendix: Assumptions and robust methods</h1>
 <p>During the first part of the course, we learned about regression models. We said that they have <strong>assumptions</strong> and that their results are reliable only when those assumptions are respected.</p>
 <p>It is, therefore, necessary to <strong>check the assumptions</strong> before interpreting the results. If one or more of them are not fulfilled, it may be possible to <strong>take steps to solve the problem</strong>.</p>
-<p>First, let’s recap the assumptions of regression models: - <strong>Linearity</strong>: There exists a linear relationship between each predictor variable and the response variable. - <strong>No Multicollinearity</strong>: None of the predictor variables are highly correlated with each other. - <strong>No Outliers</strong>: None of the data points are too different from the others, resulting in a strong influence on the estimate. - <strong>Independence</strong>: Observations are independent (a problem arising particularly with time series data). - <strong>Homoscedasticity</strong>: The residuals have constant variance at every point in the linear model. - <strong>Normality</strong>: The residuals of the model are normally distributed.</p>
+<p>First, let’s recap the assumptions of regression models:</p>
+<ul>
+<li><p><strong>Linearity</strong>: There exists a linear relationship between each predictor variable and the response variable.</p></li>
+<li><p><strong>No Multicollinearity</strong>: None of the predictor variables are highly correlated with each other.</p></li>
+<li><p><strong>No Outliers</strong>: None of the data points are too different from the others, resulting in a strong influence on the estimate.</p></li>
+<li><p><strong>Independence</strong>: Observations are independent (a problem arising particularly with time series data).</p></li>
+<li><p><strong>Homoscedasticity</strong>: The residuals have constant variance at every point in the linear model.</p></li>
+<li><p><strong>Normality</strong>: The residuals of the model are normally distributed.</p></li>
+</ul>
 <p>PROCESS implements methods that help to solve issues that may arise with assumptions. Unfortunately, however, it does not provide instruments to test them. Therefore, let’s see how to check the assumptions.</p>
 <section id="check-the-assumptions" class="level2">
 <h2 class="anchored" data-anchor-id="check-the-assumptions">Check the assumptions</h2>
@@ -1703,7 +1718,11 @@ consider setting type = 'predictor'; see ?vif</code></pre>
 <p><strong>Outliers</strong> have to be thoroughly inspected. If in doubt, you can perform <strong>robust regression</strong> in R and check whether the results are more or less the same as those of PROCESS. Robust regression attempts to dampen the influence of outlying cases in order to provide a better fit to the majority of the data. A good practical tutorial on robust regression is available here: <a href="https://www.youtube.com/watch?v=qte9ASvgElI" class="uri">https://www.youtube.com/watch?v=qte9ASvgElI</a>.</p>
 <p>In case of serious <strong>multicollinearity</strong> problems (based on the VIF index) you can omit one of the highly correlated variables.</p>
 <p>Finally, in case of <strong>hetersoskedasticity</strong> problems you can request PROCESS to use heteroskedasticity-consistent (HC) standard errors. The available options are: HC0, HC1, HC2, HC3, and HC4. You only need to add <strong>hc=4</strong> (or a different number between 1 and 4) to the PROCESS function. Heteroskedasticity-consistent (HC) standard errors were also discussed in the first part of the course on regression models. Models with both standard errors and heteroskedasticity-consistent standard errors can be fitted for comparison even if hetersoskedasticity issues are not obvious.</p>
-<p>Hayes and Cay wrote: &gt;“(…) we argue that an HC estimator, preferably HC3 or HC4, should be routinely used in linear regression mod- els, if it is not used as the default method of standard error estimation, researchers would be well advised to at least double-check the results from the use of the OLSE estima- tor against the results obtained with an HC estimator, to make sure that conclusions are not compromised by heteroskedasticity”. Hayes, A. F., &amp; Cai, L. (2007). <a href="https://link.springer.com/content/pdf/10.3758/BF03192961.pdf">Using heteroskedasticity-consistent standard error estimators in OLS regression: An introduction and software implementation</a>. <em>Behavior research methods</em>, 39(4), 709-722.</p>
+<p>Hayes and Cay wrote:</p>
+<blockquote class="blockquote">
+<p>“(…) we argue that an HC estimator, preferably HC3 or HC4, should be routinely used in linear regression models, if it is not used as the default method of standard error estimation, researchers would be well advised to at least double-check the results from the use of the OLSE estimator against the results obtained with an HC estimator, to make sure that conclusions are not compromised by heteroskedasticity”.</p>
+<p>Hayes, A. F., &amp; Cai, L. (2007). <a href="https://link.springer.com/content/pdf/10.3758/BF03192961.pdf">Using heteroskedasticity-consistent standard error estimators in OLS regression: An introduction and software implementation</a>. <em>Behavior research methods</em>, 39(4), 709-722.</p>
+</blockquote>
 <p>To treat normality problems, bootstrapping can be used to compute confidence intervals for regression coefficients. You only have to add <strong>modelbt = 1</strong> to the PROCESS function. The coefficients with the bootstrap confidence intervals will appear at the bottom of the result. They can be interpreted as usual: if the range overlaps zero, there is not enough evidence to consider it statistically significant.</p>
 <p>These confidence intervals are not the same as those reported in the regression tables at the beginning of the output. The latter is based on hypotheses of normality, and are symmetrical around the coefficient. The percentile bootstrap confidence intervals are rather “asymmetric”. They are not based on a normal theoretical distribution, but of the empirical distribution as given in the sample (which is almost never perfectly normal).</p>
 <div class="cell">

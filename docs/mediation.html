@@ -180,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./conditional.html">
- <span class="menu-text">Conditional Process</span></a>
+ <span class="menu-text">Conditional</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -299,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference">Inference</a></li>
   <li><a href="#example-with-continuous-x" id="toc-example-with-continuous-x" class="nav-link" data-scroll-target="#example-with-continuous-x">Example with continuous X</a></li>
   </ul></li>
-  <li><a href="#confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" id="toc-confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" class="nav-link" data-scroll-target="#confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys">Confounding variables, causal order, effect sizes, and multiple xs and ys</a>
+  <li><a href="#confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" id="toc-confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" class="nav-link" data-scroll-target="#confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys">Confounding variables, causal order, effect sizes, and multiple Xs and Ys</a>
   <ul class="collapse">
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
   <li><a href="#confounding-variables" id="toc-confounding-variables" class="nav-link" data-scroll-target="#confounding-variables">Confounding variables</a></li>
@@ -346,7 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#mediation-with-a-multicategorical-antecedent-2" id="toc-mediation-with-a-multicategorical-antecedent-2" class="nav-link" data-scroll-target="#mediation-with-a-multicategorical-antecedent-2">Mediation with a multicategorical antecedent</a>
   <ul class="collapse">
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
-  <li><a href="#intepretation-of-the-total-effect" id="toc-intepretation-of-the-total-effect" class="nav-link" data-scroll-target="#intepretation-of-the-total-effect">Intepretation of the Total Effect</a></li>
+  <li><a href="#interpretation-of-the-total-effect" id="toc-interpretation-of-the-total-effect" class="nav-link" data-scroll-target="#interpretation-of-the-total-effect">Interpretation of the Total Effect</a></li>
   <li><a href="#interpretation-of-the-direct-effect" id="toc-interpretation-of-the-direct-effect" class="nav-link" data-scroll-target="#interpretation-of-the-direct-effect">Interpretation of the Direct Effect</a></li>
   <li><a href="#interpretation-of-the-indirect-effect" id="toc-interpretation-of-the-indirect-effect" class="nav-link" data-scroll-target="#interpretation-of-the-indirect-effect">Interpretation of the Indirect Effect</a></li>
   <li><a href="#reporting-results" id="toc-reporting-results" class="nav-link" data-scroll-target="#reporting-results">Reporting results</a></li>
@@ -386,8 +386,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2d5fe295df4161ad7b0e" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-2d5fe295df4161ad7b0e">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  rec5 [label = \"Test\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4 -> rec5;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b06b676607fa16cf5717" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b06b676607fa16cf5717">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  rec5 [label = \"Test\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4 -> rec5;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="learning-goals" class="level1">
@@ -406,12 +406,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="download-and-load-the-process-software" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-load-the-process-software">Download and load the PROCESS software</h2>
 <ul>
-<li>Download from Moodle (folder “Scripts”) the <strong>PROCESS software</strong> for R. It is a software written by the author of the book we are using during this course, Andrew F. Hayes. The software is also available on https://www.processmacro.org/download.html, where you can find the version for R and other statistical software. In this course we’ll use the R version (several examples in the book are from the SPSS version).</li>
-<li>Create a folder “PROCESS_R” in your R project directory, and save the “process.R” there</li>
+<li>Download from Moodle (folder “Scripts”) the <strong>PROCESS software</strong> for R. The software is written by the author of the book we are using during this course, Andrew F. Hayes. The software is also available on <a href="https://www.PROCESSmacro.org/download.html" class="uri">https://www.PROCESSmacro.org/download.html</a>, where you can find the version for R and other statistical software. In this course we’ll use the R version (several examples in the book are from the SPSS version).</li>
+<li>Create a folder “PROCESS_R” in your R project directory, and save the “PROCESS.R” there</li>
 <li>Run the code below to load the PROCESS functions</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"PROCESS_R/process.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"PROCESS_R/PROCESS.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -430,7 +430,7 @@ Copyright 2021 by Andrew F. Hayes ALL RIGHTS RESERVED
 <section id="download-and-load-the-data-set" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-load-the-data-set">Download and load the data set</h2>
 <ul>
-<li>Download the <strong>pmi</strong> dataset from Moodle, and save it in your “data” folder, in the R project directory.</li>
+<li>Download the <strong>pmi</strong> dataset and save it in your “data” folder, in the R project directory.</li>
 <li>Load the data by using the <strong>read.csv</strong> function.</li>
 </ul>
 <div class="cell">
@@ -439,20 +439,20 @@ Copyright 2021 by Andrew F. Hayes ALL RIGHTS RESERVED
 </section>
 <section id="case-study-description" class="level2">
 <h2 class="anchored" data-anchor-id="case-study-description">Case study description</h2>
-<p>Participants read a news story describing global economic conditions leading to a possible sugar shortage and increase in price.</p>
+<p>Participants read a news story describing global economic conditions leading to a possible sugar shortage and an increase in price.</p>
 <p>Researchers told them that the story is about to be published:</p>
 <ul>
-<li>on the <em>front page</em> of a newspaper (<strong>= front page condition (cond = 0)</strong>)</li>
+<li>on the <em>front page</em> of a newspaper (<strong>= front-page condition (cond = 0)</strong>)</li>
 <li>or in the <em>inside</em> of an economic supplement (<strong>= back page condition (cond = 1)</strong>).</li>
 </ul>
-<p>This is the independent variable (<span class="math inline">\(X\)</span>), and is a <strong>dichotomous</strong> variable (in this case it expresses a experimentally manipulated condition, but a variable can be used in a mediation model even when in nonexperimenal studies).</p>
+<p>This is the independent variable (<span class="math inline">\(X\)</span>), and is a <strong>dichotomous</strong> variable (in this case it expresses an experimentally manipulated condition, but a variable can be used in a mediation model even when in non-experimental studies).</p>
 <p>Participants then answered a series of questions:</p>
 <ul>
 <li>about their <em>intention to buy sugar</em> (<strong>DV = reported reaction (reaction)</strong>)</li>
-<li>and aimed to assess (1) their perception of media’s influence on general public’s intention to buy sugar (<strong>= presumed media influence (pmi)</strong>), and (2) how important the topic was to the global economic crisis (<strong>=perceived importance of the topic (import)</strong>).</li>
+<li>and aimed to assess (1) their perception of media’s influence on the general public’s intention to buy sugar (<strong>= presumed media influence (pmi)</strong>), and (2) how important the topic was to the global economic crisis (<strong>=perceived importance of the topic (import)</strong>).</li>
 </ul>
 <p><strong>Research question</strong>: does the location of the article affect behavioral intentions <strong>indirectly through presumed media influence?</strong></p>
-<p>The question is about a <strong>mechanism</strong> at work that leads to different behavioral intentions after being told about the different location of the article. The appropriate statistical model is a mediated model. This is the kind of model we use to answer questions about <em>mechanisms</em>.</p>
+<p>The question is about a <strong>mechanism</strong> at work that leads to different behavioral intentions after being told about the different locations of the article. The appropriate statistical model is a mediated model. This is the kind of model we use to answer questions about <em>mechanisms</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/mediation_1_diagram_2.png" class="img-fluid" width="480"></p>
@@ -474,15 +474,15 @@ Copyright 2021 by Andrew F. Hayes ALL RIGHTS RESERVED
 <li>The <strong>direct effect</strong> (<em>c’</em>)is the partial effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> after controlling for <span class="math inline">\(M\)</span>.</li>
 </ul>
 <p>In practice, a simple mediation model decompose the total effect of X on Y, in a direct and indirect effect</p>
-<p>When Y and M are estimated using OLS regression, meaning analyzed as continuous variables using the OLS criterion for maximizing fit of the model (or when using a maximum-likelihood-based model of continuous outcomes, abother method in place of the OLS):</p>
+<p>When Y and M are estimated using OLS regression, meaning analyzed as continuous variables using the OLS criterion for maximizing fit of the model (or when using a maximum-likelihood-based model of continuous outcomes, another method in place of the OLS):</p>
 <p>TOTAL EFFECT = DIRECT EFFECT + INDIRECT EFFECT <span class="math display">\[c = ab + c'\]</span></p>
 <p>This simple equation does not apply when using other modeling methods that deviate from what is known in the generalized linear modeling literature as an “identity link” in the model.</p>
 <p>The three regression model part of the Simple Mediation Models are:</p>
 <p><span class="math display">\[0) \hat Y = i_1 + c_X\]</span> <span class="math display">\[1) \hat M = i_2 + a_X\]</span> <span class="math display">\[2) \hat Y = i_3 + c'_X + bM\]</span></p>
 <section id="estimation-with-process" class="level2">
 <h2 class="anchored" data-anchor-id="estimation-with-process">Estimation with PROCESS</h2>
-<p>Using OLS regression, we use the <strong>process</strong> function to estimate equations 1 and 2 (in the previous slide) and thereby to get <em>a</em>, <em>b</em>, and <em>c′</em> along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of <span class="math inline">\(X\)</span>.</p>
-<p>The function requires you to specificy:</p>
+<p>Using OLS regression, we use the <strong>PROCESS</strong> function to estimate equations 1 and 2 (in the previous slide) and thereby to get <em>a</em>, <em>b</em>, and <em>c′</em> along with standard regression statistics such as R2 for each of the equations. It also creates a section of output containing the direct and indirect effects of <span class="math inline">\(X\)</span>.</p>
+<p>The function requires you to specify:</p>
 <ul>
 <li>the dataset</li>
 <li>the dependent variable <span class="math inline">\(y\)</span></li>
@@ -492,8 +492,8 @@ Copyright 2021 by Andrew F. Hayes ALL RIGHTS RESERVED
 <p>Moreover, we specify:</p>
 <ul>
 <li>the <strong>total</strong> parameter, which we set to 1 (<strong>total = 1</strong>). It is used to tell the software to generate the <em>total effect</em> of X on Y (which we called <em>c</em> in the previous slides).</li>
-<li><strong>model=4</strong>, a parameter setting used for mediation models</li>
-<li>We also use a <strong>seed</strong> with an abribrary number. This is used to ensure replicability of the results, since the model estimation involves a procedure using random number generation (the seed ensures that the random generated sequences are the same if you repeat the estimation).</li>
+<li><strong>model=4</strong>, a parameter used for mediation models</li>
+<li>We also use a <strong>seed</strong> with an aribitrary number. This is used to ensure replicability of the results, since the model estimation involves a procedure using random number generation (the seed ensures that the randomly generated sequences are the same if you repeat the estimation).</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
@@ -596,44 +596,44 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </section>
 <section id="interpretation-of-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="interpretation-of-coefficients">Interpretation of coefficients</h2>
-<p>Two people who differ by one unit in X (front page condition vs.&nbsp;back-page condition) are estimated to be differ by 0.4957 units (95% CI [0.0538, 1.0452]) on average in their intention to buy sugar (<strong>total effect</strong>).</p>
-<p>They differ by 0.2413 units (95% CI [0.0143, 0.5254]) on average as a results of the <strong>indirect effect</strong> of page manipulation on buying intention through presumed media influence. The rest of the difference, 0.2544 units (95% CI [-0.2522, 0.7609]), is the <strong>direct effect</strong> of page manipulation on reported reactions, which is independent of the effects of page manipulation on reaction through PMI.</p>
+<p>Two people who differ by one unit in X (front-page condition vs.&nbsp;back-page condition) are estimated to be differ by 0.4957 units (95% CI [0.0538, 1.0452]) on average in their intention to buy sugar (<strong>total effect</strong>).</p>
+<p>They differ by 0.2413 units (95% CI [0.0143, 0.5254]) on average as a result of the <strong>indirect effect</strong> of page manipulation on buying intention through presumed media influence. The rest of the difference, 0.2544 units (95% CI [-0.2522, 0.7609]), is the <strong>direct effect</strong> of page manipulation on reported reactions, which is independent of the effects of page manipulation on reaction through PMI.</p>
 </section>
 <section id="inference" class="level2">
 <h2 class="anchored" data-anchor-id="inference">Inference</h2>
 <p>When coming to statistical inference, and thus to the “statistical significance” of the coefficients, the output reports <strong>p-values</strong> and <strong>confidence intervals</strong>.</p>
 <p>Inferential methods have different characteristics for the <strong>direct effect</strong> and the <strong>indirect effect</strong>: Inference for the <strong>direct effect</strong> (and the total effect) is simple and non-controversial, while the case of <strong>indirect effect</strong> is more complex.</p>
 <p>Regarding the <strong>direct effect</strong>, the inference can be framed in terms of a <strong>p-value</strong> (through <em>hypothesis testing</em>) or <strong>confidence interval</strong>.</p>
-<p>In the example above, the direct effect of the experiental condition, independent from the mediator, amount to 0.2544 units (95% CI [-0.2522, 0.7609], p-value: 0.3221).</p>
-<p>The p-value and the confidence interval show that the effect is not statistically significant: the p-value is above the standard threshold of 0.05, while the confidence interval includes zero (when it does so, it means that it is possible that it is equal zero).</p>
-<p>Regarding the inderect effect, there are two possibilities:</p>
+<p>In the example above, the direct effect of the experimental condition, independent from the mediator, amounts to 0.2544 units (95% CI [-0.2522, 0.7609], p-value: 0.3221).</p>
+<p>The p-value and the confidence interval show that the effect is not statistically significant: the p-value is above the standard threshold of 0.05, while the confidence interval includes zero (when it does so, it means that it is possible that it is equal to zero).</p>
+<p>Regarding the indirect effect, there are two possibilities:</p>
 <ul>
-<li>calculating the p-value through an <strong>hypothesis test</strong>, relying the <em>assumption of normality</em> of the sampling distribution</li>
-<li>Using a particular tecniques called <strong>bootstrapping</strong></li>
+<li>calculating the p-value through a hypothesis <strong>test</strong>, relying the <em>assumption of normality</em> of the sampling distribution</li>
+<li>Using a particular technique called <strong>bootstrapping</strong></li>
 </ul>
-<p>In the bottom part of the output of <em>process</em>, are both the <strong>“indirect effect(s) of X on Y”</strong>, in the <strong>confidence interval</strong> form, and the <strong>“normal theory test for indirect effect(s)”</strong>, in the <strong>p-value</strong> form.</p>
-<p>Based on stastical research, the recommendation of the PROCESS software is, in general, to avoid the <strong>“normal theory test for indirect effect(s)”</strong> approach, and to interpret the <strong>confidence interval</strong>. This approach would be better in several empirical circumtances, and more powerful in detecting stastical significance.</p>
+<p>In the bottom part of the output of <em>PROCESS</em>, are both the <strong>“indirect effect(s) of X on Y”</strong>, in the <strong>confidence interval</strong> form, and the <strong>“normal theory test for indirect effect(s)”</strong>, in the <strong>p-value</strong> form.</p>
+<p>Based on statistical research, the recommendation of the PROCESS software is, in general, to avoid the <strong>“normal theory test for indirect effect(s)”</strong> approach, and to interpret the <strong>confidence interval</strong>. This approach would be better in several empirical circumstances, and more powerful in detecting statistical significance.</p>
 <p>We can avoid calculating the normal theory test by removing <strong>normal = 1</strong> from the function <strong>progress</strong>.</p>
-<p>For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, &gt; 0.05), while the bootstrapping confindence interval is statistically significant (it does not include zero: 95% CI [0.0143, 0.5254]).</p>
+<p>For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, &gt; 0.05), while the bootstrapping confidence interval is statistically significant (it does not include zero: 95% CI [0.0143, 0.5254]).</p>
 <p>We already saw that confidence intervals can be calculated through standard errors based on the Central Limit Theorem, and thus based on theoretical assumptions regarding the sampling distribution.</p>
 <p>In this case, instead, they are calculated through <strong>bootstrapping</strong>. It is a procedure based on <strong>resampling with replacement</strong>. Also in this case, it is of fundamental importance that the sample is a miniature representation of the original population.</p>
-<p><strong>Resampling with replacement</strong> is a resample method that create new samples by choosing, in a random way, the cases that compose an initial sample. The particularity is that <strong>the same case can be choosen more than once</strong>: <em>“Suppose case 1 in the original sample is”Joe.” Joe happened to be contacted for participation in the study and provided data to the effort. In the resampling process, Joe functions as a stand-in for himself and anyone else like him in the pool of potential research participants, as defined by Joe’s measurements on the variables in the model. The original sampling could have sampled several Joes or none, depending in part on the luck of the draw”.</em></p>
-<p>In bootstrapping, a large number of samples are drawn from the sample (e.g.&nbsp;5,000 is the default in PROCESS. Also 10,000 is commonly used), using the just descripted random sampling with replacement.</p>
+<p><strong>Resampling with replacement</strong> is a resampling method that create new samples by choosing, in a random way, the cases that compose an initial sample. The particularity is that <strong>the same case can be chosen more than once</strong>: <em>“Suppose case 1 in the original sample is”Joe.” Joe happened to be contacted for participation in the study and provided data to the effort. In the resampling PROCESS, Joe functions as a stand-in for himself and anyone else like him in the pool of potential research participants, as defined by Joe’s measurements on the variables in the model. The original sampling could have sampled several Joes or none, depending in part on the luck of the draw”.</em></p>
+<p>In bootstrapping, a large number of samples are drawn from the sample (e.g.&nbsp;5,000 is the default in PROCESS. Also 10,000 is commonly used), using the just mentioned random sampling with replacement.</p>
 <p>Next, the indirect effect (the statistic of interest in this case) is calculated based on each sample.</p>
 <p>Finally, the confidence intervals are found by dividing the distribution in 100 parts (<em>percentiles</em>), and taking the value corresponding to the 2.5 percentile (lower boundary of the 95% confidence interval), and the 97.5 percentile (upper boundary of the 95% confidence interval).</p>
 <p>A difference between confidence intervals calculated using standard errors (relying on the “theoretical” sampling distribution), and those calculated through bootstrapping, is that the former is always symmetrical (the upper and lower bound of the confidence interval are equidistant from the point estimate), while the latter can be <strong>asymmetrical</strong>, depending on the shape of the distribution.</p>
-<p>Bootstrapping is particularly useful relative to the normal theory approach in smaller samples, because it is in smaller samples that the non-normality of the sampling distribution of ab is likely to be most severe, the large sample asymptotics of the normal theory approach are harder to trust, and the power advantages of bootstrapping are more pronounced.</p>
+<p>Bootstrapping is particularly useful relative to the normal theory approach in smaller samples, because it is in smaller samples that the non-normality of the sampling distribution of ab is likely to be most severe, the large sample asymptotic of the normal theory approach are harder to trust, and the power advantages of bootstrapping are more pronounced.</p>
 </section>
 <section id="example-with-continuous-x" class="level2">
 <h2 class="anchored" data-anchor-id="example-with-continuous-x">Example with continuous X</h2>
-<p>In the previous example the independent variable (<span class="math inline">\(X\)</span>), was a <strong>dichotomous</strong> variable. In this case it expressed a experimentally manipulated condition, but a variable can be used in a mediation model even when in nonexperimenal studies.</p>
+<p>In the previous example the independent variable (<span class="math inline">\(X\)</span>), was a <strong>dichotomous</strong> variable. In this case it expressed an experimentally manipulated condition, but a variable can be used in a mediation model even when in non-experimental studies.</p>
 <p>In other case, the independent variable can be continuous. No modifications are necessary to the mathematics or procedures described to estimate these effects, and the interpretation of these effects otherwise remains unchanged.</p>
 <p>Download the <strong>estress</strong> data from Moodle, save the file into your “data” folder and load it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>estress <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/estress.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The dataset includes information on 262 entrepreneurs who responded to an online survey about recent performance of their business as well as their emotional and cognitive reactions to the economic climate.</p>
-<p>Researchers proposed that economic stress (<span class="math inline">\(X\)</span>, variable <strong>estress</strong>) leads to a desire to disen gage from entrepreneurial activities (<span class="math inline">\(Y\)</span>, variable <strong>withdraw</strong>) as a result of the depressed affect (<span class="math inline">\(M\)</span>, variable <strong>affect</strong>) such stress produces, which in turns leads to a desire to disengage from entrepreneurship.</p>
+<p>Researchers proposed that economic stress (<span class="math inline">\(X\)</span>, variable <strong>estress</strong>) leads to a desire to disengage from entrepreneurial activities (<span class="math inline">\(Y\)</span>, variable <strong>withdraw</strong>) as a result of the depressed affect (<span class="math inline">\(M\)</span>, variable <strong>affect</strong>) such stress produces, which in turns leads to a desire to disengage from entrepreneurship.</p>
 <p>More specifically, the experience of stress results in feelings of despondency and hopelessness, and the more such feelings of depressed affect result, the greater the desire to withdraw from one’s role as a small-business owner to pursue other vocational activities.</p>
 <p>So depressed affect was hypothesized as a mediator of the effect of economic stress on withdrawal intentions.</p>
 <div class="cell">
@@ -740,13 +740,13 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </section>
 </section>
 <section id="confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" class="level1">
-<h1>Confounding variables, causal order, effect sizes, and multiple xs and ys</h1>
+<h1>Confounding variables, causal order, effect sizes, and multiple Xs and Ys</h1>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
 <ul>
 <li>Learn to rule out alternative explanation in mediation models with reference to
 <ol type="1">
-<li>confunding variables and</li>
+<li>confounding variables and</li>
 <li>alternative casual explanations</li>
 </ol></li>
 <li>Learn the meaning of “effect size” and learn how to measure it</li>
@@ -769,7 +769,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <section id="statistical-controls" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-controls">Statistical controls</h2>
 <p><strong>Epiphenomenal association and confounding</strong> as threats to the validity of a causal claim can be managed at least in part through <strong>statistical control</strong>.</p>
-<p>If two variables <span class="math inline">\(M\)</span> (e.g.&nbsp;how much children watch television) and <span class="math inline">\(Y\)</span> (e.g.&nbsp;being outweighted) are epiphemenonally associated or confounded due to their association with some variable <span class="math inline">\(C\)</span> (e.g.&nbsp;how much parents encourage a healthy lifestyle in their children), then the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> should not exist among people who are equal on <span class="math inline">\(C\)</span> (e.g.&nbsp;have parents equally encouraging a healthy lifestyle in their children), no matter what they are different on <span class="math inline">\(M\)</span> (e.g.&nbsp;how much they watch television).</p>
+<p>If two variables <span class="math inline">\(M\)</span> (e.g.&nbsp;how much children watch television) and <span class="math inline">\(Y\)</span> (e.g.&nbsp;being outweighed) are epiphenomenally associated or confounded due to their association with some variable <span class="math inline">\(C\)</span> (e.g.&nbsp;how much parents encourage a healthy lifestyle in their children), then the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> should not exist among people who are equal on <span class="math inline">\(C\)</span> (e.g.&nbsp;have parents equally encouraging a healthy lifestyle in their children), no matter what they are different on <span class="math inline">\(M\)</span> (e.g.&nbsp;how much they watch television).</p>
 <p>In regression, if we add a variable <span class="math inline">\(C\)</span>, we can get the <strong>partial coefficient</strong> of <span class="math inline">\(M\)</span>, we interpret as the weight of the <span class="math inline">\(M\)</span> variable, <strong>holding all the other variables in the model constant</strong> (including <span class="math inline">\(C\)</span>):</p>
 <ul>
 <li>Confounding and epiphenomenal association due to C can be ruled out by including C as a predictor</li>
@@ -779,7 +779,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>We can make an example using the previous <strong>estress</strong> dataset and research problem: In this research project nothing was manipulated, and potential confounds abound.</p>
 <p>For example, the indirect effect may be a manifestation of nothing other than individual differences such as perceptions of one’s own <strong>confidence and skill in managing a business</strong>: People who feel relatively more confident in their abilities may tend to feel relatively less stress in general, perhaps are less prone to feeling negative and down about their business under any circumstances.</p>
 <p><strong>If so, then statistically controlling for such an individual difference when assessing the indirect effect of economic stress should weaken or eliminate it.</strong></p>
-<p>That is, among people equal in their confidence, there should be no evidence of an indirect effect of economic stress on withdrawal intentions through depressed affect, because this variable has been taken out of the process that, by this reasoning, induces spurious association between <span class="math inline">\(X\)</span> and <span class="math inline">\(M\)</span> and between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span>. But if the indirect effect persists even when holding confidence constant, a causal claim remains viable.</p>
+<p>That is, among people equal in their confidence, there should be no evidence of an indirect effect of economic stress on withdrawal intentions through depressed affect, because this variable has been taken out of the PROCESS that, by this reasoning, induces spurious association between <span class="math inline">\(X\)</span> and <span class="math inline">\(M\)</span> and between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span>. But if the indirect effect persists even when holding confidence constant, a causal claim remains viable.</p>
 <p>In the dataset is included a measure of <strong>entrepreneurial self-efficacy (“ese”)</strong></p>
 <p>Those relatively high in entrepreneurial self-efficacy did report feeling relatively less economic stress (<span class="math inline">\(r = −0:158; p = 0.010\)</span>), relatively less business-related depressed affect (<span class="math inline">\(r = −0.246; p &lt; 0.001\)</span>), and reported relatively weaker intentions to withdraw from entrepreneurship (<span class="math inline">\(r = −0:243; p &lt; 0.001\)</span>).</p>
 <p>So spurious or epiphenomenal association are plausible alternative explanations for at least some of the relationship observed between economic stress, depressed affect, and withdrawal intentions.</p>
@@ -790,7 +790,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 </div>
 <p>The only difference between the code to fit a mediation model with covariates and the code we already saw, is the addition of the covariates listed in a vector (using the <em>c</em> function) after the parameter <strong>cov</strong>.</p>
-<p>By default, any variable in the covariate list will be included as additional antecedent variables in the model of each of the consequents.</p>
+<p>By default, any variable in the covariate list will be included as additional antecedent variables in the model of each of the consequent.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/control_1_diagram_3.png" class="img-fluid" width="480"></p>
@@ -899,24 +899,24 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 </div>
 <p>Comparing the output for the model controlling for sex, tenure, and entrepreneurial self-efficacy to the output excluding these controls, it can be seen that substantively, nothing has really changed.</p>
-<p>However, this kind of analysis may be done in order to see how sensitive or susceptible the results from a comparable analysis without such controls is to alternative explanations involving those variables being controlled, or it may be done because it is known a priori or based on preliminary analyses that certain variables may be producing spurious association between key variables in the causal system.</p>
+<p>However, this kind of analysis may be done in order to see how sensitive or susceptible the results from a comparable analysis without such controls is to alternative explanations involving those variables being controlled, or it may be done because it is known a-priori or based on preliminary analyses that certain variables may be producing spurious association between key variables in the causal system.</p>
 <p><strong>Ruling out epiphenomenality or spurious association as alternative explanations is an important part of any causal argument that includes associations that are only correlational in nature.</strong></p>
 </section>
 </section>
 <section id="causal-order" class="level1">
 <h1>Causal order</h1>
-<p>Mediation is a causal process, and among the criteria for claiming that an association is cause–effect is establishing that the cause precedes the effect in time. <strong>Even experimental manipulation and random assignment to X all but guarantees that X precedes M and Y in a mediation model.</strong></p>
+<p>Mediation is a causal PROCESS, and among the criteria for claiming that an association is cause–effect is establishing that the cause precedes the effect in time. <strong>Even experimental manipulation and random assignment to X all but guarantees that X precedes M and Y in a mediation model.</strong></p>
 <p>Experimental manipulation and random assignment to <span class="math inline">\(X\)</span> all but guarantees that <span class="math inline">\(X\)</span> precedes <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> in a mediation model. This is because random assignment largely ensures that the groups that define <span class="math inline">\(X\)</span> are equal on <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> on average at the beginning of the study. Any differences observed between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> following random assignment must have occurred after the assignment of cases to groups.</p>
 <p>But random assignment does not ensure that <span class="math inline">\(M\)</span> precedes <span class="math inline">\(Y\)</span> in time. Who is to say that the direction of causal flow runs from <span class="math inline">\(X\)</span> to <span class="math inline">\(M\)</span> to <span class="math inline">\(Y\)</span>? Perhaps the true causal sequence is <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> to <span class="math inline">\(M\)</span>.</p>
 <p>For example, in the presumed media influence study, it could be argued that if people believe they should take action (<span class="math inline">\(Y\)</span>) in response to the article about a possible sugar shortage in the country (<span class="math inline">\(X\)</span>), they <strong>then</strong> project that decision onto the public at large (<span class="math inline">\(M\)</span>) as a form of rationalization for their own beliefs and chosen course of action (and not that believe they should take action (<span class="math inline">\(Y\)</span>) in response to the article (<span class="math inline">\(X\)</span>) <strong>because</strong> thinking other will do the same).</p>
 <p>In the <em>estress</em> study, where depressed affect (<span class="math inline">\(M\)</span>) was construed as a mediator of the effect of economic stress (<span class="math inline">\(X\)</span>) on withdrawal intentions (<span class="math inline">\(Y\)</span>) (<span class="math inline">\(X-&gt;M-&gt;Y\)</span>), an alternative proposal is that people who begin to ponder giving up on a business (<span class="math inline">\(Y\)</span>) start putting less time into the enterprise, which in time hurts the profit margin so that economic stresses mount (<span class="math inline">\(X\)</span>), and the owner begins to start getting depressed about having to abandon his or her business (<span class="math inline">\(M\)</span>) (<span class="math inline">\(Y-&gt;X-&gt;M\)</span>).</p>
-<p><strong>In nonexperimantal studies, any sequence of causal ordering of X, M, and Y must be entertained as a potential candidate for the direction of causal flow.</strong></p>
+<p><strong>In non-experimental studies, any sequence of causal ordering of X, M, and Y must be entertained as a potential candidate for the direction of causal flow.</strong></p>
 <p>Hopefully, <strong>strong theory or logical impossibility or implausibility</strong> precludes some of these.</p>
 <p>Sometimes certain alternative directions of causal flow are so implausible that they can be discounted without difficulty.</p>
 <section id="approach" class="level2">
 <h2 class="anchored" data-anchor-id="approach">Approach</h2>
 <p>In an attempt to entertain alternative direction of causal flow, one procedure some investigators employ is to <strong>estimate a mediation model corresponding to the alternative explanation</strong> to see whether the <strong>direct and indirect effects</strong> are <strong>consistent with what that alternative order predicts</strong>.</p>
-<p>For instance, when economic stress was specified as the mediator of the effect of withdrawal intentions on depressed affect, there was no evidence of such a process at work, as a bootstrap confidence interval for the indirect effect contained zero.</p>
+<p>For instance, when economic stress was specified as the mediator of the effect of withdrawal intentions on depressed affect, there was no evidence of such a PROCESS at work, as a bootstrap confidence interval for the indirect effect contained zero.</p>
 <p>Similarly, when this procedure was applied to the presumed media influence study by treating presumed media influence as the final outcome and intentions to buy sugar as the mediator, the results were not consistent with this alternative direction of causal flow.</p>
 </section>
 </section>
@@ -945,7 +945,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p><span class="math display">\[ab_{cs} = \frac{SD_X(ab)}{SD_Y} = SD_X(ab_ps)\]</span></p>
 <p>These two measures are identical to the direct and indirect effects when those effects are calculated using <em>standardized regression coefficients</em> (or <em>standardized X, M, and Y</em> are used in the model rather than X, M, and Y in their original metric).</p>
 <p>In the estress study, one standard deviation change in economic stress leads to a 0.152 standard deviations change in withdrawal intentions, as a result of the effect of stress on affect which in turn influences withdrawal intentions.</p>
-<p><em>The completely standardized effect is generally not meaningful if X is a dichotomous variable</em>, thus, in this case, it is not reccommended.</p>
+<p><em>The completely standardized effect is generally not meaningful if X is a dichotomous variable</em>, thus, in this case, it is not recommended.</p>
 </section>
 <section id="effect-size-in-process" class="level2">
 <h2 class="anchored" data-anchor-id="effect-size-in-process">Effect size in PROCESS</h2>
@@ -1087,7 +1087,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 </div>
 <p>A close examination of this model shows that it is really just <span class="math inline">\(k\)</span> simple mediation models with a common <span class="math inline">\(X\)</span> and <span class="math inline">\(M\)</span>.</p>
-<p>PROCESS can be used to estimate the paths in a model such as in Figure 4.6 by running <span class="math inline">\(k\)</span> “process” commands, substituting one <span class="math inline">\(Y\)</span> variable for another at each run and seeding the random number generator with a common seed for bootstrapping.</p>
+<p>PROCESS can be used to estimate the paths in a model such as in Figure 4.6 by running <span class="math inline">\(k\)</span> “PROCESS” commands, substituting one <span class="math inline">\(Y\)</span> variable for another at each run and seeding the random number generator with a common seed for bootstrapping.</p>
 </section>
 <section id="more-than-one-mediator" class="level1">
 <h1>More than one mediator</h1>
@@ -1276,7 +1276,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
 <p>The interpretation of the total and direct effect do not change, while <strong>indirect effect</strong> includes the indirect effects of each mediator.</p>
 <p>Also, if we use <strong>contrast = 1</strong>, there is a test of statistically significance of the difference between the indirect effects. In this case the output includes also the description of variables tested.</p>
-<p>In this case, the tested difference is <em>import - pmi</em>. The difference is positive (0.0144) meaning that, with reference to the internal page condition, those assigned to the front page condition have stronger intentions to buy sugar (by 0.0144 units) as result of the mediation of “import” compared to the effect of the mediation of “pmi”. The difference is not statistically significant, though.</p>
+<p>In this case, the tested difference is <em>import - pmi</em>. The difference is positive (0.0144) meaning that, with reference to the internal page condition, those assigned to the front-page condition have stronger intentions to buy sugar (by 0.0144 units) as result of the mediation of “import” compared to the effect of the mediation of “pmi”. The difference is not statistically significant, though.</p>
 <p>In the output you can also read the standardized effects, if you require it. Notice that in this case <strong>only the partial standardized effect</strong> is calculated for the indirect effect.</p>
 <p>Indeed, the <span class="math inline">\(X\)</span> of this dataset is dichotomous, and completely standardized effects are not easy to interpret in this case. Instead, PROCESS can produce partially and completely standardized measures of total, direct, and indirect effects in mediation models when X is a numerical continuum.</p>
 <div class="cell">
@@ -1289,10 +1289,10 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <section id="the-serial-multiple-mediator-model" class="level1">
 <h1>The Serial Multiple Mediator model</h1>
 <p>A distinguishing feature of the <strong>parallel mediator model</strong> is the assumption that <strong>no mediator causally influences another</strong>. In practice, mediators will be correlated, but this model specifies that they are not causally so.</p>
-<p>The <strong>serial multiple mediator model</strong> investigates a process in which <span class="math inline">\(X\)</span> causes <span class="math inline">\(M_1\)</span>, which in turn causes <span class="math inline">\(M_2\)</span>, and so forth, concluding with <span class="math inline">\(Y\)</span> as the final consequent.</p>
+<p>The <strong>serial multiple mediator model</strong> investigates a PROCESS in which <span class="math inline">\(X\)</span> causes <span class="math inline">\(M_1\)</span>, which in turn causes <span class="math inline">\(M_2\)</span>, and so forth, concluding with <span class="math inline">\(Y\)</span> as the final consequent.</p>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
-<p>Some researchers compared the anxiety of residents living in a low-income housing development located in a middleclass neighborhood to a matched group who applied to live in the housing development but remained on the waiting list.</p>
+<p>Some researchers compared the anxiety of residents living in a low-income housing development located in a middle-class neighborhood to a matched group who applied to live in the housing development but remained on the waiting list.</p>
 <p>They argued that <strong>life in a middle-class housing development</strong> (<span class="math inline">\(X\)</span>) would <strong>reduce</strong> (<span class="math inline">\(M_1\)</span>) <strong>exposure to neighborhood disorder</strong> (e.g., crime, homeless people, drugs and drug use, violence) relative to those living elsewhere, which would <strong>in turn reduce</strong> (<span class="math inline">\(M_2\)</span>) <strong>the number of stressful life experiences</strong>, which <strong>in turn would translate into</strong> (<span class="math inline">\(Y\)</span>) <strong>fewer anxiety symptoms</strong>.</p>
 <p>Considering the <em>Presumed Media Influence</em> study dataset, it is plausible that the perceived issue importance (<span class="math inline">\(M_1\)</span>) influences people’s beliefs about how others are going to be influenced by the media <span class="math inline">\(M_2\)</span>: <em>“This article will be published on the front page, so it must be important, and people will take notice of such an important matter and act by buying sugar to stock up. Therefore, I should go out and buy sugar before supplies are all gone!”</em></p>
 </section>
@@ -1334,15 +1334,15 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>The third indirect effect (<strong>Ind3</strong>) is the specific indirect effect of article location on reactions through perceived importance (<em>import</em>) and presumed media influence (<em>pmi</em>) <strong>in serial</strong> and is not statistically significant.</p>
 <p>The table also include the statistical significance of the differences between the indirect effects (<strong>C1, C2, and C3</strong>) since we have used <strong>contrast = 1</strong> in the code.</p>
 <p>To interpret these differences read the legend <strong>Specific indirect effect contrast definition(s)</strong>.</p>
-<p>With more than three mediators, a model can be a blend of parallel and serial mediation processes.</p>
-<p>With <em>PROCESS</em> you can fit also this kind of models: see APPENDIX A (in Moodle), pagg. 584-612 for a visual presentation of the preprogrammed models. Model 80, 81, and 82 are blend of parallel and serial mediation processes.</p>
+<p>With more than three mediators, a model can be a blend of parallel and serial mediation PROCESSes.</p>
+<p>With <em>PROCESS</em> you can fit also this kind of models: see APPENDIX A of the book, pagg. 584-612 for a visual presentation of the pre-programmed models. Model 80, 81, and 82 are blend of parallel and serial mediation processes.</p>
 </section>
 <section id="mediation-with-a-multicategorical-antecedent" class="level1">
 <h1>Mediation with a multicategorical antecedent</h1>
 <section id="learning-outcomes-2" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes-2">Learning Outcomes</h2>
 <ul>
-<li>Understand the characteristic of a <strong>multicategorical variable</strong> (and the difference with dichotomous and continuous variables)</li>
+<li>Understand the characteristic of a <strong>multicategorical variable</strong> (and the difference between dichotomous and continuous variables)</li>
 <li>Learn to use <em>progress</em> to fit a mediation model with <strong>multicategorical X variable</strong></li>
 <li>Learn to interpret the output of the model</li>
 </ul>
@@ -1351,7 +1351,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <h2 class="anchored" data-anchor-id="mediation-with-a-multicategorical-antecedent-1">Mediation with a multicategorical antecedent</h2>
 <p>As far as now we have discussed models with a dichotomous or continuous <span class="math inline">\(X\)</span>. The interpretation of these models is, on the most basic level, based on a 1-unit change in the <span class="math inline">\(X\)</span>.</p>
 <p>However, there are also cases where <span class="math inline">\(X\)</span> is a <strong>multicategorical variable</strong>. Multicategorical variables are variables that can take on three or more categorical values (the values of a categorical variable are also called <strong>modalities, or categories</strong>).</p>
-<p>For instance, we may have a multicategorical <span class="math inline">\(X\)</span> variable with <em>three modalities</em> corresponging to three experimental conditions: information in mainstream newspaper (<strong>COND=0</strong>), information in alternative newspaper (<strong>COND=1</strong>), and information on social media (<strong>COND=2</strong>).</p>
+<p>For instance, we may have a multicategorical <span class="math inline">\(X\)</span> variable with <em>three modalities</em> corresponding to three experimental conditions: information in mainstream newspaper (<strong>COND=0</strong>), information in alternative newspaper (<strong>COND=1</strong>), and information on social media (<strong>COND=2</strong>).</p>
 <p>The interpretation, in this case, is a bit different from that of dichotomous or continuous variables.</p>
 <p>Before considering multicategorical variables, let’s recap the interpretation of models with dichotomous and continuous <span class="math inline">\(X\)</span>.</p>
 </section>
@@ -1359,7 +1359,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
 <section id="interpreting-models-with-a-continuous-x" class="level3">
 <h3 class="anchored" data-anchor-id="interpreting-models-with-a-continuous-x">Interpreting models with a continuous X</h3>
-<p><strong>Continuous variables are quantitative variables</strong>, resulting from a process of measurement, and can take on several values.</p>
+<p><strong>Continuous variables are quantitative variables</strong>, resulting from a PROCESS of measurement, and can take on several values.</p>
 <p>Considering, for example, the <em>estress</em> dataset, we found that the indirect effect of the <em>economic stress condition</em> (<span class="math inline">\(X\)</span>) on the intention to withdraw (<span class="math inline">\(Y\)</span>) through the mediator of depressed affect (<span class="math inline">\(M\)</span>), was 0.1330.</p>
 <p>How can we interpret this coefficient?</p>
 <p><strong>Two businessman who differ by one unit</strong> in their economic stress are estimated to differ by 0.133 unit in their reported intentions to withdraw from their business (…as a result of the tendency for those under relatively more economic stress to feel more depressed affect, which in turn translates into greater withdrawal intentions).</p>
@@ -1368,11 +1368,11 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <section id="interpreting-models-with-a-dichotomous-x" class="level3">
 <h3 class="anchored" data-anchor-id="interpreting-models-with-a-dichotomous-x">Interpreting models with a dichotomous X</h3>
 <p>A <strong>dichotomous</strong> <span class="math inline">\(X\)</span> variable can take on just <strong>two values</strong>, which are usually coded as 0 and 1.</p>
-<p>For instance, in the PMI dataset, there are only <strong>two (experimental) condition</strong> (<em>“COND”</em>): people were said the article was going to be published in the middle of an economic supplement of the newspaper (<strong>COND = 0</strong>), or on the frontpage (<strong>COND = 1</strong>).</p>
+<p>For instance, in the PMI dataset, there are only <strong>two (experimental) condition</strong> (<em>“COND”</em>): people were said the article was going to be published in the middle of an economic supplement of the newspaper (<strong>COND = 0</strong>), or on the front-page (<strong>COND = 1</strong>).</p>
 <p>Using the variable <em>“perceived media influence” (pmi)</em> as a mediator, we found that the <strong>indirect effect of X on Y</strong> was equal to <em>0.2413</em> (the indirect effect quantifies the effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> through a mediator <span class="math inline">\(M\)</span>). How do you interpret this coefficient?</p>
 <p><strong>Relative to those assigned to the interior page condition</strong> (<em>COND=0</em>), those who read an article they were told was to be published in the front page of the newspaper (<em>COND=1</em>) were, on average, 0.241 units higher in their likelihood of buying sugar (…as a result of the effect of the location of the article on presumed media influence which, in turn, putatively affected people’s intentions to buy sugar).</p>
 <p>Notice that with dichotomous variables, we don’t interpret the results with reference to 1-unit increase in <span class="math inline">\(X\)</span>, but <strong>relative to those assigned to the condition COND=0</strong>.</p>
-<p>The group coded with 0 is the <strong>reference group</strong> and the coefficients in the model are intepreted with reference to this group. The coefficients express <strong>differences</strong> with the reference group.</p>
+<p>The group coded with 0 is the <strong>reference group</strong> and the coefficients in the model are interpreted with reference to this group. The coefficients express <strong>differences</strong> with the reference group.</p>
 <p>We said: <strong>Relative to those assigned to the interior page condition</strong> (<em>COND=0</em>), those who read an article they were told was to be published in the front page of the newspaper (<em>COND=1</em>) were, on average, <strong>0.241 units higher</strong> in their likelihood of buying sugar.</p>
 <p>That is to say: <span class="math inline">\(Y_{COND_1} = Y_{COND_0} + 0.241\)</span></p>
 <p>Let’s make another example, with a dichotomous variable where MALE=0 and FEMALE=1, and a simple regression model as follows:</p>
@@ -1522,7 +1522,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 <p>The group coded with <strong>PROTEST=0</strong> (no protest group), is specified as the <strong>reference group</strong>. With indicator coding (<strong>mcx=1</strong>), PROCESS uses the <strong>group with the numerically smallest code</strong> in the variable specified as X <strong>as the reference group</strong>.</p>
 <p>If you would rather have a different group as the reference group, <em>you have to recode X</em> so that the desired reference group is coded with the numerically smallest value.</p>
-<p>Process authomatically transforms the multicategorical variable with three modalities, in two variables X1 (<strong>PROTEST = 1</strong>, <em>individual protest</em>) and X2 (<strong>PROTEST = 2</strong>, <em>collective protest</em>), which coefficients can be interpreted with reference to the reference group (<strong>PROTEST = 0</strong>, <em>no protest</em>).</p>
+<p>Process automatically transforms the multicategorical variable with three modalities, in two variables X1 (<strong>PROTEST = 1</strong>, <em>individual protest</em>) and X2 (<strong>PROTEST = 2</strong>, <em>collective protest</em>), which coefficients can be interpreted with reference to the reference group (<strong>PROTEST = 0</strong>, <em>no protest</em>).</p>
 <p>The output reports a <strong>legend</strong> with the coding of the multicategorical X variable used for the analysis.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1644,11 +1644,11 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 </div>
 </section>
-<section id="intepretation-of-the-total-effect" class="level3">
-<h3 class="anchored" data-anchor-id="intepretation-of-the-total-effect">Intepretation of the Total Effect</h3>
+<section id="interpretation-of-the-total-effect" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-of-the-total-effect">Interpretation of the Total Effect</h3>
 <p>Let’s start focusing on the <strong>TOTAL EFFECT MODEL</strong>, and let’s write the equation based on the coefficients.</p>
 <p><span class="math display">\[Y_{liking} = 5.3102 + 0.5158(X_1) + 0.4431(X_2)\]</span></p>
-<p>The <strong>TOTAL EFFECT MODEL</strong> is the total effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> <strong>without taking into account any other varaible</strong>. With a multicategorical <span class="math inline">\(X\)</span> it results in the average value of <span class="math inline">\(Y\)</span> for each modality of the multicategorical <span class="math inline">\(X\)</span>.</p>
+<p>The <strong>TOTAL EFFECT MODEL</strong> is the total effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> <strong>without taking into account any other variable</strong>. With a multicategorical <span class="math inline">\(X\)</span> it results in the average value of <span class="math inline">\(Y\)</span> for each modality of the multicategorical <span class="math inline">\(X\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(protest<span class="sc">$</span>liking, protest<span class="sc">$</span>protest, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1656,7 +1656,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 5.310244 5.826047 5.753333 </code></pre>
 </div>
 </div>
-<p>In particular, the <strong>intercept</strong> (5.3102) is the average value fo <span class="math inline">\(Y\)</span> when all the <span class="math inline">\(Xs\)</span> are equal zero. But when all the <span class="math inline">\(Xs\)</span> are equal zero we have the <strong>average Y of the reference group</strong> (check the legend with the coding).</p>
+<p>In particular, the <strong>intercept</strong> (5.3102) is the average value fo <span class="math inline">\(Y\)</span> when all the <span class="math inline">\(Xs\)</span> are equal to zero. But when all the <span class="math inline">\(Xs\)</span> are equal to zero we have the <strong>average Y of the reference group</strong> (check the legend with the coding).</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/multicategorical_legend.png" class="img-fluid" width="374"></p>
@@ -1680,13 +1680,13 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 <p>The resulting estimates of <span class="math inline">\(Y\)</span> are also called <strong>adjusted means</strong>, that is estimates of <span class="math inline">\(Y\)</span> for each group when the covariates are set to their sample mean. In a mediation model, the mediator mathematically functions like a covariate, with <span class="math inline">\(X\)</span>’s effect on <span class="math inline">\(Y\)</span> estimated after controlling for <span class="math inline">\(M\)</span>.</p>
 <p>The equation coefficients for the direct effect model can be found the model for the <span class="math inline">\(Y\)</span> outcome variable, in this case <strong>liking</strong>: <span class="math display">\[3.7103 − 0.0047(X_1) − 0.2202(X_2) + 0.4119(M)\]</span></p>
-<p>Pluggin the average value of <span class="math inline">\(M\)</span> in the equation: <span class="math display">\[3.7103 − 0.0047(X_1) − 0.2202(X_2) + 0.4119(4.866279)\]</span></p>
+<p>Plugging the average value of <span class="math inline">\(M\)</span> in the equation: <span class="math display">\[3.7103 − 0.0047(X_1) − 0.2202(X_2) + 0.4119(4.866279)\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/multicategorical_example_linking.png" class="img-fluid" width="552"></p>
 </div>
 </div>
-<p>To derive the direct effect of each modality of the <span class="math inline">\(X\)</span> variable, we proceed in the same way as before, sobsituting the variables with 0 and 1 (NP = no protest, X=0; IP = individual protest, X=1, CP = collective protest, X=2):</p>
+<p>To derive the direct effect of each modality of the <span class="math inline">\(X\)</span> variable, we proceed in the same way as before, substituting the variables with 0 and 1 (NP = no protest, X=0; IP = individual protest, X=1, CP = collective protest, X=2):</p>
 <p><span class="math display">\[Y_{NP} = 3.71 − 0.005(0) - 0.22(0) + 0.412(4.866) = 5.715\]</span> <span class="math display">\[Y_{IP} = 3.71 − 0.005(1) − 0.22(0) + 0.412(4.866) = 5.710\]</span> <span class="math display">\[Y_{CP} = 3.71 − 0.005(0) − 0.22(1) + 0.412(4.866) = 5.495\]</span></p>
 <p>There is no need to calculate these values by hand if you just want the <strong>Relative direct effects of X on Y</strong> (bottom part of the the output). They express the direct effect in terms of differences with the reference group (DI = direct effect), also reporting the statistical significance of the difference (not significant, in this case):</p>
 <p><span class="math inline">\(X1_{DI} = X1_{DI} - X0_{DI} = 5.71002 - 5.71472 = -0.0047\)</span> <span class="math inline">\(X2_{DI} = X1_{DI} - X0_{DI} = 5.49452 - 5.71472 = -0.2202\)</span></p>
@@ -1709,8 +1709,8 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 <p>The coefficient of <span class="math inline">\(X1\)</span> (individual protest) and <span class="math inline">\(X2\)</span> (collective protest) can be interpreted in relation to the reference group (no protest):</p>
 <p><span class="math display">\[X1 = X0 + 0.5195\]</span> <span class="math display">\[X1 = X0 + 0.6633\]</span></p>
-<p>It means that <strong>relative to not protesting at all</strong>, protesting with an individualistic focus enhanced the likeability of Catherine by 0.520 units, because individually protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation.</p>
-<p>Likewise, collectively protesting enhanced the likeability of Catherine by 0.663 units <strong>relative to not protesting</strong>, as collectively protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation of her.</p>
+<p>It means that <strong>relative to not protesting at all</strong>, protesting with an individualistic focus enhanced the likability of Catherine by 0.520 units, because individually protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation.</p>
+<p>Likewise, collectively protesting enhanced the likability of Catherine by 0.663 units <strong>relative to not protesting</strong>, as collectively protesting was seen as more appropriate than not protesting, and this translated into a more positive evaluation of her.</p>
 </section>
 <section id="reporting-results" class="level3">
 <h3 class="anchored" data-anchor-id="reporting-results">Reporting results</h3>
@@ -1723,23 +1723,23 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </section>
 <section id="alternative-coding-method" class="level3">
 <h3 class="anchored" data-anchor-id="alternative-coding-method">Alternative coding method</h3>
-<p>Process implement an alterantive coding method to those just seen.</p>
+<p>Process implement an alternative coding method to those just seen.</p>
 <p>Using the same example, it may be worthwhile to examine the effect of protesting, <strong>whether collectively or individually</strong>, relative to not protesting at all, <strong>as well the effect of protesting individually relative to collectively</strong>.</p>
-<p>There is a way of representing the three groups with a coding system that provides precisely this information, it also goes by the name <strong>Helmert coding</strong>. In the Hayes book, chapter 2 on Multicategorical Antecendents, you can find more information about that.</p>
+<p>There is a way of representing the three groups with a coding system that provides precisely this information, it also goes by the name <strong>Helmert coding</strong>. In the Hayes book, chapter 2 on Multicategorical Antecedents, you can find more information about that.</p>
 </section>
 <section id="final-observations" class="level3">
 <h3 class="anchored" data-anchor-id="final-observations">Final observations</h3>
 <section id="collinearity" class="level4">
 <h4 class="anchored" data-anchor-id="collinearity">Collinearity</h4>
 <p>In a multiple mediator model, a specific indirect effect quantifies the influence of X on Y through a particular mediator while <strong>holding constant other mediators</strong>.</p>
-<p>This is useful <strong>when the mediators are somewhat correlated</strong>. But when the intercorrelation between mediators becomes <strong>too large</strong>, the usual <strong>problems with collinearity</strong> in regression models begin to take hold and muddle the results.</p>
+<p>This is useful <strong>when the mediators are somewhat correlated</strong>. But when the correlation between mediators becomes <strong>too large</strong>, the usual <strong>problems with collinearity</strong> in regression models begin to take hold and muddle the results.</p>
 <p>Collinearity between predictors <strong>increases sampling variance</strong> in estimates of their partial relationships with an outcome, and such sampling variance will propagate throughout the estimates of indirect effects <strong>and increase the width of confidence intervals (or the p-values)</strong>.</p>
-<p>Including correlated mediators in the model <strong>allows you to disentangle spurious and epiphenomenal association</strong> from potential causal association, but this comes at the cost of greater sampling variance and <strong>reduced power for tests of indirect effects</strong> especially when the sample size is small</p>
-<p>(Reduced power = harder to detect significant effects, i.e.&nbsp;results can wrongly show nonsignificant effects).</p>
+<p>Including correlated mediators in the model <strong>allows you to disentangle spurious and epiphenomenal association</strong> from potential causal associations, but this comes at the cost of greater sampling variance and <strong>reduced power for tests of indirect effects</strong> especially when the sample size is small</p>
+<p>(Reduced power = harder to detect significant effects, i.e.&nbsp;results can wrongly show non-significant effects).</p>
 </section>
 <section id="total-indirect-effect" class="level4">
 <h4 class="anchored" data-anchor-id="total-indirect-effect">Total indirect effect</h4>
-<p>In a parallel multiple mediator model with several mediators, it is possible that the <strong>total indirect effect</strong> is nonsignificant, even if one or more of the <strong>partial indirect effects are significant</strong>, for instance:</p>
+<p>In a parallel multiple mediator model with several mediators, it is possible that the <strong>total indirect effect</strong> is non-significant, even if one or more of the <strong>partial indirect effects are significant</strong>, for instance:</p>
 <ul>
 <li><p>In a model with several mediators, <strong>only one</strong> is actually transmitting X’s effect on Y. The inclusion of a bunch of potential mediators in the model <strong>reduces power</strong> for tests of indirect effects (see previous slides)</p></li>
 <li><p>Since the total indirect effect is a sum of all specific indirect effects, if those indirect effects differ in sign but are of similar magnitude, their <strong>sum very well may be zero or nearly so</strong></p></li>
@@ -1762,14 +1762,14 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <li>How to <strong>interpret</strong> the output of the estimation of the Simple Mediation Model using the PROGRESS software, using <strong>dichotomous and continuous X</strong> variables</li>
 <li>How to <strong>rule out alternative explanations</strong> with reference to:
 <ol type="1">
-<li><strong>Confunding variables</strong> and</li>
+<li><strong>Confounding variables</strong> and</li>
 <li><strong>Alternative casual explanations</strong></li>
 </ol></li>
 <li>The meaning of effect size and how to measure it through <strong>partial and complete standardized effects</strong></li>
 <li>How to fit models with <strong>multiple X and Y variables</strong></li>
 <li>The difference between <strong>parallel and serial multiple mediation models</strong></li>
 <li>How to use progress to <strong>fit</strong> parallel and serial multiple mediation models and how to <strong>interpret</strong> them</li>
-<li>The characteristic of a <strong>multicategorical variable</strong> (and the difference with dichotomous and continuous variables)</li>
+<li>The characteristic of a <strong>multicategorical variable</strong> (and the difference between dichotomous and continuous variables)</li>
 <li>How to use R PROGRESS to <strong>fit</strong> a mediation model with multicategorical X variable, and how to <strong>interpret</strong> the output of the model</li>
 </ul>
 

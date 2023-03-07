@@ -63,7 +63,7 @@ Given that conditional direct and indirect effects are a combination of mediatio
 
 ## Recap of direct and indirect effects
 
-A mediation model divides the **total effect ( c )** of X on Y into a **direct effect ( c' )** and \*\*indirect effect ( a\*b )\*\*, such that $c = c' + a*b$.
+A mediation model divides the **total effect ( c )** of X on Y into a **direct effect ( c' )** and indirect effect ( a\*b ), such that $c = c' + a*b$.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/mediation_1_diagram_1.png")
@@ -71,7 +71,7 @@ knitr::include_graphics("img/mediation_1_diagram_1.png")
 
 In greater detail:
 
--   The **direct effect (c')** quantifies the change in the estimate of Y for a one-unit change in X, partialling out the effect of other variables in the model (i.e., the mediator M, and other possible covariates).
+-   The **direct effect (c')** quantifies the change in the estimate of Y for a one-unit change in X, partialing out the effect of other variables in the model (i.e., the mediator M, and other possible covariates).
 -   The **indirect effect** quantifies the effect of X on Y through M, independent of the direct effect of X on Y and possible covariates. It is denoted as *ab* and results from the product of the coefficients *a* and *b* (indirect effect = $a * b$).
 -   The **total effect** is the effect of X on Y in a model that does not include M. It is denoted as *c*. It is the sum of the direct and indirect effect: $c = c' + ab$.
 
@@ -271,7 +271,17 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
         data = teams)
 ```
 
-The output includes: - summary statistics of the model (**model summary**); - two **regression tables** with the coefficients for the first model (outcome: NEGTONE) and the second (outcome: PERFORM); - tables resulting from the **pick-a-point** and the **Johnson-Neyman** tecnique; - data to visualize the moderation effect; - tables on the **direct and indirect effect**.
+The output includes:
+
+-   Summary statistics of the model (**model summary**);
+
+-   Two **regression tables** with the coefficients for the first model (outcome: NEGTONE) and the second (outcome: PERFORM);
+
+-   Tables resulting from the **pick-a-point** and the **Johnson-Neyman** technique;
+
+-   Data to visualize the moderation effect;
+
+-   Tables on the **direct and indirect effect**.
 
 ## Conditional indirect effect
 
@@ -327,7 +337,7 @@ In practice, the table can be read as follows: *"at relatively low levels of emo
 
 The **Index of moderated mediation** is displayed right below the pick-a-point table. It provides the results of a more general significance test of the relationship between the moderator and the indirect effect. When zero is not within the range of the confidence interval, it can be concluded that the indirect effect is associated with the moderator. Had the confidence interval included zero, we could not definitively claim that the indirect effect was related to the moderator.
 
-In this case the "index" is negative, which leads to the conclusion that the indirect effect is *negatively* related to the moderator. That is, the mediation of the effect of dysfunctional team behavior on performance through negative affective tone of the work climate is moderated by the expressivity of the team.
+In this case the "index" is negative, which leads to the conclusion that the indirect effect is *negatively* related to the moderator. That is, the mediation of the effect of dysfunctional team behavior on performance through negative affective tone of the work climate is moderated by the expressiveness of the team.
 
 The **Index of moderated mediation** is displayed if W is specified as a moderator of only one of the paths that define the indirect effect. Otherwise, the indirect effect will be a nonlinear function of W. In that case, PROCESS will not produce this index.
 
@@ -408,9 +418,9 @@ As in a simple moderation model, the second section of the result presents the t
 knitr::include_graphics("img/conditional-process-fit1c.png")
 ```
 
-The *conditional effect* function is used for **probing the interaction** at different levels of W. We observe that the interaction is not significant for low levels of the moderator (that is, when people show weak levels of emotional expression). As the moderator is continuous, it is also possible to see the **Johnson-Neymann** table defining the significant regions. It shows that the moderator begins to exert a significant effect at values greater than -0.23.
+The *conditional effect* function is used for **probing the interaction** at different levels of W. We observe that the interaction is not significant for low levels of the moderator (that is, when people show weak levels of emotional expression). As the moderator is continuous, it is also possible to see the **Johnson-Neyman** table defining the significant regions. It shows that the moderator begins to exert a significant effect at values greater than -0.23.
 
-Data to visualize the moderation effect is provided. The interaction graph clearly indicates what is already indicated in the table **Conditional effects of the focal predictor at values of the moderator(s)**. The higher the expressiveness, the greater the negative impact the negative tone has on the team's performance. Or vice versa, the lower the expressiveness, the lower the impact of negative emotions on team performance.
+Data to visualize the moderation effect is provided. The interaction graph clearly indicates what is already indicated in the table **Conditional effects of the focal predictor at values of the moderator(s)**. The higher the expressiveness, the greater the negative impact the negative tone has on the team's performance. Or vice-versa, the lower the expressiveness, the lower the impact of negative emotions on team performance.
 
 ```{r}
 x <- c(-0.45,	-0.04,	0.52,	-0.45,	-0.04,	0.52,	-0.45,	-0.04,	0.52)
@@ -477,13 +487,13 @@ We have two regression tables, each in its own panel, the first one with outcome
 
 The outcome is essentially the same as the previous one. What is different is that both regression tables include an interaction. Data to visualize the two moderator effects is also provided. The pick-a-point and the Johnson-Neyman tables are only provided for the first regression. The second is relative to the direct effect, which implies that moderation translates into a conditional direct effect, which is analyzed in the last part of the output. We can see here the pick-a-point table of both the direct and indirect effect. The index of moderated mediation is provided for the indirect effect.
 
-The intepretation is the same as before, this time applied to both the direct and indirect effect.
+The interpretation is the same as before, this time applied to both the direct and indirect effect.
 
 In this analysis, we notice that the conditional indirect effect is significant, while the conditional direct effect is not. Therefore, you can opt to simplify the model by removing the moderation of the direct effect. In this specific case, this can be done by switching from model = 8 to model = 7.
 
-# Conditional process analysis with multicategorical antecendent
+# Conditional process analysis with multicategorical antecedent
 
-When a model includes a multicategorical antecedent, the conditional indirect effect and the conditional direct effect are interpreted relatively to the *refence category*. In that case we talk of **relative conditional indirect effect** and **relative conditional direct effect**.
+When a model includes a multicategorical antecedent, the conditional indirect effect and the conditional direct effect are interpreted relatively to the *reference category*. In that case we talk of **relative conditional indirect effect** and **relative conditional direct effect**.
 
 The model shown below can be fitted using **model 8**. The **mcx=1** option tells PROCESS that the X variable is multicategorical. Hayes uses *"mcx=3"*, which handles multicategorical variables in a different way. Refer to the book for more information on how PROCESS can handle multicategorical variables and the related options (**mcx=1**, **mcx=2**, and **mcx=3**).
 
@@ -507,7 +517,7 @@ process(y = "liking", x = "protest",  m = "respappr", w = "sexism",
 
 The output can be interpreted on the basis of the same principles discussed for multicategorical moderation models, and conditional direct and indirect effect models. The output is a mix of outputs from these models.
 
-## Brief recap on the intepretation of multicategorical variables
+## Brief recap on the interpretation of multicategorical variables
 
 There is only one fundamental principle to be taken into account in the interpretation of multicategorical models. The **g categories** of a multicategorical variable are divided into **g-1 dichotomous variables** and **a reference category**. The newly created dichotomous variables represent **differences** between a category and the reference category.
 
@@ -559,7 +569,19 @@ During the first part of the course, we learned about regression models. We said
 
 It is, therefore, necessary to **check the assumptions** before interpreting the results. If one or more of them are not fulfilled, it may be possible to **take steps to solve the problem**.
 
-First, let's recap the assumptions of regression models: - **Linearity**: There exists a linear relationship between each predictor variable and the response variable. - **No Multicollinearity**: None of the predictor variables are highly correlated with each other. - **No Outliers**: None of the data points are too different from the others, resulting in a strong influence on the estimate. - **Independence**: Observations are independent (a problem arising particularly with time series data). - **Homoscedasticity**: The residuals have constant variance at every point in the linear model. - **Normality**: The residuals of the model are normally distributed.
+First, let's recap the assumptions of regression models:
+
+-   **Linearity**: There exists a linear relationship between each predictor variable and the response variable.
+
+-   **No Multicollinearity**: None of the predictor variables are highly correlated with each other.
+
+-   **No Outliers**: None of the data points are too different from the others, resulting in a strong influence on the estimate.
+
+-   **Independence**: Observations are independent (a problem arising particularly with time series data).
+
+-   **Homoscedasticity**: The residuals have constant variance at every point in the linear model.
+
+-   **Normality**: The residuals of the model are normally distributed.
 
 PROCESS implements methods that help to solve issues that may arise with assumptions. Unfortunately, however, it does not provide instruments to test them. Therefore, let's see how to check the assumptions.
 
@@ -682,7 +704,11 @@ In case of serious **multicollinearity** problems (based on the VIF index) you c
 
 Finally, in case of **hetersoskedasticity** problems you can request PROCESS to use heteroskedasticity-consistent (HC) standard errors. The available options are: HC0, HC1, HC2, HC3, and HC4. You only need to add **hc=4** (or a different number between 1 and 4) to the PROCESS function. Heteroskedasticity-consistent (HC) standard errors were also discussed in the first part of the course on regression models. Models with both standard errors and heteroskedasticity-consistent standard errors can be fitted for comparison even if hetersoskedasticity issues are not obvious.
 
-Hayes and Cay wrote: \>"(...) we argue that an HC estimator, preferably HC3 or HC4, should be routinely used in linear regression mod- els, if it is not used as the default method of standard error estimation, researchers would be well advised to at least double-check the results from the use of the OLSE estima- tor against the results obtained with an HC estimator, to make sure that conclusions are not compromised by heteroskedasticity". Hayes, A. F., & Cai, L. (2007). [Using heteroskedasticity-consistent standard error estimators in OLS regression: An introduction and software implementation](https://link.springer.com/content/pdf/10.3758/BF03192961.pdf). *Behavior research methods*, 39(4), 709-722.
+Hayes and Cay wrote:
+
+> "(...) we argue that an HC estimator, preferably HC3 or HC4, should be routinely used in linear regression models, if it is not used as the default method of standard error estimation, researchers would be well advised to at least double-check the results from the use of the OLSE estimator against the results obtained with an HC estimator, to make sure that conclusions are not compromised by heteroskedasticity".
+>
+> Hayes, A. F., & Cai, L. (2007). [Using heteroskedasticity-consistent standard error estimators in OLS regression: An introduction and software implementation](https://link.springer.com/content/pdf/10.3758/BF03192961.pdf). *Behavior research methods*, 39(4), 709-722.
 
 To treat normality problems, bootstrapping can be used to compute confidence intervals for regression coefficients. You only have to add **modelbt = 1** to the PROCESS function. The coefficients with the bootstrap confidence intervals will appear at the bottom of the result. They can be interpreted as usual: if the range overlaps zero, there is not enough evidence to consider it statistically significant.
 
