@@ -1,6 +1,6 @@
 ---
 title: "Moderation"
-format: html
+author: Dr. Nicola Righetti, PhD
 ---
 
 ```{=html}

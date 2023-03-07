@@ -1,5 +1,6 @@
 ---
 title: "EDA"
+author: Dr. Nicola Righetti, PhD
 ---
 
 ## Learning Outcomes

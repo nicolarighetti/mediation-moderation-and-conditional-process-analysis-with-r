@@ -1,5 +1,6 @@
 ---
 title: "Getting started with R"
+author: Dr. Nicola Righetti, PhD
 ---
 
 # Learning outcomes
@@ -124,9 +125,7 @@ glbwarm <- read.csv(file = "data/glbwarm.csv")
 glbwarm <- read.csv(file = 'data/glbwarm.csv')
 ```
 
-## 
-
-Load data and create a data set object
+## Load data and create a data set object
 
 You can load data into R in at least two different ways. First, you can navigate through your files/folders using the File window, and once you have found the data set, you can simply click on it and follow the RStudio semi-automated import process.
 
@@ -146,8 +145,12 @@ This function creates a object called glbwarm. You can see this object in the En
 
 Also note that, in R, we use an arrow \<- to save the data set in an object. The arrow "transfers" the result of a function (its output) into an object. If you run a function without saving the output in an object through the arrow sign, the output is printed on the console.
 
-```{r}
+```{r eval=FALSE}
 read.csv(file = "data/glbwarm.csv")
+```
+
+```{r echo=FALSE}
+head(read.csv(file = "data/glbwarm.csv"))
 ```
 
 This way you may take a look at the output (but this is not the right way to do that), but you cannot manipulate it. It is only when you create an object containing the output information of the function (using the arrow sign and a name for the object), that you can continue working on it.

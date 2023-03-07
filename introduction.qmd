@@ -1,17 +1,21 @@
 ---
 title: "Introduction"
-author: "Nicola Righetti"
+author: Dr. Nicola Righetti, PhD
 ---
 
-This is a data analysis seminar focused on the application of linear regression analysis to explore questions about mediated and moderated effects.
+## Aims, contents and method of the course
 
-Computer applications will focus on R statistical language and the Rstudio environment (https://www.rstudio.com) and the PROCESS software by Andrew F. Hayes (http://processmacro.org).
+This data analysis seminar focuses on linear regression analysis to explore questions about mediated and moderated effects.
+
+Computer applications will focus on R statistical language, the Rstudio environment ([https://www.rstudio.com](https://www.rstudio.com/)) and the PROCESS software by Andrew F. Hayes ([http://processmacro.org](http://processmacro.org/)).
+
+The course is subdivided into a few learning units.
 
 The introductory part of the course will be dedicated to installing the **data science tools R and Rstudio** (https://www.rstudio.com) and to learning the basic principles necessary to work on statistical analysis with this software. Students will be required to acquire a basic familiarity with the Rstudio interface and R programming in a short period of time, in order to be able to use it for performing statistical analysis. At home study and exercise will be fundamental to reaching the objective.
 
-The second part of the course will be dedicated to a short recap of the principles of **linear regression** analysis and explaining how to fit, visualize, interpret, and evaluate regression models in R.
+The introductory part of the course is dedicated to a brief review of the basic principles of linear regression and the setup of R and PROCESS for statistical analysis. We discuss multiple regression analysis and its principles to understand how to fit, visualize, interpret, and evaluate multiple regression models in R.
 
-We'll use linear regression models to answer questions of the WHETHER or IF variety. These are questions about association between variables. For example, is there a relationship between a variable Y, and another variable X, and possibly other ones? For example, we can use this kind of analysis to study whether polarization increases as the exposure to partisan news media increases.
+We'll use linear regression models to answer questions of the **WHETHER** or **IF** variety. These are questions about association between variables. For example, is there a relationship between a variable Y, and another variable X, and possibly other ones? For example, we can use this kind of analysis to study whether polarization increases as the exposure to partisan news media increases.
 
 ```{r message=FALSE, warning=FALSE}
 require(tidyverse)
@@ -24,17 +28,14 @@ ggplot(data=df, aes(x,y)) +
   geom_point(aes(x,y)) +
   geom_smooth(method='lm', formula= y~x) +
   labs(y = "polarization", x = "exposure to partisan news") +
-  theme_classic()
+  theme_classic() +
+  ggtitle("Example of linear regression")
 ```
 
-The third unit will be dedicated to **mediation analysis**, and explaining how to fit, visualize, interpret, and evaluate mediation models using PROCESS in the R environment.
+We then focus on **mediation analysis**, seeing how to fit, visualize, interpret, and evaluate mediation models using **PROCESS** in the R environment. Mediation analysis answers questions of the **HOW** variety, and it is used to study the mechanism(s) by which one variable impacts another one.
 
-Mediation analysis answers questions of the **HOW** variety, and it is used to study the mechanism(s) by which one variable impacts another one.
-
-```{r echo=FALSE}
-require(DiagrammeR)
-
-grViz("digraph {
+```{r echo=FALSE, message=FALSE}
+DiagrammeR::grViz("digraph {
 width = 500
 height = 500
   graph [layout = dot, rankdir = LR, label = Mediation]
@@ -50,12 +51,10 @@ height = 500
 
 For example, let's say that we have established a relationship between the use of violent video games and the frequency of off-line assaults. The next step may be to use mediation analysis to analyze the potential mechanism by which violent video games impact offline aggressive behavior.
 
-Next, will focus on **moderation analysis** and explaining how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment.
-
-Moderation analysis is used to answer questions of the **WHEN** variety, that is to say, to study the conditions or contingencies of an association.
+Next, will focus on **moderation analysis** and explaining how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment. Moderation analysis is used to answer questions of the **WHEN** variety, that is to say, to study the conditions or contingencies of an association.
 
 ```{r echo=FALSE}
-grViz("digraph {
+DiagrammeR::grViz("digraph {
 width = 500
 height = 500
   graph [layout = dot, rankdir = LR, label = Moderation]
@@ -77,7 +76,7 @@ height = 500
 For example, there is no reason to think that the association between violent video games and offline aggression is universal. Maybe, it is stronger for males than females, or the strength of the association is a function of personality traits. We use moderation analysis to answer these questions.
 
 ```{r echo=FALSE}
-grViz("digraph {
+DiagrammeR::grViz("digraph {
 width = 500
 height = 500
   graph [layout = dot, rankdir = LR]
@@ -96,12 +95,10 @@ height = 500
   }")
 ```
 
-We finally focus on **conditional process analysis** and explain how to fit, visualize, interpret, and evaluate conditional process models using PROCESS in the R environment.
-
-Conditional process represents the conditions of mechanisms by which a variable impact on another one. It includes both mediation and moderation analysis.
+We finally focus on **conditional process analysis** and explain how to fit, visualize, interpret, and evaluate conditional process models using PROCESS in the R environment. Conditional process represents **the conditions of mechanisms** by which a variable impact on another one. It includes both mediation and moderation analysis.
 
 ```{r echo=FALSE}
-grViz("digraph {
+DiagrammeR::grViz("digraph {
 width = 500
 height = 500
   graph [layout = dot, rankdir = LR, label = 'Conditional process']
@@ -127,13 +124,13 @@ height = 500
 Conditional process models allow to address the complexity of social science phenomena.
 
 ```{r echo=FALSE}
-grViz("digraph {
+DiagrammeR::grViz("digraph {
 width = 500
 height = 500
   graph [layout = dot, rankdir = LR]
   node [shape = rectangle]     
-  x [label = 'X']
-  y [label = 'Y']
+  x [label = 'X (Violent video games)']
+  y [label = 'Y (Offline aggressions)']
   m [label = 'Desensitize to pain?\nNormalize violence?\n...']
   w [label = 'Sex?\nAge?\nPersonality?']
 
@@ -150,22 +147,20 @@ height = 500
   }")
 ```
 
-## Learning Outcomes
+The last part of the course is dedicated to the project work.
 
-By the end of this course, participants will be able to:
+By the end of this course, participants are expected to know how:
 
 -   Run and interpret the results of linear regression, moderation, mediation, and conditional process models.
 
--   Know how to test competing theories of mechanisms statistically through the comparison of indirect effects in models with multiple mediators.
+-   Test competing theories of mechanisms statistically through the comparison of indirect effects in models with multiple mediators.
 
--   Know how to visualize and probe interactions in regression models in order to interpret interaction effects in the appropriate ways.
+-   Visualize and probe interactions in regression models to interpret interaction effects appropriately.
 
--   Know how to estimate the contingencies of mechanisms through the computation and inference about conditional indirect effects.
+-   Estimate the contingencies of mechanisms through the computation and inference about conditional indirect effects.
 
--   Know how to R language and PROCESS to run, visualize, and understand linear regression, moderation, mediation, and conditional process models.
+-   Use the R language and PROCESS to run, visualize, and understand linear regression, moderation, mediation, and conditional process models.
 
-## Handbook
+The handbook of the course and the primary source of most of the material here presented is:
 
-The handbook of the course is:
-
-Andrew F. Hayes. *Introduction to Mediation, Moderation, and Conditional Process Analysis. A Regression-Based Approach.* 2018. SECOND EDITION. THE GUILFORD PRESS, New York, London
+Andrew F. Hayes. [Introduction to Mediation, Moderation, and Conditional Process Analysis. A Regression-Based Approach](https://books.google.at/books?id=6uk7DwAAQBAJ&printsec=frontcover&dq=introduction+to+Mediation,+Moderation,+and+Conditional+Process+Analysis.+A+Regression-Based+Approach.+2018+second+edition&hl=en&sa=X&ved=2ahUKEwjaoLSi6cf9AhV0S_EDHbngDwwQ6AF6BAgHEAI#v=onepage&q=introduction%20to%20Mediation%2C%20Moderation%2C%20and%20Conditional%20Process%20Analysis.%20A%20Regression-Based%20Approach.%202018%20second%20edition&f=false). 2018. SECOND EDITION. THE GUILFORD PRESS, New York, London.

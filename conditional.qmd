@@ -1,5 +1,6 @@
 ---
 title: "Conditional process"
+author: Dr. Nicola Righetti, PhD
 ---
 
 ```{r echo=FALSE}

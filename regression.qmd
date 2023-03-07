@@ -1,5 +1,6 @@
 ---
 title: "Regression analysis"
+author: Dr. Nicola Righetti, PhD
 ---
 
 # The simple and multiple regression model
