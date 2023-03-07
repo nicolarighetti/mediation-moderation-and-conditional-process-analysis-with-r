@@ -5,45 +5,37 @@ author: Dr. Nicola Righetti, PhD
 
 # Learning goals
 
--   Know the meaning of the following terms: script, object and some important R object (matrix, data.frame, and vector), statistical graph/chart, package, function
+-   Understand the definition of the following terms: script, object, and important R objects such as matrix, data.frame, and vector, statistical graph/chart, package, and function.
 
--   Know the main components of the RStudio interface and their functions
+-   Understand the principal components of the RStudio interface and their roles.
 
--   Know how to create a new RStudio project, and open an RStudio project you created
+-   Know how to generate a new RStudio project and access a previously created RStudio project.
 
--   Know how to create new folders in the RStudio project
+-   Know how to create fresh folders within an RStudio project.
 
--   Know how to create, save, and open a script
+-   Know how to create, save, and open a script.
 
--   Know how to execute a line of code
+-   Know how to execute a line of code.
 
--   Know how to install and load a package
+-   Understand how to install and load a package.
 
--   Know how to load and view a data set
+-   Understand how to load and visualize a dataset.
 
 ## Rstudio environment
 
-The RStudio interface is structured into four quadrants. What follows is a general description of a standard RStudio layout, but the actual layout can be customized by the user.
+The RStudio interface is divided into four panes or quadrants. The specific layout may vary depending on user preferences, but a standard RStudio interface is as follows:
 
 ![](img/r-environment.png)
 
-Here you can open and work on the scripts. A script is simply a text file containing a set of commands (code) used to perform analyses. Script files are authomatically saved with extension ".r".
+The RStudio interface is divided into four quadrants. The top-left pane displays the scripts, which are text files containing a set of commands (code) used to perform analyses. Scripts are saved with the ".r" extension. The top-right quadrant includes the Environment window, where data sets and other objects created or loaded in a RStudio work session are stored. In R, objects refer to everything a user can manipulate, such as data sets, functions, and algorithms. This quadrant also contains tabs for Files, History, Connections, Packages, and more. The Files tab allows users to navigate files and folders to find scripts and data sets to upload.
 
-The top-right quadrant includes the window Environment. The user can find here data sets and other objects created and loaded in a RStudio work session. In R, objects are everything a user can manipulate. For example, a data set, a function to transform data, a more or less complex algorithm to obtain a result, are all "objects".
+The bottom-right quadrant is where graphical outputs, such as plots and statistical charts, are displayed. Statistical graphs or charts are visual representations of statistical data. This quadrant also contains a tab for R packages, which are collections of functions for performing specific operations and analyses. The Help section is also located here, providing information on functions and how to use them. Users can search for specific functions or type "?functionname" in the console to access the Help section.
 
-In this quadrant, there are other tabs, such as Files, History, Connections, Packages, etc. The File tab can be particularly useful: here the user can navigate files and folders to find, for example, the scripts and the data sets to upload.
-
-The bottom-right quadrant is where graphical outputs, mostly plots and other statistical charts, are shown. Statistical graphs or charts are representations of statistical data in graphical form. There are several types of graphs. For example, bar charts, histograms, timeplots, scatter plots, box plots, etc.
-
-In this quadrant, there is also a tab for R packages. Packages (or libraries) are collections of functions for performing specific operations and analyses. Functions can be conceived as "machines" that generate output from an input. For instance, the "addition" is a function: it receives two or more numbers as input and generates an output that corresponds to their sum.
-
-Here you can also find the Help section. Help is great for learning more about the functions. There are two ways you can open the Help of a function. You can write in the search box the name of the function you want to learn about, or you can write a question mark in the console followed by the name of a function (for example, "?sum").
-
-On the bottom left is the R Console window, where the code gets executed and the output is produced. It is possible to type and run commands directly into the console. Contrary to what occurs when the code is written in a script, in this case the code will not be saved.
+The bottom-left quadrant displays the R Console window, where code is executed and output is produced. Users can type and run commands directly in the console, but the code will not be saved unless it is written in a script.
 
 ## Rstudio Projects
 
-When starting a new data analysis project, we can create a dedicated work space. This dedicated work space is called a project. A project includes all the folders and files (e.g., scripts and data sets) necessary to conduct the analyses for the project's purposes, as well as the outputs of the analysis (charts, tables, etc.).
+When starting a new data analysis project, we create a dedicated work space. This dedicated work space is called a project. A project includes all the folders and files (e.g., scripts and data sets) necessary to conduct the analyses for the project's purposes, as well as the outputs of the analysis (charts, tables, etc.).
 
 To create a new project with RStudio, follows these steps:
 
@@ -56,17 +48,29 @@ To create a new project with RStudio, follows these steps:
 
 You have now created a project along with its own folder. The name of the folder is identical to that of the project. Inside the folder, there is a file with extension .Rproj and the same name of the project (e.g., "ADA_MMCP.Rproj"). This is the file you have to open whenever you want to work on the project.
 
-Projects can be complex, so it is important to keep everything in order. To this aim, it is a good practice to create, in the main **folder** of the project, **sub-folders** dedicated to different types of files used in the project. To create a new folder, go to the Files tab, in the upper-right quadrant of the RStudio interface, click on New Folder, and give a name to your folder.
+Creating sub-folders within the main project folder can help organize the different types of files used in the project. For example, you may want to have a separate folder for data sets, another one for scripts, and another for outputs such as tables and graphs.
+
+To create a sub-folder within the main project folder:
+
+1.  In the Files tab, navigate to the main project folder.
+
+2.  Click on the New Folder button.
+
+3.  Type the name of the sub-folder you want to create.
+
+4.  Press Enter.
+
+Your new sub-folder will appear in the Files tab.
 
 ![](img/new-folder.png)
 
-Create a folder for the data sets, called data. You will save here the data sets we are going to use during the course.
+Now, create a folder for the data sets, called data. You will save here the data sets we are going to use during the course.
 
-Once the project has been created, we can open a new **script** and save it. We said that a script is a file that contains code. Script files are authomatically saved with extension .r. You can open, update, and save your script whenever you like. Saving code is important to save time! Otherwise, you would have to write the same code whenever you work on the project. Create a script named introduction_to_r. You will use it to write and run the code we are going to use today.
+Once the project has been created, we can open a new **script** and save it. We said that a script is a file that contains code. Script files are automatically saved with extension .r. You can open, update, and save your script whenever you like. Saving code is important to save time! Otherwise, you would have to write the same code whenever you work on the project. Create a script named introduction_to_r. You will use it to write and run the code we are going to use today.
 
-To execute (or "run") the code in the script, we can highlight the line of code we want to run, and then click the Run button. This button can be found on the top-right corner of the editor window. Alternatively, you can place the cursor on the row containing the code to be executed, and then clic Run. Instead of the Run botton, the code can be executed by using the Ctrl + Enter key combination (also Command + Enter on a Mac).
+To execute (or "run") the code in the script, we can highlight the line of code we want to run, and then click the Run button. This button can be found on the top-right corner of the editor window. Alternatively, you can place the cursor on the row containing the code to be executed, and then click Run. Instead of the Run button, the code can be executed by using the Ctrl + Enter key combination (also Command + Enter on a Mac).
 
-\> In your script "introduction_to_r", write a simple addition and execute it.
+In your script "introduction_to_r", write a simple addition and execute it.
 
 ```{r}
 5 + 3
@@ -96,7 +100,7 @@ library(tidyverse)
 
 There are a few important syntactic rules to keep in mind when writing code in R.
 
-R recognizes lower and upper case letters. For example, the lowercase command sum is something completly different from the command Sum or SUM. In this case, while the function sum exists, there is no function called Sum or SUM.
+R recognizes lower and upper case letters. For example, the lowercase command sum is something completely different from the command Sum or SUM. In this case, while the function sum exists, there is no function called Sum or SUM.
 
 ```{r eval=FALSE}
 # this works
@@ -135,7 +139,7 @@ You can load data into R in at least two different ways. First, you can navigate
 
 Otherwise, you can upload a data set by using a function. Since a data set can be saved in different formats (e.g., ".csv", ".rds", ".xlsx", ".sav", etc.), there are different functions to upload it. For instance, the function read.csv can be used to import a .csv file (one of the most common extension).
 
-Download from Moodle the data set "glbwarm.csv", save it into your folder "data", and load it in R by using the following code:
+Download the data set "glbwarm.csv", save it into your folder "data", and load it in R by using the following code:
 
 ```{r}
 glbwarm <- read.csv(file = "data/glbwarm.csv")
@@ -143,7 +147,7 @@ glbwarm <- read.csv(file = "data/glbwarm.csv")
 
 This function creates a object called glbwarm. You can see this object in the Environment window (top-right quadrant). We said that an object is something that can be manipulated in R. In this case, the object is a data set. You can manipulate it, for example, to perform analyses, create new data, etc.
 
-Also note that, in R, we use an arrow \<- to save the data set in an object. The arrow "transfers" the result of a function (its output) into an object. If you run a function without saving the output in an object through the arrow sign, the output is printed on the console.
+Also note that, in R, we use an arrow **\<-** to save the data set in an object. The arrow "transfers" the result of a function (its output) into an object. If you run a function without saving the output in an object through the arrow sign, the output is printed on the console.
 
 ```{r eval=FALSE}
 read.csv(file = "data/glbwarm.csv")
@@ -346,9 +350,9 @@ sum(1, 4)
 
 ```
 
-A function has a name (the name of the function, like the name of any other object, e.g., the function sum) and one or more arguments. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the arguments there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.
+A function has a name (the name of the function, like the name of any other object, e.g., the function sum) and one or more parameters. Arguments are written in parentheses, while the function name is left out of parentheses. Since functions transform objects, among the parameters there is always an object or a value, for instance a numerical value, which is the content the function is applied to. Usually, there are also several other arguments, either mandatory or optional, which modify the behavior of the function.
 
-In this course we'll use statistical functions to perform data analysis like linear regression, moderation, mediation, and conditional process analysis. For example, the name of the linear regression function in R is lm.
+In this course we'll use statistical function for performing linear regression in R, moderation, mediation, and conditional process analysis. For example, the name of the linear regression function in R is *lm*.
 
 ```{r}
 linear_model <- lm(glbwarm$govact ~ glbwarm$ideology)
