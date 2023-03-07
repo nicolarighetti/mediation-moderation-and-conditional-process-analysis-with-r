@@ -13,7 +13,7 @@ The course is subdivided into a few learning units.
 
 The introductory part of the course will be dedicated to installing the **data science tools R and Rstudio** (https://www.rstudio.com) and to learning the basic principles necessary to work on statistical analysis with this software. Students will be required to acquire a basic familiarity with the Rstudio interface and R programming in a short period of time, in order to be able to use it for performing statistical analysis. At home study and exercise will be fundamental to reaching the objective.
 
-The introductory part of the course is dedicated to a brief review of the basic principles of linear regression and the setup of R and PROCESS for statistical analysis. We discuss multiple regression analysis and its principles to understand how to fit, visualize, interpret, and evaluate multiple regression models in R.
+The introductory part of the course is dedicated to a brief review of the basic principles of **linear regression** and the setup of R and PROCESS for statistical analysis. We discuss multiple regression analysis and its principles to understand how to fit, visualize, interpret, and evaluate multiple regression models in R.
 
 We'll use linear regression models to answer questions of the **WHETHER** or **IF** variety. These are questions about association between variables. For example, is there a relationship between a variable Y, and another variable X, and possibly other ones? For example, we can use this kind of analysis to study whether polarization increases as the exposure to partisan news media increases.
 
@@ -50,9 +50,9 @@ height = 500
   }")
 ```
 
-For example, let's say that we have established a relationship between the use of violent video games and the frequency of off-line assaults. The next step may be to use mediation analysis to analyze the potential mechanism by which violent video games impact offline aggressive behavior.
+For example, let's say that we have established a relationship between the use of violent video games and the frequency of off-line assaults. The next step may be to ask *how does this happen*, and use mediation analysis to analyze the potential mechanism by which violent video games impact offline aggressive behavior.
 
-Next, will focus on **moderation analysis** and explaining how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment. Moderation analysis is used to answer questions of the **WHEN** variety, that is to say, to study the conditions or contingencies of an association.
+Next, we focus on **moderation analysis** and we learn how to fit, visualize, interpret, and evaluate moderation models using PROCESS in the R environment. Moderation analysis is used to answer questions of the **WHEN** variety, that is to say, to study the conditions or contingencies of an association.
 
 ```{r echo=FALSE}
 DiagrammeR::grViz("digraph {
