@@ -1,5 +1,5 @@
 ---
-title: "Conditional process"
+title: "Conditional process analysis"
 author: Dr. Nicola Righetti, PhD
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Mediation"
+title: "Mediation Analysis"
 author: Dr. Nicola Righetti, PhD
 ---
 

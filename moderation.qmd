@@ -1,9 +1,19 @@
 ---
-title: "Moderation"
+title: "Moderation Analysis"
 author: Dr. Nicola Righetti, PhD
 ---
 
-# Moderation Analysis
+# Learning goals
+
+-   Learn the concept of moderation.
+
+-   Learn to fit a simple moderation model using `process`.
+
+-   Learn to interpret the output of a simple moderation model.
+
+-   Learn the concept of mean centering and how to mean-center variables in R and `process`.
+
+-   Learn to visualize moderation effects.
 
 ```{r echo=FALSE}
 DiagrammeR::grViz("digraph {
@@ -20,18 +30,6 @@ DiagrammeR::grViz("digraph {
   rec0 -> rec1 -> rec2 -> rec3 -> rec4;
   }")
 ```
-
-# Learning goals
-
--   Learn the concept of moderation.
-
--   Learn to fit a simple moderation model using `process`.
-
--   Learn to interpret the output of a simple moderation model.
-
--   Learn the concept of mean centering and how to mean-center variables in R and `process`.
-
--   Learn to visualize moderation effects.
 
 # The concept of moderation
 
@@ -990,7 +988,7 @@ First, check the overall significance and goodness of fit of the model in the mo
 
 ### Interaction terms
 
-1.  Remember that the interaction coefficients (`int_1`, `int_2`, etc.) Do not quantify changes in the estimate of $Y$ (as the other coefficients) but in the conditional effects. They quantify how much the conditional effect of the independent ($X$) on the dependent variable ($Y$) changes as the moderator $W$ changes by one unit. For instance: *"as age (the moderator) increases by one unit, the conditional effect of negative emotion (*$X$*) on government support (*$Y$*) is estimated to increase by 0.006 points".*
+1.  Remember that the interaction coefficients (`int_1`, `int_2`, etc.) Do not quantify changes in the estimate of $Y$ (as the other coefficients) but in the conditional effects. They quantify how much the conditional effect of the independent ($X$) on the dependent variable ($Y$) changes as the moderator $W$ changes by one unit. For instance: *"as age (the moderator) increases by one unit, the conditional effect of negative emotion (*$X$) on government support ($Y$) is estimated to increase by 0.006 points".
 2.  Pay particular attention to the statistical significance of these coefficients. If they are not significant, you can conclude that there is no evidence of an interaction. If they are statistically significant, you can proceed to consider the change in the R-squared due to the interaction, and the tables dedicated to probing the interaction and the Johnson-Neyman significance regions.
 
 # The equation

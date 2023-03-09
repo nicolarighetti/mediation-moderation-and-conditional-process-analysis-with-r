@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Nicola Righetti, PhD">
 
-<title>Mediation, Moderation, and Conditional Process Analysis with R - Moderation</title>
+<title>MMCP - Moderation Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Mediation, Moderation, and Conditional Process Analysis with R</span>
+    <span class="navbar-title">MMCP</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -189,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Moderation</h1>
+      <h1 class="quarto-secondary-nav-title">Moderation Analysis</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -286,8 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#moderation-analysis" id="toc-moderation-analysis" class="nav-link active" data-scroll-target="#moderation-analysis">Moderation Analysis</a></li>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
   <li><a href="#the-concept-of-moderation" id="toc-the-concept-of-moderation" class="nav-link" data-scroll-target="#the-concept-of-moderation">The concept of moderation</a></li>
   <li><a href="#conceptual-diagram" id="toc-conceptual-diagram" class="nav-link" data-scroll-target="#conceptual-diagram">Conceptual diagram</a></li>
   <li><a href="#statistical-diagram" id="toc-statistical-diagram" class="nav-link" data-scroll-target="#statistical-diagram">Statistical diagram</a></li>
@@ -370,7 +369,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Moderation</h1>
+<h1 class="title d-none d-lg-block">Moderation Analysis</h1>
 </div>
 
 
@@ -391,15 +390,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="moderation-analysis" class="level1">
-<h1>Moderation Analysis</h1>
-<div class="cell">
-<div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1b07e5b5dccf15488487" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1b07e5b5dccf15488487">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = tb]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MODERATION ANALYSIS\"]\n  rec1 [label = \"a) the simple moderation model\"]\n  rec2 [label = \"b) moderation models with continuous and categorical variables and more than one moderator\"]\n  rec3 [label = \"c) multicategorical antecedent and moderator\"]\n  rec4 [label = \"d) recap and interpretation tips\"]\n\n  # edge definitions with the node ids\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
 <section id="learning-goals" class="level1">
 <h1>Learning goals</h1>
 <ul>
@@ -409,6 +399,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Learn the concept of mean centering and how to mean-center variables in R and <code>process</code>.</p></li>
 <li><p>Learn to visualize moderation effects.</p></li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-3ed528301b01f3de4d93" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3ed528301b01f3de4d93">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = tb]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MODERATION ANALYSIS\"]\n  rec1 [label = \"a) the simple moderation model\"]\n  rec2 [label = \"b) moderation models with continuous and categorical variables and more than one moderator\"]\n  rec3 [label = \"c) multicategorical antecedent and moderator\"]\n  rec4 [label = \"d) recap and interpretation tips\"]\n\n  # edge definitions with the node ids\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 </section>
 <section id="the-concept-of-moderation" class="level1">
 <h1>The concept of moderation</h1>
@@ -2518,7 +2514,7 @@ Level of confidence for all confidence intervals in output: 95</code></pre>
 <section id="interaction-terms" class="level3">
 <h3 class="anchored" data-anchor-id="interaction-terms">Interaction terms</h3>
 <ol type="1">
-<li>Remember that the interaction coefficients (<code>int_1</code>, <code>int_2</code>, etc.) Do not quantify changes in the estimate of <span class="math inline">\(Y\)</span> (as the other coefficients) but in the conditional effects. They quantify how much the conditional effect of the independent (<span class="math inline">\(X\)</span>) on the dependent variable (<span class="math inline">\(Y\)</span>) changes as the moderator <span class="math inline">\(W\)</span> changes by one unit. For instance: <em>“as age (the moderator) increases by one unit, the conditional effect of negative emotion (<em><span class="math inline">\(X\)</span></em>) on government support (<em><span class="math inline">\(Y\)</span></em>) is estimated to increase by 0.006 points”.</em></li>
+<li>Remember that the interaction coefficients (<code>int_1</code>, <code>int_2</code>, etc.) Do not quantify changes in the estimate of <span class="math inline">\(Y\)</span> (as the other coefficients) but in the conditional effects. They quantify how much the conditional effect of the independent (<span class="math inline">\(X\)</span>) on the dependent variable (<span class="math inline">\(Y\)</span>) changes as the moderator <span class="math inline">\(W\)</span> changes by one unit. For instance: <em>“as age (the moderator) increases by one unit, the conditional effect of negative emotion (</em><span class="math inline">\(X\)</span>) on government support (<span class="math inline">\(Y\)</span>) is estimated to increase by 0.006 points”.</li>
 <li>Pay particular attention to the statistical significance of these coefficients. If they are not significant, you can conclude that there is no evidence of an interaction. If they are statistically significant, you can proceed to consider the change in the R-squared due to the interaction, and the tables dedicated to probing the interaction and the Johnson-Neyman significance regions.</li>
 </ol>
 </section>
@@ -3282,7 +3278,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="//moderation.html" class="pagination-link">
-        <span class="nav-page-text">Moderation</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Moderation Analysis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
