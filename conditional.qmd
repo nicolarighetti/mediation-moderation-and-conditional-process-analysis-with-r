@@ -3,6 +3,13 @@ title: "Conditional process"
 author: Dr. Nicola Righetti, PhD
 ---
 
+# Learning goals
+
+-   Learning the concept of conditional process with particular attention to conditional direct and indirect effects, and relative conditional direct and indirect effects.
+-   Learn to fit conditional process models.
+-   Learn to interpret the output of conditional process models.
+-   Learn how to test regression assumptions.
+
 ```{r echo=FALSE}
 DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = TB]
@@ -20,22 +27,15 @@ DiagrammeR::grViz("digraph {
   }")
 ```
 
-# Learning goals
-
--   Learning the **concept of conditional process** with particular attention to **conditional direct and indirect effects**, and **relative conditional direct and indirect effects**.
--   Learn to **fit conditional process models** using PROCESS
--   Learn to **interpret the output** of conditional process models
--   Additionally, we will learn **how to test regression assumptions**
-
 # The concept of conditional process
 
-Analysis of conditional processes is basically a combination of mediation and moderation analysis.
+Conditional processes analysis is a combination of mediation and moderation analysis.
 
--   **Mediation** analysis is intended to understand the mechanisms through which X impacts Y. It is characterized by **direct and indirect effects**.
--   **Moderation** analysis consists in understanding the conditions which alter the relationship between X and Y. It is characterized by **conditional effect**.
--   **Conditional process analysis** is used to understand the *conditions that affect the mechanisms* by which a variable transmits its its effect on another. It is characterized by **conditional direct and indirect effect**.
+-   Mediation analysis is intended to understand the mechanisms through which $X$ impacts $Y$. It is characterized by direct and indirect effects.
+-   Moderation analysis consists in understanding the conditions which alter the relationship between $X$ and $Y$. It is characterized by conditional effect.
+-   Conditional process analysis is used to understand the *conditions that affect the mechanisms* by which a variable transmits its its effect on another. It is characterized by conditional direct and indirect effect.
 
-When multicategorical variables are involved in the process, the effects are called **relative conditional direct and indirect effects**.
+When multicategorical variables are involved in the process, the effects are called relative conditional direct and indirect effects.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/schema_models.png")
@@ -55,15 +55,15 @@ knitr::include_graphics("img/conditional-process-diagrams.png")
 
 There are three principal cases of conditional processes:
 
-1.  Moderation **only applies to the direct effect** of a mediation model. In this case we have a **conditional direct effect**.
-2.  Moderation **only applies to the indirect effect**. In this case we have a **conditional indirect effect**.
-3.  Moderation **applies to both the direct and indirect effect**. In this case we have both **conditional direct and indirect effects**
+1.  Moderation only applies to the direct effect of a mediation model. In this case we have a *conditional direct effect*.
+2.  Moderation only applies to the indirect effect. In this case we have a *conditional indirect effect*.
+3.  Moderation applies to both the direct and indirect effect. In this case we have both *conditional direct and indirect effects*.
 
 Given that conditional direct and indirect effects are a combination of mediation and moderation effects, it may be helpful to briefly summarize them in order to better understand the former.
 
 ## Recap of direct and indirect effects
 
-A mediation model divides the **total effect ( c )** of X on Y into a **direct effect ( c' )** and indirect effect ( a\*b ), such that $c = c' + a*b$.
+A mediation model divides the total effect ($c$) of $X$ on $Y$ into a direct effect ($c'$) and indirect effect ($a*b$), such that $c = c' + a*b$.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/mediation_1_diagram_1.png")
@@ -71,15 +71,15 @@ knitr::include_graphics("img/mediation_1_diagram_1.png")
 
 In greater detail:
 
--   The **direct effect (c')** quantifies the change in the estimate of Y for a one-unit change in X, partialing out the effect of other variables in the model (i.e., the mediator M, and other possible covariates).
--   The **indirect effect** quantifies the effect of X on Y through M, independent of the direct effect of X on Y and possible covariates. It is denoted as *ab* and results from the product of the coefficients *a* and *b* (indirect effect = $a * b$).
--   The **total effect** is the effect of X on Y in a model that does not include M. It is denoted as *c*. It is the sum of the direct and indirect effect: $c = c' + ab$.
+-   The direct effect ($c'$) quantifies the change in the estimate of $Y$ for a one-unit change in $X$, partialing out the effect of other variables in the model (i.e., the mediator $M$, and other possible covariates).
+-   The indirect effect quantifies the effect of $X$ on $Y$ through $M$, independent of the direct effect of $X$ on $Y$ and possible covariates. It is denoted as $ab$ and results from the product of the coefficients $a$ and $b$ (indirect effect = $a * b$).
+-   The total effect is the effect of $X$ on $Y$ in a model that does not include $M$. It is denoted as $c$. It is the sum of the direct and indirect effect: $c = c' + ab$.
 
 ## Recap of conditional effects
 
-In a moderation model, the effect of X on Y is conditional on the values of a moderator W. This means that the effect of X on Y is expressed as a *function*, which we called *theta* ($\theta$).
+In a moderation model, the effect of $X$ on $Y$ is conditional on the values of a moderator $W$. This means that the effect of $X$ on $Y$ is expressed as a *function*, which we called *theta* ($\theta$).
 
-Given a simple moderation model, the conditional effect of X on Y is expressed as the regression coefficient of X plus the coefficient of the interaction term X\*W, multiplied by the value of W.
+Given a simple moderation model, the conditional effect of $X$ on $Y$ is expressed as the regression coefficient of $X$ plus the coefficient of the interaction term $XW$, multiplied by the value of $W$.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/cond_effect.png")
@@ -87,25 +87,25 @@ knitr::include_graphics("img/cond_effect.png")
 
 In more detail:
 
-In moderation models, the effect of X on Y is no more expressed by a single coefficient, but by a **function**. A function is just a mathematical "mechanism" that transforms inputs into outputs (for instance, multiplication is a function whose inputs are two numbers, the multiplicand and the multiplier, which are converted into a number called the "product").
+In moderation models, the effect of $X$ on $Y$ is no more expressed by a single coefficient, but by a function. A function is just a mathematical "mechanism" that transforms inputs into outputs (for instance, multiplication is a function whose inputs are two numbers, the multiplicand and the multiplier, which are converted into a number called the "product").
 
-The conditional effect is a function whose output quantifies how the effect of the independent variable (X) on the dependent variable (Y) changes as the moderator increases by one unit. We have denoted this function with the Greek letter "theta"($\theta_{X \to Y}$).
+The conditional effect is a function whose output quantifies how the effect of the independent variable $X$ on the dependent variable $Y$ changes as the moderator increases by one unit. We have denoted this function with the Greek letter "theta"($\theta_{X \to Y}$).
 
 Perhaps the best way to understand the conditional effect is to look at the regression equation.
 
-Consider a regression model with an independent X variable and a dependent Y variable that also includes a W moderator. The relationship between X and Y is moderated. This regression model includes the coefficient of X, that of W and the one of the interaction between X and W (XW).
+Consider a regression model with an independent $X$ variable and a dependent $Y$ variable that also includes a $W$ moderator. The relationship between $X$ and $Y$ is moderated. This regression model includes the coefficient of $X$, that of $W$ and the one of the interaction between $X$ and $W$ ($XW$).
 
 $$\hat Y = b_1X + b_2W + b_3XW$$
 
-In a regression model without moderation there is no interaction between X and W. The effect of X on Y is expressed by a single coefficient, that of X ($b_1X$). Instead, in a moderation model, the effect of X is expressed by both $b_1X$ and the interaction term $b_3XW$. To find the effect of X on Y we have to collect the terms involving X and then factoring out X.
+In a regression model without moderation there is no interaction between $X$ and $W$. The effect of $X$ on $Y$ is expressed by a single coefficient, that of $X$ ($b_1X$). Instead, in a moderation model, the effect of $X$ is expressed by both $b_1X$ and the interaction term $b_3XW$. To find the effect of $X$ on $Y$ we have to collect the terms involving $X$ and then factoring out $X$.
 
 $$\hat Y = (b_1 + b_3W)X + b_2W$$
 
-We can see that the effect of X on Y is no more a number, as in a regression model without interaction, but a function: $(b_1 + b_3W)$.
+We can see that the effect of $X$ on $Y$ is no more a number, as in a regression model without interaction, but a function: $(b_1 + b_3W)$.
 
 $$\theta_{X \to Y} = b_1 + b_3W$$
 
-The output of the function depends on the value of W. For instance, consider $b_1$ the coefficient of X = NEGEMOT = 0.120, and $b_3$ the coefficient of the interaction term W = 0.006. By plugging these values into the function of the conditional effect, we can see that the output varies depending on the values of W (this procedure is also known as the **pick-a-point** method, which is used to probe the interaction). The output of the function is the conditional effect of X on Y:
+The output of the function depends on the value of $W$. For instance, consider $b_1$ the coefficient of $X$ = `negemot` = 0.120, and $b_3$ the coefficient of the interaction term $W$ = 0.006. By plugging these values into the function of the conditional effect, we can see that the output varies depending on the values of $W$ (this procedure is also known as the pick-a-point method, which is used to probe the interaction). The output of the function is the conditional effect of $X$ on $Y$:
 
 $$\theta_{X \to Y} = 0.120 + 0.006W $$
 
@@ -125,9 +125,9 @@ Once you are familiar with mediation and moderation models, the intuition behind
 knitr::include_graphics("img/cond_ind_diag.png")
 ```
 
-For instance, if the $a$ path is moderated, the indirect effect $a*b$ is computed as $\theta * b$. Likewise, if the direct effect *c'* is moderate, it will be expressed by means of a conditional effect function.
+For instance, if the $a$ path is moderated, the indirect effect $a*b$ is computed as $\theta * b$. Likewise, if the direct effect $c'$ is moderate, it will be expressed by means of a conditional effect function.
 
-As a result, direct and indirect effects, now **conditional direct and indirect effects**, are analyzed using the statistical instruments of moderation analysis, such as the *pick-a-point* approach and the *Johnson-Neyman* significance regions.
+As a result, direct and indirect effects, now conditional direct and indirect effects, are analyzed using the statistical instruments of moderation analysis, such as the *pick-a-point* approach and the *Johnson-Neyman* significance regions.
 
 So not only are the diagrams and effects of conditional process models a mixture of mediation and moderation models. The output of a conditional process model fitted with PROCESS, and its interpretation, is also a blend of the results of the mediation and moderation models.
 
@@ -141,23 +141,23 @@ The conceptual and statistical diagram for a model with only a conditional direc
 knitr::include_graphics("img/ex1-conditional-process.png")
 ```
 
-The model comprises four variables, X, Y, M, and the moderator W. Like any simple mediation model, it consists of two equations, one for each outcome variable (M and Y).
+The model comprises four variables, $X$, $Y$, $M$, and the moderator $W$. Like any simple mediation model, it consists of two equations, one for each outcome variable ($M$ and $Y$).
 
 $$M = i_M + aX + e_M$$ $$Y = i_Y + c'_1X +  c'_2W +  c'_3XW + bM + e_Y$$
 
-The outcome of the first equation is M, which is predicted by X. The outcome of the second equation is Y, which is predicted by both X and M. Additionally, the relationship between X and Y is moderated by W, so the second model also includes the variable W and the interaction term XW.
+The outcome of the first equation is $M$, which is predicted by $X$. The outcome of the second equation is $Y$, which is predicted by both $X$ and $M$. Additionally, the relationship between $X$ and $Y$ is moderated by $W$, so the second model also includes the variable $W$ and the interaction term $XW$.
 
 For clarity, we can ignore the intercept $i_M$ and the error term $e_Y$.
 
-Only the second equation comprises a conditional effect, because only that equation has a moderator. More precisely, moderator W moderates the direct effect between X and Y. This is therefore a **conditional direct effect**, which is now expressed by a function instead of the single coefficient $c'$. We can find the effect by grouping terms in the equation involving X and then factoring out X:
+Only the second equation comprises a conditional effect, because only that equation has a moderator. More precisely, moderator $W$ moderates the direct effect between $X$ and $Y$. This is therefore a conditional direct effect, which is now expressed by a function instead of the single coefficient $c'$. We can find the effect by grouping terms in the equation involving $X$ and then factoring out $X$:
 
 $$\hat Y = c'_1X +  c'_2W +  c'_3XW + bM$$ $$\hat Y = (c'_1 + c'_3W)X +  c'_2W + + bM$$
 
-The conditional direct effect of X on Y is represented by the function between round brackets:
+The conditional direct effect of $X$ on $Y$ is represented by the function between round brackets:
 
 $$\theta_{X \to Y} = c'_1 + c'_3W$$
 
-It quantifies how the effect of X on Y changes independent of the mediator M (which is kept constant) for a one-unit change of W.
+It quantifies how the effect of $X$ on $Y$ changes independent of the mediator $M$ (which is kept constant) for a one-unit change of $W$.
 
 ## Conditional indirect effect
 
@@ -167,15 +167,15 @@ This is the conceptual and statistical diagram for a model with only a condition
 knitr::include_graphics("img/ex2-conditional-process.png")
 ```
 
-The model comprises four variables, X, Y, M, and the moderator W. Like a simple mediation model, it consists of two equations, one for each outcome variable (M and Y).
+The model comprises four variables, $X$, $Y$, $M$, and the moderator $W$. Like a simple mediation model, it consists of two equations, one for each outcome variable ($M$ and $Y$).
 
-The outcome of the first equation is M, which is predicted by X. The outcome of the second equation is Y, which is predicted by both X and M. Additionally, the relationship between M and Y is moderated by W, so the second model also includes the variable W and the interaction term MW.
+The outcome of the first equation is $M$, which is predicted by $X$. The outcome of the second equation is $Y$, which is predicted by both $X$ and $M$. Additionally, the relationship between $M$ and $Y$ is moderated by $W$, so the second model also includes the variable $W$ and the interaction term $MW$.
 
 $$M = i_M + aX + e_M$$ $$Y = i_Y + c'_1X + b_1M + b_2W + b_3MW + e_Y$$
 
 For clarity, we can ignore the intercept $i_M$ and the error term $e_Y$.
 
-Only the second equation comprises a moderating effect and, consequently, a conditional effect. Moderator W moderates the relation between M and Y, so we can find this effect by grouping the M terms together.
+Only the second equation comprises a moderating effect and, consequently, a conditional effect. Moderator W moderates the relation between $M$ and $Y$, so we can find this effect by grouping the M terms together.
 
 $$\hat Y = c'_1X + b_1M + b_2W + b_3MW$$ $$\hat Y = c'_1X + (b_1 + b_3W)M + b_2W$$
 
@@ -183,9 +183,9 @@ The conditional effect is represented by the function within parentheses:
 
 $$\theta_{M \to Y} = b_1 + b_3W$$
 
-This conditional indirect effect quantifies how differences in X map onto differences in Y indirectly through M depending on the value of W.
+This conditional indirect effect quantifies how differences in $X$ map onto differences in $Y$ indirectly through M depending on the value of $W$.
 
-The moderated relation contributes to define the indirect effect. In a simple mediation model, the indirect effect is defined as the product between the coefficients *a* and *b* $ab = a * b$. In this conditional process model, *b* is no more a single coefficient but a function, i.e., the function defining the **conditional effect**. It follows that the **conditional indirect effect** is the product between *a* and the conditional effect $\theta_{M \to Y} = b_1 + b_3W$, and its value is conditional on W:
+The moderated relation contributes to define the indirect effect. In a simple mediation model, the indirect effect is defined as the product between the coefficients $a$ and $b$, $ab = a * b$. In this conditional process model, $b$ is no more a single coefficient but a function, i.e., the function defining the conditional effect. It follows that the conditional indirect effect is the product between $a$ and the conditional effect $\theta_{M \to Y} = b_1 + b_3W$, and its value is conditional on W:
 
 $$a(b_1 + b_3W) = ab_1 + a_b3W$$
 
@@ -199,13 +199,13 @@ The following is the conceptual and statistical diagram for a model with a condi
 knitr::include_graphics("img/ex3-conditional-process.png")
 ```
 
-The model comprises five variables, X, Y, M, and the moderators W and Z. Like a simple mediation model, it consists of two equations, one for each outcome variable (M and Y).
+The model comprises five variables, $X$, $Y$, $M$, and the moderators $W$ and $Z$. Like a simple mediation model, it consists of two equations, one for each outcome variable ($M$ and $Y$).
 
-The outcome of the first equation is M, which is predicted by X. Additionally, W moderates the relation between X and M, so the model includes the coefficient for W and the interaction between X and W.
+The outcome of the first equation is $M$, which is predicted by $X$. Additionally, $W$ moderates the relation between $X$ and $M$, so the model includes the coefficient for $W$ and the interaction between $X$ and $W$.
 
 $$M = i_M + a_1X + a_2W + a_3XW + e_M$$
 
-The outcome of the second equation is Y, which is predicted by both X and M. Additionally, the relationship between M and Y is moderated by Z, and so it is the relationship between X and Y. SO the model includes the coefficient for Z, and those for the interaction between X and Z (XZ), and M and Z (MZ):
+The outcome of the second equation is $Y$, which is predicted by both $X$ and $M$. Additionally, the relationship between $M$ and $Y$ is moderated by $Z$, and so it is the relationship between $X$ and $Y$. SO the model includes the coefficient for $Z$, and those for the interaction between $X$ and $Z$ ($XZ$), and $M$ and $Z$ ($MZ$):
 
 $$Y = i_Y + c'_1X + c'_2Z + c'_3XZ + b_1M + b_2MZ + e_Y$$
 
@@ -213,11 +213,11 @@ For clarity, we can ignore intercepts and error terms.
 
 As we have interactions in both equations, they both include conditional effects. More precisely, the first equation includes a conditional indirect effect, and the second a conditional direct and indirect effect.
 
-Starting from the first equation, we can find the **conditional indirect effects** by grouping X terms and factoring out X:
+Starting from the first equation, we can find the conditional indirect effects by grouping $X$ terms and factoring out $X$:
 
 $$\hat M = a_1X + a_2W + a_3XW$$ $$\hat M = (a_1 + a_3W)X + a_2W$$ $$\theta_{X \to M} = a_1 + a_3W$$
 
-Considering the second equation, we can find the **conditional indirect effects** by grouping the X terms and factoring out X, and the **conditional indirect effects** by grouping the M terms and factoring out M:
+Considering the second equation, we can find the conditional indirect effects by grouping the $X$ terms and factoring out $X$, and the conditional indirect effects by grouping the $M$ terms and factoring out $M$:
 
 $$Y = c'_1X + c'_2Z + c'_3XZ + b_1M + b_2MZ$$ $$Y = (c'_1 + c'_3Z)X + (b_1 + b_2Z)M +  + c'_2Z$$
 
@@ -225,13 +225,13 @@ The two conditional effects are within parentheses. The conditional *direct* eff
 
 $$\theta_{X \to Y} = c'_1 + c'_3Z$$ $$\theta_{M \to Y} = b_1 + b_2Z$$
 
-As previously explained, given a mediation model $X \to M \to Y$ with coefficient *a* (path from X to M) and *b* (path from M to Y), the **indirect effect** of X on Y is the product between *a* and *b* $ab = a * b$. The **conditional indirect effect** is the product of the same paths where one or both are dependent on a moderator and are therefore represented by conditional effects. In our case, both the paths are conditioned on a moderator (respectively W and Z), so the indirect effect is the product of these conditional effects:
+As previously explained, given a mediation model $X \to M \to Y$ with coefficient $a$ (path from $X$ to $M$) and $b$ (path from $M$ to $Y$), the indirect effect of $X$ on $Y$ is the product between $a$ and $b$ $ab = a * b$. The conditional indirect effect is the product of the same paths where one or both are dependent on a moderator and are therefore represented by conditional effects. In our case, both the paths are conditioned on a moderator (respectively $W$ and $Z$), so the indirect effect is the product of these conditional effects:
 
 $$\theta_{X \to M} * \theta_{M \to Y}$$ $$(a_1 + a_3W) * (b_1 + b_2Z)$$ $$a_1b_1 + a_1b_2Z + a_3b_1W + a_3b_2WZ$$
 
 # Moderation of a specific indirect effect in a parallel multiple mediator model
 
-There are also more complicated models, such as **parallel multiple mediator models** involving one moderator that moderates one of the mediated effects. The model depicted below, for instance, includes three outcomes and three equations. The book provides further details.
+There are also more complicated models, such as parallel multiple mediator models involving one moderator that moderates one of the mediated effects. The model depicted below, for instance, includes three outcomes and three equations. The book provides further details.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/ex4-conditional-process.png")
@@ -241,21 +241,21 @@ We will now examine how to fit and interpret conditional indirect effect models,
 
 ## Example
 
-In the following example we'll use the dataset *TEAMS* (available on Moodle) to fit a conditional indirect effect model.
+In the following example we'll use the dataset $TEAMS$ to fit a conditional indirect effect model.
 
 ```{r message=FALSE, warning=FALSE}
 teams <- haven::read_sav("data/teams.sav")
 ```
 
-The data comes from a study on work teams. The goal was to examine the mechanism by which the dysfunctional behavior of members of a work team (DYSFUNC = X) can negatively affect the ability of a work team to perform well (PERFORM = Y). The researchers proposed a mediation model in which dysfunctional behavior (X) leads to a work environment filled with negative emotions (NEGTONE = M) that supervisors and other employees confront and attempt to manage, which then distracts from work and interferes with task performance (Y).
+The data comes from a study on work teams. The goal was to examine the mechanism by which the dysfunctional behavior of members of a work team (`dysfunc` = $X$) can negatively affect the ability of a work team to perform well (`perform` = $Y$). The researchers proposed a mediation model in which dysfunctional behavior ($X$) leads to a work environment filled with negative emotions (`negtone` = $M$) that supervisors and other employees confront and attempt to manage, which then distracts from work and interferes with task performance ($Y$).
 
-However, according to the authors' model, when team members are able to regulate their display of negative emotions (NEGEXP = W), essentially hiding how they are feeling from others, this allows the team to stay focused on the task at hand rather than having to shift focus toward managing the negative tone of the work environment and the feelings of others.
+However, according to the authors' model, when team members are able to regulate their display of negative emotions (`negexp` = $W$), essentially hiding how they are feeling from others, this allows the team to stay focused on the task at hand rather than having to shift focus toward managing the negative tone of the work environment and the feelings of others.
 
 That is, the effect of negative affective tone of the work environment on team performance is hypothesized in their model as contingent on the ability of the team members to hide their feelings from the team, with a stronger negative effect of negative affective tone on performance in teams that express their negativity rather than conceal it.
 
 # Conditional indirect effect model with process
 
-The decribed model can be fitted in PROCESS by using **model = 14**.
+The describe model can be fitted in `process` by using `model = 14`.
 
 ```{r}
 source("PROCESS_R/process.R")
@@ -273,15 +273,15 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
 
 The output includes:
 
--   Summary statistics of the model (**model summary**);
+-   Summary statistics of the model (model summary);
 
--   Two **regression tables** with the coefficients for the first model (outcome: NEGTONE) and the second (outcome: PERFORM);
+-   Two regression tables with the coefficients for the first model (outcome: `negtone`) and the second (outcome: `perform`);
 
--   Tables resulting from the **pick-a-point** and the **Johnson-Neyman** technique;
+-   Tables resulting from the pick-a-point and the Johnson-Neyman technique;
 
 -   Data to visualize the moderation effect;
 
--   Tables on the **direct and indirect effect**.
+-   Tables on the direct and indirect effect.
 
 ## Conditional indirect effect
 
@@ -293,23 +293,23 @@ $$M = i_M + aX$$ $$Y = i_Y + c'X + b_1M + b_2W + b_3MW + e_Y$$
 knitr::include_graphics("img/conditional-process-fit1b.png")
 ```
 
-In a simple mediation model, the conditional indirect effect is the product between *a* (the path from X to M) and *b* (the path from M to Y). Here *a* corresponds to $a$ and *b* to $b_1$.
+In a simple mediation model, the conditional indirect effect is the product between $a$ (the path from $X$ to $M$) and $b$ (the path from $M$ to $Y$). Here $a$ corresponds to $a$ and $b$ to $b_1$.
 
-Whereas the path $X \to M$ is not moderated and therefore *a* is a simple coefficient, the path $M \to Y$ is moderated by W and therefore $b_1$ is a conditional effect expressed through a function, we can denote as $\theta_{M \to Y}$.
+Whereas the path $X \to M$ is not moderated and therefore $a$ is a simple coefficient, the path $M \to Y$ is moderated by W and therefore $b_1$ is a conditional effect expressed through a function, we can denote as $\theta_{M \to Y}$.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/conditional-process-fit1.png")
 ```
 
-We can find the conditional effect by grouping the M terms and factoring out M (we ignore the intercept and error term).
+We can find the conditional effect by grouping the $M$ terms and factoring out $M$ (we ignore the intercept and error term).
 
 $$\hat Y = c'X + b_1M + b_2W + b_3MW$$ $$\hat Y = c'X + (b_1 + b_3W)M + b_2W$$ $$\theta_{M \to Y} = b_1 + b_3W$$
 
 ### Conditional effect
 
-The conditional effect $\theta_{M \to Y} = b_1 + b_3W$ represents the moderation effect. As in a simple moderation model, it is analyzed in the second part of the output. Here you will find the table **Conditional effects of the focal predictor at values of the moderator(s)** (resulting from the **pick-a-point** approach), and the table **Johnson-Neyman significance regions**.
+The conditional effect $\theta_{M \to Y} = b_1 + b_3W$ represents the moderation effect. As in a simple moderation model, it is analyzed in the second part of the output. Here you will find the table Conditional effects of the focal predictor at values of the moderator(s) (resulting from the pick-a-point approach), and the table Johnson-Neyman significance regions.
 
-Consider the table **Conditional effects of the focal predictor at values of the moderator(s)**. The function just identified for the conditional effect can be used to test the effect of M on Y at different levels of the moderator W. For example, at relatively low (-0.53), moderate (-0.06), and relatively high (0.60) level of the moderator, we obtain:
+Consider the table Conditional effects of the focal predictor at values of the moderator(s). The function just identified for the conditional effect can be used to test the effect of $M$ on $Y$ at different levels of the moderator $W$. For example, at relatively low (-0.53), moderate (-0.06), and relatively high (0.60) level of the moderator, we obtain:
 
 ```{r}
 cond_ind_effect <- function(W) { -0.44 + -0.52*W }
@@ -323,11 +323,11 @@ knitr::include_graphics("img/conditional-process-fit1d.png")
 
 ### Conditional indirect effect
 
-We can now find the conditional indirect effect by multiplying the conditional effect $\theta_{M \to Y}$ by $a$. Here $a$ is the coefficient of DYSFUNC (first regression table, DYSFUNC = 0.62), $b_1$ is the coefficient of NEGTONE ($M \to Y$) (second regression table NEGTONE = -0.44), and $b_3$ is the coefficient of the interaction term (second regression table, Int_1 = -0.52).
+We can now find the conditional indirect effect by multiplying the conditional effect $\theta_{M \to Y}$ by $a$. Here $a$ is the coefficient of `dysfunc` (first regression table, `dysfunc` = 0.62), $b_1$ is the coefficient of `negtone` ($M \to Y$) (second regression table `negtone` = -0.44), and $b_3$ is the coefficient of the interaction term (second regression table, Int_1 = -0.52).
 
 $$a\theta_{M \to Y}$$ $$a(b_1 + b_3W)$$ $$0.62(-0.44 + -0.52W)$$
 
-The **conditional indirect effect** is analyzed through a **pick-a-point** approach: various values of the moderator W are plugged into the function of the conditional indirect effect ($0.62(-0.44 + -0.52W)$). A significance test is subsequently conducted. The results are presented in the last section of the output. The table **Conditional indirect effects of X on Y** shows the changes in the Y estimates for a one-unit change in X through the mediator M at different levels of the moderator (Using Hayes' own words: *"the conditional indirect effect of X on Y through M conditioned on W quantifies the amount by which two cases with a given value of W that differ by one unit on X are estimated to differ on Y indirectly through X's effect on M, which in turn influences Y."*).
+The conditional indirect effect is analyzed through a pick-a-point approach: various values of the moderator W are plugged into the function of the conditional indirect effect ($0.62(-0.44 + -0.52W)$). A significance test is subsequently conducted. The results are presented in the last section of the output. The table *Conditional indirect effects of* $X$ on $Y$ shows the changes in the $Y$ estimates for a one-unit change in $X$ through the mediator $M$ at different levels of the moderator (Using Hayes' own words: *"the conditional indirect effect of X on Y through M conditioned on W quantifies the amount by which two cases with a given value of W that differ by one unit on X are estimated to differ on Y indirectly through X's effect on M, which in turn influences Y."*).
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/conditional-process-fit1d.png")
@@ -335,19 +335,19 @@ knitr::include_graphics("img/conditional-process-fit1d.png")
 
 In practice, the table can be read as follows: *"at relatively low levels of emotional expressiveness (the moderator) there is no evidence of an effect of dysfunctional behavior on performance through negative emotional tone (-0.53, 95% CI \[-0.37, 0.24\]). Instead, at moderate (-0.06, 95% CI \[-0.49, 0.04\]) to relatively high (0.60, 95% CI \[-0.81, -0.15\]) levels of emotional expressivity, the effect is statistically significant, with higher levels of emotional expressiveness leading to worse team performance*.
 
-The **Index of moderated mediation** is displayed right below the pick-a-point table. It provides the results of a more general significance test of the relationship between the moderator and the indirect effect. When zero is not within the range of the confidence interval, it can be concluded that the indirect effect is associated with the moderator. Had the confidence interval included zero, we could not definitively claim that the indirect effect was related to the moderator.
+The Index of moderated mediation is displayed right below the pick-a-point table. It provides the results of a more general significance test of the relationship between the moderator and the indirect effect. When zero is not within the range of the confidence interval, it can be concluded that the indirect effect is associated with the moderator. Had the confidence interval included zero, we could not definitively claim that the indirect effect was related to the moderator.
 
 In this case the "index" is negative, which leads to the conclusion that the indirect effect is *negatively* related to the moderator. That is, the mediation of the effect of dysfunctional team behavior on performance through negative affective tone of the work climate is moderated by the expressiveness of the team.
 
-The **Index of moderated mediation** is displayed if W is specified as a moderator of only one of the paths that define the indirect effect. Otherwise, the indirect effect will be a nonlinear function of W. In that case, PROCESS will not produce this index.
+The Index of moderated mediation is displayed if $W$ is specified as a moderator of only one of the paths that define the indirect effect. Otherwise, the indirect effect will be a nonlinear function of $W$. In that case, `process` will not produce this index.
 
-In the section of the output there is also the direct effect of X on Y. In this case it is not affected by the moderator and can be interpreted as in a simple mediation model.
+In the section of the output there is also the direct effect of $X$ on $Y$. In this case it is not affected by the moderator and can be interpreted as in a simple mediation model.
 
 # Visualize the conditional effect
 
 Visualization data are provided for the moderation effect, as in a simple moderation model, and can be plotted as learned in the previous lectures.
 
-Instead, **PROCESS does not provide data for visualization of the indirect or direct conditional effect**. If you want to create this picture, *you need to do it yourself*. That takes a little more familiarity with R. However, there is no need to create the chart because the relevant information is provided in the tables.
+Instead, `process` does not provide data for visualization of the indirect or direct conditional effect. If you want to create this picture, *you need to do it yourself*. That takes a little more familiarity with R. However, there is no need to create the chart because the relevant information is provided in the tables.
 
 The dataset that allows visualization of the data must contain two columns. The former should contain the values of the direct effect and the latter the values for the indirect effect at the moderator levels. Data should be generated with the function of the direct and/or indirect conditional effect, if the direct and/or indirect effect is affected by a moderator. The function has to be identified in the equation of the model as described above.
 
@@ -404,7 +404,7 @@ abline(0, 0, lwd = 0.5, lty = 2)
 
 # Conditional effect
 
-We have already demonstrated that the *conditional effect* is a component of the *conditional indirect effect*. On its own, it the *conditional effect* is composed by two coefficients: that of X and the interaction term $X*W$ or *Int_1*. **Int_1** quantifies the degree to which the conditional effect of M on Y changes when W changes by one unit. As W changes by 1 unit, the conditional effect of M on Y changes by the "Int_1 coefficient", or -0.52 units (p = 0.04).
+We have already demonstrated that the *conditional effect* is a component of the *conditional indirect effect*. On its own, it the *conditional effect* is composed by two coefficients: that of $X$ and the interaction term $X*W$ or `Int_1`. `Int_1` quantifies the degree to which the conditional effect of $M$ on $Y$ changes when $W$ changes by one unit. As $W$ changes by 1 unit, the conditional effect of $M$ on $Y$ changes by the "`Int_1` coefficient", or -0.52 units (p = 0.04).
 
 $$\hat Y = c'X + b_1M + b_2W + b_3MW$$ $$\hat Y = c'X + (b_1 + b_3W)M + b_2W$$ $$\theta_{M \to Y} = b_1 + b_3W$$ $$\theta_{M \to Y} = -0.44 -0.52W$$
 
@@ -418,9 +418,9 @@ As in a simple moderation model, the second section of the result presents the t
 knitr::include_graphics("img/conditional-process-fit1c.png")
 ```
 
-The *conditional effect* function is used for **probing the interaction** at different levels of W. We observe that the interaction is not significant for low levels of the moderator (that is, when people show weak levels of emotional expression). As the moderator is continuous, it is also possible to see the **Johnson-Neyman** table defining the significant regions. It shows that the moderator begins to exert a significant effect at values greater than -0.23.
+The *conditional effect* function is used for probing the interaction at different levels of $W$. We observe that the interaction is not significant for low levels of the moderator (that is, when people show weak levels of emotional expression). As the moderator is continuous, it is also possible to see the Johnson-Neyman table defining the significant regions. It shows that the moderator begins to exert a significant effect at values greater than -0.23.
 
-Data to visualize the moderation effect is provided. The interaction graph clearly indicates what is already indicated in the table **Conditional effects of the focal predictor at values of the moderator(s)**. The higher the expressiveness, the greater the negative impact the negative tone has on the team's performance. Or vice-versa, the lower the expressiveness, the lower the impact of negative emotions on team performance.
+Data to visualize the moderation effect is provided. The interaction graph clearly indicates what is already indicated in the table Conditional effects of the focal predictor at values of the moderator(s). The higher the expressiveness, the greater the negative impact the negative tone has on the team's performance. Or vice-versa, the lower the expressiveness, the lower the impact of negative emotions on team performance.
 
 ```{r}
 x <- c(-0.45,	-0.04,	0.52,	-0.45,	-0.04,	0.52,	-0.45,	-0.04,	0.52)
@@ -446,13 +446,13 @@ lines(x[w==0.60],  y[w==0.60],  lwd=1, lty=3)
 
 # Other regression coefficients
 
-Consider the coefficients for the variables involved in the interaction. These variables may be identified by looking at the "Product terms key" table. Their coefficients are NEGTONE (M) = -0.44, and NEGEXP (W) = -0.02.
+Consider the coefficients for the variables involved in the interaction. These variables may be identified by looking at the "Product terms key" table. Their coefficients are `negtone` ($M$) = -0.44, and `negexp` ($W$) = -0.02.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/conditional-process-fit1b.png")
 ```
 
-As in moderation analysis, each of these coefficients must be interpreted **conditional to the other one set to zero**. The remaining variables of the model (X, in this case) are maintained constant. For example: considering the set of cases measuring zero in NEGEXP (W) and held constant on DYSFUNC, a unit increase in NEGTONE (M) corresponds to a 0.44 point lower estimate of Y (-0.44).
+As in moderation analysis, each of these coefficients must be interpreted conditional to the other one set to zero. The remaining variables of the model ($X$, in this case) are maintained constant. For example: considering the set of cases measuring zero in `negexp` ($W$) and held constant on `dysfunc`, a unit increase in `negtone` ($M$) corresponds to a 0.44 point lower estimate of $Y$ (-0.44).
 
 A detailed explanation of the rationale for this interpretation was provided in the previous lecture.
 
@@ -460,7 +460,7 @@ A detailed explanation of the rationale for this interpretation was provided in 
 
 It may be difficult to determine in advance whether moderation affects only the direct or indirect effect. So, it can be wise to start with one model including both. If one of the effects is not significant, it is always possible to prune it from the model and fit a new one with the significant effect.
 
-We are going to use the DISASTER dataset to fit a conditional direct and indirect effect model. The model shown in the diagram below is designated in PROCESS as **model = 8**.
+We are going to use the DISASTER dataset to fit a conditional direct and indirect effect model. The model shown in the diagram below is designated in `process` as `model = 8`.
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/ex2-cond_proc_1.png")
@@ -483,19 +483,19 @@ process(y = "donate", x = "frame", w = "skeptic", m = "justify",
         data = disaster)
 ```
 
-We have two regression tables, each in its own panel, the first one with outcome JUSTIFY and the second one with outcome DONATE.
+We have two regression tables, each in its own panel, the first one with outcome `justify` and the second one with outcome `donate`.
 
 The outcome is essentially the same as the previous one. What is different is that both regression tables include an interaction. Data to visualize the two moderator effects is also provided. The pick-a-point and the Johnson-Neyman tables are only provided for the first regression. The second is relative to the direct effect, which implies that moderation translates into a conditional direct effect, which is analyzed in the last part of the output. We can see here the pick-a-point table of both the direct and indirect effect. The index of moderated mediation is provided for the indirect effect.
 
 The interpretation is the same as before, this time applied to both the direct and indirect effect.
 
-In this analysis, we notice that the conditional indirect effect is significant, while the conditional direct effect is not. Therefore, you can opt to simplify the model by removing the moderation of the direct effect. In this specific case, this can be done by switching from model = 8 to model = 7.
+In this analysis, we notice that the conditional indirect effect is significant, while the conditional direct effect is not. Therefore, you can opt to simplify the model by removing the moderation of the direct effect. In this specific case, this can be done by switching from `model = 8` to `model = 7`.
 
 # Conditional process analysis with multicategorical antecedent
 
-When a model includes a multicategorical antecedent, the conditional indirect effect and the conditional direct effect are interpreted relatively to the *reference category*. In that case we talk of **relative conditional indirect effect** and **relative conditional direct effect**.
+When a model includes a multicategorical antecedent, the conditional indirect effect and the conditional direct effect are interpreted relatively to the *reference category*. In that case we talk of relative conditional indirect effect and relative conditional direct effect.
 
-The model shown below can be fitted using **model 8**. The **mcx=1** option tells PROCESS that the X variable is multicategorical. Hayes uses *"mcx=3"*, which handles multicategorical variables in a different way. Refer to the book for more information on how PROCESS can handle multicategorical variables and the related options (**mcx=1**, **mcx=2**, and **mcx=3**).
+The model shown below can be fitted using model 8. The mcx=1 option tells `process` that the $X$ variable is multicategorical. Hayes uses `mcx=3`, which handles multicategorical variables in a different way. Refer to the book for more information on how `process` can handle multicategorical variables and the related options (`mcx=1`, `mcx=2`, and `mcx=3`).
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/diagram_cond_proc_multicat.png")
@@ -519,9 +519,9 @@ The output can be interpreted on the basis of the same principles discussed for 
 
 ## Brief recap on the interpretation of multicategorical variables
 
-There is only one fundamental principle to be taken into account in the interpretation of multicategorical models. The **g categories** of a multicategorical variable are divided into **g-1 dichotomous variables** and **a reference category**. The newly created dichotomous variables represent **differences** between a category and the reference category.
+There is only one fundamental principle to be taken into account in the interpretation of multicategorical models. The g categories of a multicategorical variable are divided into g-1 dichotomous variables and a reference category. The newly created dichotomous variables represent differences between a category and the reference category.
 
-In this case, the multicategorical variable PROTEST includes *g=3* categories (X=0, X=1, X=2), which are divided into **g-1 = 2 dichotomous variables** (X1: X=1, and X2: X=2) and **a reference category** (X0: X=0). The newly created dichotomous variables X1 and X2 represent **differences** (in some estimates) between a category and the reference category (X1 = X1 - X0; X2 = X2 - X0).
+In this case, the multicategorical variable PROTEST includes $g = 3$ categories ($X=0$, $X=1$, $X=2$), which are divided into $g-1 = 2$ dichotomous variables ($X1$ $X=1$, and $X2$ $X=2$) and a reference category ($X0 X=0$). The newly created dichotomous variables $X1$ and $X2$ represent differences (in some estimates) between a category and the reference category ($X1 = X1 - X0$; $X2 = X2 - X0$).
 
 ```{r}
 knitr::include_graphics("img/table_cond_proc_multicat.png")
@@ -530,14 +530,14 @@ knitr::include_graphics("img/table_cond_proc_multicat.png")
 For example, consider the interaction term:
 
 -   In a model with continuous X, the interaction terms (*Int*) would quantify *changes in the conditional effect of X on Y* for a *one-unit change in X*.
--   In a model with dichotomous X, *one-unit change in X* means switching from X=0 to X=1, and the interaction terms would quantify the *difference between X1 and X0 in their conditional effect on Y*.
--   We know that a multicategorical variable is treated as *g-1* dichotomous ones, therfore the interpretation is similar to that of dichotomous variables. In this case, the interaction term *Int_1* quantifies **the difference** *between X1 and X0 in their conditional effect on Y*, and *Int_2* quantifies the *difference between X2 and X0 in their conditional effect on Y*. Therefore, they are **relative conditional effects**.
+-   In a model with dichotomous X, *one-unit change in X* means switching from $X=0$ to $X=1$, and the interaction terms would quantify the *difference between X1 and X0 in their conditional effect on Y*.
+-   We know that a multicategorical variable is treated as *g-1* dichotomous ones, therefore the interpretation is similar to that of dichotomous variables. In this case, the interaction term *Int_1* quantifies the difference *between X1 and X0 in their conditional effect on Y*, and *Int_2* quantifies the *difference between X2 and X0 in their conditional effect on Y*. Therefore, they are relative conditional effects.
 
 # Relative conditional effect
 
-We already know how to detect conditional effects in the regression equations. Here, there are two conditional effects. The first is for X1, which represents the difference between X1 and X0 in their conditional effect on Y, and the second for X2.
+We already know how to detect conditional effects in the regression equations. Here, there are two conditional effects. The first is for $X1$, which represents the difference between $X1$ and $X0$ in their conditional effect on $Y$, and the second for $X2$.
 
-First, we write the equations based on the regression coefficients of two outcomes JUSTIFY (M) and DONATE (Y).
+First, we write the equations based on the regression coefficients of two outcomes `justify` ($M$) and `donate` ($Y$).
 
 $$M = i_M + a_1X_1 + a_2X_2 + a_3W + a_4X_1W + a_5X_2W + e_M$$ $$Y = i_Y + c'_1X_1 + c'_2X_2 + c'_3W + c'_4X_1W + c'_5X_2W + bM + e_Y$$
 
@@ -547,27 +547,27 @@ $$Y = c'_1X_1 + c'_2X_2 + c'_3W + c'_4X_1W + c'_5X_2W + bM + e_Y$$ $$\hat Y = (c
 
 $$M = i_M + a_1X_1 + a_2X_2 + a_3W + a_4X_1W + a_5X_2W + e_M$$ $$M = i_M + (a_1 + a_4W)X_1 + (a_2 + a_5W)X_2 + a_3W + e_M$$ $$\theta{X_1 \to M} = a_1 + a_4W$$ $$\theta{X_2 \to M} = a_2 + a_5W$$
 
-The table **Conditional effects of the focal predictor at values of the moderator(s)** uses these function to calculate the **relative conditional effect** at different levels of the moderator (W = SEXISM). For instance, for SEXISM = 4.25, the relative conditional effect represented by X1 is:
+The table Conditional effects of the focal predictor at values of the moderator(s) uses these function to calculate the relative conditional effect at different levels of the moderator ($W$ = `sexism`). For instance, for `sexism` = 4.25, the relative conditional effect represented by $X1$ is:
 
 $$\theta{X_1 \to M} = a_1 + a_4W$$ $$\theta{X_1 \to M} = -3.78 + 0.98*4.25 = 0.385$$
 
 The table shows p-values and confidence intervals to verify the statistical significance of the relative conditional effects.
 
-The output also reports the **Estimated conditional means being compared**, which are the means of the dependent variable (respectively M or Y, depending on the model) in the different categories (PROTEST = 0, 1, and 2), holding the moderator constant at a certain value. The table **Test of equality of conditional means** reports the statistical test of the equality of these means (i.e., is there any evidence of statistically significant differences between any of those means?).
+The output also reports the estimated conditional means being compared, which are the means of the dependent variable (respectively $M$ or $Y$, depending on the model) in the different categories (`protest`= 0, 1, and 2), holding the moderator constant at a certain value. The table Test of equality of conditional means reports the statistical test of the equality of these means (i.e., is there any evidence of statistically significant differences between any of those means?).
 
 # Conditional direct and indirect relative effects
 
-Relative conditional effects are used to compute the **relative conditional direct and indirect effects**.
+Relative conditional effects are used to compute the relative conditional direct and indirect effects.
 
-The indirect effect is the product *ab* of the two paths linking the antecedent variable to the mediator (a), and the mediator to the dependent variable (b). In the case of a multicategorical antecedent, the *a* path is represented by two or more *relative conditional effects*.
+The indirect effect is the product $ab$ of the two paths linking the antecedent variable to the mediator ($a$), and the mediator to the dependent variable ($b$). In the case of a multicategorical antecedent, the $a$ path is represented by two or more *relative conditional effects*.
 
-In this case the *relative conditional effects* are $\theta{X_1 \to M}$ and $\theta{X_2 \to M}$. Therefore, the **relative conditional indirect effects** can be computed as $a * \theta{X_1 \to M}$ and $a * \theta{X_2 \to M}$. Various values of the moderator M are then plugged into these functions to test the effect in the pick-a-point approach. The same is for the **relative conditional direct effect**. The **pick-a-point** tables are shown in the last part of the output. They can be interpreted as usual, but keeping in mind that each variables (for instance X1 and X2) represent the **the difference between a category and the reference one (in this case between X1 and X0, or between X2 and X0) in their effect on Y through the mediator M at different levels of the moderator**.
+In this case the *relative conditional effects* are $\theta{X_1 \to M}$ and $\theta{X_2 \to M}$. Therefore, the relative conditional indirect effects can be computed as $a * \theta{X_1 \to M}$ and $a * \theta{X_2 \to M}$. Various values of the moderator $M$ are then plugged into these functions to test the effect in the pick-a-point approach. The same is for the relative conditional direct effect. The pick-a-point tables are shown in the last part of the output. They can be interpreted as usual, but keeping in mind that each variables (for instance $X1$ and $X2$) represent the the difference between a category and the reference one (in this case between $X1$ and $X0$, or between $X2$ and $X0$) in their effect on $Y$ through the mediator $M$ at different levels of the moderator.
 
 # Appendix: Assumptions and robust methods
 
-During the first part of the course, we learned about regression models. We said that they have **assumptions** and that their results are reliable only when those assumptions are respected.
+During the first part of the course, we learned about regression models. We said that they have assumptions and that their results are reliable only when those assumptions are respected.
 
-It is, therefore, necessary to **check the assumptions** before interpreting the results. If one or more of them are not fulfilled, it may be possible to **take steps to solve the problem**.
+It is, therefore, necessary to check the assumptions before interpreting the results. If one or more of them are not fulfilled, it may be possible to take steps to solve the problem.
 
 First, let's recap the assumptions of regression models:
 
@@ -583,16 +583,16 @@ First, let's recap the assumptions of regression models:
 
 -   **Normality**: The residuals of the model are normally distributed.
 
-PROCESS implements methods that help to solve issues that may arise with assumptions. Unfortunately, however, it does not provide instruments to test them. Therefore, let's see how to check the assumptions.
+`process` implements methods that help to solve issues that may arise with assumptions. Unfortunately, however, it does not provide instruments to test them. Therefore, let's see how to check the assumptions.
 
 ## Check the assumptions
 
-We can test the assumptions of our models based on what we learned in the first part of the course. There, we learned how to fit multiple regression models in R using the **lm** function. We also learned how to test the assumptions by visually inspecting some plots.
+We can test the assumptions of our models based on what we learned in the first part of the course. There, we learned how to fit multiple regression models in R using the `lm` function. We also learned how to test the assumptions by visually inspecting some plots.
 
 The procedure includes the following steps:
 
-1.  Fit your mediation, moderation, or conditional process model using PROCESS.
-2.  Check the regression tables and fit the same models in R, using the *lm* function.
+1.  Fit your mediation, moderation, or conditional process model using `process`.
+2.  Check the regression tables and fit the same models in R, using the `lm` function.
 3.  Use R to check the assumptions.
 4.  Take possible steps to address potential problems related to assumptions.
 
@@ -602,7 +602,7 @@ We illustrate the method by a conditional process model that includes both media
 
 #### STEP 1: Fit the model with PROCESS
 
-As a first step, let's fit the model in PROCESS. We can omit *jn* and *plot* options which are not relevant in this case.
+As a first step, let's fit the model in `process`. We can omit `jn` and `plot` options which are not relevant in this case.
 
 ```{r message=FALSE, warning=FALSE}
 process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
@@ -617,9 +617,9 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
 
 #### STEP 2: Check the regression tables and fit the models in R
 
-The results consists of two regression tables, one for each dependent variable. The former is the model of "negtone" and the latter of "perform". So we're talking about two regression models.
+The results consists of two regression tables, one for each dependent variable. The former is the model of `negtone` and the latter of `perform`. So we're talking about two regression models.
 
-We fit exactly the same models using R, plugging the variables shown in each table in the *lm* function. Note that the second model is moderated, thus includes a **interaction** term: *Int_1*. From the "Product term key" table you can see that the interaction is between the variables "negtone" and "negexp": "negtone x negexp". To create this interaction term into *lm*, you just put the variables into the function using the multiplication symbol $*$: $negtone * negexp$.
+We fit exactly the same models using R, plugging the variables shown in each table in the `lm` function. Note that the second model is moderated, thus includes a interaction term: `Int_1`. From the "Product term key" table you can see that the interaction is between the variables `negtone` and `negexp`: `negtone x negexp`. To create this interaction term into `lm`, you just put the variables into the function using the multiplication symbol $*$:$negtone * negexp$.
 
 ```{r}
 m1 <- lm(negtone ~ dysfunc, data = teams)
@@ -650,9 +650,9 @@ par(mfrow=c(2,2))
 plot(m2)
 ```
 
-We can observe that the red line is roughly horizontal in the two plots to the left, which is good (**linearity** assumption).
+We can observe that the red line is roughly horizontal in the two plots to the left, which is good (linearity assumption).
 
-The points are also more or less randomly distributed around the red line (**homoskedasticity** assumption), which is fine. In case of doubt, a formal test of homoskedasticity is the **Breusch-Pagan Test**. It is implemented in the function **bptest** of the library **lmtest**. As long as the test is not statistically significant, no obvious heteroskedastic problems are present.
+The points are also more or less randomly distributed around the red line (homoskedasticity assumption), which is fine. In case of doubt, a formal test of homoskedasticity is the Breusch-Pagan Test. It is implemented in the function `bptest` of the library `lmtest`. As long as the test is not statistically significant, no obvious heteroskedastic problems are present.
 
 ```{r message=FALSE, warning=FALSE}
 library(lmtest)
@@ -663,23 +663,23 @@ bptest(m1)
 bptest(m2)
 ```
 
-The graph in the upper right panel shows points approximately on a diagonal line, which is also good (**normality** hypothesis). In case of dubts, a formal test of normality is the **Shapiro-Wilk's test**. It needs to be applied to the residuals of the model. Normality is presumed unless the test is statistically significant.
+The graph in the upper right panel shows points approximately on a diagonal line, which is also good (normality hypothesis). In case of doubts, a formal test of normality is the Shapiro-Wilk's test. It needs to be applied to the residuals of the model. Normality is presumed unless the test is statistically significant.
 
 ```{r}
 shapiro.test(m1$residuals)
 shapiro.test(m2$residuals)
 ```
 
-The bottom right chart is mainly used to verify the presence of **outliers**. They are "influential observations" whose presence significantly affects the model results. They can be found off the dashed lines (undetected, which is fine).
+The bottom right chart is mainly used to verify the presence of outliers. They are "influential observations" whose presence significantly affects the model results. They can be found off the dashed lines (undetected, which is fine).
 
-**Independence of observations** is mainly a problem of time series data. In case of doubt, a formal test of this assumption is the **Durbin-Watson test**. It is implemented in the function *dwtest* of the *lmtest* package.The assumption is satisfied if the Durbin-Watson statistic (DW) is about equal to 2, and the test is statistically non-significant.
+Independence of observations is mainly a problem of time series data. In case of doubt, a formal test of this assumption is the Durbin-Watson test. It is implemented in the function `dwtest` of the `lmtest` package.The assumption is satisfied if the Durbin-Watson statistic (DW) is about equal to 2, and the test is statistically non-significant.
 
 ```{r}
 lmtest::dwtest(m1)
 lmtest::dwtest(m2)
 ```
 
-**No multicollinearity** applies only to regression models with more than one independent variable (i.e. multiple regression models). It can be formally verified by calculating the Pearson correlation coefficient between the independent variables and the index **VIF** ("Variance Inflation Factor"). The correlation should include all the independent variables, including the interaction term, if present. The interaction term needs to be calculated manually (this is only the product between the variables). For the assumption to be met the correlation has not to be too high and the VIF scores have to be well below 10 (e.g., in a recent publication it can be read that *"None of the correlations among the independent variables exceeded r=\|0.58\| while the largest variance inflation factor (VIF) was VIF=1.60, indicating that multicollinearity does not limit the regression model"*).
+No multicollinearity applies only to regression models with more than one independent variable (i.e. multiple regression models). It can be formally verified by calculating the Pearson correlation coefficient between the independent variables and the index VIF ("Variance Inflation Factor"). The correlation should include all the independent variables, including the interaction term, if present. The interaction term needs to be calculated manually (this is only the product between the variables). For the assumption to be met the correlation has not to be too high and the VIF scores have to be well below 10 (e.g., in a recent publication it can be read that *"None of the correlations among the independent variables exceeded r=\|0.58\| while the largest variance inflation factor (VIF) was VIF=1.60, indicating that multicollinearity does not limit the regression model"*).
 
 ```{r}
 # just keep the independent variables 
@@ -696,13 +696,13 @@ car::vif(m2)
 
 #### STEP 4: Take possible steps to address potential problems related to assumptions.
 
-Issues with **linearity** may be fixed through transformations (e.g., log-transforming the variables).
+Issues with linearity may be fixed through transformations (e.g., log-transforming the variables).
 
-**Outliers** have to be thoroughly inspected. If in doubt, you can perform **robust regression** in R and check whether the results are more or less the same as those of PROCESS. Robust regression attempts to dampen the influence of outlying cases in order to provide a better fit to the majority of the data. A good practical tutorial on robust regression is available here: <https://www.youtube.com/watch?v=qte9ASvgElI>.
+Outliers have to be thoroughly inspected. If in doubt, you can perform robust regression in R and check whether the results are more or less the same as those of `process`. Robust regression attempts to dampen the influence of outlying cases in order to provide a better fit to the majority of the data. A good practical tutorial on robust regression is available here: <https://www.youtube.com/watch?v=qte9ASvgElI>.
 
-In case of serious **multicollinearity** problems (based on the VIF index) you can omit one of the highly correlated variables.
+In case of serious multicollinearity problems (based on the VIF index) you can omit one of the highly correlated variables.
 
-Finally, in case of **hetersoskedasticity** problems you can request PROCESS to use heteroskedasticity-consistent (HC) standard errors. The available options are: HC0, HC1, HC2, HC3, and HC4. You only need to add **hc=4** (or a different number between 1 and 4) to the PROCESS function. Heteroskedasticity-consistent (HC) standard errors were also discussed in the first part of the course on regression models. Models with both standard errors and heteroskedasticity-consistent standard errors can be fitted for comparison even if hetersoskedasticity issues are not obvious.
+Finally, in case of hetersoskedasticity problems you can request `process` to use *heteroskedasticity-consistent (HC) standard errors*. The available options are: HC0, HC1, HC2, HC3, and HC4. You only need to add `hc=4` (or a different number between 1 and 4) to the `process` function. Heteroskedasticity-consistent (HC) standard errors were also discussed in the first part of the course on regression models. Models with both standard errors and heteroskedasticity-consistent standard errors can be fitted for comparison even if hetersoskedasticity issues are not obvious.
 
 Hayes and Cay wrote:
 
@@ -710,7 +710,7 @@ Hayes and Cay wrote:
 >
 > Hayes, A. F., & Cai, L. (2007). [Using heteroskedasticity-consistent standard error estimators in OLS regression: An introduction and software implementation](https://link.springer.com/content/pdf/10.3758/BF03192961.pdf). *Behavior research methods*, 39(4), 709-722.
 
-To treat normality problems, bootstrapping can be used to compute confidence intervals for regression coefficients. You only have to add **modelbt = 1** to the PROCESS function. The coefficients with the bootstrap confidence intervals will appear at the bottom of the result. They can be interpreted as usual: if the range overlaps zero, there is not enough evidence to consider it statistically significant.
+To treat normality problems, bootstrapping can be used to compute confidence intervals for regression coefficients. You only have to add `modelbt = 1` to the PROCESS function. The coefficients with the bootstrap confidence intervals will appear at the bottom of the result. They can be interpreted as usual: if the range overlaps zero, there is not enough evidence to consider it statistically significant.
 
 These confidence intervals are not the same as those reported in the regression tables at the beginning of the output. The latter is based on hypotheses of normality, and are symmetrical around the coefficient. The percentile bootstrap confidence intervals are rather "asymmetric". They are not based on a normal theoretical distribution, but of the empirical distribution as given in the sample (which is almost never perfectly normal).
 
@@ -730,4 +730,4 @@ process(y = "perform", x = "dysfunc", m = "negtone", w = "negexp",
 
 ## Custom models
 
-PROCESS implements several pre-programmed models to perform a wide range of common analyses. Advanced users can customize templates and even build new templates with more complex relationships. The details are given in the appendix of Hayes' book.
+`process` implements several pre-programmed models to perform a wide range of common analyses. Advanced users can customize templates and even build new templates with more complex relationships. The details are given in the appendix of Hayes' book.

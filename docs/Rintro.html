@@ -330,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Understand the definition of the following terms: script, object, and important R objects such as matrix, data.frame, and vector, statistical graph/chart, package, and function.</p></li>
 <li><p>Understand the principal components of the RStudio interface and their roles.</p></li>
 <li><p>Know how to generate a new RStudio project and access a previously created RStudio project.</p></li>
-<li><p>Know how to create fresh folders within an RStudio project.</p></li>
+<li><p>Know how to create new folders within an RStudio project.</p></li>
 <li><p>Know how to create, save, and open a script.</p></li>
 <li><p>Know how to execute a line of code.</p></li>
 <li><p>Understand how to install and load a package.</p></li>
@@ -340,8 +340,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="rstudio-environment">Rstudio environment</h2>
 <p>The RStudio interface is divided into four panes or quadrants. The specific layout may vary depending on user preferences, but a standard RStudio interface is as follows:</p>
 <p><img src="img/r-environment.png" class="img-fluid"></p>
-<p>The RStudio interface is divided into four quadrants. The top-left pane displays the scripts, which are text files containing a set of commands (code) used to perform analyses. Scripts are saved with the “.r” extension. The top-right quadrant includes the Environment window, where data sets and other objects created or loaded in a RStudio work session are stored. In R, objects refer to everything a user can manipulate, such as data sets, functions, and algorithms. This quadrant also contains tabs for Files, History, Connections, Packages, and more. The Files tab allows users to navigate files and folders to find scripts and data sets to upload.</p>
-<p>The bottom-right quadrant is where graphical outputs, such as plots and statistical charts, are displayed. Statistical graphs or charts are visual representations of statistical data. This quadrant also contains a tab for R packages, which are collections of functions for performing specific operations and analyses. The Help section is also located here, providing information on functions and how to use them. Users can search for specific functions or type “?functionname” in the console to access the Help section.</p>
+<p>The top-left pane displays the scripts, which are text files containing a set of commands (code) used to perform analyses. Scripts are saved with the “.r” extension. The top-right quadrant includes the Environment window, where data sets and other objects created or loaded in a RStudio work session are stored. In R, objects refer to everything a user can manipulate, such as data sets, functions, and algorithms. This quadrant also contains tabs for Files, History, Connections, Packages, and more. The Files tab allows users to navigate files and folders to find scripts and data sets to upload.</p>
+<p>The bottom-right quadrant is where graphical outputs, such as plots and statistical charts, are displayed. Statistical graphs or charts are visual representations of statistical data. This quadrant also contains a tab for R packages, which are collections of functions for performing specific operations and analyses. The Help section is also located here, providing information on functions and how to use them. Users can search for specific functions or type <code>?function_name</code> in the console to access the Help section.</p>
 <p>The bottom-left quadrant displays the R Console window, where code is executed and output is produced. Users can type and run commands directly in the console, but the code will not be saved unless it is written in a script.</p>
 </section>
 <section id="rstudio-projects" class="level2">
@@ -352,10 +352,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Click on File (on the top left);</li>
 <li>Click on New Project;</li>
 <li>Select New Directory, and New Project;</li>
-<li>Choose a folder for the project and give it a name. For our course, use ADA_MMCP (Advanced Data Analysis, Mediation Moderation Conditional Process Analysis).</li>
+<li>Choose a folder for the project and give it a name. For our course, use <code>ADA_MMCP</code> (Advanced Data Analysis, Mediation Moderation Conditional Process Analysis).</li>
 </ul>
 <p><img src="img/r-studio-project-creation.png" class="img-fluid"></p>
-<p>You have now created a project along with its own folder. The name of the folder is identical to that of the project. Inside the folder, there is a file with extension .Rproj and the same name of the project (e.g., “ADA_MMCP.Rproj”). This is the file you have to open whenever you want to work on the project.</p>
+<p>You have now created a project along with its own folder. The name of the folder is identical to that of the project. Inside the folder, there is a file with extension <code>.Rproj</code> and the same name of the project (e.g., <code>ADA_MMCP.Rproj</code>). This is the file you have to open whenever you want to work on the project.</p>
 <p>Creating sub-folders within the main project folder can help organize the different types of files used in the project. For example, you may want to have a separate folder for data sets, another one for scripts, and another for outputs such as tables and graphs.</p>
 <p>To create a sub-folder within the main project folder:</p>
 <ol type="1">
@@ -367,21 +367,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Your new sub-folder will appear in the Files tab.</p>
 <p><img src="img/new-folder.png" class="img-fluid"></p>
 <p>Now, create a folder for the data sets, called data. You will save here the data sets we are going to use during the course.</p>
-<p>Once the project has been created, we can open a new <strong>script</strong> and save it. We said that a script is a file that contains code. Script files are automatically saved with extension .r. You can open, update, and save your script whenever you like. Saving code is important to save time! Otherwise, you would have to write the same code whenever you work on the project. Create a script named introduction_to_r. You will use it to write and run the code we are going to use today.</p>
+<p>Once the project has been created, we can open a new <strong>script</strong> and save it. We said that a script is a file that contains code. Script files are automatically saved with extension .r. You can open, update, and save your script whenever you like. Saving code is important to save time! Otherwise, you would have to write the same code whenever you work on the project. Create a script named <code>introduction_to_r</code>. You will use it to write and run the code we are going to use in this learning unit.</p>
 <p>To execute (or “run”) the code in the script, we can highlight the line of code we want to run, and then click the Run button. This button can be found on the top-right corner of the editor window. Alternatively, you can place the cursor on the row containing the code to be executed, and then click Run. Instead of the Run button, the code can be executed by using the Ctrl + Enter key combination (also Command + Enter on a Mac).</p>
-<p>In your script “introduction_to_r”, write a simple addition and execute it.</p>
+<p>In your script <code>introduction_to_r</code> write a simple addition and execute it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
 </div>
-<p>Now, save the script by clicking on the disk symbol you see in the top left corner of the editor. Close the script by clicking on the small “x” (upper right corner of the editor). Finally, in the “Files” window (upper left-hand quadrant), find the “introduction_to_r” script and reopen it in RStudio.</p>
+<p>Now, save the script by clicking on the disk symbol you see in the top left corner of the editor. Close the script by clicking on the small “x” (upper right corner of the editor). Finally, in the “Files” window (upper left-hand quadrant), find the <code>introduction_to_r</code> script and reopen it in RStudio.</p>
 </section>
 <section id="install-and-load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-and-load-packages">Install and load packages</h2>
 <p>Packages (also libraries) are kinds of “toolboxes” containing sets of functions used to perform different types of operations.</p>
-<p>R already includes several default functions and packages, but several additional packages are available. It is possible to install a package by using the menu (Tools/Install Packages…) or by using the function install.packages(“name-of-the-package-here”).</p>
+<p>R already includes several default functions and packages, but several additional packages are available. It is possible to install a package by using the menu (Tools/Install Packages…) or by using the function <code>install.packages("name-of-the-package-here")</code>.</p>
 <p>A very useful package is tidyverse. Tidyverse actually includes several other packages, such as <code>ggplot2</code> to create charts, and dplyr to manipulate data sets (“data wrangling”).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -440,8 +440,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/glbwarm.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This function creates a object called glbwarm. You can see this object in the Environment window (top-right quadrant). We said that an object is something that can be manipulated in R. In this case, the object is a data set. You can manipulate it, for example, to perform analyses, create new data, etc.</p>
-<p>Also note that, in R, we use an arrow <strong>&lt;-</strong> to save the data set in an object. The arrow “transfers” the result of a function (its output) into an object. If you run a function without saving the output in an object through the arrow sign, the output is printed on the console.</p>
+<p>This function creates a object called <code>glbwarm</code>. You can see this object in the Environment window (top-right quadrant). We said that an object is something that can be manipulated in R. In this case, the object is a data set. You can manipulate it, for example, to perform analyses, create new data, etc.</p>
+<p>Also note that, in R, we use an arrow <strong><code>&lt;-</code></strong> to save the data set in an object. The arrow “transfers” the result of a function (its output) into an object. If you run a function without saving the output in an object through the arrow sign, the output is printed on the console.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/glbwarm.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -507,7 +507,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 <p>In this case, we can see that the first three variables are numerical (num), and the second three integers (int). Numeric (also double) is a data type that contains <a href="https://en.wikipedia.org/wiki/Real_number">real numbers</a>. Integers is a data type that contains <a href="https://en.wikipedia.org/wiki/Integer">integer numbers</a>.</p>
 <p>There are also other types of data, such as character (char) for character values, logical for logical values (TRUE and FALSE), and factors to describe items that can have a finite number of values (gender: male, female, other; education, etc.).</p>
-<p>Sometimes, variables represets dates and times. Just to make an example of data set inclusing several type of data, we create a data set named data_set_example by running the following code.</p>
+<p>Sometimes, variables represents dates and times. Just to make an example of data set inclusing several type of data, we create a data set named <code>data_set_example</code> by running the following code.</p>
 <div class="cell">
 
 </div>
@@ -525,7 +525,7 @@ $ partisanship &lt;dbl&gt; -1.33, 4.56, -3.12, 2.54
 $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code></pre>
 </div>
 </div>
-<p>Data analysis operations basically consist of manipulations of objects through functions. An object is an entity composed of a name and a value (such as a number) or more complex information (such as a data set). The arrow &lt;- sign is used to create objects, or to assign/update a value, if the object already exists.</p>
+<p>Data analysis operations basically consist of manipulations of objects through functions. An object is an entity composed of a name and a value (such as a number) or more complex information (such as a data set). The arrow <code>&lt;-</code> sign is used to create objects, or to assign/update a value, if the object already exists.</p>
 <p>Let’s make an example. Let’s create an object with name object_2 and value equal to 2.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>object_2 <span class="ot">&lt;-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -537,7 +537,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>Object names can be freely chosen. However, avoid using names that are already used for other objects and functions. For example, avoid giving the name “read.csv” to a data set, as this would overwrite the “read.csv” function. Similarly, if you use “object_2” to save the output of another function, or to represent another value, you will delete the previous value (2):</p>
+<p>Object names can be freely chosen. However, avoid using names that are already used for other objects and functions. For example, avoid giving the name <code>read.csv</code> to a data set, as this would overwrite the <code>read.csv</code> function. Similarly, if you use <code>object_2</code> to save the output of another function, or to represent another value, you will delete the previous value (2):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>object_2 <span class="ot">&lt;-</span> <span class="dv">44</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>object_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -612,7 +612,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 [10,]   10   20   30   40   50</code></pre>
 </div>
 </div>
-<p>As matrixes are mathematical objects, they can contain only numbers.</p>
+<p>As matrices are mathematical objects, they can contain only numbers.</p>
 <p>A data.frame is a very important object for data analysis and in this course we will work almost exclusively with data.frames.</p>
 <p>Data frames are similar to matrices, but they can contain several types of data: numbers, characters (for instance, the texts of an answer), factors (such as gender, or ordered categories, such as “low”, “medium”, “high”), and dates. We have already encountered a couple of examples of data frames:</p>
 <div class="cell">
@@ -635,7 +635,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 4     Sarah      M  45     TRUE medium         2.54 2020-01-03</code></pre>
 </div>
 </div>
-<p>Data frames are important because they represent data sets in R. For instance, if you import a csv or an Excel file in R, the corresponding R object is a data.frame. You can see the type of data by using the function</p>
+<p>Data frames are important because they represent data sets in R. For instance, if you import a csv or an Excel file in R, the corresponding R object is a <code>data.frame</code>. You can see the type of data by using the function <code>class</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -654,7 +654,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <pre><code>[1] "matrix" "array" </code></pre>
 </div>
 </div>
-<p>The columns of a data set/data frame represent variables, and rows represent cases. For example, the global warming data set (glbwarm) comprises 815 rows/cases and 7 columns/variables. This data set results from measuring 815 persons on 7 dimensions (e.g., support for government, ideology, age, etc.).</p>
+<p>The columns of a data set/data frame represent variables, and rows represent cases. For example, the global warming data set (<code>glbwarm</code>) comprises 815 rows/cases and 7 columns/variables. This data set results from measuring 815 persons on 7 dimensions (e.g., support for government, ideology, age, etc.).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -681,7 +681,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <pre><code>[1] "govact"   "posemot"  "negemot"  "ideology" "age"      "sex"      "partyid" </code></pre>
 </div>
 </div>
-<p>We can access the columns of a data.frame by using the following sintax: name of the data frame, dollar sign, name of the column. For isntance, to access the column “age” of the data.frame “glbwarm”:</p>
+<p>We can access the columns of a <code>data.frame</code> by using the following syntax: name of the data frame, dollar sign <code>$</code>, name of the column. For instance, to access the column “age” of <code>glbwarm</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>glbwarm<span class="sc">$</span>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -690,7 +690,7 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 <pre><code> [1] 61 55 85 59 22 34 47 65 50 60</code></pre>
 </div>
 </div>
-<p>You may have noticed that this is just a vector. Indeed, data.frames are object composed by a series of vectors.</p>
+<p>You may have noticed that this is just a vector. Indeed, <code>data.frames</code> are object composed by a series of vectors.</p>
 <p>Lists are another common type of object. Lists can be used to contain different types of objects. For example, a list may include a matrix, a number, and a data.frame. We will not work with this type of object in this course.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(a_matrix, object_2, data_set_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -720,7 +720,6 @@ $ date         &lt;date&gt; 2020-01-01, 2020-03-01, 2020-01-02, 2020-01-03</code
 </div>
 </div>
 <p>An object can also represent a function. We said that functions can be conceived as “mechanisms” that generate output from an input. Functions can transform other objects based on specific rules. For instance, addition is a function that receives two or more numbers as input and generates an output that corresponds to the sum of these numbers.</p>
-<p>`</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -766,16 +765,16 @@ F-statistic: 172.4 on 1 and 813 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="exercise" class="level3">
 <h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
 <ul>
-<li><p>Open the RStudio project you created today</p></li>
-<li><p>Open the script you created today</p></li>
-<li><p>Write and run a few mathematical operations in the script file (e.g., 3+2, 5/3, etc.)</p></li>
+<li><p>Open the RStudio project you created in this learning unit</p></li>
+<li><p>Open the script you created in this learning unit</p></li>
+<li><p>Write and run a few mathematical operations in the script file (e.g., <code>3+2</code>, <code>5/3</code>, etc.)</p></li>
 <li><p>Create a new object containing the output of the function <code>sum</code> (e.g., <code>my_sum &lt;- sum(4, 8)</code>) and use this object to perform another mathematical operation of your choice</p></li>
 <li><p>Save the updated script and close it</p></li>
 <li><p>Create and save a new script</p></li>
 <li><p>Copy all the data sets you find on Moodle in your “data” folder</p></li>
 <li><p>Load one of the data set</p></li>
 <li><p>Take a look at the data set using the functions <code>View</code>, <code>str</code>, and <code>glimpse</code> (remember to load the package <code>tidyverse</code> before using the glimpse function)</p></li>
-<li><p>Access one of the column of the data set (name_of_dataframe + dollar sign <code>$</code> + name of the column) using the dollar sign</p></li>
+<li><p>Access one of the column of the data set (<code>name_of_dataframe</code> + dollar sign <code>$</code> + name of the column) using the dollar sign.</p></li>
 </ul>
 
 

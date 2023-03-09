@@ -303,12 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
   </ul></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a>
-  <ul class="collapse">
-  <li><a href="#r-squared-1" id="toc-r-squared-1" class="nav-link" data-scroll-target="#r-squared-1">R-squared</a></li>
-  <li><a href="#intercept-1" id="toc-intercept-1" class="nav-link" data-scroll-target="#intercept-1">Intercept</a></li>
-  <li><a href="#coefficients-1" id="toc-coefficients-1" class="nav-link" data-scroll-target="#coefficients-1">Coefficients</a></li>
-  </ul></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
   <li><a href="#residuals-and-assumptions" id="toc-residuals-and-assumptions" class="nav-link" data-scroll-target="#residuals-and-assumptions">Residuals and assumptions</a>
   <ul class="collapse">
   <li><a href="#check-the-assumptions" id="toc-check-the-assumptions" class="nav-link" data-scroll-target="#check-the-assumptions">Check the assumptions</a></li>
@@ -406,17 +401,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="linear-models" class="level1">
 <h1>Linear models</h1>
 <p>A linear model is a special kind of statistical model based on linear relationships (see the Pearson’s correlation coefficient) between two or more variables.</p>
-<p>It is represented as a <strong>mathematical equation</strong> that links one (in case of a <em>simple linear regression model</em>) or more input variables (in case of a <em>multiple linear regression model</em>) to an output variable Y, by exploiting information contained in the <strong>association</strong> between the <strong>inputs</strong> and the <strong>output</strong>.</p>
+<p>It is represented as a mathematicalequation that links one (in case of a <em>simple</em> linear regression model) or more input variables (in case of a <em>multiple</em> linear regression model) to an output variable Y, by exploiting information contained in the <strong>association</strong> between the <strong>inputs</strong> and the <strong>output</strong>.</p>
 <ul>
-<li>The input variables are also called <strong>“predictors”, or “independent”, “explanatory”, or “antecedent” variables</strong>.</li>
-<li>The output variable is also called <strong>“outcome”, “dependent”, or “consequent” variable</strong>.</li>
+<li>The input variables are also called “predictors”, or “independent”, “explanatory”, or “antecedent” variables.</li>
+<li>The output variable is also called “outcome”, “dependent”, or “consequent” variable.</li>
 </ul>
-<p>Linear regression models, as a basic application, can be used for answering <strong>questions of the “whether” or “if” variety</strong>. These questions ask whether two variables are correlated, causally or otherwise (<em>explanation</em>), or if something is more or less likely to happen in one set of circumstances or conditions than another (<em>prediction</em>).</p>
+<p>Linear regression models, as a basic application, can be used for answering questions of the <strong>“whether”</strong> or <strong>“if”</strong> variety. These questions ask whether two variables are correlated, causally or otherwise (<em>explanation</em>), or if something is more or less likely to happen in one set of circumstances or conditions than another (<em>prediction</em>).</p>
 <ul>
 <li><strong>Prediction</strong>: predict values taken by the dependent variable when we only know the values taken on by the independent variable(s) (e.g., predict income based on sex and level of education);</li>
 <li><strong>Explanation</strong>: explaining the structure of a phenomenon by testing hypotheses about the relationships between dependent and independent variables (i.e., is there a relationships between two variables? How strong is it?)</li>
 </ul>
-<p>To do that, regression analysis computes an <strong>equation</strong> such that, given the input variables, the result of the equation yields:</p>
+<p>To do that, regression analysis computes an equation such that, given the input variables, the result of the equation yields:</p>
 <ul>
 <li>An estimate of the dependent variable (<em>prediction</em>).</li>
 <li>A measure of the importance and <em>statistical significance</em> of the relationships between the independent variables and the dependent variable (<em>explanation</em>).</li>
@@ -429,18 +424,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For example, <span class="math inline">\(Y\)</span> could be income, and <span class="math inline">\(X\)</span> could be a variable used to try to explain/predict it, say level of education.</p>
 <p>The <strong>multiple linear regression model</strong> is an extension of this simpler model, which includes more than one independent variable. For example, it may be used to predict income based on level of education, sex, and other variables.</p>
 <p><span class="math display">\[Y_j = i + b_1X_{1j} + b_2X_{2j} + ... + e_j\]</span></p>
-<p>From a data set containing the values of the <span class="math inline">\(Xs\)</span> and <span class="math inline">\(Y\)</span> variables, linear regression modeling finds the weights <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span> (referred to as <strong>regression coefficients</strong>) that, multiplied by the values of the variable, represents the best approximation of the values of <span class="math inline">\(Y\)</span> in the equation. To estimate the coefficients of the model, the most common procedure is referred to as <strong>ordinary least squares (OLS)</strong> criterion.</p>
+<p>From a data set containing the values of the <span class="math inline">\(Xs\)</span> and <span class="math inline">\(Y\)</span> variables, linear regression modeling finds the weights <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span> (referred to as regression <strong>coefficients</strong>) that, multiplied by the values of the variable, represents the best approximation of the values of <span class="math inline">\(Y\)</span> in the equation. To estimate the coefficients of the model, the most common procedure is referred to as <strong>ordinary least squares (OLS)</strong> criterion.</p>
 </section>
 <section id="multiple-linear-regression-model" class="level1">
 <h1>Multiple linear regression model</h1>
 <p>In practice, the single linear regression model is never used. If you are only interested in the relationship between two variables, you can calculate a correlation coefficient.</p>
-<p>However, the problem with the correlation coefficient is that the relationships between two variables is always ambiguous, and <strong>alternative explanations abound</strong>. For example, the correlation between income and education can simply reflect a difference in the status of the family of origin. Wealthier families have more resources and connections, send their sons and daughters to a better school and help them find better jobs, resulting in higher incomes.</p>
-<p>In general terms, what makes the association between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> ambiguous, leading to alternative explanations, is that <strong>people who differ on X and Y also likely differ on many other things, and it may be those things that are responsible for the association</strong>.</p>
-<p>Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counter-factual reasoning by <strong>estimating what the association between each independent variable X and the dependent variable Y would be if people did not differ on the other independent variables</strong> in the regression model. It does this by <em>“mathematically equating”</em> people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as <strong>partialling out</strong> those other variables from the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, or <strong>statistically control</strong> of those variables.</p>
+<p>However, the problem with the correlation coefficient is that the relationships between two variables is always ambiguous, and <strong>alternative explanations</strong> abound. For example, the correlation between income and education can simply reflect a difference in the status of the family of origin. Wealthier families have more resources and connections, send their sons and daughters to a better school and help them find better jobs, resulting in higher incomes.</p>
+<p>In general terms, what makes the association between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> ambiguous, leading to alternative explanations, is that <em>people who differ on X and Y also likely differ on many other things, and it may be those things that are responsible for the association.</em></p>
+<p>Multiple regression gives a researcher a means of engaging in a kind of mathematically aided counter-factual reasoning by estimating what the association between each independent variable X and the dependent variable Y would be <em>if people did not differ on the other independent variables</em> in the regression model. It does this by “mathematically equating” people (or whatever the unit of analysis is) on those variables. This equating process is also referred to as <em>partialling out</em> those other variables from the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, or <em>statistically control</em> of those variables.</p>
 <blockquote class="blockquote">
-<p>Partial out: “to give (a variable) a fixed value while considering the relationship between two related variables” (Merriam-Webster)</p>
+<p>Partial out: “to give (a variable) a fixed value while considering the relationship between two related variables”</p>
 </blockquote>
-<p>For example, to estimate the effect of level of education on income, we could fit a multiple linear regression model. This model would include variables that we think are associated with income. For example, level of education, wealth of the family of origin, and a measure of social connection. This model can estimate the effect of education on income, <strong>holding constant all other independent variables</strong> (i.e., net of the effect of other variables). In practical terms, this means that the regression model shows an estimate of the effect of education on income among individuals with families of the same status and with the same type of social connections, so this variable should no longer have a confounding effect on our estimate of the effect of education.</p>
+<p>For example, to estimate the effect of level of education on income, we could fit a multiple linear regression model. This model would include variables that we think are associated with income. For example, level of education, wealth of the family of origin, and a measure of social connection. This model can estimate the effect of education on income, <em>holding constant all other independent variables</em> (i.e., net of the effect of other variables). In practical terms, this means that the regression model shows an estimate of the effect of education on income among individuals with families of the same status and with the same type of social connections, so this variable should no longer have a confounding effect on our estimate of the effect of education.</p>
 </section>
 <section id="elements-of-the-linear-model-equation" class="level1">
 <h1>Elements of the linear model equation</h1>
@@ -448,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[Y_j = i + bX_j + e_j\]</span></p>
 <section id="the-index-j" class="level3">
 <h3 class="anchored" data-anchor-id="the-index-j">The index j</h3>
-<p><span class="math inline">\(_j\)</span> is any unique observation/case within the dataset. Since rows represent cases, you can view the subscript <span class="math inline">\(_j\)</span> as a row in a dataset.</p>
+<p>The index <span class="math inline">\(_j\)</span> indicates any unique observation/case within the data set. Since rows represent cases, you can view the subscript <span class="math inline">\(_j\)</span> as a row in a data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">j =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">23</span>, <span class="dv">34</span>, <span class="dv">54</span>, <span class="dv">45</span>), </span>
@@ -467,48 +462,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="intercept" class="level3">
 <h3 class="anchored" data-anchor-id="intercept">Intercept</h3>
 <p><span class="math display">\[Y_j = i + bX_j + e_j\]</span></p>
-<p><span class="math inline">\(i\)</span> is a numerical coefficient estimated by the regression model. It is a constant (i.e., a fixed value) and is referred to as <strong>intercept</strong> or <strong>constant</strong>. It is the average (mean) value of <span class="math inline">\(Y\)</span> when the independent variable(s) assume the value 0.</p>
-<p>Although the intercept is mathematically significant, <strong>it often makes no sense and cannot be interpreted</strong>. It is not meaningful when:</p>
+<p>The <span class="math inline">\(i\)</span> indicates a numerical coefficient estimated by the regression model. It is a constant (i.e., a fixed value) and is referred to as <em>intercept</em> or <em>constant</em>. It is the average (mean) value of <span class="math inline">\(Y\)</span> when the independent variable(s) assume the value 0.</p>
+<p>Although the intercept is mathematically significant, <em>sometimes</em> <em>it makes no sense and cannot be interpreted.</em> It is not meaningful when:</p>
 <ul>
-<li>the independent variables do not include zero in their data range</li>
-<li>this value is not significant or even impossible</li>
+<li>The independent variables do not include zero in their data range;</li>
+<li>This value is not significant or even impossible.</li>
 </ul>
-<p>For example, if we predict the weight of people based on height, the intercept has no substantial meaning, because there is no person with a height equal to zero. In case like this, the intercept can be ignored.</p>
+<p>For example, if we predict the weight of people based on their height, the intercept has no substantial meaning, because there is no person with a height equal to zero.</p>
 </section>
 <section id="regression-coefficient" class="level3">
 <h3 class="anchored" data-anchor-id="regression-coefficient">Regression coefficient</h3>
 <p><span class="math display">\[Y_j = i + bX_j + e_j\]</span></p>
-<p><span class="math inline">\(b\)</span> (or <strong>beta</strong>) is a numerical coefficient estimated by the regression model (e.g., through the OLS procedure). It is referred to as <strong>regression coefficient</strong> and represents the <em>weight</em> assigned to the values of the variable <span class="math inline">\(X\)</span>. It represents the <strong>average change in</strong> <span class="math inline">\(Y\)</span> for every one unit increase in <span class="math inline">\(X\)</span>. When using a <strong>multiple linear regression model</strong> (<span class="math inline">\(Y_j = i + b_1X_{1j} + b_2X_{2j} + ... + e_j\)</span>). It represents the <strong>average change in</strong> <span class="math inline">\(Y\)</span> for every one unit increase in <span class="math inline">\(X\)</span>, holding all other independent variables constant.</p>
+<p>The letter <span class="math inline">\(b\)</span> (or <em>beta</em>) indicates a numerical coefficient estimated by the regression model (e.g., through the OLS procedure). It is referred to as regression <em>coefficient</em> and represents the <em>weight</em> assigned to the values of the variable <span class="math inline">\(X\)</span>. It represents <em>the average change in</em> <span class="math inline">\(Y\)</span> <em>for every one unit</em> <em>increase in</em> <span class="math inline">\(X\)</span>. When using a multiple linear regression model (<span class="math inline">\(Y_j = i + b_1X_{1j} + b_2X_{2j} + ... + e_j\)</span>). It represents the average change in <span class="math inline">\(Y\)</span> for every one unit increase in <span class="math inline">\(X\)</span>, <em>holding all other independent variables constant.</em></p>
 </section>
 <section id="error" class="level3">
 <h3 class="anchored" data-anchor-id="error">Error</h3>
-<p><span class="math inline">\(e\)</span> is the <em>error</em> or <strong>residual</strong>, and represents the imprecision and uncertainty in the estimate. It is the <strong>difference between the values of Y estimated by the model, and the true Y values</strong>.</p>
+<p>The letter <span class="math inline">\(e\)</span> indicates the <em>error</em> <em>term</em> or <em>residual</em>, and represents the imprecision and uncertainty in the estimate. It is the difference between the values of <span class="math inline">\(Y\)</span> estimated by the model, and the true values of <span class="math inline">\(Y\)</span>.</p>
 </section>
 </section>
 <section id="fit-a-linear-regression-model-with-r" class="level1">
 <h1>Fit a linear regression model with R</h1>
 <p>The R function to fit a linear regression model is <code>lm</code>.</p>
-<p>The function takes at least two arguments separated by a <em>tilde</em> (~ check how to write that with your specific keyword. You can also copy it from the help by typing <code>?tilde</code>):</p>
+<p>The function takes at least two arguments separated by a <em>tilde</em> (the symbol <code>~</code> : check how to write that with your specific keyword. You can also copy/paste it from the help by typing <code>?tilde</code>):</p>
 <ul>
 <li>To the left of the tilde is the dependent variable (<span class="math inline">\(Y\)</span>)</li>
-<li>To the right of the tilde is the independent variables (<span class="math inline">\(X\)</span>) separated with the plus (+) symbol.</li>
+<li>To the right of the tilde is the independent variables (<span class="math inline">\(X\)</span>) separated with the plus (<code>+</code>) symbol.</li>
 </ul>
-<p>We also use the argument <em>data</em> for the name of the dataset.</p>
+<p>The argument <code>data</code> is used for the name of the data set, which is usually a data frame.</p>
 <p>The function <code>summary</code> is used to see the results of the model fitting functions.</p>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
-<p>Load the dataset “glbwarm”.</p>
+<p>Load the data set <code>glbwarm</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the dataset</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data set</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/glbwarm.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="simple-linear-regression" class="level4">
 <h4 class="anchored" data-anchor-id="simple-linear-regression">Simple linear regression</h4>
-<p>Let’s fit a <strong>simple linear regression model</strong> that predicts support for government action to mitigate climate change (independent variable <span class="math inline">\(Y = govact\)</span>), based on negative emotion about this issue (<span class="math inline">\(X = negemot\)</span>).</p>
+<p>Let’s fit a simple linear regression model that predicts support for government action to mitigate climate change (independent variable <span class="math inline">\(Y = govact\)</span>), based on negative emotion about this issue (<span class="math inline">\(X = negemot\)</span>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(govact <span class="sc">~</span> negemot, <span class="at">data =</span> glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The function <code>summary</code> produce the output.</p>
+<p>The function <code>summary</code> produces the output.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -535,7 +530,7 @@ F-statistic: 407.3 on 1 and 813 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="multiple-linear-regression" class="level4">
 <h4 class="anchored" data-anchor-id="multiple-linear-regression">Multiple linear regression</h4>
-<p>The following code fits a <strong>multiple linear regression model</strong> that predicts support for government action to mitigate climate change (independent variable <span class="math inline">\(Y = govact\)</span>), based on several variables.</p>
+<p>The following piece of code fits a multiple linear regression model that predicts support for government action to mitigate climate change (independent variable <span class="math inline">\(Y = govact\)</span>), based on several variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(govact <span class="sc">~</span> negemot <span class="sc">+</span> posemot <span class="sc">+</span> ideology <span class="sc">+</span> sex <span class="sc">+</span> age, </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -572,7 +567,7 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="output" class="level3">
 <h3 class="anchored" data-anchor-id="output">Output</h3>
-<p>Consider the output of the “lm2” multiple linear regression model.</p>
+<p>Consider the output of the <code>lm2</code> multiple linear regression model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -601,20 +596,17 @@ Multiple R-squared:  0.3883,    Adjusted R-squared:  0.3845
 F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>The output is composed of the following sections:</p>
-<section id="residuals" class="level4">
-<h4 class="anchored" data-anchor-id="residuals">Residuals</h4>
-<p>At the top of the output, there is the five-number summary of <strong>Residuals</strong> (the errors). In linear regression, the distribution is expected to have some characteristics. These will be discussed later when presenting the linear regression assumptions.</p>
-</section>
-<section id="r-squared" class="level4">
-<h4 class="anchored" data-anchor-id="r-squared">R-squared</h4>
-<p>At the bottom of the table, there is general information on the model. Of particular interest is the <strong>R-squared</strong> and the <strong>p-value</strong>:</p>
+<p>This output is composed of the following sections:</p>
 <ul>
-<li>After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The <strong>R-squared is a goodness-of-fit measure</strong> which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the <strong>proportion of variance (of the dependent variable) explained by the model</strong> (i.e., how well can we predict the value of <span class="math inline">\(Y\)</span> based on the values of <span class="math inline">\(Xs\)</span>?). <strong>Adjusted R-squared</strong> adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.</li>
-<li>The last row of the output reports a <strong>p-value</strong> and the results from the <em>F-statistic</em>. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The <em>F-statistic</em> compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.</li>
+<li><p><strong>Results:</strong> At the top of the output, there is the five-number summary of residuals (the errors). In linear regression, the distribution is expected to have some characteristics, such as to be normally distributed and homoskedastik. These characteristics will be discussed later when presenting the linear regression assumptions.</p></li>
+<li><p><strong>R-squared:</strong> At the bottom of the table, there is general information on the model. Of particular interest is the R-squared and the <em>p-value</em>:</p>
+<ul>
+<li><p>After fitting a linear regression model, you need to determine how well the model fits the data. Does it do a good job of explaining changes in the dependent variable? The R-squared is a <em>goodness-of-fit</em> measure which indicates on a scale from 0 to 1 the extent to which the model can explains/predicts the dependent variable. In more technical terms, is the proportion of variance (of the dependent variable) explained by the model (i.e., how well can we predict the value of <span class="math inline">\(Y\)</span> based on the values of <span class="math inline">\(Xs\)</span>?). <em>Adjusted R-squared</em> adds a penalty based on the complexity of the model (number of variables) and can be preferred when fitting multiple linear regression models. Both the Multiple R-squared and the Adjusted R-squared values can be reported. It can be reported as a percentage, for example, in this case, the model explains about 38% of the variance.</p></li>
+<li><p>The last row of the output reports a <em>p-value</em> and the results from the <em>F-statistic</em>. We said that linear regression modeling attempts to identify variables that help explain/predict another variable better than its own average (mean). The <em>F-statistic</em> compares the fitted linear model with a model that only uses the mean of the dependent variable. If the p-value is below 0.05, the fitted model is significantly better that a model that uses only the mean.</p></li>
+</ul></li>
 </ul>
 <blockquote class="blockquote">
-<p>The p-value is expressed in scientific notation (2.2e-16). To convert it to a common number, use the function <code>format</code>, adding the number you want to convert, and the option <code>scientific=FALSE</code>. For example:</p>
+<p>Note: The p-value is expressed in scientific notation (e.g., 2.2e-16). To convert it to a common number, you can use the function <code>format</code>, adding the number you want to convert, and the option <code>scientific=FALSE</code>. For example:</p>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(<span class="fl">2.2e-16</span>, <span class="at">scientific=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -622,10 +614,18 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>[1] "0.00000000000000022"</code></pre>
 </div>
 </div>
+<p><strong>Coefficients</strong>: In the middle of the output, there is the coefficients table:</p>
+<ul>
+<li><p>The <strong>Estimate</strong> report shows the regression coefficients of the model (i.e., the <span class="math inline">\(b\)</span> (beta) “weight” of the independent variables).</p></li>
+<li><p><strong>Std. Error</strong> is the standard error of the coefficients (estimates), i.e., their standard deviations. We know that standard deviation is a measure of spread and precision with which the regression coefficient is measured.</p></li>
+<li><p><strong>t value</strong> is the “t statistic” and is the coefficient divided by its standard error. It’s used to calculate the “Pr (&gt;|t|)” which is a way of reporting the p-value, and is the number that you really need to look at. A p-value below 0.05 is marked with at least an asterisk and is said to be statistically significant. It indicates that the independent variable has a statistically significant impact on the dependent variable. In other words, we can conclude that, if all model assumptions held, there is an association between the variables, since it would be unlikely to observe similar values if such an association did not exist.</p></li>
+</ul>
+<p>Notice that the analysis is generally carried out on a statistically <em>representative sample</em> to draw conclusions on a <em>population</em>. A sample is a subset of cases (e.g., the 815 Americans in the <code>glbwarm</code> data set) collected from a larger population (e.g., the entire American population). The sample represents the population on a small scale. A “statistically significant” relationship indicates that, under the statistical model, the observed relationship is likely true and not an artifact in the data sample we analyzed. It suggests that the relationship exists both in the observed data (a sample) and in the population from which the data originated.</p>
 </section>
-<section id="coefficients" class="level4">
-<h4 class="anchored" data-anchor-id="coefficients">Coefficients</h4>
-<p>In the middle of the output, there is the <strong>Coefficients</strong> table:</p>
+</section>
+<section id="interpretation" class="level1">
+<h1>Interpretation</h1>
+<p>How can we interpret the output of the <code>lm2</code> multiple linear regression model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -655,126 +655,62 @@ F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <ul>
-<li><p>The Estimate report shows the regression coefficients of the model (i.e., the <span class="math inline">\(b\)</span> (beta) “weight” of the independent variables).</p></li>
-<li><p>Std. Error is the standard error of the coefficients (estimates), i.e., their standard deviations. We know that standard deviation is a measure of spread and precision with which the regression coefficient is measured.</p></li>
-<li><p>t value is the “t statistic” and is the coefficient divided by its standard error. It’s used to calculate the “Pr (&gt;|t|)” which is a way of reporting the p-value, and is the number that you really need to look at. A p-value below 0.05 is marked with at least an asterisk and is said to be statistically significant. It indicates that the independent variable has a statistically significant impact on the dependent variable. In other words, we can conclude that there is a true association between the variables, since it would be unlikely to observe similar values if such an association did not exist.</p></li>
-</ul>
-<p>Notice that the analysis is carried out on a “sample” to draw conclusions on a “population”. A sample is a subset of cases (e.g., the 815 Americans in the GLBWARM dataset) collected from a larger population (e.g., the entire American population). The sample represents the population on a small scale. A “statistically significant” relationship indicates that, under the statistical model, the observed relationship is likely true and not an artifact in the data sample we analyzed. It suggests that the relationship exists both in the observed data (a sample) and in the population from which the data originated.</p>
-</section>
-</section>
-</section>
-<section id="interpretation" class="level1">
-<h1>Interpretation</h1>
-<p>Consider the output of the “lm2” multiple linear regression model.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = govact ~ negemot + posemot + ideology + sex + age, 
-    data = glbwarm)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--4.8381 -0.6834  0.0705  0.7008  3.4266 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  4.063607   0.205323  19.791  &lt; 2e-16 ***
-negemot      0.440781   0.026433  16.676  &lt; 2e-16 ***
-posemot     -0.026778   0.028145  -0.951    0.342    
-ideology    -0.218269   0.027043  -8.071 2.51e-15 ***
-sex         -0.010066   0.076743  -0.131    0.896    
-age         -0.001309   0.002371  -0.552    0.581    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 1.067 on 809 degrees of freedom
-Multiple R-squared:  0.3883,    Adjusted R-squared:  0.3845 
-F-statistic: 102.7 on 5 and 809 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p>How can we interpret this output?</p>
-<section id="r-squared-1" class="level3">
-<h3 class="anchored" data-anchor-id="r-squared-1">R-squared</h3>
-<p>First, consider the <strong>R-squared</strong>: the model explains a statistically significant (p &lt; .001) and substantial proportion of variance (Multiple R-squared: 0.3883, Adjusted R-squared: 0.3845).</p>
-<p>Then turn your attention to the estimates.</p>
-</section>
-<section id="intercept-1" class="level3">
-<h3 class="anchored" data-anchor-id="intercept-1">Intercept</h3>
-<ul>
-<li>The <strong>intercept is the mean value of Y when all the independent variables are set to zero</strong>. Is that meaningful? You need to consider the distribution of your variables (e.g., using the five-number summary). For example, zero does not even exist in the distribution of <em>negemot</em> and <em>ideology</em>. Therefore, the intercept is not meaningful.</li>
+<li><p><strong>R-squared</strong> First, consider the <strong>R-squared</strong>: the model explains a statistically significant (p &lt; .001) and substantial proportion of variance (Multiple R-squared: 0.3883, Adjusted R-squared: 0.3845). Then turn your attention to the estimates.</p></li>
+<li><p><strong>Intercept</strong>: The intercept is the mean value of <span class="math inline">\(Y\)</span> when all the independent variables are set to zero. Is that meaningful? You need to consider the distribution of your variables (e.g., using the five-number summary). For example, zero does not even exist in the distribution of <code>negemot</code> and <code>ideology</code>. Therefore, the intercept is not meaningful.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glbwarm<span class="sc">$</span>negemot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glbwarm<span class="sc">$</span>negemot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   1.000   2.330   3.670   3.558   5.000   6.000 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glbwarm<span class="sc">$</span>ideology)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glbwarm<span class="sc">$</span>ideology)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   1.000   3.000   4.000   4.083   5.000   7.000 </code></pre>
 </div>
 </div>
-</section>
-<section id="coefficients-1" class="level3">
-<h3 class="anchored" data-anchor-id="coefficients-1">Coefficients</h3>
-<section id="statistical-significance" class="level4">
-<h4 class="anchored" data-anchor-id="statistical-significance">Statistical significance</h4>
 <ul>
-<li>Take into consideration the <strong>statistical significance</strong> of the variables. Only two variables are statistically significant: <em>negemot and ideology</em>. They are significant at <em>p &lt; 0.001</em> (three asterisks). This means that there is a 1 in 1000 chance of observing such values in a sample, if there was no real relationship between the variables in the population.</li>
-<li>The other variables are not statistically significant. This means that we cannot conclude that these independent variables are related to the dependent variable.</li>
-</ul>
-</section>
-<section id="interpretation-of-coefficients" class="level4">
-<h4 class="anchored" data-anchor-id="interpretation-of-coefficients">Interpretation of coefficients</h4>
-<p>The coefficients of a multiple regression model are <strong>measures of partial association</strong> that quantify the component of the association between an independent and a dependent variable that is unique to that independent variable, relative to other independent variables in the model.</p>
-<p>We can use this formulation:</p>
+<li><p><strong>Coefficients:</strong> Take into consideration the statistical significance of the variables. Only two variables are statistically significant: <code>negemot</code> and <code>ideology</code>. They are significant at p &lt; 0.001 (three asterisks). This means that there is a 1 in 1000 chance of observing such values in a sample, if there was no real relationship between the variables in the population. The other variables are not statistically significant. This means that we cannot conclude that these independent variables are correlated to the dependent variable.</p>
 <ul>
-<li><strong>Holding all other variables constant</strong> (or, “all other variables being equal”, or a similar formulation), <strong>two cases that differ by one unit</strong> on the negative emotion scale, are estimated to differ by 0.44 unit on average in their support for government action to mitigate climate change. Or also: a <strong>one-unit increase</strong> on the negative emotion scale (negemot) would result in a 0.44 increase in support for government action to mitigate climate change.</li>
-<li>Holding all other variables constant, <strong>two cases that differ by one unit</strong> on the ideology scale, are estimated to differ by -0.22 unit in their support for government action to mitigate climate change, with cases one unit higher on that scale (i.e., republicans) estimated to be -0.22 unit lower in their support for government action. Or also, a one-unit increase in the ideology variable would result in a 0.22 <em>decrease</em> (notice the negative sign: -0.218269) in support for government action to mitigate climate change.</li>
+<li><p><strong>Interpretation of coefficients:</strong> The coefficients of a multiple regression model are <em>measures of partial association</em> that quantify the component of the association between an independent and a dependent variable that is unique to that independent variable, relative to other independent variables in the model. We can use this formulation:</p>
+<ul>
+<li><p>Holding all other variables constant (or, “all other variables being equal”, or a similar formulation), two cases that differ by one unit on the negative emotion scale, are estimated to differ by 0.44 unit on average in their support for government action to mitigate climate change. Or also: a one-unit increase on the negative emotion scale (<code>negemot</code>) would result in a 0.44 increase in support for government action to mitigate climate change.</p></li>
+<li><p>Holding all other variables constant, two cases that differ by one unit on the ideology scale, are estimated to differ by -0.22 unit in their support for government action to mitigate climate change, with cases one unit higher on that scale (i.e., republicans) estimated to be -0.22 unit lower in their support for government action. Or also, a one-unit increase in the ideology variable would result in a 0.22 <em>decrease</em> (notice the negative sign: -0.218269) in support for government action to mitigate climate change.</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Interpreting dichotomous variables:</strong> Dichotomous variables (also binary variables) take just two values, usually represented by 0 and 1. Within the <code>glbwarm</code> data set, the variable <code>sex</code> is a dichotomous variable. Females are encoded as 0 and males as 1. In the dichotomy case, a change of 1 unit corresponds to the switching of 0 to 1. That is to say, from the category 0 (e.g., females) to category 1 (e.g., males). If we interpret the coefficients estimate as the difference in the mean of the dependent variable between two cases that differ by one unit in the independent variable, all other variables being constant, we see that in the dichotomous case, this difference is <span class="math inline">\(1 - 0\)</span>, that is to say, this is the difference between males and females. Therefore, the coefficient for <code>sex</code> (-0.010066) indicates that males are estimated to be, on average, 0.01 units <em>less</em> (notice the negative sign) supportive of government action than females. However, the difference is not statistically significant. Therefore, we can conclude that there is no evidence of systematic gender differences in support for government action.</p></li>
 </ul>
-</section>
-<section id="interpreting-dichotomous-variables" class="level4">
-<h4 class="anchored" data-anchor-id="interpreting-dichotomous-variables">Interpreting dichotomous variables</h4>
-<p>Dichotomous variables take just two values, usually represented by 0 and 1. Within the glbwarm dataset, the variable <em>sex</em> is a dichotomous variable. Females are encoded as 0 and males as 1. In the dichotomy case, a change of 1 unit corresponds to the switching of 0 to 1. That is to say, from the category 0 (e.g., females) to category 1 (e.g., males).</p>
-<p>The coefficients estimate the difference in the mean of the dependent variable between two cases that differ by one unit in the independent variable, all other variables being constant. In the dichotomous case, this difference is <span class="math inline">\(1 - 0\)</span>, that is to say, the difference between males and females.</p>
-<p>Therefore, the coefficient for sex (-0.010066) indicates that males are estimated to be, on average, 0.01 units <em>less</em> (notice the negative sign) supportive of government action than females.</p>
-<p>But we said that the difference is not statistically significant. Therefore, we can conclude that there is no evidence of systematic gender differences in support for government action.</p>
-</section>
-</section>
 </section>
 <section id="residuals-and-assumptions" class="level1">
 <h1>Residuals and assumptions</h1>
-<p>The interpretation of residuals requires to discuss the assumptions of linear models.</p>
-<p>Linear regression is founded on some assumptions. The <strong>violation of these assumptions</strong> can have <strong>adverse effects on the interpretation</strong> of the model and on inference, therefore we should be mindful of the assumptions the regression model makes. The main assumptions of the linear regression model are the following:</p>
+<p>The interpretation of residuals requires to discuss the assumptions of linear models. Linear regression is founded on some assumptions. The violation of these assumptions can have adverse effects on the interpretation of the model and on inference, therefore we should be mindful of the assumptions the regression model makes. The main assumptions of the linear regression model are the following:</p>
 <ul>
-<li><strong>Linearity</strong>: Linearity states that <strong>the relationships between the variables in the model are linear</strong> in nature, or at least approximately linear. For obvious reasons, it’s wrong to use a linear model to understand non-linear relations. Linearity is violated, for instance, when for low values of <span class="math inline">\(X\)</span>, a <em>one</em> unit increase in <span class="math inline">\(X\)</span> corresponds to an increase of <em>one</em> unit in <span class="math inline">\(Y\)</span>, but for high values of <span class="math inline">\(X\)</span>, <em>one</em> unit increase in <span class="math inline">\(X\)</span> corresponds to an increase of <em>three</em> units in <span class="math inline">\(Y\)</span>.</li>
-<li><strong>Normality</strong>: The assumption of normality states that <strong>the errors (i.e.&nbsp;residuals) are normally distributed</strong>. In general, <em>linear regression is considered to be “robust” to mild violation of normality</em>. Research suggests that only the most severe violations of the normality assumption substantially affect the validity of statistical inferences from a regression analysis unless the sample size is quite small.</li>
-<li><strong>Homoscedasticity</strong>: Homoscedasticity (or homoskedasticity) states that <strong>errors in estimation are almost equal across the range of the estimated values of the outcome</strong> <span class="math inline">\(\hat Y\)</span>. When this condition is not met, the errors in estimation are said to be <em>heteroscedastic</em>.</li>
-<li><strong>Independence</strong>: the errors in estimation should be statistically independent. In the most basic terms, two things are independent if <strong>information about one gives no information about the other</strong>. A typical violation of independence is the autocorrelation in <em>time series data</em>, which has to be handled with specific time series techniques.</li>
-<li><strong>Outliers</strong>: Observations particularly different from the average are called <strong>outliers</strong>. They may have excessive influence over the coefficient estimates (<em>“influential observations”</em>). If so, they must be thoroughly inspected.</li>
+<li><strong>Linearity</strong>: Linearity states that the relationships between the variables in the model are linear in nature, or at least approximately linear. For obvious reasons, it’s wrong to use a linear model to understand non-linear relations. Linearity is violated, for instance, when for low values of <span class="math inline">\(X\)</span>, a <em>one</em> unit increase in <span class="math inline">\(X\)</span> corresponds to an increase of <em>one</em> unit in <span class="math inline">\(Y\)</span>, but for high values of <span class="math inline">\(X\)</span>, <em>one</em> unit increase in <span class="math inline">\(X\)</span> corresponds to an increase of <em>three</em> units in <span class="math inline">\(Y\)</span>.</li>
+<li><strong>Normality</strong>: The assumption of normality states that the errors (i.e.&nbsp;residuals) are normally distributed. In general, <em>linear regression is considered to be “robust” to mild violation of normality</em>. Research suggests that only the most severe violations of the normality assumption substantially affect the validity of statistical inferences from a regression analysis unless the sample size is quite small.</li>
+<li><strong>Homoscedasticity</strong>: Homoskedasticity (also homoscedasticity) states that errors in estimation are almost equal across the range of the estimated values of the outcome <span class="math inline">\(\hat Y\)</span>. When this condition is not met, the errors in estimation are said to be <em>heteroscedastic</em>.</li>
+<li><strong>Independence</strong>: The errors in estimation should be statistically independent. In the most basic terms, two things are independent if information about one gives no information about the other. A typical violation of independence is the autocorrelation in <em>time series data</em>, which has to be handled with specific time series techniques.</li>
+<li><strong>Outliers</strong>: Observations particularly different from the average are called outliers. They may have excessive influence over the coefficient estimates (<em>“influential observations”</em>). If so, they must be thoroughly inspected.</li>
 <li><strong>No multicollinearity</strong>: Multicollinearity is the occurrence of high correlation among two or more independent variables in a multiple regression model. It makes it difficult to distinguish the effect of the variables.</li>
 </ul>
 <section id="check-the-assumptions" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assumptions">Check the assumptions</h3>
-<p>In R there are four “diagnostic” plots you can use to assess the assumptions of the model.</p>
-<p>You can visualize the plots by using the function <code>plot</code> applied to the “object” corresponding to your <strong>fitted model</strong>. You can visualize the plots together by using <code>par(mfrow=c(2,2))</code> before calling the <code>plot</code> function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the <em>plot</em> function (e.g.: <code>plot(lm_object, 1)</code>).</p>
+<p>R can easily provide the analyst with four <em>diagnostic plots</em> you can use to assess the assumptions of the model.</p>
+<p>You can visualize the plots by using the function <code>plot</code> applied to the “object” corresponding to your fitted model. You can visualize the plots together by using <code>par(mfrow=c(2,2))</code> before calling the <code>plot</code> function. In this way, you create a 2x2 layer to show the 4 main diagnostic plots on the same page. You can also visualize a single plot by using the number of the plot inside the <em>plot</em> function (e.g.: <code>plot(lm_object, 1)</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="regression_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="regression_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>In general, you want the <strong>Normal Q-Q plot</strong> to show points along a diagonal line, and the other three plots showing randomly scattered points, without any evident systematic pattern.</p>
-<p>Points showing a conic shape in the <strong>Residuals vs Fitted</strong> and <strong>Scale-Location</strong> plots are indicative of an heteroskedasticity problem (violation of the homoscedasticity assumption). Ideally, you should see a <em>roughly horizontal line</em> with <em>equally spread</em> points. A statistical test for checking homoscedasticity is the <strong>Breusch-Pagan test</strong>. It is included in the <strong>lmtest</strong> library. A p-value &lt; 0.05 suggests heteroskedasticity.</p>
+<p>In general, you want the <em>Normal Q-Q plot</em> to show points along a <em>diagonal</em> line, and the other three plots showing <em>randomly scattered</em> points, without any evident systematic pattern.</p>
+<p>Points showing a conic shape in the <em>Residuals vs Fitted</em> and <em>Scale-Location</em> plots are indicative of an <em>heteroskedasticity</em> problem (violation of the homoscedasticity assumption). Ideally, you should see a <em>roughly horizontal line</em> <em>with</em> <em>equally spread</em> <em>points</em>. A statistical test for checking homoscedasticity is the Breusch-Pagan test. It is included in the <code>lmtest</code> library. A p-value &lt; 0.05 suggests heteroskedasticity.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.package</span>(<span class="st">"lmtest"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.package</span>(<span class="st">"lmtest"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: zoo</code></pre>
 </div>
@@ -787,7 +723,7 @@ Attaching package: 'zoo'</code></pre>
 
     as.Date, as.Date.numeric</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     studentized Breusch-Pagan test
@@ -796,15 +732,15 @@ data:  lm2
 BP = 14.787, df = 5, p-value = 0.01131</code></pre>
 </div>
 </div>
-<p>Heteroskedasticity does not impact coefficients, but affects statistical tests (e.g., tests that conclude whether the coefficients are statistically significant). <strong>There are different ways to mitigate or resolve this and other assumption issues</strong>. A way is to correct the regression model with Heteroscedasticity-Consistent Standard Errors. In R you need the <em>lmtest</em> and <em>sandwich</em> package.</p>
+<p>Heteroskedasticity does not impact coefficients, but affects statistical tests (e.g., tests that conclude whether the coefficients are statistically significant). There are different ways to mitigate or resolve this and other assumption issues. A way is to correct the regression model with <em>Heteroscedasticity-Consistent Standard Errors</em>. In R you need the <code>lmtest</code> and <code>sandwich</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.package</span>(<span class="st">"sandwich"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.package</span>(<span class="st">"sandwich"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(lm2, <span class="at">vcov =</span> <span class="fu">vcovHC</span>(lm2, <span class="at">type =</span> <span class="st">"HC3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(lm2, <span class="at">vcov =</span> <span class="fu">vcovHC</span>(lm2, <span class="at">type =</span> <span class="st">"HC3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 t test of coefficients:
@@ -820,18 +756,18 @@ age         -0.0013087  0.0022916 -0.5711    0.5681
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>You can also see that certain dots are marked by a number. These are points with unexpectedly high residuals (error) and you could inspect them to find out why (e.g., to exclude there are errors in the dataset). Also check if any point in the <strong>Residuals vs Leverage</strong> plot falls outside of Cook’s distance (a red dashed lines). These points are considered to be influential observations. Influential points have a large influence on the model and should be carefully inspected. In this case there are no influential points, and the red dashed line is not even displayed.</p>
-<p>To verify <strong>multicollinearity</strong> you can also calculate the <strong>VIF</strong> (“Variance Inflation Factor”). The function to calculate it is <code>vif</code>, and is included in the package <code>car</code>. The smallest possible value of VIF is one (absence of multicollinearity), and as a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity.</p>
+<p>You can also see that certain dots are marked by a number. These are points with unexpectedly high residuals (error) and you could inspect them to find out why (e.g., to exclude there are errors in the data set). Also check if any point in the <em>Residuals vs Leverage</em> plot falls outside of Cook’s distance (a red dashed lines). These points are considered to be <em>influential observations</em>. Influential points have a large influence on the model and should be carefully inspected. In this case there are no influential points, and the red dashed line is not even displayed.</p>
+<p>To verify <em>multicollinearity</em> you can also calculate the <em>VIF (Variance Inflation Factor)</em>. The function to calculate it is <code>vif</code>, and is included in the package <code>car</code>. The smallest possible value of VIF is one (absence of multicollinearity), and as a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the package</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"car"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the package</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"car"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: carData</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> negemot  posemot ideology      sex      age 
 1.166374 1.026410 1.194399 1.052894 1.071034 </code></pre>
@@ -844,7 +780,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="readings" class="level3">
 <h3 class="anchored" data-anchor-id="readings">Readings</h3>
 <ul>
-<li><strong>Chapter 2 - Regression fundamentals</strong></li>
+<li>Chapter 2 - Regression fundamentals</li>
 </ul>
 </section>
 <section id="resources" class="level3">
@@ -857,21 +793,21 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 <section id="exercises" class="level3">
 <h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<p>The following exercise is based on the <code>estress</code> dataset (estress.csv).</p>
-<section id="description-of-the-dataset" class="level4">
-<h4 class="anchored" data-anchor-id="description-of-the-dataset">Description of the dataset</h4>
-<p>The participants in the “estress” study (162 male, 100 female, <strong>SEX</strong> in the data, 0 = female, 1 = male) were asked a series of questions about how they felt their business was doing.</p>
-<p>Their responses were used to construct an index of economic stress (<strong>ESTRESS</strong> in the data file, with high scores reflecting greater economic stress).</p>
-<p>They were also asked the extent to which they had various feelings related to their business, such as “discouraged,” “hopeless,” “worthless,” and the like, an aggregation of which was used to quantify business-related depressed affect (<strong>AFFECT</strong> in the data, with higher scores reflecting more depressed affect).</p>
-<p>They were also asked a set of questions to quantify their intentions to withdraw from entrepreneurship in the next year (<strong>WITHDRAW</strong> in the data, with higher scores indicative of greater withdrawal intentions).</p>
-<p>There is also a measure of “entrepreneurial self-efficacy” which indexes a person’s confidence in his or her ability to successfully engage in various entrepreneurship-related tasks such as setting and meeting goals, creating new products, managing risk, and making decisions (<strong>ESE</strong> in the data file).</p>
-<p>The dataset also includes the length of time in the business, in years (<strong>TENURE</strong> in the data), and the age of these entrepreneurs (<strong>AGE</strong>).</p>
+<p>The following exercise is based on the <code>estress</code> data set (<code>estress.csv</code>).</p>
+<section id="description-of-the-data-set" class="level4">
+<h4 class="anchored" data-anchor-id="description-of-the-data-set">Description of the data set</h4>
+<p>The participants in the <code>estress</code> study (162 male, 100 female, <code>sex</code> in the data, 0 = female, 1 = male) were asked a series of questions about how they felt their business was doing.</p>
+<p>Their responses were used to construct an index of economic stress (<code>estress</code> in the data set, with high scores reflecting greater economic stress).</p>
+<p>They were also asked the extent to which they had various feelings related to their business, such as “discouraged,” “hopeless,” “worthless,” and the like, an aggregation of which was used to quantify business-related depressed affect (<code>affect</code> in the data set, with higher scores reflecting more depressed affect).</p>
+<p>They were also asked a set of questions to quantify their intentions to withdraw from entrepreneurship in the next year (<code>withdraw</code> in the data set, with higher scores indicative of greater withdrawal intentions).</p>
+<p>There is also a measure of entrepreneurial self-efficacy which indexes a person’s confidence in his or her ability to successfully engage in various entrepreneurship-related tasks such as setting and meeting goals, creating new products, managing risk, and making decisions (<code>ese</code> in the data set).</p>
+<p>The data set also includes the length of time in the business, in years (<code>tenure</code> in the data set), and the age of these entrepreneurs (<code>age</code>).</p>
 </section>
 <section id="exercise" class="level4">
 <h4 class="anchored" data-anchor-id="exercise">Exercise</h4>
-<p>Using the <code>estress</code> dataset, write a short data analysis report including:</p>
+<p>Using the <code>estress</code> data set, write a short data analysis report including:</p>
 <ul>
-<li><p>Summary statistics: five number summary, standard deviation, and the sample size of the dataset.</p></li>
+<li><p>Summary statistics: five number summary, standard deviation, and the sample size of the data set.</p></li>
 <li><p>A multiple linear regression model to predict/explain <code>withdraw</code> intention based on the following independent variables: <code>affect</code>, <code>sex</code>, <code>estress</code>, <code>age</code>, <code>tenure</code>, <code>ese</code>. Report the regression table and provide the appropriate interpretation.</p></li>
 <li><p>Check out the diagnostic plots and provide an interpretation: do you see any evident pattern in the points? Are the dots grouped along a diagonal line in the normal Q-Q plot? Also calculate the Variance Inflation Factor (VIF) using the function <code>vif</code> function in the <code>car</code> package.</p></li>
 </ul>
