@@ -117,7 +117,7 @@ Only certain types of quotation marks are recognized by R. If you copy a command
 
 ```{r eval=FALSE}
 # this is wrong (notice the error in the console)
-glbwarm <- read.csv(file = "data/glbwarm.csv")
+glbwarm <- read.csv(file = data/glbwarm.csv)
 
 # this is also wrong (notice the error in the console)
 glbwarm <- read.csv(file = `data/glbwarm.csv`)

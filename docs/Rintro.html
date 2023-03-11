@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Nicola Righetti, PhD">
 
-<title>Mediation, Moderation, and Conditional Process Analysis with R - Getting started with R</title>
+<title>MMCP - Getting started with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Mediation, Moderation, and Conditional Process Analysis with R</span>
+    <span class="navbar-title">MMCP</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -418,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Only certain types of quotation marks are recognized by R. If you copy a command from the slides or other online sources, and paste them in R, you may encounter an error because of an incorrect character used for quotes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is wrong (notice the error in the console)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/glbwarm.csv"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> data<span class="sc">/</span>glbwarm.csv)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this is also wrong (notice the error in the console)</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">`</span><span class="at">data/glbwarm.csv</span><span class="st">`</span>)</span>
