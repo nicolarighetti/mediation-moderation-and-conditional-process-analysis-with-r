@@ -289,9 +289,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#the-mean" id="toc-the-mean" class="nav-link" data-scroll-target="#the-mean">The Mean</a></li>
   <li><a href="#frequency-distributions" id="toc-frequency-distributions" class="nav-link" data-scroll-target="#frequency-distributions">Frequency distributions</a></li>
   <li><a href="#five-number-summary" id="toc-five-number-summary" class="nav-link" data-scroll-target="#five-number-summary">Five-Number Summary</a></li>
-  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
+  <li><a href="#box-plots-box-and-whisker-plot" id="toc-box-plots-box-and-whisker-plot" class="nav-link" data-scroll-target="#box-plots-box-and-whisker-plot">Box plots (<strong>box and whisker plot)</strong></a></li>
   <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
-  <li><a href="#bar-plot" id="toc-bar-plot" class="nav-link" data-scroll-target="#bar-plot">Bar plot</a></li>
+  <li><a href="#bar-plots" id="toc-bar-plots" class="nav-link" data-scroll-target="#bar-plots">Bar plots</a></li>
   </ul></li>
   <li><a href="#measures-of-spread" id="toc-measures-of-spread" class="nav-link" data-scroll-target="#measures-of-spread">Measures of Spread</a>
   <ul class="collapse">
@@ -304,8 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a></li>
   <li><a href="#pearsons-correlation-coefficient-pearsons-r" id="toc-pearsons-correlation-coefficient-pearsons-r" class="nav-link" data-scroll-target="#pearsons-correlation-coefficient-pearsons-r">Pearson’s correlation coefficient (Pearson’s R)</a>
   <ul class="collapse">
-  <li><a href="#pearsons-r-and-covariance" id="toc-pearsons-r-and-covariance" class="nav-link" data-scroll-target="#pearsons-r-and-covariance">Pearson’s R and covariance</a></li>
-  <li><a href="#pearsons-r-interpretation" id="toc-pearsons-r-interpretation" class="nav-link" data-scroll-target="#pearsons-r-interpretation">Pearson’s R interpretation</a></li>
+  <li><a href="#pearsons-r-and-covariance" id="toc-pearsons-r-and-covariance" class="nav-link" data-scroll-target="#pearsons-r-and-covariance">Pearson’s r and covariance</a></li>
+  <li><a href="#pearsons-r-interpretation" id="toc-pearsons-r-interpretation" class="nav-link" data-scroll-target="#pearsons-r-interpretation">Pearson’s r interpretation</a></li>
   <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter plots</a></li>
   </ul></li>
   <li><a href="#predictions" id="toc-predictions" class="nav-link" data-scroll-target="#predictions">Predictions</a></li>
@@ -316,7 +316,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -364,17 +363,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Sample size and data preview are crucial first steps when working with a new data set. This involves describing the general characteristics of the data set, such as the number of cases (sample size), examining the types of variables, and calculating descriptive statistics like the mean and standard deviation. Including information on the data set and variables in a research report is standard practice.</p>
 <p>To perform these operations, we can use the following functions in R:</p>
 <ul>
-<li><p><strong><code>dim()</code></strong> to find the number of rows in the data set, which corresponds to the number of cases (sample size) in a common and well-structured data set.</p></li>
-<li><p><strong><code>str()</code></strong> or <strong><code>glimpse()</code></strong> (in the <strong><code>tidyverse</code></strong> package) to examine the types of variables included in the data set.</p></li>
-<li><p><strong><code>head()</code></strong> to preview the data set.</p></li>
-<li><p><strong><code>View()</code></strong> to view the data set in a separate window (note: this function is not recommended for huge data sets, as it can freeze your computer).</p></li>
+<li><p><code>dim()</code> to find the number of rows in the data set, which corresponds to the number of cases (sample size) in a common and well-structured data set.</p></li>
+<li><p><code>str()</code> or <code>glimpse()</code> (in the <code>tidyverse</code> package) to examine the types of variables included in the data set.</p></li>
+<li><p><code>head()</code> to preview the data set.</p></li>
+<li><p><code>View()</code> to view the data set in a separate window (note: this function is not recommended for huge data sets, as it can freeze your computer).</p></li>
 </ul>
-<p>For example, let’s use the global warming study data set (<strong><code>glbwarm</code></strong>).</p>
+<p>For example, let’s use the global warming study data set (<code>glbwarm</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the glbwarm data set</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>glbwarm <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/glbwarm.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The dataset is well-organized with each row representing a case, making it easy to calculate the sample size by counting the number of rows, which in this case is 815 (n = 815). The dataset contains 7 variables and their type can be examined.</p>
+<p>The data set is well-organized. Each row represents a case, making it easy to calculate the sample size by counting the number of rows, which in this case is 815 (n = 815). The data set contains 7 variables. The variable types can be examined using the <code>glimpse</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -406,7 +405,7 @@ $ sex      &lt;int&gt; 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 
 $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 3, 2…</code></pre>
 </div>
 </div>
-<p>While the <code>glimpse</code> function provides a preview of the dataset, a clearer preview is displayed using the <code>head</code> function.</p>
+<p>The <code>head</code> function also print a preview of the data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(glbwarm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -422,14 +421,17 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </section>
 <section id="measure-of-central-tendency" class="level1">
 <h1>Measure of central tendency</h1>
-<p><a href="https://en.wikipedia.org/wiki/Descriptive_statistics">Descriptive statistics</a> are used to describe and summarize variables of a data set.</p>
-<p>Typically, there are two general types of statistics that are used to describe data: <strong>Measures of central tendency</strong> and <strong>Measures of spread</strong>.</p>
-<p><strong>Measures of central tendency</strong> include: - <strong>Mode</strong>: the most frequent score in our data set - <strong>Median</strong>: the middle score for a set of data that has been arranged in order of magnitude - <strong>Mean</strong>: the sum of all the values in the data set divided by the number of values in the data set.</p>
-<p>A clear description of the different measures can be found <a href="https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php">here</a>.</p>
-<p><a href="https://en.wikipedia.org/wiki/Descriptive_statistics">Descriptive statistics</a> are used to summarize and describe the variables of a dataset. There are two main types of statistics used for this purpose: <strong>measures of central tendency and measures of spread</strong>. Measures of central tendency include the mode, median, and mean, which is the most commonly used measure and is particularly useful in linear regression modeling. The <strong>mean</strong> is essentially a model of the dataset and has the property of minimizing error in the prediction of any value in the dataset. In other words, the mean is the best predictor in the absence of better predictors. The <strong>mode</strong> is the most frequent score in our data set and the <strong>median</strong> is the middle score for a set of data that has been arranged in order of magnitude.</p>
+<p><a href="https://en.wikipedia.org/wiki/Descriptive_statistics">Descriptive statistics</a> are used to summarize and describe the variables of a data set. Typically, there are two general types of statistics that are used to describe data: Measures of central tendency and Measures of spread.</p>
+<p>Measures of central tendency include the mode, median, and mean, which is the most commonly used measure and is particularly useful in linear regression modeling:</p>
+<ul>
+<li><p>Mode: the most frequent score in our data set;</p></li>
+<li><p>Median: the middle score for a set of data that has been arranged in order of magnitude;</p></li>
+<li><p>Mean: the sum of all the values in the data set divided by the number of values in the data set. The mean is essentially a model of the data set and has the property of minimizing error in the prediction of any value in the data set. In other words, the mean is the best predictor in the absence of better predictors.</p></li>
+</ul>
+<p>A description of the different measures can be found in any statistics book as well as online, for instance, <a href="https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php">here</a>.</p>
 <section id="the-mean" class="level2">
 <h2 class="anchored" data-anchor-id="the-mean">The Mean</h2>
-<p>In R, the mean of a variable can be calculated using the function <code>mean</code>, and to access a variable in the dataset, which is a column of a data.frame, the dollar sign is used. For instance, the mean age of people in the sample can be calculated using <code>mean(glbwarm$age)</code>, which returns 49.5362.</p>
+<p>In <code>R</code>, the mean of a variable can be calculated using the function <code>mean</code>. For instance, the mean age of people in the sample can be calculated by the function <code>mean(glbwarm$age)</code>, which returns 49.5362.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(glbwarm<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -443,7 +445,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <pre><code>[1] 49.54</code></pre>
 </div>
 </div>
-<p>This is equivalent to creating an object <em>mean_age</em> representing the output of the function <code>mean</code> (i.e., the mean age), and then rounding it off.</p>
+<p>This is a shorter equivalent to creating an object <code>mean_age</code> representing the output of the function <code>mean</code> (i.e., the mean age) and then rounding it off.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mean_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(glbwarm<span class="sc">$</span>age)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(mean_age, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -457,14 +459,14 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p>The frequency distribution of a variable provides an overview of its values and how often they occur, also known as its frequency.</p>
 <p>Variables can have either continuous or discrete distributions, depending on their type. The distribution of a variable is typically summarized using the <a href="https://en.wikipedia.org/wiki/Five-number_summary">five-number summary</a> and visually represented using histograms and box plots (for continuous or discrete variables) or bar charts (for categorical variables).</p>
 <ul>
-<li><p>Discrete variables only take on specific values and are therefore characterized by discrete distributions. Examples of such variables include count data, which consist of non-negative integers, such as the number of friends on Facebook. In the “glbwarm” dataset, the variable “ideology” is measured on a discrete scale ranging from 1 to 7.</p></li>
-<li><p>Discrete variables can also represent categorical data, which express the qualitative dimensions of a phenomenon. For instance, city names (Vienna, London, Verona) or ordered categorical values (low, medium, high) can be used as categorical data. Although categorical data can be represented by numbers, they should not be treated as mathematical objects, but as “names” or ordered categories. Categorical variables that can take on only two values are called dichotomous variables. In the “glbwarm” dataset, the variable “sex” is represented as a dichotomous variable.</p></li>
-<li><p>Continuous variables have infinite (uncountable) possible values and are therefore characterized by continuous distributions. Examples of continuous variables include temperature or velocity. In the “glbwarm” dataset, the variable “govact” is represented as a continuous variable.</p></li>
+<li><p>Discrete variables only take on specific values and are therefore characterized by discrete distributions. Examples of such variables include count data, which consist of non-negative integers, such as the number of friends on Facebook. In the <code>glbwarm</code> data set, the variable “ideology” is measured on a discrete scale ranging from 1 to 7.</p></li>
+<li><p>Discrete variables can also represent categorical data, which express the qualitative dimensions of a phenomenon. For instance, city names (Vienna, London, Verona) or ordered categorical values (low, medium, high) can be used as categorical data. Although categorical data can be represented by numbers, they should not be treated as mathematical objects, but as “names” or ordered categories. Categorical variables that can take on only two values are called dichotomous variables. In the <code>glbwarm</code> data set, the variable <code>sex</code> is represented as a dichotomous variable.</p></li>
+<li><p>Continuous variables have infinite (uncountable) possible values and are therefore characterized by continuous distributions. Examples of continuous variables include temperature or velocity. In the <code>glbwarm</code> data set, the variable <code>govact</code> is represented as a continuous variable.</p></li>
 </ul>
 </section>
 <section id="five-number-summary" class="level2">
 <h2 class="anchored" data-anchor-id="five-number-summary">Five-Number Summary</h2>
-<p>A numerical description of the distribution is provided by the function <code>summary</code>, which gives the <strong>five-number summary</strong>.</p>
+<p>A numerical description of the distribution is provided by the function <code>summary</code>, which gives the five-number summary.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glbwarm<span class="sc">$</span>ideology)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -474,10 +476,10 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 <p>The five-number summary includes the mean, the median, minimum and maximum values, and the first and third quartiles. <a href="https://en.wikipedia.org/wiki/Quartile">Quartiles</a> are cut points that divide the range of values of the variable into four parts, or quarters, of more-or-less equal size (25%, 25%, 25%, 25%). The <a href="https://en.wikipedia.org/wiki/Median">median</a> is the value separating the lower 50% from the upper 50% of the distribution.</p>
 </section>
-<section id="boxplot" class="level2">
-<h2 class="anchored" data-anchor-id="boxplot">Boxplot</h2>
-<p>The same information as the five-number summary can be graphically displayed by a <a href="https://en.wikipedia.org/wiki/Box_plot">boxplot</a>,, also called a box-and-whisker plot. The “box” represents the 1st and 3rd quartiles, the central line is the median, and the “whiskers” represent the maximum and minimum values.</p>
-<p>The points above and below the whiskers are <a href="https://en.wikipedia.org/wiki/Outlier">outliers</a>, which are data points that differ significantly from other observations. Since they are so different, they can be difficult to predict and can bias estimates of linear regression models.</p>
+<section id="box-plots-box-and-whisker-plot" class="level2">
+<h2 class="anchored" data-anchor-id="box-plots-box-and-whisker-plot">Box plots (<strong>box and whisker plot)</strong></h2>
+<p>The same information as the five-number summary can be graphically displayed by a <a href="https://en.wikipedia.org/wiki/Box_plot">boxplot</a>, also called a box-and-whisker plot. The “box” represents the 1st and 3rd quartiles, the central line is the median, and the “whiskers” represent the maximum and minimum values.</p>
+<p>The points above and below the whiskers are <a href="https://en.wikipedia.org/wiki/Outlier">outliers</a>, which are data points that differ significantly from other observations. Since they are so different, they can be difficult to predict and can sometimes bias the estimates of linear regression models.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use the argument "main" to add a title</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(glbwarm<span class="sc">$</span>govact, <span class="at">main =</span> <span class="st">"Ideology"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -532,12 +534,14 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 </section>
-<section id="bar-plot" class="level2">
-<h2 class="anchored" data-anchor-id="bar-plot">Bar plot</h2>
+<section id="bar-plots" class="level2">
+<h2 class="anchored" data-anchor-id="bar-plots">Bar plots</h2>
 <p>Histograms and box plots are used to represent the distribution of numerical variables, such as continuous and discrete variables. For categorical variables, a bar graph is used instead.</p>
-<p>For instance, a histogram of the dichotomous categorical variable “sex” is not appropriate. It only takes on the values 0 and 1, but they are not numbers (0 = male, 1 = female) and there is nothing in between them (e.g., 0, 0.1, 0.2, …, 1).</p>
+<p>For instance, a histogram of the dichotomous categorical variable <code>sex</code> is not appropriate. It only takes on the values 0 and 1, but they are not numbers (<code>0 = male</code>, <code>1 = female</code>) and there is nothing in between them (e.g., 0, 0.1, 0.2, …, 1).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(glbwarm<span class="sc">$</span>sex, <span class="at">main =</span> <span class="st">"SEX (categorical dichotomous variable)"</span>, <span class="at">xlab =</span> <span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(glbwarm<span class="sc">$</span>sex, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"SEX (categorical dichotomous variable)"</span>, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="EDA_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -576,7 +580,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p>Even more relevant are the variance and standard deviation.</p>
 <section id="variance" class="level2">
 <h2 class="anchored" data-anchor-id="variance">Variance</h2>
-<p><strong>Variance</strong> (represented as <span class="math inline">\(s^2\)</span> when computed on a sample, as in this case) is a measure of dispersion that quantifies how spread the values of a variable are from the mean (the average value of the variable). In other words, variance measures how much the values of a variable vary.</p>
+<p>Variance (represented as <span class="math inline">\(s^2\)</span> when computed on a sample, as in this case) is a measure of dispersion that quantifies how spread the values of a variable are from the mean (the average value of the variable). In other words, variance measures how much the values of a variable vary.</p>
 <p>The formula for variance is:</p>
 <p><span class="math display">\[s^2 =  \frac{\sum_{i=1}^{n} (x_i-\bar x)^2}{n-1}\]</span></p>
 <p>Capital sigma <span class="math inline">\(\sum\)</span> is the summation symbol, <span class="math inline">\((x_i-\bar x)\)</span> is the deviation (i.e., the difference) of each value <span class="math inline">\(i\)</span> of <span class="math inline">\(X\)</span> from the <em>mean</em> of <span class="math inline">\(X\)</span> (<span class="math inline">\(\bar x\)</span>, the mean or average of the variables), and <span class="math inline">\(n\)</span> is the sample size. In R:</p>
@@ -589,9 +593,9 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </section>
 <section id="standard-deviation" class="level2">
 <h2 class="anchored" data-anchor-id="standard-deviation">Standard Deviation</h2>
-<p>The <strong>standard deviation</strong> (represented as <span class="math inline">\(s\)</span> when computed on a sample) is the square root of the variance and has the same units as the variable itself. It is a related, and more commonly used, measure of dispersion. A low standard deviation indicates that the values of a variable tend to be close to its average, while a high standard deviation indicates that the values are spread out over a wider range.</p>
+<p>The standard deviation (represented as <span class="math inline">\(s\)</span> when computed on a sample) is the square root of the variance and has the same unit as the variable itself. It is a related, and more commonly used, measure of dispersion. A low standard deviation indicates that the values of a variable tend to be close to its average, while a high standard deviation indicates that the values are spread out over a wider range.</p>
 <p><span class="math display">\[s = \sqrt \frac{\sum (x_i-\bar x)^2}{n-1}\]</span></p>
-<p>In R:</p>
+<p>In <code>R</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(glbwarm<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -603,7 +607,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <section id="standardization-and-z-scores" class="level1">
 <h1>Standardization and z-scores</h1>
 <p>Besides measuring the spread of a variable, standard deviation is used for standardizing variables.</p>
-<p>Standardization is a procedure that transforms the original data (“raw data”) in the so-called <strong>z-scores</strong>. Z-scores are are values expressed in standardized units by using the average and the standard deviation:</p>
+<p>Standardization is a procedure that transforms the original data (“raw data”) in the so-called z-scores. Z-scores are are values expressed in standardized units by using the average and the standard deviation:</p>
 <p><span class="math display">\[Z = \frac{x_i - \bar x}{s}\]</span></p>
 <p>A way to think about standardization, is considering it as the interpretation of values relatively to their own distribution.</p>
 <p>The average of a standardized variable is always zero, below-average values are negative and above-average values are positive.</p>
@@ -623,22 +627,22 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p>Suppose that in Mary’s class, the mean was equal to 65% also with a standard deviation of 2. Mary’s zscore is thus:</p>
 <p><span class="math display">\[Z = \frac{x_i - \bar x}{\sigma} =  \frac{70 - 65}{2} = 2.5\]</span></p>
 <p>As we can see, relative to their particular distributions, Mary greatly outperformed John.</p>
-<p>Z-scores are often used with reference to the <strong>standard normal distribution</strong>. In this case, 68%, 95%, and 99.7% of the values lie within one, two, and three standard deviations of the mean, respectively. It is considered statistically unlikely that a value is 2 standard deviations either side of the mean. We’ll encounter again the normal distribution and the 2 standard deviation threshold when we’ll take statistical inference into consideration.</p>
+<p>Z-scores are often used with reference to the standard normal distribution. In this case, 68%, 95%, and 99.7% of the values lie within one, two, and three standard deviations of the mean, respectively. It is considered statistically unlikely that a value is 2 standard deviations either side of the mean. We’ll encounter again the normal distribution and the 2 standard deviation threshold when we’ll take statistical inference into consideration.</p>
 </section>
 <section id="correlation-and-prediction" class="level1">
 <h1>Correlation and prediction</h1>
 <p>In the first section we used statistical measures and charts to describe variables. In this section we’ll learn to assess the relationships between two variables.</p>
-<p>At the end of this unit you will understand the Pearson’s correlation coefficient and know the R functions to calculate and create the related statistical plots (scatter plot).</p>
+<p>At the end of this unit you will understand the Pearson’s correlation coefficient and know the <code>R</code> functions to calculate and create the related statistical plots (scatter plot).</p>
 <section id="correlation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
-<p>Correlation is a <strong>statistical relationship</strong>, whether causal or not, between two variables.</p>
-<p>Two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be correlated when they show a systematic association, such that knowing the values of one variable enables the <strong>prediction</strong> of the values of the other.</p>
+<p>Correlation is a statistical relationship, whether causal or not, between two variables.</p>
+<p>Two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be correlated when they show a systematic association, such that knowing the values of one variable enables the prediction of the values of the other.</p>
 <p>Correlation analysis permits the identification of this relationship and the quantification of its strength.</p>
 </section>
 <section id="pearsons-correlation-coefficient-pearsons-r" class="level2">
 <h2 class="anchored" data-anchor-id="pearsons-correlation-coefficient-pearsons-r">Pearson’s correlation coefficient (Pearson’s R)</h2>
 <p>The Pearson product-moment correlation, also known as Pearson’s r, is an important measure of correlation. It is also the foundation of most of the linear regression methods discussed in this course. Indeed, it can be used to quantify the linear association (or relationship) between two quantitative variables, a quantitative and a dichotomous variable, as well as between two dichotomous variables.</p>
-<p>In a linear association, the direction and rate of change in one variable are constant with respect to changes in the other variable. For example, in a perfect linear association between two variables <span class="math inline">\(X\)</span> and $Y$, an increase of 1 point in <span class="math inline">\(X\)</span> corresponds to an increase of 1 point in <span class="math inline">\(Y\)</span>. A linear relationship describes a straight-line relationship between two variables.</p>
+<p>In a linear association, the direction and rate of change in one variable are constant with respect to changes in the other variable. For example, in a perfect linear association between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, an increase of 1 point in <span class="math inline">\(X\)</span> corresponds to an increase of 1 point in <span class="math inline">\(Y\)</span>. A linear relationship describes a straight-line relationship between two variables.</p>
 <p>A linear relationship describes a straight-line relationship between two variables.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -646,38 +650,81 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 </div>
 </div>
 <section id="pearsons-r-and-covariance" class="level3">
-<h3 class="anchored" data-anchor-id="pearsons-r-and-covariance">Pearson’s R and covariance</h3>
+<h3 class="anchored" data-anchor-id="pearsons-r-and-covariance">Pearson’s r and covariance</h3>
 <p>Pearson’s r is based on the formalization of the idea of calculating the <em>ratio</em> between the degree to which <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> vary <em>together</em>, and the degree to which <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> vary <em>separately</em>, in order to find how much “co-variation” they share.</p>
 <p><span class="math display">\[r = \frac{degree-to-which-X-and-Y-vary-together}{degree-to-which-X-and-Y-vary-separately}\]</span></p>
-<p>The idea of co-variation is mathematically expressed by <strong>covariance</strong> (<span class="math inline">\(cov\)</span>), which is at the heart of virtually all statistical methods. The Pearson’s <span class="math inline">\(r\)</span> is a <strong>standardized measure of covariance</strong>.</p>
-<p>Covariance is based on <strong>variance</strong> (<span class="math inline">\(s^2\)</span>):</p>
+<p>The idea of co-variation is mathematically expressed by covariance (<span class="math inline">\(cov\)</span>), which is at the heart of virtually all statistical methods. The Pearson’s <span class="math inline">\(r\)</span> is a standardized measure of covariance.</p>
+<p>Covariance is based on variance (<span class="math inline">\(s^2\)</span>):</p>
 <p><span class="math display">\[s^2 =  \frac{\sum_{i=1}^{n} (x_i-\bar x)^2}{n-1}\]</span></p>
-<p>More precisely, covariance is a <em>measure of the joint variability of two variables</em>, and is calculated as the product of the <strong>variance</strong> of the variables:</p>
+<p>More precisely, covariance is a <em>measure of the joint variability of two variables</em>, and is calculated as the product of the variance of the variables:</p>
 <p><span class="math display">\[ cov = \frac{\sum_{i=1}^{n} (x_i-\bar x) (y_i-\bar y)}{n-1}\]</span></p>
 <p>The covariance can be positive, negative, or equal to zero, and gives a measure of the linear correlation between variables.</p>
-<p>So, why do we need Pearson’s <em>r</em>? Because covariance is a measure that depends on the unit of measurement of the variables, while it is preferable to have a <strong>standard</strong> measure, meaningful independently of each specific data set.</p>
-<p>Standardization of covariance is obtained by dividing the covariance <span class="math inline">\(cov\)</span> by the <strong>product of the standard deviations</strong> of the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. This product represents the <strong>total amount of variation possible</strong>.</p>
-<p>Thanks to the denominator, which represents the total amount of variation possible for the specific couple of variables, <span class="math inline">\(r\)</span> <strong>is always constrained between 1 and -1</strong> for <em>any</em> variable expressed in any unit of measure. The extent to which the covariation <span class="math inline">\(cov_{XY}\)</span> accounts for all of the possible variation (<span class="math inline">\(SD_XSD_Y\)</span>) is the extent to which <span class="math inline">\(r\)</span> approximates <span class="math inline">\(|1|\)</span> (negative -1, or positive +1).</p>
-<p><span class="math display">\[ r = \frac{cov_{XY}}{SD_XSD_Y}\]</span></p>
-<p>In R, the correlation coefficient is computed with the function <code>cor</code>. For example:</p>
+<p>The reason we calculate covariance in this way is that it captures both the direction and strength of the relationship between the two variables. A positive covariance indicates that the two variables tend to move together (i.e., co-vary) in the same direction, while a negative covariance indicates that they tend to move in opposite directions. The magnitude of the covariance indicates the strength of the relationship, with larger values indicating stronger relationships.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(glbwarm<span class="sc">$</span>govact, glbwarm<span class="sc">$</span>negemot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">321</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> y,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">x_mean =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y_mean =</span> <span class="fu">mean</span>(y),</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">x_diff =</span> x <span class="sc">-</span> <span class="fu">mean</span>(x),</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y_diff =</span> y <span class="sc">-</span> <span class="fu">mean</span>(y))</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>x_diff_y_diff <span class="ot">&lt;-</span> df<span class="sc">$</span>x_diff <span class="sc">*</span> df<span class="sc">$</span>y_diff</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   x y x_mean y_mean x_diff y_diff x_diff_y_diff
+1  6 1      7    4.4     -1   -3.4           3.4
+2  2 4      7    4.4     -5   -0.4           2.0
+3  9 9      7    4.4      2    4.6           9.2
+4  8 2      7    4.4      1   -2.4          -2.4
+5 10 6      7    4.4      3    1.6           4.8</code></pre>
+</div>
+</div>
+<p>So, why do we need Pearson’s <em>r</em>? Because covariance is a measure that depends on the unit of measurement of the variables, while it is preferable to have a standard measure, meaningful independently of each specific data set.</p>
+<p>Standardization of covariance is obtained by dividing the covariance <span class="math inline">\(cov\)</span> by the product of the standard deviations of the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. This product represents the total amount of variation possible.</p>
+<p>Thanks to the denominator, which represents the total amount of variation possible for the specific couple of variables, <span class="math inline">\(r\)</span> is always constrained between 1 and -1 for <em>any</em> variable expressed in any unit of measure. The extent to which the co-variation <span class="math inline">\(cov_{XY}\)</span> accounts for all of the possible variation (<span class="math inline">\(SD_XSD_Y\)</span>) is the extent to which <span class="math inline">\(r\)</span> approximates <span class="math inline">\(|1|\)</span> (negative -1, or positive +1).</p>
+<p><span class="math display">\[ r = \frac{cov_{XY}}{SD_XSD_Y}\]</span></p>
+<p>In R, the correlation coefficient can be computed with the function <code>cor</code>. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(glbwarm<span class="sc">$</span>govact, glbwarm<span class="sc">$</span>negemot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5777458</code></pre>
 </div>
 </div>
+<p>The function <code>cor.test</code> is more complete, as it includes the statistical significance of the correlation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(glbwarm<span class="sc">$</span>govact, glbwarm<span class="sc">$</span>negemot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  glbwarm$govact and glbwarm$negemot
+t = 20.183, df = 813, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5301050 0.6217505
+sample estimates:
+      cor 
+0.5777458 </code></pre>
+</div>
+</div>
+<p>Based on this output, we can write: a Pearson correlation coefficient was computed to assess the linear relationship between support for government action and negative emotions. We found a moderate positive correlation between the variables, <span class="math inline">\(r(813) = .58, p &lt; 0.001\)</span>.</p>
 </section>
 <section id="pearsons-r-interpretation" class="level3">
-<h3 class="anchored" data-anchor-id="pearsons-r-interpretation">Pearson’s R interpretation</h3>
+<h3 class="anchored" data-anchor-id="pearsons-r-interpretation">Pearson’s r interpretation</h3>
 <p>Pearson’s correlation coefficient can be interpreted as follows:</p>
 <ul>
-<li><p>The <strong>sign (+/-)</strong> corresponds to the <em>direction</em> of the association between X and Y:</p>
+<li><p>The sign (+/-) corresponds to the <em>direction</em> of the association between X and Y:</p>
 <ul>
-<li><strong>positive linear association</strong> (+): the higher X, the higher Y;</li>
-<li><strong>negative linear association</strong> (-): the higher X, the lower Y.</li>
+<li>positive linear association (+): the higher X, the higher Y;</li>
+<li>negative linear association (-): the higher X, the lower Y.</li>
 </ul></li>
-<li><p><span class="math inline">\(r\)</span> is close to <strong>zero</strong> when the association is null or nonlinear</p></li>
-<li><p>The closer <span class="math inline">\(r\)</span> is to <span class="math inline">\(|1|\)</span> (+1 or -1), the <strong>stronger</strong> the linear association.</p></li>
+<li><p><span class="math inline">\(r\)</span> is close to zero when the association is null or nonlinear</p></li>
+<li><p>The closer <span class="math inline">\(r\)</span> is to <span class="math inline">\(|1|\)</span> (+1 or -1), the stronger the linear association.</p></li>
 </ul>
 <p>There are different rule of thumbs for the interpretation of the Pearson’s correlation. For example, Mike Allen (2017), <em>The SAGE Encyclopedia of Communication Research Methods</em> (p.&nbsp;269) suggests the following:</p>
 <ul>
@@ -691,29 +738,29 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <section id="scatter-plots" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plots">Scatter plots</h3>
 <p>A scatter plot is a common method for visually exploring and representing the correlation between two variables.</p>
-<p>“<a href="https://en.wikipedia.org/wiki/Scatter_plot">A scatter plot</a> is a type of plot or mathematical diagram that uses Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), an additional variable can be displayed. The data are displayed as a collection of points, with the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis”.</p>
+<p><a href="https://en.wikipedia.org/wiki/Scatter_plot">A scatter plot</a> is a type of plot or mathematical diagram that uses Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), an additional variable can be displayed. The data are displayed as a collection of points, with the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis.</p>
 <p>To create a scatter plot in R, you can use the function <code>plot</code>. It takes two arguments: x (the first variable) and y (the second variable). The argument <code>pch</code> changes the shape of the points; see more details <a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/points.html">here</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(glbwarm<span class="sc">$</span>govact, glbwarm<span class="sc">$</span>posemot,</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>,</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"govact"</span>, </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"posemot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(glbwarm<span class="sc">$</span>govact, glbwarm<span class="sc">$</span>posemot,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"govact"</span>, </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"posemot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="EDA_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+<p><img src="EDA_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The scatter plot shows the direction of the association.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="co"># simulating data</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>Yp <span class="ot">&lt;-</span> X <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd=</span><span class="fl">0.5</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>Yn <span class="ot">&lt;-</span> <span class="sc">-</span>Yp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="co"># simulating data</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>Yp <span class="ot">&lt;-</span> X <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd=</span><span class="fl">0.5</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>Yn <span class="ot">&lt;-</span> <span class="sc">-</span>Yp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-paged.print="false">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X, Yp, <span class="at">main =</span> <span class="st">"Positive Association"</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X, Yn, <span class="at">main =</span> <span class="st">"Negative Association"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X, Yp, <span class="at">main =</span> <span class="st">"Positive Association"</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X, Yn, <span class="at">main =</span> <span class="st">"Negative Association"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="EDA_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="864"></p>
+<p><img src="EDA_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="864"></p>
 </div>
 </div>
 </section>
@@ -722,7 +769,7 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <h2 class="anchored" data-anchor-id="predictions">Predictions</h2>
 <p>When there is a correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, using <span class="math inline">\(X_j\)</span> to estimate <span class="math inline">\(Y_j\)</span> produces estimates that are more accurate than if one were to merely estimate <span class="math inline">\(Y_j = \bar Y\)</span> (the average value of <span class="math inline">\(Y\)</span>) for every case in the data.</p>
 <blockquote class="blockquote">
-<p>Given a variable <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of a data set of size n, the subscripts “j” in <span class="math inline">\(X_j\)</span> and <span class="math inline">\(Y_j\)</span>, indicates the j case. It can be any one of the n cases, but the same for both the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables. In other words, it indicates the measures of the case j on the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>Given a variable <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of a data set of size n, the subscripts <span class="math inline">\(_j\)</span> in <span class="math inline">\(X_j\)</span> and $Y_j$, indicates the <span class="math inline">\(j\)</span> case. It can be any one of the <span class="math inline">\(n\)</span> cases, but the same for both the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables. In other words, it indicates the measures of the case <span class="math inline">\(j\)</span> on the variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 </blockquote>
 <p>Pearson’s <em>r</em> provides an estimate as to how many <em>standard deviations (Z) from the sample mean</em> on <span class="math inline">\(Y\)</span> a case is, given how many standard deviations from the sample mean the case is on <span class="math inline">\(X\)</span>. More formally:</p>
 <p><span class="math display">\[\hat Z_{Y_j} = r_{XY}Z_{X_j}\]</span></p>
@@ -733,12 +780,11 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <li>Similarly, someone who is two standard deviations below the mean (<span class="math inline">\(Z_X = −2\)</span>) in negative emotions is estimated to be <span class="math inline">\(Z_Y = 0.578(−2) = −1.156\)</span> standard deviations from the mean in support for government action.</li>
 <li>In this case, <span class="math inline">\(\hat{Z_Y}\)</span> is negative, meaning that such a person is estimated to be below the sample mean in support for government action (i.e., less supportive than average).</li>
 </ul>
-<p><strong>Estimates</strong> of Y from X are <strong>expectations</strong> extracted from what is known about the association between X and Y.</p>
-<p>In statistics, expectations are never perfectly met, but we have a numerical means of gauging how close are to reality.</p>
-<p>In our case, that gauge is the size of Pearson’s <em>r</em>. The closer it is to +/- 1, the more consistent those expectations are with the reality of the data.</p>
+<p>Estimates of <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span> are expectations extracted from what is known about the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. In statistics, expectations are never perfectly met, but we have a numerical means of gauging how close are to reality.</p>
+<p>In our case, that gauge is the size of Pearson’s <em>r</em>. The closer it is to <span class="math inline">\(+/- 1\)</span>, the more consistent those expectations are with the reality of the data.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="EDA_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<p><img src="EDA_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -762,22 +808,163 @@ $ partyid  &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 2, 3, 1, 
 <p>The data set also contains a variable quantifying participants’ negative emotional responses to the prospect of climate change. This variable was constructed using participants’ responses to a question that asked them to indicate how frequently they feel each of three emotions when thinking about global warming: “worried,” “alarmed,” and “concerned.” Response options included “not at all,” “slightly,” “a little bit,” “some,” “a fair amount,” and “a great deal.” These responses were numerically coded 1 to 6, respectively, and each participant’s responses were averaged across all three emotions to produce a measure of negative emotions about climate change (NEGEMOT in the data file). This variable is scaled such that higher scores reflect feeling stronger negative emotions.</p>
 <section id="exercise-1" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>Display the correlation between the variables <em>negemot</em> and <em>govact</em> using a scatter plot.</p>
-<p>Based on the plot, can you tell if there is a correlation between the two variables?</p>
-<p>In your opinion, is there a strong correlation between these variables?</p>
+<ul>
+<li><p>Display the correlation between the variables <code>negemot</code> and <code>govact</code> using a scatter plot.</p></li>
+<li><p>Based on the plot, can you tell if there is a correlation between the two variables?</p></li>
+<li><p>Is there a strong correlation between these variables?</p></li>
+<li><p>Use the function <code>cor</code> to calculate the correlation between the variables <code>negemot</code> and <code>govact</code> in the <code>glbwarm</code> data set.</p></li>
+<li><p>Based on the Pearson’s r coefficient, is there a strong correlation between these variables?</p></li>
+</ul>
 </section>
 <section id="exercise-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>Use the function <code>cor</code> to calculate the correlation between the variables <em>negemot</em> and <em>govact</em> in the <code>glbwarm</code> data set.</p>
-<p>Based on the Pearson’s r coefficient, is there a strong correlation between these variables?</p>
-</section>
-<section id="exercise-3" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>Consider the variables <em>tnews</em> and <em>age</em> in the <code>glbwarm</code> data set:</p>
+<p>Download the<a href="https://search.gesis.org/variables/exploredata-ZA7505_Varwave">Joint EVS/WVS 2017-2022 Dataset</a> <code>ZA7505_v4-0-0.dta</code> and save it in your <code>data</code> project directory.</p>
+<p>Use the following <code>tidyverse</code> code to create a data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the packages if necessary</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'janitor'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ZA7505_v4_0_0 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"data/ZA7505_v4-0-0.dta"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse data manipulation pipeline</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> ZA7505_v4_0_0 <span class="sc">%&gt;%</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select a few variables related to religion and tolerance for "non-traditional" behaviors  </span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, cntry_AN, X003, X003R, A006, A065, E033, A124_09, D081, F120, F121, F122, C001_01) <span class="sc">%&gt;%</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename the selected columns</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"Age"</span> <span class="ot">=</span> X003,</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Age recoded"</span> <span class="ot">=</span> X003R,</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Important in life: Religion"</span> <span class="ot">=</span> A006,</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Member: Belong to religious organization"</span> <span class="ot">=</span> A065,</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Dont like as neighbours: homosexuals"</span> <span class="ot">=</span> A124_09,</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Homosexual couples are as good parents as other couples"</span> <span class="ot">=</span> D081,</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Jobs scarce: Men should have more right to a job than women"</span> <span class="ot">=</span> C001_01,</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Self positioning in political scale"</span> <span class="ot">=</span> E033,</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Justifiable: Abortion"</span> <span class="ot">=</span> F120,</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Justifiable: Divorce"</span> <span class="ot">=</span> F121, </span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Justifiable: Euthanasia"</span> <span class="ot">=</span> F122) <span class="sc">%&gt;%</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># keep Austrian data only</span></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cntry_AN <span class="sc">==</span> <span class="st">"AT"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># clean the column names</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() </span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>important_in_life_religion</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;labelled&lt;double&gt;[1644]&gt;: Important in life: Religion
+   [1]  1  4  3  3  3  3  4  3  2  3  4  2  3  2  3  2  2  1  1  3  1  4  2  2
+  [25]  2  4  2  4  3  2  4  2  2  3  2  2  2  2  3  3  2  1  2  2  2  2  2  4
+  [49]  3  3  4  2  3  3  2  1  4  1  4  3  4  3  3  3  4  1  1  4  2  3  4  2
+  [73]  2  4  2  4  4  3  3  3  2  3  3  3  2  4  3  3  2  4  2  1  1  4  2  1
+  [97]  4  1  1  4  2  3  3  4  2  4  3  4  4  2  1  4  2  2  1  2  2  3  4  3
+ [121]  3  4  2  2  4  3  1  2  3  3  4  4  4  3  2  3  3  4  2  3  2  4  2  4
+ [145]  1  1  2  2  2  2  1  2  3  2  2  2  1  3  4  2  3  3  3  4  2  3  3  4
+ [169]  2  3  4  3  4  2  2  3  3  2  4  2  1  3  1  2  3  4  3  2  1  1  2  3
+ [193]  3  1  4  3  1  2  2  3  1  4  3  2  2  4  3  2  4  2  4  4  1  3  1  4
+ [217]  3  4  2  3  1  1  3  3  3  3  2  1  2  1  3  3  3  4  1  3  2  3  1  4
+ [241]  4  4  2  2  2  3  3  1  4  2  4  4  4  2  3  2  4  2  3  4  1  2  2  2
+ [265]  4  3  2  4  3  2  1  4  3  2  3  1  3  3  3  2  3  2  2  4  3  2  3  1
+ [289]  3  2  4  3  4  4  2  2  4  2  3  4  4  1  3  3  4  2  2  4  3  2  3  4
+ [313]  1  4  4  3  3  3  3  2  4  3  1  3  2  2  1  1  2  2  2  3  2  4  3  2
+ [337]  3  3  3  3  4  3  3  1  3  2  1  1  2  1  4  3 -2  3  1  2  3  4  3  1
+ [361]  1  3  2  3  1  2  1  2  4  1  2  2  3  2  2  2  2  2  4  2  4  2  4  2
+ [385]  4  1  4  4  3  4  3  2  4  2  3  2  3  1  4  4  3  4  1  3  4  4  2  4
+ [409]  4  1  2  3  4  3  3  1  2  1  3  3  4  3  4  3  2  4  4  4  2  3  1  2
+ [433]  2  4  4  1  2  1 -2  2  1  4  2  2  1  2  3  1  3  4  3  3  4  3  4  1
+ [457]  3  1  3  1  2  4  3  2  1  3  4  3  3  2  2  1  4  3  2  4  2 -2  4  3
+ [481]  3  4  3  2  2  4  2  1  1  2  2  4  2  3  3  4  1  1  3  2  3  2  3  1
+ [505]  3  3  3  1  3  3  2  1  2  2  3  4  3  3  4  4  3  2  2  2  4  4  2  4
+ [529]  1  2  4  4  3  3  3  2  2  4  2  2  3  2  4  3  2  4  2  1  3  3  3  4
+ [553]  2  3  1  4  3  4  3  3  4  1  2  3  3  3  3  3  4  1  4  3  1  2  3  2
+ [577]  2  3  2  2  3  2  3  3  2  4  4  1  3  4  3  3  1  2  3  4  2  3  3  4
+ [601]  1  2  2  4  4  2  1  4  1  2  1  3  2  2  4  2  2  4  2  3  4  3  3  3
+ [625]  3  3  2  2  2  4  4  3  2  4  4  3  1  3  2  2  2  4  4  4  2  3  2  2
+ [649]  1  2  3  1  2  4  4  3  3  2  2  2  4  2  2  4  1  1  3  3  3  4  3  4
+ [673]  3  3  2  2  4  1  1  4  2  4  4  2  2  3  2  4  4  4  2  2  4  4  3  4
+ [697]  2  4  2  3  2  3  1  2  2  2  1  3  3  3  3  4  2  1  1  3  2  2  3 -1
+ [721]  3  4  3  1  2  4  1  4  3  2  4  4  3  4  3  3  4  4  2  3  3  4  3  3
+ [745]  4  3  2  3  2  4  2  1  3  3  3  2  4  2  2  1  2  1  3  2  3  3  4  3
+ [769]  2  2  2  3  4  1  3  3  4  2  4  2  3  2  3  4  3  3  2  4  2  3  4  3
+ [793]  4  3  3  3  4  3  3  3  2  4  4  1  4  1  4  3  3  3  2  3  3  3  2  2
+ [817]  1  3  3  4  3  2  3  4  1  3  3  3  3  3  3  1  2  2  3  2  1  3  2  3
+ [841]  4  3  2  1  3  2  3  1  2  2  4  4  1  2  2  2  4  3  3  1  2  1  2  3
+ [865]  3  3  4  1  3  4  4  2  2  2  4  3  3  4  3  2  2  1  4  2  2  2  4  4
+ [889]  2  3  4  1  4  2  3  3  3  2  1  1  3 -2  4  3  2  2 -2  3  2  3  2  3
+ [913]  1  2  2  1  2  2  2  2  1  1  1  4  3  4  3  2  2  3  1  2  3  4  3  2
+ [937]  4  2  1  2  3  3  2  2  1  4  4  4  2  3  3  1  3  3  2  4  3  2  4  2
+ [961]  1  3  3  3  3  2  2  3  2  3  3  3  3  3  2  3  1  3  3  3  4  3  2  4
+ [985]  3  4  3  1  2  3  2  1  3  2  3  3  1 -1  2  2  3  3  2  4  4  4 -1  3
+[1009]  3  1  2  2  3  2  4  1  3  3  4  2  2  3  2  3  2  2  2  4  2  3  3  1
+[1033]  4  2  1  3  4  3  3  3  3 -2  3  1  3  3  4  3  4  4  3  4  3  3  2  3
+[1057]  3  2  3  2  1  1  2  2  4  2  3  2  2  3  4  2  4  4  3  3  3  3  3  3
+[1081] -1  3  4  3  2  1  4  2  1  3  2  1 -1  4  3  2  1  3  3  2  2  3  2  1
+[1105]  4  3  1  1  3  2  2  3  3  3  1  3  2  2  1  3  2  3  2  1  4  2  4  2
+[1129]  4  2  2  1  3  3  2  1  2  3  2  1  4  2  2  4  2  4  3  4  2  3  3  3
+[1153]  3  4  2  3  2  3  4  3  2  2  1  4  2  3  1  4 -1  2  3  2  2  2  2  2
+[1177]  3  3  2  4  4  3  3  3  3  2  3  3  2  1  4  3  2  2  4  4  3  1  1  1
+[1201]  3  3  4  2  2  4  3  4  3  3  2  1  4  3  4  1  3  3  3  2  4  2  4  4
+[1225]  2  1  4  2  3  3  1  1  2  4  2  1  1  3  2  4  4  3  3  4  3  4  2  3
+[1249]  3  4  2  1  3  1  3  3  3  3  2  3  2  3  2  3  3  2  3  2  4  3  3  3
+[1273]  1  4  3  2  4  2  2  2  3  3  2  4  4  4  3  2  4  3  3  1  3  3  2  3
+[1297]  4  4  2  2  4  2  3  3  3  2  2  2  1  1  3  1  4  3  4  3  4  4  3  1
+[1321]  1  2  1  1  2  4  2  2  3  4  4  2  3  3  2  3  3  2 -2  3  2  3  3  2
+[1345]  3  4  4  4  3  1  2  2  2  2  4  4  2  3  2  4  3  2  4  3  4  4  2  2
+[1369]  2  4  1  4  3  2  1  3  2  2  3  2  4  1  2  1  4  3  3  4  1  3  4  4
+[1393]  3  3  1  2  4  2  3  4  2  3  1  2  1  4  4  3  1  4  3  2  4  4  3  3
+[1417]  4  2  1  4  1  1  1  4  4  2  3  2  2  2  3  3  2  3  2  2  3  4  2  3
+[1441]  2  3  2  2  4  3  4  2  3  2  4  4  3  3  2  1  2  4  3 -1  2  2  3  4
+[1465]  2  3  3  1  2  4  2  2  4  4  4  1  2  2  4  3  1  4  1  4  2  1  4  4
+[1489]  2  2  2  4  3  3  4  4  3  1  3  2  4  4  2  2  1  3  4  3  2  3  3  2
+[1513]  3  2  4  1  3  1  1  3  1  4  3  3  3  2  2  2  4  3  3  4  4  4  3  2
+[1537]  2  3  3  2  2  4  3  2  2  2  3  3  3  3  1  2  2  4  2  2  2  2  3  4
+[1561]  4  1  2  3  3  3  3  2  3  1  3  3  3  2  3  1  3  3  3  1  4  4  2  2
+[1585]  2  1  2  4  3 -1  2  4  4  2  2  4  3  1  2  1  1  1  1  2  3  3  3  2
+[1609]  1  1  3  1  4  3  1  2  1  3  2  4  2  1  3  3  2  3  3  3  2  2  4  2
+[1633]  2  4  2  4  1  4  4  2  2  4  2  2
+
+Labels:
+ value                label
+    -5       Missing: Other
+    -4  Not asked in survey
+    -3       Not applicable
+    -2            No answer
+    -1           Don´t know
+     1       Very important
+     2     Rather important
+     3   Not very important
+     4 Not at all important</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>important_in_life_religion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -2.000   2.000   3.000   2.604   3.000   4.000 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># keep only positive values </span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> .x <span class="sc">&gt;=</span> <span class="dv">0</span>)) </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>important_in_life_religion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   2.000   3.000   2.667   3.000   4.000 </code></pre>
+</div>
+</div>
+<p>Choose at least four variables, including one dependent variable and three independent variables, conduct the necessary exploratory analysis, and write a short report in APA style (see <a href="http://ich.vscht.cz/~svozil/lectures/vscht/2015_2016/sad/APA_style2.pdf">here</a> and <a href="http://www.bryanburnham.net/wp-content/uploads/2014/01/Reporting-Statistics-in-APA-Format1.pdf">here</a>).</p>
+<p>The analysis and report should include:</p>
 <ul>
-<li>Visualize the association using a scatterplot</li>
-<li>Calculate the Pearson’s r correlation</li>
-<li>Write a comment to interpret the results</li>
+<li><p>a succinct explanation of the hypothesis behind the choice of variables. Specifically, what relationship is assumed between dependent variable and independent variables? Indicate direction (positive or negative correlation) and assumed strength of the relationship.</p></li>
+<li><p>The sample size.</p></li>
+<li><p>For each variable, the minimum, the maximum, the mean and standard deviation. Report them in text using APA style and in a table formatted as in <a href="https://journals.sagepub.com/doi/pdf/10.1177/19401612211031457">this paper (pag. 35)</a>.</p></li>
+<li><p>An histogram and a box plot of the dependent variable.</p></li>
+<li><p>For each pair of variables (in the case of correlation analysis), report the Pearson’s correlation coefficient measure. Before running the analysis, explain what you are going to measure (as in <a href="https://journals.sagepub.com/doi/pdf/10.1177/0093650217745429?casa_token=omRgHsW133wAAAAA:DDz-Q4F1Bc5oDBd_ps00CbtbJ6Pj-BWhoyjMYIg32dGigGF4XZcmu_z0ZgAMJxznz-ucMKpa2YrNaQ">this paper, pag. 14, second and third sentence of the paragraph</a>), report the correlations using the APA style (see <a href="https://www.statisticssolutions.com/reporting-statistics-in-apa-format/">here</a> and <a href="https://personalpages.bradley.edu/~rob/EHC310/Results/Correlation">here</a>) and include a very brief interpretation of the strength and significance of the coefficients. Also include scatter plots.</p></li>
 </ul>
 
 

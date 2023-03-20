@@ -23,22 +23,22 @@ Sample size and data preview are crucial first steps when working with a new dat
 
 To perform these operations, we can use the following functions in R:
 
--   **`dim()`** to find the number of rows in the data set, which corresponds to the number of cases (sample size) in a common and well-structured data set.
+-   `dim()` to find the number of rows in the data set, which corresponds to the number of cases (sample size) in a common and well-structured data set.
 
--   **`str()`** or **`glimpse()`** (in the **`tidyverse`** package) to examine the types of variables included in the data set.
+-   `str()` or `glimpse()` (in the `tidyverse` package) to examine the types of variables included in the data set.
 
--   **`head()`** to preview the data set.
+-   `head()` to preview the data set.
 
--   **`View()`** to view the data set in a separate window (note: this function is not recommended for huge data sets, as it can freeze your computer).
+-   `View()` to view the data set in a separate window (note: this function is not recommended for huge data sets, as it can freeze your computer).
 
-For example, let's use the global warming study data set (**`glbwarm`**).
+For example, let's use the global warming study data set (`glbwarm`).
 
 ```{r}
 # load the glbwarm data set
 glbwarm <- read.csv("data/glbwarm.csv")
 ```
 
-The dataset is well-organized with each row representing a case, making it easy to calculate the sample size by counting the number of rows, which in this case is 815 (n = 815). The dataset contains 7 variables and their type can be examined.
+The data set is well-organized. Each row represents a case, making it easy to calculate the sample size by counting the number of rows, which in this case is 815 (n = 815). The data set contains 7 variables. The variable types can be examined using the `glimpse` function.
 
 ```{r}
 dim(glbwarm)
@@ -49,7 +49,7 @@ library(tidyverse)
 glimpse(glbwarm)
 ```
 
-While the `glimpse` function provides a preview of the dataset, a clearer preview is displayed using the `head` function.
+The `head` function also print a preview of the data set.
 
 ```{r}
 head(glbwarm)
@@ -57,19 +57,21 @@ head(glbwarm)
 
 # Measure of central tendency
 
-[Descriptive statistics](https://en.wikipedia.org/wiki/Descriptive_statistics) are used to describe and summarize variables of a data set.
+[Descriptive statistics](https://en.wikipedia.org/wiki/Descriptive_statistics) are used to summarize and describe the variables of a data set. Typically, there are two general types of statistics that are used to describe data: Measures of central tendency and Measures of spread.
 
-Typically, there are two general types of statistics that are used to describe data: **Measures of central tendency** and **Measures of spread**.
+Measures of central tendency include the mode, median, and mean, which is the most commonly used measure and is particularly useful in linear regression modeling:
 
-**Measures of central tendency** include: - **Mode**: the most frequent score in our data set - **Median**: the middle score for a set of data that has been arranged in order of magnitude - **Mean**: the sum of all the values in the data set divided by the number of values in the data set.
+-   Mode: the most frequent score in our data set;
 
-A clear description of the different measures can be found [here](https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php).
+-   Median: the middle score for a set of data that has been arranged in order of magnitude;
 
-[Descriptive statistics](https://en.wikipedia.org/wiki/Descriptive_statistics) are used to summarize and describe the variables of a dataset. There are two main types of statistics used for this purpose: **measures of central tendency and measures of spread**. Measures of central tendency include the mode, median, and mean, which is the most commonly used measure and is particularly useful in linear regression modeling. The **mean** is essentially a model of the dataset and has the property of minimizing error in the prediction of any value in the dataset. In other words, the mean is the best predictor in the absence of better predictors. The **mode** is the most frequent score in our data set and the **median** is the middle score for a set of data that has been arranged in order of magnitude.
+-   Mean: the sum of all the values in the data set divided by the number of values in the data set. The mean is essentially a model of the data set and has the property of minimizing error in the prediction of any value in the data set. In other words, the mean is the best predictor in the absence of better predictors.
+
+A description of the different measures can be found in any statistics book as well as online, for instance, [here](https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php).
 
 ## The Mean
 
-In R, the mean of a variable can be calculated using the function `mean`, and to access a variable in the dataset, which is a column of a data.frame, the dollar sign is used. For instance, the mean age of people in the sample can be calculated using `mean(glbwarm$age)`, which returns 49.5362.
+In `R`, the mean of a variable can be calculated using the function `mean`. For instance, the mean age of people in the sample can be calculated by the function `mean(glbwarm$age)`, which returns 49.5362.
 
 ```{r}
 mean(glbwarm$age)
@@ -81,7 +83,7 @@ If you wish to round off the number of decimals, the `round` function can be use
 round(mean(glbwarm$age), 2)
 ```
 
-This is equivalent to creating an object *mean_age* representing the output of the function `mean` (i.e., the mean age), and then rounding it off.
+This is a shorter equivalent to creating an object `mean_age` representing the output of the function `mean` (i.e., the mean age) and then rounding it off.
 
 ```{r}
 mean_age <- mean(glbwarm$age)
@@ -94,15 +96,15 @@ The frequency distribution of a variable provides an overview of its values and 
 
 Variables can have either continuous or discrete distributions, depending on their type. The distribution of a variable is typically summarized using the [five-number summary](https://en.wikipedia.org/wiki/Five-number_summary) and visually represented using histograms and box plots (for continuous or discrete variables) or bar charts (for categorical variables).
 
--   Discrete variables only take on specific values and are therefore characterized by discrete distributions. Examples of such variables include count data, which consist of non-negative integers, such as the number of friends on Facebook. In the "glbwarm" dataset, the variable "ideology" is measured on a discrete scale ranging from 1 to 7.
+-   Discrete variables only take on specific values and are therefore characterized by discrete distributions. Examples of such variables include count data, which consist of non-negative integers, such as the number of friends on Facebook. In the `glbwarm` data set, the variable "ideology" is measured on a discrete scale ranging from 1 to 7.
 
--   Discrete variables can also represent categorical data, which express the qualitative dimensions of a phenomenon. For instance, city names (Vienna, London, Verona) or ordered categorical values (low, medium, high) can be used as categorical data. Although categorical data can be represented by numbers, they should not be treated as mathematical objects, but as "names" or ordered categories. Categorical variables that can take on only two values are called dichotomous variables. In the "glbwarm" dataset, the variable "sex" is represented as a dichotomous variable.
+-   Discrete variables can also represent categorical data, which express the qualitative dimensions of a phenomenon. For instance, city names (Vienna, London, Verona) or ordered categorical values (low, medium, high) can be used as categorical data. Although categorical data can be represented by numbers, they should not be treated as mathematical objects, but as "names" or ordered categories. Categorical variables that can take on only two values are called dichotomous variables. In the `glbwarm` data set, the variable `sex` is represented as a dichotomous variable.
 
--   Continuous variables have infinite (uncountable) possible values and are therefore characterized by continuous distributions. Examples of continuous variables include temperature or velocity. In the "glbwarm" dataset, the variable "govact" is represented as a continuous variable.
+-   Continuous variables have infinite (uncountable) possible values and are therefore characterized by continuous distributions. Examples of continuous variables include temperature or velocity. In the `glbwarm` data set, the variable `govact` is represented as a continuous variable.
 
 ## Five-Number Summary
 
-A numerical description of the distribution is provided by the function `summary`, which gives the **five-number summary**.
+A numerical description of the distribution is provided by the function `summary`, which gives the five-number summary.
 
 ```{r}
 summary(glbwarm$ideology)
@@ -110,11 +112,11 @@ summary(glbwarm$ideology)
 
 The five-number summary includes the mean, the median, minimum and maximum values, and the first and third quartiles. [Quartiles](https://en.wikipedia.org/wiki/Quartile) are cut points that divide the range of values of the variable into four parts, or quarters, of more-or-less equal size (25%, 25%, 25%, 25%). The [median](https://en.wikipedia.org/wiki/Median) is the value separating the lower 50% from the upper 50% of the distribution.
 
-## Boxplot
+## Box plots (**box and whisker plot)**
 
-The same information as the five-number summary can be graphically displayed by a [boxplot](https://en.wikipedia.org/wiki/Box_plot),, also called a box-and-whisker plot. The "box" represents the 1st and 3rd quartiles, the central line is the median, and the "whiskers" represent the maximum and minimum values.
+The same information as the five-number summary can be graphically displayed by a [boxplot](https://en.wikipedia.org/wiki/Box_plot), also called a box-and-whisker plot. The "box" represents the 1st and 3rd quartiles, the central line is the median, and the "whiskers" represent the maximum and minimum values.
 
-The points above and below the whiskers are [outliers](https://en.wikipedia.org/wiki/Outlier), which are data points that differ significantly from other observations. Since they are so different, they can be difficult to predict and can bias estimates of linear regression models.
+The points above and below the whiskers are [outliers](https://en.wikipedia.org/wiki/Outlier), which are data points that differ significantly from other observations. Since they are so different, they can be difficult to predict and can sometimes bias the estimates of linear regression models.
 
 ```{r}
 # use the argument "main" to add a title
@@ -163,14 +165,16 @@ lines(density(glbwarm$govact, adjust = 2),
       lty = "dotted")
 ```
 
-## Bar plot
+## Bar plots
 
 Histograms and box plots are used to represent the distribution of numerical variables, such as continuous and discrete variables. For categorical variables, a bar graph is used instead.
 
-For instance, a histogram of the dichotomous categorical variable "sex" is not appropriate. It only takes on the values 0 and 1, but they are not numbers (0 = male, 1 = female) and there is nothing in between them (e.g., 0, 0.1, 0.2, ..., 1).
+For instance, a histogram of the dichotomous categorical variable `sex` is not appropriate. It only takes on the values 0 and 1, but they are not numbers (`0 = male`, `1 = female`) and there is nothing in between them (e.g., 0, 0.1, 0.2, ..., 1).
 
 ```{r}
-hist(glbwarm$sex, main = "SEX (categorical dichotomous variable)", xlab = "sex")
+hist(glbwarm$sex, 
+     main = "SEX (categorical dichotomous variable)", 
+     xlab = "sex")
 ```
 
 The appropriate way to represent the frequency distribution of categorical variables is with a bar chart (or bar plot). The corresponding R function is `barplot`.
@@ -203,7 +207,7 @@ Even more relevant are the variance and standard deviation.
 
 ## Variance
 
-**Variance** (represented as $s^2$ when computed on a sample, as in this case) is a measure of dispersion that quantifies how spread the values of a variable are from the mean (the average value of the variable). In other words, variance measures how much the values of a variable vary.
+Variance (represented as $s^2$ when computed on a sample, as in this case) is a measure of dispersion that quantifies how spread the values of a variable are from the mean (the average value of the variable). In other words, variance measures how much the values of a variable vary.
 
 The formula for variance is:
 
@@ -217,11 +221,11 @@ var(glbwarm$age)
 
 ## Standard Deviation
 
-The **standard deviation** (represented as $s$ when computed on a sample) is the square root of the variance and has the same units as the variable itself. It is a related, and more commonly used, measure of dispersion. A low standard deviation indicates that the values of a variable tend to be close to its average, while a high standard deviation indicates that the values are spread out over a wider range.
+The standard deviation (represented as $s$ when computed on a sample) is the square root of the variance and has the same unit as the variable itself. It is a related, and more commonly used, measure of dispersion. A low standard deviation indicates that the values of a variable tend to be close to its average, while a high standard deviation indicates that the values are spread out over a wider range.
 
 $$s = \sqrt \frac{\sum (x_i-\bar x)^2}{n-1}$$
 
-In R:
+In `R`:
 
 ```{r}
 sd(glbwarm$age)
@@ -231,7 +235,7 @@ sd(glbwarm$age)
 
 Besides measuring the spread of a variable, standard deviation is used for standardizing variables.
 
-Standardization is a procedure that transforms the original data ("raw data") in the so-called **z-scores**. Z-scores are are values expressed in standardized units by using the average and the standard deviation:
+Standardization is a procedure that transforms the original data ("raw data") in the so-called z-scores. Z-scores are are values expressed in standardized units by using the average and the standard deviation:
 
 $$Z = \frac{x_i - \bar x}{s}$$
 
@@ -261,19 +265,19 @@ $$Z = \frac{x_i - \bar x}{\sigma} =  \frac{70 - 65}{2} = 2.5$$
 
 As we can see, relative to their particular distributions, Mary greatly outperformed John.
 
-Z-scores are often used with reference to the **standard normal distribution**. In this case, 68%, 95%, and 99.7% of the values lie within one, two, and three standard deviations of the mean, respectively. It is considered statistically unlikely that a value is 2 standard deviations either side of the mean. We'll encounter again the normal distribution and the 2 standard deviation threshold when we'll take statistical inference into consideration.
+Z-scores are often used with reference to the standard normal distribution. In this case, 68%, 95%, and 99.7% of the values lie within one, two, and three standard deviations of the mean, respectively. It is considered statistically unlikely that a value is 2 standard deviations either side of the mean. We'll encounter again the normal distribution and the 2 standard deviation threshold when we'll take statistical inference into consideration.
 
 # Correlation and prediction
 
 In the first section we used statistical measures and charts to describe variables. In this section we'll learn to assess the relationships between two variables.
 
-At the end of this unit you will understand the Pearson's correlation coefficient and know the R functions to calculate and create the related statistical plots (scatter plot).
+At the end of this unit you will understand the Pearson's correlation coefficient and know the `R` functions to calculate and create the related statistical plots (scatter plot).
 
 ## Correlation
 
-Correlation is a **statistical relationship**, whether causal or not, between two variables.
+Correlation is a statistical relationship, whether causal or not, between two variables.
 
-Two variables $X$ and $Y$ are said to be correlated when they show a systematic association, such that knowing the values of one variable enables the **prediction** of the values of the other.
+Two variables $X$ and $Y$ are said to be correlated when they show a systematic association, such that knowing the values of one variable enables the prediction of the values of the other.
 
 Correlation analysis permits the identification of this relationship and the quantification of its strength.
 
@@ -281,7 +285,7 @@ Correlation analysis permits the identification of this relationship and the qua
 
 The Pearson product-moment correlation, also known as Pearson's r, is an important measure of correlation. It is also the foundation of most of the linear regression methods discussed in this course. Indeed, it can be used to quantify the linear association (or relationship) between two quantitative variables, a quantitative and a dichotomous variable, as well as between two dichotomous variables.
 
-In a linear association, the direction and rate of change in one variable are constant with respect to changes in the other variable. For example, in a perfect linear association between two variables $X$ and \$Y\$, an increase of 1 point in $X$ corresponds to an increase of 1 point in $Y$. A linear relationship describes a straight-line relationship between two variables.
+In a linear association, the direction and rate of change in one variable are constant with respect to changes in the other variable. For example, in a perfect linear association between two variables $X$ and $Y$, an increase of 1 point in $X$ corresponds to an increase of 1 point in $Y$. A linear relationship describes a straight-line relationship between two variables.
 
 A linear relationship describes a straight-line relationship between two variables.
 
@@ -289,50 +293,78 @@ A linear relationship describes a straight-line relationship between two variabl
 knitr::include_graphics("img/correlation_examples.png")
 ```
 
-### Pearson's R and covariance
+### Pearson's r and covariance
 
 Pearson's r is based on the formalization of the idea of calculating the *ratio* between the degree to which $X$ and $Y$ vary *together*, and the degree to which $X$ and $Y$ vary *separately*, in order to find how much "co-variation" they share.
 
 $$r = \frac{degree-to-which-X-and-Y-vary-together}{degree-to-which-X-and-Y-vary-separately}$$
 
-The idea of co-variation is mathematically expressed by **covariance** ($cov$), which is at the heart of virtually all statistical methods. The Pearson's $r$ is a **standardized measure of covariance**.
+The idea of co-variation is mathematically expressed by covariance ($cov$), which is at the heart of virtually all statistical methods. The Pearson's $r$ is a standardized measure of covariance.
 
-Covariance is based on **variance** ($s^2$):
+Covariance is based on variance ($s^2$):
 
 $$s^2 =  \frac{\sum_{i=1}^{n} (x_i-\bar x)^2}{n-1}$$
 
-More precisely, covariance is a *measure of the joint variability of two variables*, and is calculated as the product of the **variance** of the variables:
+More precisely, covariance is a *measure of the joint variability of two variables*, and is calculated as the product of the variance of the variables:
 
 $$ cov = \frac{\sum_{i=1}^{n} (x_i-\bar x) (y_i-\bar y)}{n-1}$$
 
 The covariance can be positive, negative, or equal to zero, and gives a measure of the linear correlation between variables.
 
-So, why do we need Pearson's *r*? Because covariance is a measure that depends on the unit of measurement of the variables, while it is preferable to have a **standard** measure, meaningful independently of each specific data set.
+The reason we calculate covariance in this way is that it captures both the direction and strength of the relationship between the two variables. A positive covariance indicates that the two variables tend to move together (i.e., co-vary) in the same direction, while a negative covariance indicates that they tend to move in opposite directions. The magnitude of the covariance indicates the strength of the relationship, with larger values indicating stronger relationships.
 
-Standardization of covariance is obtained by dividing the covariance $cov$ by the **product of the standard deviations** of the variables $X$ and $Y$. This product represents the **total amount of variation possible**.
+```{r}
+set.seed(321)
+x <- sample.int(n = 10, size = 5, replace = TRUE)
+y <- sample.int(n = 10, size = 5, replace = TRUE)
 
-Thanks to the denominator, which represents the total amount of variation possible for the specific couple of variables, $r$ **is always constrained between 1 and -1** for *any* variable expressed in any unit of measure. The extent to which the covariation $cov_{XY}$ accounts for all of the possible variation ($SD_XSD_Y$) is the extent to which $r$ approximates $|1|$ (negative -1, or positive +1).
+df <- data.frame(x = x,
+                 y = y,
+                 x_mean = mean(x),
+                 y_mean = mean(y),
+                 x_diff = x - mean(x),
+                 y_diff = y - mean(y))
+
+df$x_diff_y_diff <- df$x_diff * df$y_diff
+
+df
+
+```
+
+So, why do we need Pearson's *r*? Because covariance is a measure that depends on the unit of measurement of the variables, while it is preferable to have a standard measure, meaningful independently of each specific data set.
+
+Standardization of covariance is obtained by dividing the covariance $cov$ by the product of the standard deviations of the variables $X$ and $Y$. This product represents the total amount of variation possible.
+
+Thanks to the denominator, which represents the total amount of variation possible for the specific couple of variables, $r$ is always constrained between 1 and -1 for *any* variable expressed in any unit of measure. The extent to which the co-variation $cov_{XY}$ accounts for all of the possible variation ($SD_XSD_Y$) is the extent to which $r$ approximates $|1|$ (negative -1, or positive +1).
 
 $$ r = \frac{cov_{XY}}{SD_XSD_Y}$$
 
-In R, the correlation coefficient is computed with the function `cor`. For example:
+In R, the correlation coefficient can be computed with the function `cor`. For example:
 
 ```{r}
 cor(glbwarm$govact, glbwarm$negemot)
 ```
 
-### Pearson's R interpretation
+The function `cor.test` is more complete, as it includes the statistical significance of the correlation.
+
+```{r}
+cor.test(glbwarm$govact, glbwarm$negemot)
+```
+
+Based on this output, we can write: a Pearson correlation coefficient was computed to assess the linear relationship between support for government action and negative emotions. We found a moderate positive correlation between the variables, $r(813) = .58, p < 0.001$.
+
+### Pearson's r interpretation
 
 Pearson's correlation coefficient can be interpreted as follows:
 
--   The **sign (+/-)** corresponds to the *direction* of the association between X and Y:
+-   The sign (+/-) corresponds to the *direction* of the association between X and Y:
 
-    -   **positive linear association** (+): the higher X, the higher Y;
-    -   **negative linear association** (-): the higher X, the lower Y.
+    -   positive linear association (+): the higher X, the higher Y;
+    -   negative linear association (-): the higher X, the lower Y.
 
--   $r$ is close to **zero** when the association is null or nonlinear
+-   $r$ is close to zero when the association is null or nonlinear
 
--   The closer $r$ is to $|1|$ (+1 or -1), the **stronger** the linear association.
+-   The closer $r$ is to $|1|$ (+1 or -1), the stronger the linear association.
 
 There are different rule of thumbs for the interpretation of the Pearson's correlation. For example, Mike Allen (2017), *The SAGE Encyclopedia of Communication Research Methods* (p. 269) suggests the following:
 
@@ -346,7 +378,7 @@ There are different rule of thumbs for the interpretation of the Pearson's corre
 
 A scatter plot is a common method for visually exploring and representing the correlation between two variables.
 
-"[A scatter plot](https://en.wikipedia.org/wiki/Scatter_plot) is a type of plot or mathematical diagram that uses Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), an additional variable can be displayed. The data are displayed as a collection of points, with the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis".
+[A scatter plot](https://en.wikipedia.org/wiki/Scatter_plot) is a type of plot or mathematical diagram that uses Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), an additional variable can be displayed. The data are displayed as a collection of points, with the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis.
 
 To create a scatter plot in R, you can use the function `plot`. It takes two arguments: x (the first variable) and y (the second variable). The argument `pch` changes the shape of the points; see more details [here](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/points.html).
 
@@ -375,7 +407,7 @@ plot(X, Yn, main = "Negative Association")
 
 When there is a correlation between $X$ and $Y$, using $X_j$ to estimate $Y_j$ produces estimates that are more accurate than if one were to merely estimate $Y_j = \bar Y$ (the average value of $Y$) for every case in the data.
 
-> Given a variable $X$ and $Y$ of a data set of size n, the subscripts "j" in $X_j$ and $Y_j$, indicates the j case. It can be any one of the n cases, but the same for both the $X$ and $Y$ variables. In other words, it indicates the measures of the case j on the variables $X$ and $Y$.
+> Given a variable $X$ and $Y$ of a data set of size n, the subscripts $_j$ in $X_j$ and \$Y_j\$, indicates the $j$ case. It can be any one of the $n$ cases, but the same for both the $X$ and $Y$ variables. In other words, it indicates the measures of the case $j$ on the variables $X$ and $Y$.
 
 Pearson's *r* provides an estimate as to how many *standard deviations (Z) from the sample mean* on $Y$ a case is, given how many standard deviations from the sample mean the case is on $X$. More formally:
 
@@ -388,11 +420,9 @@ where $\hat Z_{Y_j}$ is the estimated value of $Z_{Y_j}$.
 -   Similarly, someone who is two standard deviations below the mean ($Z_X = −2$) in negative emotions is estimated to be $Z_Y = 0.578(−2) = −1.156$ standard deviations from the mean in support for government action.
 -   In this case, $\hat{Z_Y}$ is negative, meaning that such a person is estimated to be below the sample mean in support for government action (i.e., less supportive than average).
 
-**Estimates** of Y from X are **expectations** extracted from what is known about the association between X and Y.
+Estimates of $Y$ from $X$ are expectations extracted from what is known about the association between $X$ and $Y$. In statistics, expectations are never perfectly met, but we have a numerical means of gauging how close are to reality.
 
-In statistics, expectations are never perfectly met, but we have a numerical means of gauging how close are to reality.
-
-In our case, that gauge is the size of Pearson's *r*. The closer it is to +/- 1, the more consistent those expectations are with the reality of the data.
+In our case, that gauge is the size of Pearson's *r*. The closer it is to $+/- 1$, the more consistent those expectations are with the reality of the data.
 
 ```{r echo=FALSE}
   par(mfrow=c(2,2))
@@ -427,22 +457,71 @@ The data set also contains a variable quantifying participants' negative emotion
 
 ### Exercise 1
 
-Display the correlation between the variables *negemot* and *govact* using a scatter plot.
+-   Display the correlation between the variables `negemot` and `govact` using a scatter plot.
 
-Based on the plot, can you tell if there is a correlation between the two variables?
+-   Based on the plot, can you tell if there is a correlation between the two variables?
 
-In your opinion, is there a strong correlation between these variables?
+-   Is there a strong correlation between these variables?
+
+-   Use the function `cor` to calculate the correlation between the variables `negemot` and `govact` in the `glbwarm` data set.
+
+-   Based on the Pearson's r coefficient, is there a strong correlation between these variables?
 
 ### Exercise 2
 
-Use the function `cor` to calculate the correlation between the variables *negemot* and *govact* in the `glbwarm` data set.
+Download the[Joint EVS/WVS 2017-2022 Dataset](https://search.gesis.org/variables/exploredata-ZA7505_Varwave) `ZA7505_v4-0-0.dta` and save it in your `data` project directory.
 
-Based on the Pearson's r coefficient, is there a strong correlation between these variables?
+Use the following `tidyverse` code to create a data set.
 
-### Exercise 3
+```{r}
+# install the packages if necessary
+library(haven)
+library(tidyverse)
+library(janitor)
 
-Consider the variables *tnews* and *age* in the `glbwarm` data set:
+ZA7505_v4_0_0 <- read_dta("data/ZA7505_v4-0-0.dta")
 
--   Visualize the association using a scatterplot
--   Calculate the Pearson's r correlation
--   Write a comment to interpret the results
+# tidyverse data manipulation pipeline
+df <- ZA7505_v4_0_0 %>%
+  # select a few variables related to religion and tolerance for "non-traditional" behaviors  
+  select(year, cntry_AN, X003, X003R, A006, A065, E033, A124_09, D081, F120, F121, F122, C001_01) %>%
+  # rename the selected columns
+  rename("Age" = X003,
+         "Age recoded" = X003R,
+         "Important in life: Religion" = A006,
+         "Member: Belong to religious organization" = A065,
+         "Dont like as neighbours: homosexuals" = A124_09,
+         "Homosexual couples are as good parents as other couples" = D081,
+         "Jobs scarce: Men should have more right to a job than women" = C001_01,
+         "Self positioning in political scale" = E033,
+         "Justifiable: Abortion" = F120,
+         "Justifiable: Divorce" = F121,	
+         "Justifiable: Euthanasia" = F122) %>%
+  # keep Austrian data only
+  filter(cntry_AN == "AT") %>%
+  # clean the column names
+  janitor::clean_names() 
+
+df$important_in_life_religion
+summary(df$important_in_life_religion)
+
+df <- df %>%
+  # keep only positive values 
+  filter(if_all(where(is.numeric), ~ .x >= 0)) 
+
+summary(df$important_in_life_religion)
+```
+
+Choose at least four variables, including one dependent variable and three independent variables, conduct the necessary exploratory analysis, and write a short report in APA style (see [here](http://ich.vscht.cz/~svozil/lectures/vscht/2015_2016/sad/APA_style2.pdf) and [here](http://www.bryanburnham.net/wp-content/uploads/2014/01/Reporting-Statistics-in-APA-Format1.pdf)).
+
+The analysis and report should include:
+
+-   a succinct explanation of the hypothesis behind the choice of variables. Specifically, what relationship is assumed between dependent variable and independent variables? Indicate direction (positive or negative correlation) and assumed strength of the relationship.
+
+-   The sample size.
+
+-   For each variable, the minimum, the maximum, the mean and standard deviation. Report them in text using APA style and in a table formatted as in [this paper (pag. 35)](https://journals.sagepub.com/doi/pdf/10.1177/19401612211031457).
+
+-   An histogram and a box plot of the dependent variable.
+
+-   For each pair of variables (in the case of correlation analysis), report the Pearson's correlation coefficient measure. Before running the analysis, explain what you are going to measure (as in [this paper, pag. 14, second and third sentence of the paragraph](https://journals.sagepub.com/doi/pdf/10.1177/0093650217745429?casa_token=omRgHsW133wAAAAA:DDz-Q4F1Bc5oDBd_ps00CbtbJ6Pj-BWhoyjMYIg32dGigGF4XZcmu_z0ZgAMJxznz-ucMKpa2YrNaQ)), report the correlations using the APA style (see [here](https://www.statisticssolutions.com/reporting-statistics-in-apa-format/) and [here](https://personalpages.bradley.edu/~rob/EHC310/Results/Correlation)) and include a very brief interpretation of the strength and significance of the coefficients. Also include scatter plots.
