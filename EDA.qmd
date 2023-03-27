@@ -374,6 +374,18 @@ There are different rule of thumbs for the interpretation of the Pearson's corre
 -   0.60-0.79 Moderate correlation
 -   0.80-1.00 Strong correlation
 
+This looks a very conservative interpretations. Other [guidelines](https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php) suggest the following interpretation:
+
+-   0.10-0.30 Small
+
+-   0.30-0.50 Medium
+
+-   0.50-1.00 Large
+
+Moreover, this guidelines cannot be applied rigidly:
+
+> For example, even though the correlation between taking aspirin and preventing a heart attack is only $r = .03$ in magnitude (see Rosenthal, 1991, p. 136)---small by most statistical standards---this value may be socially important and may nonetheless influence social policy ([Hemphill, J. F. (2003). Interpreting the magnitudes of correlation coefficients](https://psychology.okstate.edu/faculty/jgrice/psyc3214/Hemphill_Effectsizes.pdf))
+
 ### Scatter plots
 
 A scatter plot is a common method for visually exploring and representing the correlation between two variables.
