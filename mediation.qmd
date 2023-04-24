@@ -62,7 +62,7 @@ Researchers told them that the story is about to be published:
 -   on the *front page* of a newspaper (front-page condition, `cond = 0`)
 -   or in the *inside* of an economic supplement (back page condition, `cond = 1`).
 
-This is the independent variable ($X$), and is a dichotomous variable (in this case it expresses an experimentally manipulated condition, but a variable can be used in a mediation model even when in non-experimental studies).
+This is the independent variable ($X$), and is a dichotomous variable. In this case it expresses an experimentally manipulated condition.
 
 Participants then answered a series of questions:
 
