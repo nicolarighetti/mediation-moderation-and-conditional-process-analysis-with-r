@@ -6,8 +6,8 @@ author: Dr. Nicola Righetti, PhD
 # Learning goals
 
 -   What is the Simple Mediation Model
--   How to estimate a Simple Mediation Model using the PROGRESS software (in R)
--   How to interpret the output of the estimation of the Simple Mediation Model using the PROGRESS software
+-   How to estimate a Simple Mediation Model using the PROCESS software (in R)
+-   How to interpret the output of the estimation of the Simple Mediation Model using the PROCESS software
 -   How to take into account confounding variables, the casual order, measure the effect size, and work with multiple $Xs$ and $Ys$ variables.
 -   When and how to estimate models with more than one mediator (the parallel and multiple mediator models), and how to interpret them.
 -   How to estimate and interpret models with a multicategorical antecedent variable.
