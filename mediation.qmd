@@ -295,7 +295,7 @@ Follow these steps:
 
 7.  Fit the mediation model using Process.
 
-```{r echo=FALSE}
+```{r echo=FALSE, eval=FALSE}
 
 # Variables ----------------
 
