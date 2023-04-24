@@ -296,14 +296,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#estimation-with-process" id="toc-estimation-with-process" class="nav-link" data-scroll-target="#estimation-with-process">Estimation with PROCESS</a></li>
   <li><a href="#interpretation-of-coefficients" id="toc-interpretation-of-coefficients" class="nav-link" data-scroll-target="#interpretation-of-coefficients">Interpretation of coefficients</a></li>
-  <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference">Inference</a></li>
-  <li><a href="#example-with-continuous-x" id="toc-example-with-continuous-x" class="nav-link" data-scroll-target="#example-with-continuous-x">Example with continuous X</a></li>
+  <li><a href="#inference-test-based-on-normal-theory-and-bootstrapping" id="toc-inference-test-based-on-normal-theory-and-bootstrapping" class="nav-link" data-scroll-target="#inference-test-based-on-normal-theory-and-bootstrapping">Inference: test based on normal theory and bootstrapping</a>
+  <ul class="collapse">
+  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping">Bootstrapping</a></li>
   </ul></li>
+  <li><a href="#example-with-continuous-x" id="toc-example-with-continuous-x" class="nav-link" data-scroll-target="#example-with-continuous-x">Example with continuous X</a></li>
+  <li><a href="#statistical-controls" id="toc-statistical-controls" class="nav-link" data-scroll-target="#statistical-controls">Statistical controls</a></li>
+  </ul></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   <li><a href="#confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" id="toc-confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" class="nav-link" data-scroll-target="#confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys">Confounding variables, causal order, effect sizes, and multiple Xs and Ys</a>
   <ul class="collapse">
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
   <li><a href="#confounding-variables" id="toc-confounding-variables" class="nav-link" data-scroll-target="#confounding-variables">Confounding variables</a></li>
-  <li><a href="#statistical-controls" id="toc-statistical-controls" class="nav-link" data-scroll-target="#statistical-controls">Statistical controls</a></li>
   </ul></li>
   <li><a href="#causal-order" id="toc-causal-order" class="nav-link" data-scroll-target="#causal-order">Causal order</a>
   <ul class="collapse">
@@ -355,7 +359,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -397,8 +400,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-37f849c843d32a0ae1f2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-37f849c843d32a0ae1f2">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e98ec383342575506dcf" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-e98ec383342575506dcf">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>In this unit we’ll learn the elements of mediation analysis, with particular attention to the most basic (but also popular) mediation model, consisting of a causal antecedent variable linked to a single consequent variable through an intermediary variable or mediator. This is called simple mediation model.</p>
@@ -466,7 +469,7 @@ Copyright 2021 by Andrew F. Hayes ALL RIGHTS RESERVED
 </section>
 <section id="the-simple-mediation-model" class="level1">
 <h1>The simple mediation model</h1>
-<p>Estimating a mediation model implies finding three different coefficients (<em>a</em>, <em>b</em>, and <em>c’</em>), and three derived <em>effects</em> (<em>total</em>, <em>indirect</em>, <em>direct</em>), by fitting three different regression models.</p>
+<p>Estimating a mediation model implies finding three different coefficients (<em><code>a</code>,</em> <em><code>b</code></em>, and <em><code>c'</code></em>, and three derived <em>effects</em> (<em>total</em>, <em>indirect</em>, <em>direct</em>), by fitting three different regression models.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="img/mediation_1_diagram_1.png" class="img-fluid" width="480"></p>
@@ -606,31 +609,32 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <li><p>The rest of the difference, 0.2544 units (95% CI [-0.2522, 0.7609]), is the <em>direct effect</em> of page manipulation on reported reactions, which is independent of the effects of page manipulation on reaction through PMI.</p></li>
 </ul>
 </section>
-<section id="inference" class="level2">
-<h2 class="anchored" data-anchor-id="inference">Inference</h2>
+<section id="inference-test-based-on-normal-theory-and-bootstrapping" class="level2">
+<h2 class="anchored" data-anchor-id="inference-test-based-on-normal-theory-and-bootstrapping">Inference: test based on normal theory and bootstrapping</h2>
 <p>When coming to statistical inference, and thus to the “statistical significance” of the coefficients, the output reports <em>p-values</em> and <em>confidence intervals</em>.</p>
 <p>Inferential methods have different characteristics for the direct effect and the indirect effect: Inference for the direct effect (and the total effect) is simple and non-controversial, while the case of indirect effect is more complex.</p>
-<p>Regarding the direct effect, the inference can be framed in terms of a p-value (through <em>hypothesis testing</em>) or confidence interval. In the example above, the direct effect of the experimental condition, independent from the mediator, amounts to 0.2544 units (95% CI [-0.2522, 0.7609], p-value: 0.3221). In this case, the p-value and the confidence interval show that the effect is not statistically significant: the p-value is above the standard threshold of 0.05, while the confidence interval includes zero (when it does so, it means that it is possible that it is equal to zero).</p>
+<p>Regarding the direct effect, the inference can be framed in terms of a p-value (through <em>hypothesis testing</em>) or confidence interval. In the example above, the direct effect of the experimental condition, independent from the mediator, amounts to 0.2544 units (95% CI [-0.2522, 0.7609], p-value: 0.3221). In this case, the p-value and the confidence interval show that the effect is not statistically significant: the p-value is above the standard threshold of 0.05, while the confidence interval <em>includes zero</em> (when it does so, it means that it is possible that it is equal to zero, hence, it is considered to be not statistical significant).</p>
 <p>Regarding the indirect effect, there are two possibilities:</p>
 <ul>
-<li>Calculating the p-value through a hypothesis test, relying the <em>assumption of normality</em> of the sampling distribution</li>
-<li>Using a particular technique called <em>bootstrapping</em></li>
+<li>Calculating the p-value through a hypothesis test, relying the <em>assumption of normality</em> of the sampling distribution.</li>
+<li>Using a particular technique called <strong><em>bootstrapping.</em></strong></li>
 </ul>
 <p>In the bottom part of the output of <em>process</em>, are both the <em>indirect effect(s) of X on Y</em>, in the confidence interval form, and the <em>normal theory test for indirect effect(s)</em>, in the p-value form.</p>
-<p>Based on statistical research, the recommendation is, in general, to avoid the normal theory test for indirect effect(s) approach, and to interpret the confidence intervals. This approach would be better in several empirical circumstances, and more powerful in detecting statistical significance.</p>
-<p>We can avoid calculating the normal theory test by removing <code>normal = 1</code> from the function <code>process</code>.</p>
-<p>For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, &gt; 0.05), while the bootstrapping confidence interval is statistically significant (it does not include zero: 95% CI [0.0143, 0.5254]).</p>
-<p>We already saw that confidence intervals can be calculated through standard errors based on the Central Limit Theorem, and thus based on theoretical assumptions regarding the sampling distribution.</p>
-<p>In this case, instead, they are calculated through <em>bootstrapping</em>. It is a procedure based on <em>resampling with replacement</em>. Also in this case, it is of fundamental importance that the sample is a miniature representation of the original population.</p>
-<p>Resampling with replacement is a resampling method that create new samples by choosing, in a random way, the cases that compose an initial sample. The particularity is that <em>the</em> <em>same case can be chosen more than once</em>:</p>
+<p>Hayes suggests that, based on statistical research, the recommendation is, in general, to avoid the normal theory test for indirect effect(s) approach, and to <em>interpret the confidence intervals</em> obtained using bootstrapping. This approach would be better in several empirical circumstances, and more powerful in detecting statistical significance. We can even avoid calculating the normal theory test by removing <code>normal = 1</code> from the function <code>process</code>.</p>
+<p><em>Bootstrapping and normal theory test do not necessarily lead to the same conclusions</em>. For instance, in the example, the p-value of the indirect effect is not statistically significant (p-value = 0.0635, &gt; 0.05), while the bootstrapping confidence interval is statistically significant (it does not include zero: 95% CI [0.0143, 0.5254]).</p>
+<section id="bootstrapping" class="level3">
+<h3 class="anchored" data-anchor-id="bootstrapping">Bootstrapping</h3>
+<p>Confidence intervals can also be calculated through standard errors based on the Central Limit Theorem, based on theoretical assumptions regarding the sampling distribution. In this case, instead, they are calculated through <em>bootstrapping</em>, which is a procedure based on <em>resampling with replacement</em>. Also in this case, it is of fundamental importance that the sample is a miniature representation of the original population.</p>
+<p>Resampling with replacement is a resampling method that create new samples by choosing, in a random way, the cases that compose an initial sample, where <em>the</em> <em>same case can be chosen more than once</em> (random sampling with repleacement):</p>
 <blockquote class="blockquote">
-<p>Suppose case 1 in the original sample is”Joe.” Joe happened to be contacted for participation in the study and provided data to the effort. In the resampling PROCESS, Joe functions as a stand-in for himself and anyone else like him in the pool of potential research participants, as defined by Joe’s measurements on the variables in the model. The original sampling could have sampled several Joes or none, depending in part on the luck of the draw.</p>
+<p>Suppose case 1 in the original sample is “Joe.” Joe happened to be contacted for participation in the study and provided data to the effort. In the resampling process, Joe functions as a stand-in for himself and anyone else like him in the pool of potential research participants, as defined by Joe’s measurements on the variables in the model. The original sampling could have sampled several Joes or none, depending in part on the luck of the draw.</p>
 </blockquote>
 <p>In bootstrapping, a large number of samples are drawn from the sample (e.g.&nbsp;5,000 is the default in PROCESS. Also 10,000 is commonly used), using the just mentioned random sampling with replacement.</p>
 <p>Next, the indirect effect (the statistic of interest in this case) is calculated based on each sample.</p>
-<p>Finally, the confidence intervals are found by dividing the distribution in 100 parts (<em>percentiles</em>), and taking the value corresponding to the 2.5 percentile (lower boundary of the 95% confidence interval), and the 97.5 percentile (upper boundary of the 95% confidence interval).</p>
+<p>Finally, the confidence intervals are found by dividing the resulting distribution of indirect effects in 100 parts (<em>percentiles</em>), and taking the value corresponding to the 2.5 percentile (lower boundary of the 95% confidence interval), and the 97.5 percentile (upper boundary of the 95% confidence interval).</p>
 <p>A difference between confidence intervals calculated using standard errors (relying on the “theoretical” sampling distribution), and those calculated through bootstrapping, is that the former is always <em>symmetrical</em> (the upper and lower bound of the confidence interval are equidistant from the point estimate), while the latter can be <em>asymmetrical</em>, depending on the shape of the distribution.</p>
 <p>Bootstrapping is particularly useful relative to the normal theory approach in smaller samples, because it is in smaller samples that the non-normality of the sampling distribution of ab is likely to be most severe, the large sample asymptotic of the normal theory approach are harder to trust, and the power advantages of bootstrapping are more pronounced.</p>
+</section>
 </section>
 <section id="example-with-continuous-x" class="level2">
 <h2 class="anchored" data-anchor-id="example-with-continuous-x">Example with continuous X</h2>
@@ -746,41 +750,13 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>Two entrepreneurs who differ by one unit in their economic stress are estimated to differ by 0.133 (95% CI [0.0713, 0.2033]) units in their reported intentions to withdraw from their business as a result of the tendency for those under relatively more economic stress to feel more depressed affect (because <em>a</em> is positive), which in turn translates into greater withdrawal intentions (because <em>b</em> is positive).</p>
 <p>This indirect effect is statistically different from zero, as revealed by a 95% bootstrap confidence interval that is entirely above zero (95% CI [0.0713, 0.2033])</p>
 </section>
-</section>
-<section id="confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" class="level1">
-<h1>Confounding variables, causal order, effect sizes, and multiple Xs and Ys</h1>
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
-<ul>
-<li>Learn to rule out alternative explanation in mediation models with reference to
-<ol type="1">
-<li>confounding variables and</li>
-<li>alternative casual explanations</li>
-</ol></li>
-<li>Learn the meaning of “effect size” and learn how to measure it</li>
-<li>Learn how to work with multiple <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables, and the potential pitfalls thereof</li>
-</ul>
-</section>
-<section id="confounding-variables" class="level2">
-<h2 class="anchored" data-anchor-id="confounding-variables">Confounding variables</h2>
-<p>An apparent causal association between <span class="math inline">\(X\)</span> and <span class="math inline">\(M\)</span> (<span class="math inline">\(X -&gt; M\)</span>) may be actually due to some other variable that <span class="math inline">\(X\)</span> is actually affecting, so there is the risk one will go away with the mistaken conclusion that <span class="math inline">\(X\)</span> affects <span class="math inline">\(Y\)</span> indirectly through <span class="math inline">\(M\)</span> when in fact the other variable is the mechanism variable through which <span class="math inline">\(X\)</span> exerts its effect indirectly. We can call this phenomenon as <em>epiphenomenal association.</em></p>
-<p>That is, the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> may be an epiphenomenon of the fact that <span class="math inline">\(X\)</span> affects some other variable not in the model, and that other variable affects <span class="math inline">\(Y\)</span>, but because <span class="math inline">\(M\)</span> is correlated with that other variable, it appears that <span class="math inline">\(M\)</span> is the variable through with <span class="math inline">\(X\)</span>’s effect on <span class="math inline">\(Y\)</span> is carried.</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="img/control_1_diagram_1.png" class="img-fluid" width="480"></p>
-</div>
-</div>
-<p>Other times the association between variables is <em>spurious</em>. For example, the fact that children who watch relatively more television are more likely to be overweight does not imply with certainty that excessive television viewing causes weight problems. Perhaps parents who don’t encourage a healthy lifestyle are more likely to purchase and feed their children less healthy food that is high in fat and calories and are also less likely to encourage their children to play sports, exercise, or engage in other behaviors that are better for their bodies than just watching television. So it isn’t necessarily the excessive television viewing causing the weight problems.</p>
-<p>When <span class="math inline">\(X\)</span> is <em>not experimentally manipulated</em>, then things get even worse. Absent random assignment to values of <span class="math inline">\(X\)</span>, all of the associations in a mediation model are susceptible to confounding and epiphenomenal association, not just the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span>.</p>
-</section>
 <section id="statistical-controls" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-controls">Statistical controls</h2>
-<p>Epiphenomenal association and confounding as threats to the validity of a causal claim can be managed at least in part through <em>statistical control.</em></p>
-<p>If two variables <span class="math inline">\(M\)</span> (e.g., how much children watch television) and <span class="math inline">\(Y\)</span> (e.g., being outweighed) are epiphenomenally associated or confounded due to their association with some variable <span class="math inline">\(C\)</span> (e.g., how much parents encourage a healthy lifestyle in their children), then the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> should not exist among people who are equal on <span class="math inline">\(C\)</span> (e.g., have parents equally encouraging a healthy lifestyle in their children), no matter what they are different on <span class="math inline">\(M\)</span> (e.g., how much they watch television).</p>
+<p>If two variables <span class="math inline">\(M\)</span> (e.g., how much children watch television) and <span class="math inline">\(Y\)</span> (e.g., being outweighed) are confounded due to their association with some variable <span class="math inline">\(C\)</span> (e.g., how much parents encourage a healthy lifestyle in their children), then the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> should not exist among people who are equal on <span class="math inline">\(C\)</span> (e.g., have parents equally encouraging a healthy lifestyle in their children), no matter what they are different on <span class="math inline">\(M\)</span> (e.g., how much they watch television).</p>
 <p>In regression, if we add a variable <span class="math inline">\(C\)</span>, we can get the <em>partial coefficient</em> of <span class="math inline">\(M\)</span>, we interpret as the weight of the <span class="math inline">\(M\)</span> variable, <em>holding all the other variables in the model constant</em> (including <span class="math inline">\(C\)</span>):</p>
 <ul>
-<li>Confounding and epiphenomenal association due to <span class="math inline">\(C\)</span> can be ruled out by including <span class="math inline">\(C\)</span> as a predictor.</li>
-<li>Adding <span class="math inline">\(C\)</span> to the models of <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> will also remove <span class="math inline">\(C\)</span> as an epiphenomenal or confounding threat to a causal claim about the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(M\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> as well as between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span>.</li>
+<li>Confounding association due to <span class="math inline">\(C\)</span> can be ruled out by including <span class="math inline">\(C\)</span> as a predictor.</li>
+<li>Adding <span class="math inline">\(C\)</span> to the models of <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> will also remove <span class="math inline">\(C\)</span> as a confounding threat to a causal claim about the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(M\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> as well as between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span>.</li>
 </ul>
 <p>More than one confounding variable can be included in the model.</p>
 <p>We can make an example using the <code>estress</code> data set and research problem. In this research project nothing was manipulated, and potential confounds abound. For example, the indirect effect may be a manifestation of nothing other than individual differences such as perceptions of one’s own confidence and skill in managing a business. People who feel relatively more confident in their abilities may tend to feel relatively less stress in general, perhaps are less prone to feeling negative and down about their business under any circumstances.</p>
@@ -900,7 +876,260 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 <p>Comparing the output for the model controlling for sex, tenure, and entrepreneurial self-efficacy to the output excluding these controls, it can be seen that substantively, nothing has really changed.</p>
 <p>However, this kind of analysis may be done in order to see how sensitive or susceptible the results from a comparable analysis without such controls is to alternative explanations involving those variables being controlled, or it may be done because it is known a priori or based on preliminary analyses that certain variables may be producing spurious association between key variables in the causal system.</p>
-<p><em>Ruling out epiphenomenality or spurious association as alternative explanations is an important part of any causal argument that includes associations that are only correlational in nature.</em></p>
+<p><em>Ruling out spurious association as alternative explanations is an important part of any causal argument that includes associations that are only correlational in nature.</em> We’ll see more about that after the exercise.</p>
+</section>
+</section>
+<section id="exercise" class="level1">
+<h1>Exercise</h1>
+<p>Read the following paper and replicate the <em>study 1</em> analysis using the provided data. Carefully observe how the data, the measures, the method and the analysis are presented in the paper.</p>
+<blockquote class="blockquote">
+<p>Thomas, M. F., Binder, A., &amp; Matthes, J. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S0747563221003009">The agony of partner choice: The effect of excessive partner availability on fear of being single, self-esteem, and partner choice overload.</a>&nbsp;<em>Computers in Human Behavior</em>,&nbsp;<em>126</em>, 106977.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this data set is save as "sav".</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use the "haven" library to read it.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"data/agonyofpartnerchoice_study1.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Follow these steps:</p>
+<ol type="1">
+<li><p>Check the fitted mediation model (Figure 1) and take note of the variables in the model.</p></li>
+<li><p>Read about participants in the experiment (section 2.2) and focus your attention on the measures (section 2.3) to understand how the variables were measured. Except for one variable, which was measured by one item in the survey, the other two variables were measured by two and three items. Check the variables in the data set, and identify the items necessary to construct the three variables in the model.</p></li>
+<li><p>In this case, the final variable is obtained by averaging the items. The data set already include the final variables. Identify them.</p></li>
+<li><p>Continue reading the Measures section (2.3) and take note of the control variables used in the model. Identify the variables in the data set. In this case, the control variable “Dummy_Female” is used in the model in place of “gender”.</p></li>
+<li><p>Take note of people excluded from the analysis and the reason why. You also need to remove these subjects from the data set before running the analysis. You can use the <code>dplyr</code> function <code>filter</code>.</p></li>
+<li><p>Explore the variables to learn about the coding using the <code>haven</code> function <code>print_labels</code> (e.g.: <code>print_labels(dat$RsStatus</code>)</p></li>
+<li><p>Fit the mediation model using Process.</p></li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.1     ✔ purrr   1.0.1
+✔ tibble  3.1.8     ✔ dplyr   1.1.0
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+********************* PROCESS for R Version 4.0.1 ********************* 
+ 
+           Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+   Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+ 
+*********************************************************************** 
+                    
+Model : 4           
+    Y : FOBS        
+    X : DAuse       
+    M : PartnerAvail
+
+Covariates: 
+       age Dummy_Female RsStatus
+
+Sample size: 650
+
+Custom seed: 31216
+
+
+*********************************************************************** 
+Outcome Variable: PartnerAvail
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.28      0.08      1.25     13.81      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.59      0.25     10.38      0.00      2.10      3.07
+DAuse             0.15      0.03      4.52      0.00      0.08      0.21
+age               0.00      0.00      0.62      0.54     -0.00      0.01
+Dummy_Female     -0.44      0.09     -4.89      0.00     -0.62     -0.26
+RsStatus          0.12      0.10      1.24      0.21     -0.07      0.31
+
+*********************************************************************** 
+Outcome Variable: FOBS
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.34      0.11      1.43     16.63      5.00    644.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.33      0.29      8.12      0.00      1.77      2.90
+DAuse             0.14      0.04      3.80      0.00      0.07      0.20
+PartnerAvail      0.11      0.04      2.66      0.01      0.03      0.19
+age              -0.02      0.00     -5.50      0.00     -0.03     -0.01
+Dummy_Female     -0.17      0.10     -1.77      0.08     -0.37      0.02
+RsStatus          0.46      0.10      4.49      0.00      0.26      0.66
+
+************************ TOTAL EFFECT MODEL *************************** 
+Outcome Variable: FOBS
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.32      0.10      1.44     18.84      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.62      0.27      9.81      0.00      2.10      3.15
+DAuse             0.15      0.04      4.32      0.00      0.08      0.22
+age              -0.02      0.00     -5.41      0.00     -0.03     -0.01
+Dummy_Female     -0.22      0.10     -2.30      0.02     -0.41     -0.03
+RsStatus          0.47      0.10      4.60      0.00      0.27      0.68
+
+*********************************************************************** 
+Bootstrapping in progress. Please wait.
+
+************ TOTAL, DIRECT, AND INDIRECT EFFECTS OF X ON Y ************
+
+Total effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.15      0.04      4.32      0.00      0.08      0.22
+
+Direct effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.14      0.04      3.80      0.00      0.07      0.20
+
+Indirect effect(s) of X on Y:
+                Effect    BootSE  BootLLCI  BootULCI
+PartnerAvail      0.02      0.01      0.00      0.03
+
+Normal theory test for indirect effect(s):
+                Effect        se         Z         p
+PartnerAvail      0.02      0.01      2.25      0.02
+
+******************** ANALYSIS NOTES AND ERRORS ************************ 
+
+Level of confidence for all confidence intervals in output: 95
+
+Number of bootstraps for percentile bootstrap confidence intervals: 10000</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+********************* PROCESS for R Version 4.0.1 ********************* 
+ 
+           Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+   Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+ 
+*********************************************************************** 
+             
+Model : 4    
+    Y : fbs  
+    X : DAuse
+    M : ppa  
+
+Covariates: 
+       age Dummy_Female RsStatus
+
+Sample size: 650
+
+Custom seed: 31216
+
+
+*********************************************************************** 
+Outcome Variable: ppa
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.28      0.08      1.25     13.81      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.59      0.25     10.38      0.00      2.10      3.07
+DAuse             0.15      0.03      4.52      0.00      0.08      0.21
+age               0.00      0.00      0.62      0.54     -0.00      0.01
+Dummy_Female     -0.44      0.09     -4.89      0.00     -0.62     -0.26
+RsStatus          0.12      0.10      1.24      0.21     -0.07      0.31
+
+*********************************************************************** 
+Outcome Variable: fbs
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.34      0.11      1.43     16.63      5.00    644.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.33      0.29      8.12      0.00      1.77      2.90
+DAuse             0.14      0.04      3.80      0.00      0.07      0.20
+ppa               0.11      0.04      2.66      0.01      0.03      0.19
+age              -0.02      0.00     -5.50      0.00     -0.03     -0.01
+Dummy_Female     -0.17      0.10     -1.77      0.08     -0.37      0.02
+RsStatus          0.46      0.10      4.49      0.00      0.26      0.66
+
+************************ TOTAL EFFECT MODEL *************************** 
+Outcome Variable: fbs
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.32      0.10      1.44     18.84      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.62      0.27      9.81      0.00      2.10      3.15
+DAuse             0.15      0.04      4.32      0.00      0.08      0.22
+age              -0.02      0.00     -5.41      0.00     -0.03     -0.01
+Dummy_Female     -0.22      0.10     -2.30      0.02     -0.41     -0.03
+RsStatus          0.47      0.10      4.60      0.00      0.27      0.68
+
+*********************************************************************** 
+Bootstrapping in progress. Please wait.
+
+************ TOTAL, DIRECT, AND INDIRECT EFFECTS OF X ON Y ************
+
+Total effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.15      0.04      4.32      0.00      0.08      0.22
+
+Direct effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.14      0.04      3.80      0.00      0.07      0.20
+
+Indirect effect(s) of X on Y:
+       Effect    BootSE  BootLLCI  BootULCI
+ppa      0.02      0.01      0.00      0.03
+
+Normal theory test for indirect effect(s):
+       Effect        se         Z         p
+ppa      0.02      0.01      2.25      0.02
+
+******************** ANALYSIS NOTES AND ERRORS ************************ 
+
+Level of confidence for all confidence intervals in output: 95
+
+Number of bootstraps for percentile bootstrap confidence intervals: 10000</code></pre>
+</div>
+</div>
+</section>
+<section id="confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" class="level1">
+<h1>Confounding variables, causal order, effect sizes, and multiple Xs and Ys</h1>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
+<ul>
+<li>Learn to rule out alternative explanation in mediation models with reference to
+<ol type="1">
+<li>confounding variables and</li>
+<li>alternative casual explanations</li>
+</ol></li>
+<li>Learn the meaning of “effect size” and learn how to measure it</li>
+<li>Learn how to work with multiple <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> variables, and the potential pitfalls thereof</li>
+</ul>
+</section>
+<section id="confounding-variables" class="level2">
+<h2 class="anchored" data-anchor-id="confounding-variables">Confounding variables</h2>
+<p>An apparent causal association between <span class="math inline">\(X\)</span> and <span class="math inline">\(M\)</span> (<span class="math inline">\(X -&gt; M\)</span>) may be actually due to some other variable that <span class="math inline">\(X\)</span> is actually affecting, so there is the risk one will go away with the mistaken conclusion that <span class="math inline">\(X\)</span> affects <span class="math inline">\(Y\)</span> indirectly through <span class="math inline">\(M\)</span> when in fact the other variable is the mechanism variable through which <span class="math inline">\(X\)</span> exerts its effect indirectly. We can call this phenomenon as <em>epiphenomenal association.</em></p>
+<p>That is, the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span> may be an epiphenomenon of the fact that <span class="math inline">\(X\)</span> affects some other variable not in the model, and that other variable affects <span class="math inline">\(Y\)</span>, but because <span class="math inline">\(M\)</span> is correlated with that other variable, it appears that <span class="math inline">\(M\)</span> is the variable through with <span class="math inline">\(X\)</span>’s effect on <span class="math inline">\(Y\)</span> is carried.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/control_1_diagram_1.png" class="img-fluid" width="480"></p>
+</div>
+</div>
+<p>Other times the association between variables is <em>spurious</em>. For example, the fact that children who watch relatively more television are more likely to be overweight does not imply with certainty that excessive television viewing causes weight problems. Perhaps parents who don’t encourage a healthy lifestyle are more likely to purchase and feed their children less healthy food that is high in fat and calories and are also less likely to encourage their children to play sports, exercise, or engage in other behaviors that are better for their bodies than just watching television. So it isn’t necessarily the excessive television viewing causing the weight problems.</p>
+<p>When <span class="math inline">\(X\)</span> is <em>not experimentally manipulated</em>, then things get even worse. Absent random assignment to values of <span class="math inline">\(X\)</span>, all of the associations in a mediation model are susceptible to confounding and epiphenomenal association, not just the association between <span class="math inline">\(M\)</span> and <span class="math inline">\(Y\)</span>.</p>
 </section>
 </section>
 <section id="causal-order" class="level1">
@@ -943,11 +1172,11 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <h2 class="anchored" data-anchor-id="effect-size-in-process">Effect size in PROCESS</h2>
 <p>To calculate the partial and complete standardized effect size, just add <code>effsize=1</code>. The process software also generates confidence intervals for the partially and completely standardized indirect effects using bootstrapping.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(estress, <span class="at">y =</span> <span class="st">"withdraw"</span>, <span class="at">x =</span> <span class="st">"estress"</span>, <span class="at">m =</span> <span class="st">"affect"</span>, </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"ese"</span>, <span class="st">"sex"</span>, <span class="st">"tenure"</span>),</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">effsize =</span> <span class="dv">1</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed=</span><span class="dv">100770</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(estress, <span class="at">y =</span> <span class="st">"withdraw"</span>, <span class="at">x =</span> <span class="st">"estress"</span>, <span class="at">m =</span> <span class="st">"affect"</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"ese"</span>, <span class="st">"sex"</span>, <span class="st">"tenure"</span>),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">effsize =</span> <span class="dv">1</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed=</span><span class="dv">100770</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1058,12 +1287,12 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>The process software cannot fit models with more than one <span class="math inline">\(X\)</span> variable. To estimate such a model, you have to fit more than one model, indicating the <span class="math inline">\(X\)</span> variables as covariates, in the <code>cov</code> parameter.</p>
 <p>For instance, consider a mediator model with one mediator (<code>MED</code>), one outcome (<code>DV</code>), and three <span class="math inline">\(X\)</span> variables (<code>IV1</code>, <code>IV2</code>, and <code>IV3</code>). To estimate the effects of <code>IV1</code>, <code>IV2</code>, and <code>IV3</code> on <code>DV</code> directly and indirectly through <code>MED</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV1"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV2"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV2"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV3"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV2"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV1"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV2"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV2"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV3"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV2"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As with any other predictors in a regression model, one should be aware of the <em>multicollinearity</em> problem. The stronger the associations between the variables in the model, the greater the potential of such a problem.</p>
 <p>The danger in including multiple <span class="math inline">\(Xs\)</span> in a mediation model, as when including statistical controls, is the possibility that <em>highly correlated</em> <span class="math inline">\(Xs\)</span> <em>will cancel out each others’ effects</em>. This is a standard concern in linear models involving correlated predictors.</p>
@@ -1153,9 +1382,9 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>Another difference is that we add the parameter <code>contrast = 1</code> to conduct a <em>test of differences between specific indirect effects with bootstrapping</em>.</p>
 <p>Also, the results include the total indirect effect (the indirect effect summed across all mediators), and the indirect effect of each mediator.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">4</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">effsize =</span> <span class="dv">1</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">4</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">effsize =</span> <span class="dv">1</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1296,9 +1525,9 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <li>You can add <code>contrast = 1</code> if you also want to test differences between specific indirect effects.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">6</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">boot =</span> <span class="dv">10000</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">031216</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">6</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">boot =</span> <span class="dv">10000</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">031216</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1511,13 +1740,13 @@ Number of bootstraps for percentile bootstrap confidence intervals: 10000</code>
 <p>Following this manipulation of Catherine’s response to the discrimination, the participants responded to a set of questions measuring how appropriate they perceived her response was for this situation. Higher scores on this variable (<code>respappr</code> in the data file) reflect a stronger perception of appropriateness of the response.</p>
 <p>Finally, the participants were asked to respond to six questions evaluating Catherine. Their responses were aggregated into a measure of liking, such that participants with higher scores liked her relatively more (<code>liking</code> in the data file).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>protest <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/protest.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>protest <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/protest.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To tell the <code>process</code> function that <span class="math inline">\(X\)</span> is multicategorical (the <span class="math inline">\(X\)</span> variable can contain up to nine modalities), use the <code>mcx</code> option (for multicategorical <span class="math inline">\(X\)</span>), with an argument following an equals sign telling how to code the groups. To perform our analysis with a standard coding procedure, we use <code>mcx=1</code> (“indicator coding”).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1638,9 +1867,9 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1753,7 +1982,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p><span class="math display">\[Y_{liking} = 5.3102 + 0.5158(X_1) + 0.4431(X_2)\]</span></p>
 <p>The <em>total effect model</em> is the total effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> without taking into account any other variable. With a multicategorical <span class="math inline">\(X\)</span> it results in the average value of <span class="math inline">\(Y\)</span> for each modality of the multicategorical <span class="math inline">\(X\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(protest<span class="sc">$</span>liking, protest<span class="sc">$</span>protest, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(protest<span class="sc">$</span>liking, protest<span class="sc">$</span>protest, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       0        1        2 
 5.310244 5.826047 5.753333 </code></pre>
@@ -1776,7 +2005,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <h3 class="anchored" data-anchor-id="interpretation-of-the-direct-effect">Interpretation of the Direct Effect</h3>
 <p>The direct effect is the effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> holding the mediator (and possible other covariates) constant, where “constant” means that the mediator is held at its <em>average</em> value (<span class="math inline">\(M_{respappr} = 4.866279\)</span>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(protest<span class="sc">$</span>respappr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(protest<span class="sc">$</span>respappr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.866279</code></pre>
 </div>
@@ -1874,11 +2103,6 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <li>The characteristic of a multicategorical variable (and the difference between dichotomous and continuous variables).</li>
 <li>How to use R PROGRESS to fit a mediation model with multicategorical X variable, and how to interpret the output of the model.</li>
 </ul>
-</section>
-<section id="exercise" class="level1">
-<h1>Exercise</h1>
-<p>Read the following paper and replicate the study 1 analysis using the provided data. Write a short report with diagrams, tables, and the interpretation of results.</p>
-<p>Thomas, M. F., Binder, A., &amp; Matthes, J. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S0747563221003009">The agony of partner choice: The effect of excessive partner availability on fear of being single, self-esteem, and partner choice overload.</a>&nbsp;<em>Computers in Human Behavior</em>,&nbsp;<em>126</em>, 106977.</p>
 
 
 </section>
