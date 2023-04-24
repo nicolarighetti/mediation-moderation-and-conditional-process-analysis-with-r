@@ -151,7 +151,7 @@ Regarding the direct effect, the inference can be framed in terms of a p-value (
 Regarding the indirect effect, there are two possibilities:
 
 -   Calculating the p-value through a hypothesis test, relying the *assumption of normality* of the sampling distribution.
--   Using a particular technique called ***bootstrapping.***
+-   Using a particular technique called *bootstrapping**.***
 
 In the bottom part of the output of *process*, are both the *indirect effect(s) of X on Y*, in the confidence interval form, and the *normal theory test for indirect effect(s)*, in the p-value form.
 
@@ -271,7 +271,7 @@ Read the following paper and replicate the *study 1* analysis using the provided
 
 > Thomas, M. F., Binder, A., & Matthes, J. (2022). [The agony of partner choice: The effect of excessive partner availability on fear of being single, self-esteem, and partner choice overload.](https://www.sciencedirect.com/science/article/pii/S0747563221003009) *Computers in Human Behavior*, *126*, 106977.
 
-```{r}
+```{r eval=FALSE}
 # this data set is save as "sav".
 # We can use the "haven" library to read it.
 library(haven)
@@ -307,7 +307,7 @@ Follow these steps:
 # Seventeen people were excluded from analysis ----------------
 # because they had not disclosed their relationship status (RsStatus=3)
 
-library(tidyverse)
+require(tidyverse)
 
 dat_final <- dat %>%
   filter(RsStatus != 3)
