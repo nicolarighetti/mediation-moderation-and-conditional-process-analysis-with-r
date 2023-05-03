@@ -400,8 +400,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4ceb8104f4722004d137" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4ceb8104f4722004d137">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b8195c4b552eb65ee74d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b8195c4b552eb65ee74d">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]     \n  rec0 [label = \"MEDIATION ANALYSIS\"]\n  rec1 [label = \"A) The Simple Mediation Model\"]\n  rec2 [label = \"B) Confounding, Casual Order, Effect Size, and Multiple Xs and Ys\"]\n  rec3 [label = \"C) More Than One Mediator\"]\n  rec4 [label = \"D) Multicategorical Antecedent\"]\n\n  # edge definitions with the node IDs\n  rec0 -> rec1 -> rec2 -> rec3 -> rec4;\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>In this unit we’ll learn the elements of mediation analysis, with particular attention to the most basic (but also popular) mediation model, consisting of a causal antecedent variable linked to a single consequent variable through an intermediary variable or mediator. This is called simple mediation model.</p>
@@ -418,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Run the code below to load the <code>process</code> functions</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"PROCESS_R/PROCESS.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"PROCESS_R/process.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -886,11 +886,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>Thomas, M. F., Binder, A., &amp; Matthes, J. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S0747563221003009">The agony of partner choice: The effect of excessive partner availability on fear of being single, self-esteem, and partner choice overload.</a>&nbsp;<em>Computers in Human Behavior</em>,&nbsp;<em>126</em>, 106977.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this data set is save as "sav".</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use the "haven" library to read it.</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"data/agonyofpartnerchoice_study1.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <p>Follow these steps:</p>
 <ol type="1">
@@ -903,7 +899,250 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <li><p>Fit the mediation model using Process.</p></li>
 </ol>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables ----------------</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Independent variable (X): DAuse</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Moderator (M): Perceived Partner Availability (ppa)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dependent variable (Y): Fear of Being Single (fbs)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Control variables: age, gender, RsStatus</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Seventeen people were excluded from analysis ----------------</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># because they had not disclosed their relationship status (RsStatus=3)</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.1     ✔ purrr   1.0.1
+✔ tibble  3.1.8     ✔ dplyr   1.1.0
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dat_final <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(RsStatus <span class="sc">!=</span> <span class="dv">3</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimating the mediation model with Process  ----------------</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(dat_final, <span class="at">y =</span> <span class="st">"FOBS"</span>, <span class="at">x =</span> <span class="st">"DAuse"</span>, <span class="at">m =</span> <span class="st">"PartnerAvail"</span>, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"Dummy_Female"</span>, <span class="st">"RsStatus"</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">total =</span> <span class="dv">1</span>, <span class="at">normal =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress=</span><span class="dv">0</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">boot =</span> <span class="dv">10000</span>, </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">decimals =</span> <span class="fl">9.2</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">31216</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+********************* PROCESS for R Version 4.0.1 ********************* 
+ 
+           Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+   Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+ 
+*********************************************************************** 
+                    
+Model : 4           
+    Y : FOBS        
+    X : DAuse       
+    M : PartnerAvail
 
+Covariates: 
+       age Dummy_Female RsStatus
+
+Sample size: 650
+
+Custom seed: 31216
+
+
+*********************************************************************** 
+Outcome Variable: PartnerAvail
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.28      0.08      1.25     13.81      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.59      0.25     10.38      0.00      2.10      3.07
+DAuse             0.15      0.03      4.52      0.00      0.08      0.21
+age               0.00      0.00      0.62      0.54     -0.00      0.01
+Dummy_Female     -0.44      0.09     -4.89      0.00     -0.62     -0.26
+RsStatus          0.12      0.10      1.24      0.21     -0.07      0.31
+
+*********************************************************************** 
+Outcome Variable: FOBS
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.34      0.11      1.43     16.63      5.00    644.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.33      0.29      8.12      0.00      1.77      2.90
+DAuse             0.14      0.04      3.80      0.00      0.07      0.20
+PartnerAvail      0.11      0.04      2.66      0.01      0.03      0.19
+age              -0.02      0.00     -5.50      0.00     -0.03     -0.01
+Dummy_Female     -0.17      0.10     -1.77      0.08     -0.37      0.02
+RsStatus          0.46      0.10      4.49      0.00      0.26      0.66
+
+************************ TOTAL EFFECT MODEL *************************** 
+Outcome Variable: FOBS
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.32      0.10      1.44     18.84      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.62      0.27      9.81      0.00      2.10      3.15
+DAuse             0.15      0.04      4.32      0.00      0.08      0.22
+age              -0.02      0.00     -5.41      0.00     -0.03     -0.01
+Dummy_Female     -0.22      0.10     -2.30      0.02     -0.41     -0.03
+RsStatus          0.47      0.10      4.60      0.00      0.27      0.68
+
+*********************************************************************** 
+Bootstrapping in progress. Please wait.
+
+************ TOTAL, DIRECT, AND INDIRECT EFFECTS OF X ON Y ************
+
+Total effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.15      0.04      4.32      0.00      0.08      0.22
+
+Direct effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.14      0.04      3.80      0.00      0.07      0.20
+
+Indirect effect(s) of X on Y:
+                Effect    BootSE  BootLLCI  BootULCI
+PartnerAvail      0.02      0.01      0.00      0.03
+
+Normal theory test for indirect effect(s):
+                Effect        se         Z         p
+PartnerAvail      0.02      0.01      2.25      0.02
+
+******************** ANALYSIS NOTES AND ERRORS ************************ 
+
+Level of confidence for all confidence intervals in output: 95
+
+Number of bootstraps for percentile bootstrap confidence intervals: 10000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the variables ourself ----------------</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Moderator (M): Perceived Partner Availability (ppa)</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># two items: Partner_Availabilty1 and Partner_Availabilty2</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>dat_final <span class="ot">&lt;-</span> dat_final <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppa =</span> (Partner_Availabilty1 <span class="sc">+</span> Partner_Availabilty2)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the dependent variable (Y) ----------------</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Fear of Being Single (fbs)</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>dat_final <span class="ot">&lt;-</span> dat_final <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fbs =</span> (FearBeingSingle1 <span class="sc">+</span> FearBeingSingle2 <span class="sc">+</span> FearBeingSingle3)<span class="sc">/</span><span class="dv">3</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimating the mediation model with Process  ----------------</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(dat_final, <span class="at">y =</span> <span class="st">"fbs"</span>, <span class="at">x =</span> <span class="st">"DAuse"</span>, <span class="at">m =</span> <span class="st">"ppa"</span>, </span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"Dummy_Female"</span>, <span class="st">"RsStatus"</span>),</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">total =</span> <span class="dv">1</span>, <span class="at">normal =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress=</span><span class="dv">0</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">boot =</span> <span class="dv">10000</span>, </span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">decimals =</span> <span class="fl">9.2</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed=</span><span class="dv">31216</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+********************* PROCESS for R Version 4.0.1 ********************* 
+ 
+           Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+   Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+ 
+*********************************************************************** 
+             
+Model : 4    
+    Y : fbs  
+    X : DAuse
+    M : ppa  
+
+Covariates: 
+       age Dummy_Female RsStatus
+
+Sample size: 650
+
+Custom seed: 31216
+
+
+*********************************************************************** 
+Outcome Variable: ppa
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.28      0.08      1.25     13.81      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.59      0.25     10.38      0.00      2.10      3.07
+DAuse             0.15      0.03      4.52      0.00      0.08      0.21
+age               0.00      0.00      0.62      0.54     -0.00      0.01
+Dummy_Female     -0.44      0.09     -4.89      0.00     -0.62     -0.26
+RsStatus          0.12      0.10      1.24      0.21     -0.07      0.31
+
+*********************************************************************** 
+Outcome Variable: fbs
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.34      0.11      1.43     16.63      5.00    644.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.33      0.29      8.12      0.00      1.77      2.90
+DAuse             0.14      0.04      3.80      0.00      0.07      0.20
+ppa               0.11      0.04      2.66      0.01      0.03      0.19
+age              -0.02      0.00     -5.50      0.00     -0.03     -0.01
+Dummy_Female     -0.17      0.10     -1.77      0.08     -0.37      0.02
+RsStatus          0.46      0.10      4.49      0.00      0.26      0.66
+
+************************ TOTAL EFFECT MODEL *************************** 
+Outcome Variable: fbs
+
+Model Summary: 
+          R      R-sq       MSE         F       df1       df2         p
+       0.32      0.10      1.44     18.84      4.00    645.00      0.00
+
+Model: 
+                 coeff        se         t         p      LLCI      ULCI
+constant          2.62      0.27      9.81      0.00      2.10      3.15
+DAuse             0.15      0.04      4.32      0.00      0.08      0.22
+age              -0.02      0.00     -5.41      0.00     -0.03     -0.01
+Dummy_Female     -0.22      0.10     -2.30      0.02     -0.41     -0.03
+RsStatus          0.47      0.10      4.60      0.00      0.27      0.68
+
+*********************************************************************** 
+Bootstrapping in progress. Please wait.
+
+************ TOTAL, DIRECT, AND INDIRECT EFFECTS OF X ON Y ************
+
+Total effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.15      0.04      4.32      0.00      0.08      0.22
+
+Direct effect of X on Y:
+     effect        se         t         p      LLCI      ULCI
+       0.14      0.04      3.80      0.00      0.07      0.20
+
+Indirect effect(s) of X on Y:
+       Effect    BootSE  BootLLCI  BootULCI
+ppa      0.02      0.01      0.00      0.03
+
+Normal theory test for indirect effect(s):
+       Effect        se         Z         p
+ppa      0.02      0.01      2.25      0.02
+
+******************** ANALYSIS NOTES AND ERRORS ************************ 
+
+Level of confidence for all confidence intervals in output: 95
+
+Number of bootstraps for percentile bootstrap confidence intervals: 10000</code></pre>
+</div>
 </div>
 </section>
 <section id="confounding-variables-causal-order-effect-sizes-and-multiple-xs-and-ys" class="level1">
@@ -973,11 +1212,11 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <h2 class="anchored" data-anchor-id="effect-size-in-process">Effect size in PROCESS</h2>
 <p>To calculate the partial and complete standardized effect size, just add <code>effsize=1</code>. The process software also generates confidence intervals for the partially and completely standardized indirect effects using bootstrapping.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(estress, <span class="at">y =</span> <span class="st">"withdraw"</span>, <span class="at">x =</span> <span class="st">"estress"</span>, <span class="at">m =</span> <span class="st">"affect"</span>, </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"ese"</span>, <span class="st">"sex"</span>, <span class="st">"tenure"</span>),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">effsize =</span> <span class="dv">1</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed=</span><span class="dv">100770</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(estress, <span class="at">y =</span> <span class="st">"withdraw"</span>, <span class="at">x =</span> <span class="st">"estress"</span>, <span class="at">m =</span> <span class="st">"affect"</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"ese"</span>, <span class="st">"sex"</span>, <span class="st">"tenure"</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">effsize =</span> <span class="dv">1</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed=</span><span class="dv">100770</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1088,12 +1327,12 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>The process software cannot fit models with more than one <span class="math inline">\(X\)</span> variable. To estimate such a model, you have to fit more than one model, indicating the <span class="math inline">\(X\)</span> variables as covariates, in the <code>cov</code> parameter.</p>
 <p>For instance, consider a mediator model with one mediator (<code>MED</code>), one outcome (<code>DV</code>), and three <span class="math inline">\(X\)</span> variables (<code>IV1</code>, <code>IV2</code>, and <code>IV3</code>). To estimate the effects of <code>IV1</code>, <code>IV2</code>, and <code>IV3</code> on <code>DV</code> directly and indirectly through <code>MED</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV1"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV2"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV2"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV3"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV2"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV1"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV2"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV2"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV3"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(data set, <span class="at">y =</span> <span class="st">"DV"</span>, <span class="at">x =</span> <span class="st">"IV3"</span>, <span class="at">m =</span> <span class="st">"MED"</span>, </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">cov =</span> <span class="fu">c</span>(<span class="st">"IV1"</span>, <span class="st">"IV2"</span>), <span class="at">model =</span> <span class="dv">4</span>, <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As with any other predictors in a regression model, one should be aware of the <em>multicollinearity</em> problem. The stronger the associations between the variables in the model, the greater the potential of such a problem.</p>
 <p>The danger in including multiple <span class="math inline">\(Xs\)</span> in a mediation model, as when including statistical controls, is the possibility that <em>highly correlated</em> <span class="math inline">\(Xs\)</span> <em>will cancel out each others’ effects</em>. This is a standard concern in linear models involving correlated predictors.</p>
@@ -1183,9 +1422,9 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p>Another difference is that we add the parameter <code>contrast = 1</code> to conduct a <em>test of differences between specific indirect effects with bootstrapping</em>.</p>
 <p>Also, the results include the total indirect effect (the indirect effect summed across all mediators), and the indirect effect of each mediator.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">4</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">effsize =</span> <span class="dv">1</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">4</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">effsize =</span> <span class="dv">1</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1326,9 +1565,9 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <li>You can add <code>contrast = 1</code> if you also want to test differences between specific indirect effects.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">6</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">boot =</span> <span class="dv">10000</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">031216</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(pmi_data, <span class="at">y =</span> <span class="st">"reaction"</span>, <span class="at">x =</span> <span class="st">"cond"</span>, <span class="at">m =</span> <span class="fu">c</span>(<span class="st">"import"</span>, <span class="st">"pmi"</span>), </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="dv">6</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">contrast =</span> <span class="dv">1</span>, <span class="at">boot =</span> <span class="dv">10000</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">031216</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1541,13 +1780,13 @@ Number of bootstraps for percentile bootstrap confidence intervals: 10000</code>
 <p>Following this manipulation of Catherine’s response to the discrimination, the participants responded to a set of questions measuring how appropriate they perceived her response was for this situation. Higher scores on this variable (<code>respappr</code> in the data file) reflect a stronger perception of appropriateness of the response.</p>
 <p>Finally, the participants were asked to respond to six questions evaluating Catherine. Their responses were aggregated into a measure of liking, such that participants with higher scores liked her relatively more (<code>liking</code> in the data file).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>protest <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/protest.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>protest <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/protest.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To tell the <code>process</code> function that <span class="math inline">\(X\)</span> is multicategorical (the <span class="math inline">\(X\)</span> variable can contain up to nine modalities), use the <code>mcx</code> option (for multicategorical <span class="math inline">\(X\)</span>), with an argument following an equals sign telling how to code the groups. To perform our analysis with a standard coding procedure, we use <code>mcx=1</code> (“indicator coding”).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1668,9 +1907,9 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(protest, <span class="at">y =</span> <span class="st">"liking"</span>, <span class="at">x =</span> <span class="st">"protest"</span>, <span class="at">m =</span> <span class="st">"respappr"</span>,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">mcx =</span> <span class="dv">1</span>, <span class="at">total =</span> <span class="dv">1</span>, <span class="at">model =</span> <span class="dv">4</span>, <span class="at">progress =</span> <span class="dv">0</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">seed =</span> <span class="dv">30217</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ********************* PROCESS for R Version 4.0.1 ********************* 
@@ -1783,7 +2022,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <p><span class="math display">\[Y_{liking} = 5.3102 + 0.5158(X_1) + 0.4431(X_2)\]</span></p>
 <p>The <em>total effect model</em> is the total effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> without taking into account any other variable. With a multicategorical <span class="math inline">\(X\)</span> it results in the average value of <span class="math inline">\(Y\)</span> for each modality of the multicategorical <span class="math inline">\(X\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(protest<span class="sc">$</span>liking, protest<span class="sc">$</span>protest, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(protest<span class="sc">$</span>liking, protest<span class="sc">$</span>protest, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       0        1        2 
 5.310244 5.826047 5.753333 </code></pre>
@@ -1806,7 +2045,7 @@ Number of bootstraps for percentile bootstrap confidence intervals: 5000</code><
 <h3 class="anchored" data-anchor-id="interpretation-of-the-direct-effect">Interpretation of the Direct Effect</h3>
 <p>The direct effect is the effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> holding the mediator (and possible other covariates) constant, where “constant” means that the mediator is held at its <em>average</em> value (<span class="math inline">\(M_{respappr} = 4.866279\)</span>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(protest<span class="sc">$</span>respappr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(protest<span class="sc">$</span>respappr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.866279</code></pre>
 </div>

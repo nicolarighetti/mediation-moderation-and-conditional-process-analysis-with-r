@@ -41,7 +41,7 @@ knitr::include_graphics("img/simple_mediation_model_diagram.png")
 -   Run the code below to load the `process` functions
 
 ```{r message=FALSE, warning=FALSE}
-source("PROCESS_R/PROCESS.R")
+source("PROCESS_R/process.R")
 ```
 
 ## Download and load the data set
@@ -271,7 +271,7 @@ Read the following paper and replicate the *study 1* analysis using the provided
 
 > Thomas, M. F., Binder, A., & Matthes, J. (2022). [The agony of partner choice: The effect of excessive partner availability on fear of being single, self-esteem, and partner choice overload.](https://www.sciencedirect.com/science/article/pii/S0747563221003009) *Computers in Human Behavior*, *126*, 106977.
 
-```{r eval=FALSE}
+```{r echo=FALSE}
 # this data set is save as "sav".
 # We can use the "haven" library to read it.
 library(haven)
@@ -295,7 +295,7 @@ Follow these steps:
 
 7.  Fit the mediation model using Process.
 
-```{r echo=FALSE, eval=FALSE}
+```{r}
 
 # Variables ----------------
 
@@ -307,7 +307,7 @@ Follow these steps:
 # Seventeen people were excluded from analysis ----------------
 # because they had not disclosed their relationship status (RsStatus=3)
 
-require(tidyverse)
+library(tidyverse)
 
 dat_final <- dat %>%
   filter(RsStatus != 3)
@@ -319,7 +319,7 @@ process(dat_final, y = "FOBS", x = "DAuse", m = "PartnerAvail",
         total = 1, normal = 1, model = 4, progress=0,
         boot = 10000, 
         decimals = 9.2,
-        seed=31216)
+        seed = 31216)
 
 
 # Create the variables ourself ----------------
