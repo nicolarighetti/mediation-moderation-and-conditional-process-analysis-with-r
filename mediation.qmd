@@ -366,7 +366,9 @@ That is, the association between $M$ and $Y$ may be an epiphenomenon of the fact
 knitr::include_graphics("img/epiphenomenal_association.png")
 ```
 
-Other times the association between variables is *spurious*. For example, the fact that children who watch relatively more television are more likely to be overweight does not imply with certainty that excessive television viewing causes weight problems. Perhaps parents who don't encourage a healthy lifestyle are more likely to purchase and feed their children less healthy food that is high in fat and calories and are also less likely to encourage their children to play sports, exercise, or engage in other behaviors that are better for their bodies than just watching television. So it isn't necessarily the excessive television viewing causing the weight problems. (For the subtle difference between epiphenomenal and spurious association see at this [link](https://core.ecu.edu/wuenschk/MV/multReg/Mediation-Hayes.htm)).
+Other times the association between variables is *spurious*. For example, the fact that children who watch relatively more television are more likely to be overweight does not imply with certainty that excessive television viewing causes weight problems. Perhaps parents who don't encourage a healthy lifestyle are more likely to purchase and feed their children less healthy food that is high in fat and calories and are also less likely to encourage their children to play sports, exercise, or engage in other behaviors that are better for their bodies than just watching television. So it isn't necessarily the excessive television viewing causing the weight problems.
+
+[![Andrew F. Hayes on Mediation Analysis With Nonexperimentally Gathered Data. Source: https://core.ecu.edu/wuenschk/MV/multReg/Mediation-Hayes.htm](img/epiphenomenal_vs_spurious.png)](https://core.ecu.edu/wuenschk/MV/multReg/Mediation-Hayes.htm)
 
 When $X$ is *not experimentally manipulated*, then things get even worse. Absent random assignment to values of $X$, all of the associations in a mediation model are susceptible to confounding and epiphenomenal association, not just the association between $M$ and $Y$.
 
