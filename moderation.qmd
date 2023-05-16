@@ -223,7 +223,7 @@ process(y = "justify", x = "frame", w = "skeptic_mc",
 
 ## Visualizing moderation
 
-A picture of the model can be a useful aid in interpreting and reporting a mediation model.
+A picture of the model can be a useful aid in interpreting and reporting a moderation model.
 
 Setting the parameter `plot = 1` in the PROCESS function returns a table (data for visualizing the conditional effect of the focal predictor) with values that can be used to visualize the interaction (bottom part of the output).
 

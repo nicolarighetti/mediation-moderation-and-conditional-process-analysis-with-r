@@ -309,6 +309,7 @@ Follow these steps:
 
 library(tidyverse)
 
+# remove people that had not disclosed their relationship status (RsStatus=3)
 dat_final <- dat %>%
   filter(RsStatus != 3)
 
